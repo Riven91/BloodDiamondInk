@@ -69,6 +69,10 @@ export function Gallery() {
       ? galleryItems
       : galleryItems.filter((item) => item.location === activeFilter);
 
+  const activeButtonClass = "btn-primary text-xs";
+  const inactiveButtonClass =
+    "inline-flex w-fit items-center justify-center rounded-md border border-blooddiamond-primary/40 bg-transparent px-6 py-3 text-xs font-semibold uppercase tracking-widest text-blooddiamond-text/70 transition-colors duration-200 hover:bg-blooddiamond-muted/60 hover:text-blooddiamond-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background";
+
   return (
     <div className="mt-8 space-y-8">
       <div className="flex flex-wrap gap-3">
@@ -79,11 +83,7 @@ export function Gallery() {
               key={filter}
               type="button"
               onClick={() => setActiveFilter(filter)}
-              className={`btn-primary text-xs ${
-                isActive
-                  ? ""
-                  : "bg-transparent text-blooddiamond-text/70 hover:text-blooddiamond-text border border-blooddiamond-primary/40 hover:bg-blooddiamond-muted/60"
-              }`}
+              className={isActive ? activeButtonClass : inactiveButtonClass}
               aria-pressed={isActive}
             >
               {filter}
