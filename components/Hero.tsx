@@ -20,27 +20,30 @@ export function Hero({
   videoSrc,
   videoPoster,
 }: HeroProps) {
+  const hasVideo = Boolean(videoSrc);
+  const poster = videoPoster ?? backgroundImage;
+
   return (
     <section className="relative overflow-hidden border-b border-blooddiamond-primary/40">
       <div className="absolute inset-0">
-        {videoSrc ? (
+        {hasVideo ? (
           <video
             className="h-full w-full object-cover object-center opacity-40"
             autoPlay
             loop
             muted
             playsInline
-            poster={videoPoster}
+            poster={poster}
             aria-hidden="true"
           >
-            <source src={videoSrc} type="video/mp4" />
+            <source src={videoSrc!} type="video/mp4" />
           </video>
         ) : (
           <Image
             src={backgroundImage}
             alt="Tattoo Artist bei der Arbeit"
             fill
-            priority
+            priority={!hasVideo}
             className="object-cover object-center opacity-30"
             sizes="100vw"
           />

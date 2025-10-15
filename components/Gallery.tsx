@@ -63,6 +63,7 @@ const galleryItems: GalleryItem[] = [
 
 export function Gallery() {
   const [activeFilter, setActiveFilter] = useState<GalleryLocation>("Alle");
+  const gridId = "gallery-grid";
 
   const filteredItems =
     activeFilter === "Alle"
@@ -78,6 +79,11 @@ export function Gallery() {
       <div className="flex flex-wrap gap-3">
         {filters.map((filter) => {
           const isActive = activeFilter === filter;
+          const ariaLabel =
+            filter === "Alle"
+              ? "Alle Standorte anzeigen"
+              : `Galerie auf ${filter} einschränken`;
+
           return (
             <button
               key={filter}
@@ -85,13 +91,15 @@ export function Gallery() {
               onClick={() => setActiveFilter(filter)}
               className={isActive ? activeButtonClass : inactiveButtonClass}
               aria-pressed={isActive}
+              aria-controls={gridId}
+              aria-label={ariaLabel}
             >
               {filter}
             </button>
           );
         })}
       </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+      <div id={gridId} className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
         {filteredItems.map((item) => (
           <figure
             key={`${item.location}-${item.src}`}
