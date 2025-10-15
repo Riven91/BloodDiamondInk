@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -20,7 +19,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Blood Diamond Ink",
   description:
-    "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Baden-Württemberg."
+    "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Pforzheim, Heilbronn und Böblingen."
 };
 
 export default function RootLayout({
@@ -33,11 +32,9 @@ export default function RootLayout({
       <body
         className={`bg-blooddiamond-background text-blooddiamond-text antialiased ${bebasNeue.variable} ${inter.variable} font-body`}
       >
-        <Providers>
-          <Header />
-          <main className="bg-blooddiamond-background">{children}</main>
-          <Footer />
-        </Providers>
+        <Header />
+        <main className="bg-blooddiamond-background">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -11,10 +11,15 @@ const config: Config = {
       colors: {
         blooddiamond: {
           background: "#0B0B0B",
-          primary: "#064E3B",
+          primary: "#047857",
           accent: "#00B869",
           text: "#EAEAEA",
           muted: "#1A1A1A"
+        },
+        brand: {
+          DEFAULT: "#047857",
+          hover: "#065F46",
+          ring: "#00B869"
         }
       },
       fontFamily: {

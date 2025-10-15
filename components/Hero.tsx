@@ -20,27 +20,30 @@ export function Hero({
   videoSrc,
   videoPoster,
 }: HeroProps) {
+  const hasVideo = Boolean(videoSrc);
+  const poster = videoPoster ?? backgroundImage;
+
   return (
     <section className="relative overflow-hidden border-b border-blooddiamond-primary/40">
       <div className="absolute inset-0">
-        {videoSrc ? (
+        {hasVideo ? (
           <video
             className="h-full w-full object-cover object-center opacity-40"
             autoPlay
             loop
             muted
             playsInline
-            poster={videoPoster}
+            poster={poster}
             aria-hidden="true"
           >
-            <source src={videoSrc} type="video/mp4" />
+            <source src={videoSrc!} type="video/mp4" />
           </video>
         ) : (
           <Image
             src={backgroundImage}
             alt="Tattoo Artist bei der Arbeit"
             fill
-            priority
+            priority={!hasVideo}
             className="object-cover object-center opacity-30"
             sizes="100vw"
           />
@@ -51,14 +54,11 @@ export function Hero({
         />
       </div>
       <div className="relative mx-auto flex max-w-6xl flex-col gap-6 px-6 py-24 text-left sm:py-32">
-        <span className="font-display text-sm uppercase tracking-[0.5em] text-blooddiamond-accent">Blood Diamond Ink</span>
-        <h1 className="font-display text-5xl uppercase sm:text-6xl md:text-7xl">{title}</h1>
-        <p className="max-w-2xl text-lg text-blooddiamond-text/80">{subtitle}</p>
+        <span className="font-display text-xl uppercase tracking-[0.5em] text-blooddiamond-accent">Blood Diamond Tattoo Ink.</span>
+        <h1 className="font-display text-5xl uppercase sm:text-6xl md:text-7xl">Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.</h1>
+        <p className="max-w-2xl text-lg text-blooddiamond-text/80">Top-Künstler aus aller Welt – mehrfach mit der „Goldenen Nadel“ ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).</p>
         {ctaLabel && ctaHref ? (
-          <Link
-            href={ctaHref}
-            className="w-fit rounded-md bg-blooddiamond-primary px-6 py-3 text-sm font-semibold uppercase tracking-widest text-blooddiamond-text transition hover:bg-blooddiamond-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blooddiamond-accent focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
-          >
+          <Link href={ctaHref} className="btn-primary">
             {ctaLabel}
           </Link>
         ) : null}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { LocationCard } from "@/components/LocationCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { Seo } from "@/components/Seo";
+import { Metadata } from "next";
 
 const funnelUrl = process.env.NEXT_PUBLIC_FUNNEL_HEILBRONN ?? "#termin";
 
@@ -55,23 +55,24 @@ const faqJsonLd = {
   }))
 };
 
+export const metadata: Metadata = {
+    title: "Tattoo Studio Heilbronn | Blood Diamond Ink",
+    description: "Realistic, Fineline & Cover-Up in Heilbronn. Termin per WhatsApp.",
+    openGraph: {
+        images: [
+            {
+                url: "/og/og-heilbronn.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Blood Diamond Ink Heilbronn Studio",
+            },
+        ],
+    },
+};
+
 export default function HeilbronnPage() {
   return (
     <>
-      <Seo
-        title="Tattoo Studio Heilbronn | Blood Diamond Ink"
-        description="Realistic, Fineline & Cover-Up in Heilbronn. Termin per WhatsApp."
-        openGraph={{
-          images: [
-            {
-              url: "/og/og-heilbronn.jpg",
-              width: 1200,
-              height: 630,
-              alt: "Blood Diamond Ink Heilbronn Studio",
-            },
-          ],
-        }}
-      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }}
@@ -107,7 +108,7 @@ export default function HeilbronnPage() {
             <li>• Walk-In Saturday mit spontanen Slots für kleine Projekte</li>
           </ul>
           <div className="mt-5 flex flex-wrap gap-4 text-sm">
-            <Link href={funnelUrl} className="rounded-md bg-blooddiamond-primary px-5 py-3 uppercase tracking-widest text-blooddiamond-text hover:bg-blooddiamond-accent/90">
+            <Link href={funnelUrl} className="btn-primary text-xs">
               Termin anfragen
             </Link>
             <Link href="mailto:heilbronn@blooddiamondink.example" className="hover:text-blooddiamond-accent">

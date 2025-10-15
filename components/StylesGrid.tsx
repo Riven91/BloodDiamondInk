@@ -30,7 +30,7 @@ export function StylesGrid() {
         <div>
           <h2 className="font-display text-4xl uppercase text-blooddiamond-accent">Unsere Signature-Styles</h2>
           <p className="max-w-xl text-blooddiamond-text/70">
-            Jede Session wird individuell geplant – von der Motivskizze bis zum Aftercare-Guideline begleiten wir dich Schritt für Schritt.
+            Wir planen jede Session individuell. Von der ersten Motivskizze bis zu den Aftercare Guidelines begleiten wir dich Schritt für Schritt. Mit sterilen Abläufen, klaren Pflegehinweisen und präziser Umsetzung erzielen wir Ergebnisse, die langfristig überzeugen.
           </p>
         </div>
       </div>

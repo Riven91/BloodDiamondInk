@@ -42,11 +42,7 @@ export function LocationCard({
             <p>Öffnungszeiten: {openingHours}</p>
           </div>
         </div>
-        <Link
-          href={funnelUrl}
-          className="inline-flex w-fit items-center justify-center rounded-md bg-blooddiamond-primary px-6 py-3 text-sm font-semibold uppercase tracking-widest text-blooddiamond-text transition hover:bg-blooddiamond-accent/90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blooddiamond-accent focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
-          aria-label={`Termin buchen für ${name}`}
-        >
+        <Link href={funnelUrl} className="btn-primary" aria-label={`Termin buchen für ${name}`}>
           Termin buchen
         </Link>
       </div>

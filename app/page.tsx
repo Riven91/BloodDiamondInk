@@ -1,70 +1,61 @@
-import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { StylesGrid } from "@/components/StylesGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { Seo } from "@/components/Seo";
+import { Gallery } from "@/components/Gallery";
+import { Metadata } from "next";
+import { LocationsTeaser } from "./components/LocationsTeaser";
+
+export const metadata: Metadata = {
+  title: "Tattoo Studios in Baden-Württemberg",
+  description: "Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+};
 
 const faqItems = [
   {
-    question: "Was kostet eine Session?",
-    answer: "Unsere Artist:innen kalkulieren ab ca. 150 € pro Stunde. Wir besprechen dein Motiv transparent vor dem Termin."
+    question: "Wie buche ich einen Termin?",
+    answer: "Trage dich in wenigen Minuten über unser Formular ein. Wir melden uns für eine Erstberatung und finden gemeinsam einen Termin."
   },
   {
-    question: "Kann ich spontan vorbeikommen?",
-    answer: "Walk-Ins sind möglich, wenn Kapazitäten frei sind. Sichere dir dennoch einen Termin, um Wartezeiten zu vermeiden."
+    question: "Wie bereite ich mich auf meinen Termin vor?",
+    answer: "Komm ausgeruht und iss etwas. Vermeide Alkohol und blutverdünnende Medikamente. Trage bequeme Kleidung, die Zugang zur Stelle ermöglicht. Trink genug Wasser."
   },
   {
     question: "Wie läuft ein Cover-Up ab?",
-    answer: "Wir analysieren dein bestehendes Tattoo, erstellen ein individuelles Design und planen ggf. Vorarbeiten wie Aufhellung."
+    answer: "Wir prüfen dein bestehendes Tattoo, planen Größe und Stil und erstellen einen passenden Entwurf. Je nach Motiv sind mehrere Sitzungen sinnvoll."
   },
   {
-    question: "Wie pflege ich mein Tattoo nach dem Stechen?",
-    answer: "Du erhältst einen Aftercare-Guide inklusive Pflegeprodukten. Sauberkeit und Feuchtigkeit sind in den ersten 14 Tagen entscheidend."
+    question: "Wie lange dauert die Heilung und wie pflege ich mein Tattoo?",
+    answer: "Die Heilung dauert meistens zwei bis vier Wochen. Reinige die Stelle regelmäßig, trage Pflegeprodukte dünn auf und meide Sonne, Sauna und Schwimmbad. Du bekommst von uns klare Aftercare Guidelines."
   },
   {
-    question: "Wie buche ich einen Termin?",
-    answer: "Wähle deinen Wunschstandort und nutze den Termin-Button für unseren Funnel per WhatsApp oder Formular."
+    question: "Welche Hygienemaßnahmen werden ergriffen?",
+    answer: "Wir arbeiten mit Einwegnadeln und Handschuhen. Geräte und Flächen werden regelmäßig desinfiziert. Die Abläufe sind steril und dokumentiert."
+  },
+  {
+    question: "Kann ich mein Design vorher besprechen oder ändern?",
+    answer: "Ja. Teile deine Ideen vorab mit deinem Artist. Kleine Anpassungen sind bis kurz vor dem Termin möglich. Wichtig ist, dass du dich mit dem Motiv wohlfühlst."
+  },
+  {
+    question: "Wo sind eure Studios?",
+    answer: "Pforzheim (Ötisheim), Heilbronn (Neckarsulm) und Böblingen (Herrenberg). Die Adressen findest du auf den jeweiligen Studioseiten."
   }
 ];
 
 export default function HomePage() {
   return (
     <>
-      <Seo
+      <Hero 
         title="Tattoo Studios in Baden-Württemberg"
-        description="Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen."
+        subtitle="Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen."
       />
-      <Hero
-        title="Tattoo-Kunst mit Präzision"
-        subtitle="Unser Team vereint preisgekrönte Artists für Realistic, Fineline, Cover-Up und Black & Grey Tattoos. Wir begleiten dich vom ersten Scribble bis zur perfekten Heilung."
-        ctaLabel="Standorte entdecken"
-        ctaHref="#standorte"
-        backgroundImage="/og/og-pforzheim.jpg"
-      />
+      <LocationsTeaser />
       <StylesGrid />
-      <section id="standorte" className="mx-auto max-w-6xl px-6 pb-16">
-        <h2 className="font-display text-4xl uppercase text-blooddiamond-accent">Studios in deiner Nähe</h2>
+      <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
+        <h2 className="text-2xl font-semibold text-blooddiamond-text">Galerie</h2>
         <p className="mt-3 max-w-2xl text-blooddiamond-text/70">
-          Wir bauen unser Franchise in Baden-Württemberg aus. Aktuell findest du uns mit unserem Hauptstudio in Pforzheim sowie weiteren Lounges in Heilbronn und Böblingen – weitere Städte folgen.
+          Einblicke in aktuelle Projekte und healed Pieces aus unseren Studios. Filtere nach Standort und entdecke die Vielfalt unserer Artists.
         </p>
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[
-            { label: "Pforzheim", slug: "pforzheim" },
-            { label: "Heilbronn", slug: "heilbronn" },
-            { label: "Böblingen", slug: "boeblingen" },
-          ].map((city) => (
-            <div key={city.slug} className="rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 p-6">
-              <h3 className="font-display text-2xl uppercase text-blooddiamond-text">{city.label}</h3>
-              <p className="mt-2 text-sm text-blooddiamond-text/60">Adresse folgt</p>
-              <Link
-                href={`/${city.slug}`}
-                className="mt-4 inline-flex items-center text-sm uppercase tracking-wide text-blooddiamond-accent hover:text-blooddiamond-accent/80"
-              >
-                Mehr erfahren →
-              </Link>
-            </div>
-          ))}
-        </div>
+        <Gallery />
       </section>
       <FAQAccordion items={faqItems} />
     </>

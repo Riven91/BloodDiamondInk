@@ -1,14 +1,15 @@
 import Link from "next/link";
 import { Hero } from "@/components/Hero";
-import { Seo } from "@/components/Seo";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Kontakt | Blood Diamond Ink",
+    description: "Kontaktiere das Blood Diamond Ink Team für Termine, Anfragen und Kooperationen.",
+};
 
 export default function KontaktPage() {
   return (
     <>
-      <Seo
-        title="Kontakt | Blood Diamond Ink"
-        description="Kontaktiere das Blood Diamond Ink Team für Termine, Anfragen und Kooperationen."
-      />
       <Hero
         title="Kontakt"
         subtitle="Sag uns, welche Tattoo-Idee dich begeistert. Unser Team meldet sich persönlich mit Terminoptionen und Beratung."
@@ -53,18 +54,36 @@ export default function KontaktPage() {
         </div>
         <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 p-6">
-            <h2 className="font-display text-2xl uppercase text-blooddiamond-accent">Impressum</h2>
-            <p className="mt-2">Blood Diamond Ink GmbH (Gründung in Vorbereitung)</p>
-            <p className="text-xs text-blooddiamond-text/60">Geschäftsadresse folgt · Geschäftsführer:innen werden ergänzt</p>
-            <p className="mt-3">E-Mail: hello@blooddiamondink.example</p>
-            <p>Telefon: +49 711 000000</p>
+            <h2 className="font-display text-2xl uppercase text-blooddiamond-accent">Rechtliche Hinweise</h2>
+            <p className="mt-2">
+              Alle verpflichtenden Angaben findest du in unserem
+              {" "}
+              <Link href="/impressum/oetisheim" className="hover:text-blooddiamond-accent">
+                Impressum Oetisheim
+              </Link>
+              . Standortspezifische Angaben für Heilbronn und Böblingen sind über die jeweiligen Seiten erreichbar.
+            </p>
+            <p className="mt-3 text-xs text-blooddiamond-text/60">
+              Rechtssichere Texte werden gemeinsam mit unserer Kanzlei laufend aktualisiert.
+            </p>
           </div>
           <div className="rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 p-6">
-            <h2 className="font-display text-2xl uppercase text-blooddiamond-accent">Datenschutz</h2>
+            <h2 className="font-display text-2xl uppercase text-blooddiamond-accent">Datenschutz & AGB</h2>
             <p className="mt-2">
-              Wir verarbeiten deine Angaben ausschließlich zur Terminabstimmung und Franchise-Kommunikation. Detaillierte Informationen folgen in unserer Datenschutzerklärung.
+              Wir nutzen deine Angaben ausschließlich zur Terminabstimmung, Studio-Kommunikation und gesetzlich erforderlichen Dokumentation.
+              Ausführliche Details stehen in der
+              {" "}
+              <Link href="/datenschutz/oetisheim" className="hover:text-blooddiamond-accent">
+                Datenschutzerklärung
+              </Link>
+              {" "}
+              sowie unseren
+              {" "}
+              <Link href="/agb/oetisheim" className="hover:text-blooddiamond-accent">
+                AGB
+              </Link>
+              .
             </p>
-            <p className="mt-3 text-xs text-blooddiamond-text/60">Hinweis: Rechtstexte werden durch unsere Kanzlei ergänzt.</p>
           </div>
         </div>
       </section>

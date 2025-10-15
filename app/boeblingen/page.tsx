@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Hero } from "@/components/Hero";
 import { LocationCard } from "@/components/LocationCard";
 import { FAQAccordion } from "@/components/FAQAccordion";
-import { Seo } from "@/components/Seo";
+import { Metadata } from "next";
 
 const funnelUrl = process.env.NEXT_PUBLIC_FUNNEL_BOEBLINGEN ?? "#termin";
 
@@ -55,23 +55,24 @@ const faqJsonLd = {
   })),
 };
 
+export const metadata: Metadata = {
+    title: "Tattoo Studio Böblingen | Blood Diamond Ink",
+    description: "Fineline, Lettering & Blackwork in Böblingen. Termin per WhatsApp.",
+    openGraph: {
+        images: [
+            {
+                url: "/og/og-boeblingen.jpg",
+                width: 1200,
+                height: 630,
+                alt: "Blood Diamond Ink Böblingen Studio",
+            },
+        ],
+    },
+};
+
 export default function BoeblingenPage() {
   return (
     <>
-      <Seo
-        title="Tattoo Studio Böblingen | Blood Diamond Ink"
-        description="Fineline, Lettering & Blackwork in Böblingen. Termin per WhatsApp."
-        openGraph={{
-          images: [
-            {
-              url: "/og/og-boeblingen.jpg",
-              width: 1200,
-              height: 630,
-              alt: "Blood Diamond Ink Böblingen Studio",
-            },
-          ],
-        }}
-      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Hero
@@ -101,7 +102,7 @@ export default function BoeblingenPage() {
             <li>• Kooperation mit regionalen Piercing-Studios für Kombitermine</li>
           </ul>
           <div className="mt-5 flex flex-wrap gap-4 text-sm">
-            <Link href={funnelUrl} className="rounded-md bg-blooddiamond-primary px-5 py-3 uppercase tracking-widest text-blooddiamond-text hover:bg-blooddiamond-accent/90">
+            <Link href={funnelUrl} className="btn-primary text-xs">
               Funnel öffnen
             </Link>
             <Link href="mailto:boeblingen@blooddiamondink.example" className="hover:text-blooddiamond-accent">
