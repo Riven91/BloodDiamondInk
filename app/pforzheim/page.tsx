@@ -1,45 +1,52 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Hero } from "@/components/Hero";
-import { LocationCard } from "@/components/LocationCard";
-import { FAQAccordion } from "@/components/FAQAccordion";
-import { Metadata } from "next";
-
-const funnelUrl = process.env.NEXT_PUBLIC_FUNNEL_PFORZHEIM ?? "#termin";
+import type { Metadata } from "next";
+import { useState, type FormEvent } from "react";
 
 const faqItems = [
   {
-    question: "Welche Stile dominieren in Pforzheim?",
-    answer: "Unser Team kombiniert Fineline-Illustrationen mit organischen Black & Grey Übergängen – ideal für florale und geometrische Motive."
+    question: "Welche Tattoo-Stile bietet Blood Diamond Tattoo Ink. in Pforzheim?",
+    answer:
+      "Unser Fokus liegt auf Fineline, Realistic und individuellen Cover-Up Tattoos mit maßgeschneiderter Beratung und Design-Entwicklung.",
   },
   {
-    question: "Wie schnell bekomme ich einen Beratungstermin?",
-    answer: "In der Regel erhältst du innerhalb weniger Werktage einen Beratungsslot. Dringende Projekte priorisieren wir flexibel."
+    question: "Wie läuft die Terminvereinbarung ab?",
+    answer:
+      "Sie senden Ihre Anfrage über das Formular. Wir melden uns innerhalb von 48 Stunden mit Terminvorschlägen und einem individuellen Projektplan.",
   },
   {
-    question: "Bietet ihr Cover-Ups ehemaliger Permanent Make-ups an?",
-    answer: "Ja, wir planen Cover-Ups für PMU oder alte Tattoos mit mehrstufigem Konzept. Ein Vor-Ort-Check ist Voraussetzung."
+    question: "Welche Hygienestandards erwarten mich?",
+    answer:
+      "Blood Diamond Tattoo Ink. arbeitet mit Einwegmaterialien, UV-Desinfektion und medizinisch geprüften Aftercare-Produkten für maximale Sicherheit.",
   },
   {
-    question: "Welche Zahlungsmöglichkeiten gibt es?",
-    answer: "Du kannst bar oder per Karte zahlen. Anzahlungen erfolgen bequem über unseren Funnel."
-  }
+    question: "Kann ich ein bestehendes Tattoo covern lassen?",
+    answer:
+      "Ja, wir entwickeln mehrstufige Cover-Up-Konzepte und planen gegebenenfalls Vorbereitungssitzungen für optimale Ergebnisse.",
+  },
 ];
 
 const businessJsonLd = {
   "@context": "https://schema.org",
   "@type": "TattooParlor",
-  name: "Blood Diamond Ink Pforzheim",
-  description: "Fineline und Black & Grey Tattoo Studio in Pforzheim mit Fokus auf individuelle Illustrationen.",
-  address: "Adresse folgt",
-  telephone: "+49 7231 000000",
-  openingHours: "Tu-Sa 11:00-19:00",
-  areaServed: "Pforzheim",
-  priceRange: "€€",
+  name: "Blood Diamond Tattoo Ink.",
+  description:
+    "Fineline, Realistic & Cover-Up Tattoos in Pforzheim – Beratung, individuelles Design & höchste Hygiene.",
   image: "/og/og-pforzheim.jpg",
+  telephone: "+49 1512 3426609",
+  url: "https://blooddiamondink.example/pforzheim",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Maulbronner Str. 38",
+    addressLocality: "Ötisheim",
+    postalCode: "75443",
+    addressCountry: "DE",
+  },
+  openingHours: "Mo-Sa 10:00-18:00",
   sameAs: [
     "https://www.instagram.com",
-    "https://www.facebook.com"
-  ]
+    "https://www.facebook.com",
+  ],
 };
 
 const faqJsonLd = {
@@ -50,72 +57,362 @@ const faqJsonLd = {
     name: item.question,
     acceptedAnswer: {
       "@type": "Answer",
-      text: item.answer
-    }
-  }))
+      text: item.answer,
+    },
+  })),
 };
 
 export const metadata: Metadata = {
-    title: "Tattoo Studio Pforzheim | Blood Diamond Ink",
-    description: "Realistic, Fineline & Cover-Up in Pforzheim. Termin per WhatsApp.",
-    openGraph: {
-        images: [
-            {
-                url: "/og/og-pforzheim.jpg",
-                width: 1200,
-                height: 630,
-                alt: "Blood Diamond Ink Pforzheim Studio",
-            },
-        ],
-    },
+  title: "Tattoo Studio Pforzheim | Blood Diamond Tattoo Ink.",
+  description: "Fineline, Realistic & Cover-Up Tattoos in Pforzheim – Beratung, individuelles Design & höchste Hygiene.",
+  openGraph: {
+    images: [
+      {
+        url: "/og/og-pforzheim.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Blood Diamond Tattoo Ink. Studio in Pforzheim",
+      },
+    ],
+  },
 };
+
+type FormStatus = "idle" | "loading" | "success" | "error";
+
+function ContactForm() {
+  "use client";
+
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [feedback, setFeedback] = useState<string | null>(null);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setFeedback(null);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const payload = {
+      name: formData.get("name")?.toString().trim() ?? "",
+      email: formData.get("email")?.toString().trim() ?? "",
+      phone: formData.get("phone")?.toString().trim() ?? "",
+      message: formData.get("message")?.toString().trim() ?? "",
+      honeypot: formData.get("honeypot")?.toString().trim() ?? "",
+    };
+
+    if (!payload.name || !payload.email || !payload.phone || !payload.message) {
+      setStatus("error");
+      setFeedback("Bitte füllen Sie alle Pflichtfelder aus.");
+      return;
+    }
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(payload.email)) {
+      setStatus("error");
+      setFeedback("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
+      return;
+    }
+
+    setStatus("loading");
+
+    try {
+      const response = await fetch("/api/sendMail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        throw new Error("request_failed");
+      }
+
+      setStatus("success");
+      setFeedback("Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns in Kürze.");
+      form.reset();
+    } catch (error) {
+      console.error("Kontaktformular Fehler", error);
+      setStatus("error");
+      setFeedback("Versand fehlgeschlagen. Bitte versuchen Sie es später erneut.");
+    }
+  };
+
+  return (
+    <section id="kontaktformular" className="bg-blooddiamond-muted/40 py-16">
+      <div className="mx-auto max-w-4xl px-6">
+        <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Kontaktformular</h2>
+        <p className="mt-3 text-sm text-blooddiamond-text/80">
+          Stellen Sie Ihre Termin-Anfrage direkt an Blood Diamond Tattoo Ink. in Pforzheim. Pflichtfelder sind mit * gekennzeichnet.
+        </p>
+        <form onSubmit={handleSubmit} className="mt-8 grid gap-6" noValidate>
+          <div aria-hidden="true" className="hidden">
+            <label>
+              Zusätzliche Informationen
+              <input
+                type="text"
+                name="honeypot"
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </label>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2">
+            <label className="block text-sm font-semibold text-white">
+              Name*
+              <input
+                type="text"
+                name="name"
+                required
+                className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
+              />
+            </label>
+            <label className="block text-sm font-semibold text-white">
+              E-Mail*
+              <input
+                type="email"
+                name="email"
+                required
+                className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
+              />
+            </label>
+          </div>
+          <label className="block text-sm font-semibold text-white">
+            Telefonnummer*
+            <input
+              type="tel"
+              name="phone"
+              required
+              className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
+            />
+          </label>
+          <label className="block text-sm font-semibold text-white">
+            Nachricht*
+            <textarea
+              name="message"
+              required
+              rows={5}
+              className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
+            />
+          </label>
+          <button
+            type="submit"
+            disabled={status === "loading"}
+            className="btn-primary flex items-center justify-center gap-2 disabled:opacity-70"
+          >
+            {status === "loading" ? "Senden..." : "Termin-Anfrage senden"}
+          </button>
+          {feedback ? (
+            <p
+              className={`text-sm ${status === "success" ? "text-emerald-400" : "text-rose-400"}`}
+              role="status"
+              aria-live="polite"
+            >
+              {feedback}
+            </p>
+          ) : null}
+        </form>
+        <p className="mt-6 text-xs text-blooddiamond-text/70">
+          Ihre Daten werden ausschließlich zur Terminvereinbarung verwendet und nicht an Dritte weitergegeben.
+        </p>
+      </div>
+    </section>
+  );
+}
 
 export default function PforzheimPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-      <Hero
-        ctaLabel="Termin buchen"
-        ctaHref={funnelUrl}
-      />
-      <LocationCard
-        id="termin"
-        name="Blood Diamond Ink Pforzheim"
-        description="Unser Studio in der Goldstadt bietet helle Räume, private Beratungskabinen und ein erfahrenes Team für komplexe Projekte."
-        address="Adresse folgt"
-        phone="07231 000000"
-        openingHours="Dienstag bis Samstag 11–19 Uhr"
-        funnelUrl={funnelUrl}
-        mapImage="/maps/map-pforzheim.png"
-        mapAlt="Karte von Blood Diamond Ink Pforzheim (Adresse folgt)"
-      />
-      <section className="mx-auto max-w-5xl px-6 pb-16">
-        <div className="rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 p-6">
-          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio Highlights Pforzheim</h2>
-          <ul className="mt-4 space-y-3 text-sm text-blooddiamond-text/70">
-            <li>• Fineline-Illustrationen & organische Black & Grey Übergänge</li>
-            <li>• Private Booths und UV-Licht-Desinfektion für maximale Hygiene</li>
-            <li>• Mehrstufiges Konzept für anspruchsvolle Cover-Up Projekte</li>
-            <li>• Premium-Aftercare-Produkte für optimale Heilung</li>
-          </ul>
-          <div className="mt-5 flex flex-wrap gap-4 text-sm">
-            <Link href={funnelUrl} className="btn-primary text-xs">
-              Termin anfragen
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+
+      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-blooddiamond-background text-white">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/backgrounds/hero-bg-1.jpg"
+            alt="Tattoo Artist bei Blood Diamond Tattoo Ink."
+            fill
+            className="object-cover object-center opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-blooddiamond-background via-blooddiamond-background/85 to-transparent" />
+        </div>
+        <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
+          <p className="text-sm uppercase tracking-[0.35em] text-blooddiamond-accent">Blood Diamond Tattoo Ink.</p>
+          <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
+            Tattoo Studio Pforzheim – Fineline, Realistic & Cover-Up
+          </h1>
+          <p className="mt-4 text-base text-white/90">
+            Erleben Sie handverlesene Artists, persönliche Beratung und maßgeschneiderte Motive bei Blood Diamond Tattoo Ink. in Pforzheim.
+          </p>
+          <div className="mt-6 flex justify-center gap-4">
+            <Link href="#kontaktformular" className="btn-primary">
+              Termin buchen
             </Link>
-            <Link href="mailto:pforzheim@blooddiamondink.example" className="hover:text-blooddiamond-accent">
-              pforzheim@blooddiamondink.example
-            </Link>
+            <a
+              href="tel:+4915123426609"
+              className="rounded-full border border-blooddiamond-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-blooddiamond-accent/20"
+            >
+              01512 3426609
+            </a>
           </div>
         </div>
       </section>
-      <FAQAccordion items={faqItems} />
+
+      <section className="bg-blooddiamond-muted/30 py-16">
+        <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
+          <div>
+            <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Blood Diamond Tattoo Ink. in Pforzheim verbindet moderne Atmosphäre mit ruhigen Private Rooms für konzentriertes Arbeiten an Ihrem individuellen Tattoo-Projekt.
+            </p>
+          </div>
+          <div className="grid gap-4 text-sm text-white">
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Adresse</h3>
+              <p className="mt-2">Maulbronner Str. 38<br />75443 Ötisheim (Pforzheim)</p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Kontakt</h3>
+              <p className="mt-2">
+                Telefon: <a href="tel:+4915123426609" className="hover:text-blooddiamond-accent">01512 3426609</a>
+                <br />E-Mail: <a href="mailto:pforzheim@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent">pforzheim@blooddiamond-tattoo.de</a>
+              </p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Öffnungszeiten</h3>
+              <p className="mt-2">Montag bis Samstag, 10–18 Uhr</p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Inhaber</h3>
+              <p className="mt-2">Kasper Nowicki</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blooddiamond-background py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
+          <p className="mt-3 text-sm text-blooddiamond-text/80">
+            Der Standort von Blood Diamond Tattoo Ink. in Pforzheim liegt verkehrsgünstig zwischen Stuttgart und Karlsruhe. Nutzen Sie die Karte, um Ihre Route zu planen.
+          </p>
+          <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
+            <iframe
+              src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F"
+              width="100%"
+              height="350"
+              loading="lazy"
+              title="Google My Maps – Blood Diamond Tattoo Ink. Pforzheim"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blooddiamond-muted/20 py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Studio</h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-2">
+            <div className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
+              <Image
+                src="/gallery/pforzheim-1.jpg"
+                alt="Studioansicht von Blood Diamond Tattoo Ink. in Pforzheim"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
+              <Image
+                src="/gallery/pforzheim-2.jpg"
+                alt="Tattoo-Bereich von Blood Diamond Tattoo Ink. in Pforzheim"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blooddiamond-background py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
+          <p className="mt-3 text-sm text-blooddiamond-text/80">
+            Drei Artists von Blood Diamond Tattoo Ink. begleiten Sie von der Idee bis zur perfekten Umsetzung.
+          </p>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {[
+              {
+                name: "Artist 1",
+                specialty: "Fineline & Illustrationen",
+                image: "/artists/artist1.jpg",
+              },
+              {
+                name: "Artist 2",
+                specialty: "Realistic & Portraits",
+                image: "/artists/artist2.jpg",
+              },
+              {
+                name: "Artist 3",
+                specialty: "Cover-Up & Blackwork",
+                image: "/artists/artist3.jpg",
+              },
+            ].map((artist) => (
+              <div
+                key={artist.name}
+                className="overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30"
+              >
+                <div className="relative h-56 w-full">
+                  <Image
+                    src={artist.image}
+                    alt={`${artist.name} von Blood Diamond Tattoo Ink.`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-white">{artist.name}</h3>
+                  <p className="mt-2 text-sm text-blooddiamond-text/70">{artist.specialty}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blooddiamond-muted/30 py-16">
+        <div className="mx-auto max-w-5xl px-6">
+          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Highlights</h2>
+          <div className="mt-6 grid gap-6 md:grid-cols-2">
+            <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
+              <h3 className="text-lg font-semibold text-white">Individuelles Design</h3>
+              <p className="mt-3 text-sm text-blooddiamond-text/70">
+                Persönliche Design-Workshops und maßgeschneiderte Motive für einzigartige Fineline, Realistic und Cover-Up Tattoos in der Region Pforzheim.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
+              <h3 className="text-lg font-semibold text-white">Premium Hygiene</h3>
+              <p className="mt-3 text-sm text-blooddiamond-text/70">
+                Sterile Arbeitsplätze, UV-Desinfektion und medizinische Aftercare-Produkte garantieren höchste Sicherheitsstandards bei Blood Diamond Tattoo Ink.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
+              <h3 className="text-lg font-semibold text-white">Ganzheitliche Betreuung</h3>
+              <p className="mt-3 text-sm text-blooddiamond-text/70">
+                Intensive Vor- und Nachsorge, digitale Check-ins sowie transparente Projektplanung für langfristig perfekte Ergebnisse.
+              </p>
+            </div>
+            <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
+              <h3 className="text-lg font-semibold text-white">Regionale Verankerung</h3>
+              <p className="mt-3 text-sm text-blooddiamond-text/70">
+                Blood Diamond Tattoo Ink. Pforzheim vernetzt lokale Kunstschaffende und veranstaltet regelmäßige Walk-In Days für spontane Tattoo-Projekte.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <ContactForm />
     </>
   );
 }
