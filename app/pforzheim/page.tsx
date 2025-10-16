@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { useState, type FormEvent } from "react";
 
 const faqItems = [
   {
@@ -77,146 +76,25 @@ export const metadata: Metadata = {
   },
 };
 
-type FormStatus = "idle" | "loading" | "success" | "error";
-
 function ContactForm() {
-  "use client";
-
-  const [status, setStatus] = useState<FormStatus>("idle");
-  const [feedback, setFeedback] = useState<string | null>(null);
-
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setFeedback(null);
-
-    const form = event.currentTarget;
-    const formData = new FormData(form);
-
-    const payload = {
-      name: formData.get("name")?.toString().trim() ?? "",
-      email: formData.get("email")?.toString().trim() ?? "",
-      phone: formData.get("phone")?.toString().trim() ?? "",
-      message: formData.get("message")?.toString().trim() ?? "",
-      honeypot: formData.get("honeypot")?.toString().trim() ?? "",
-    };
-
-    if (!payload.name || !payload.email || !payload.phone || !payload.message) {
-      setStatus("error");
-      setFeedback("Bitte füllen Sie alle Pflichtfelder aus.");
-      return;
-    }
-
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!emailPattern.test(payload.email)) {
-      setStatus("error");
-      setFeedback("Bitte geben Sie eine gültige E-Mail-Adresse ein.");
-      return;
-    }
-
-    setStatus("loading");
-
-    try {
-      const response = await fetch("/api/sendMail", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        throw new Error("request_failed");
-      }
-
-      setStatus("success");
-      setFeedback("Vielen Dank! Ihre Anfrage wurde erfolgreich gesendet. Wir melden uns in Kürze.");
-      form.reset();
-    } catch (error) {
-      console.error("Kontaktformular Fehler", error);
-      setStatus("error");
-      setFeedback("Versand fehlgeschlagen. Bitte versuchen Sie es später erneut.");
-    }
-  };
-
   return (
-    <section id="kontaktformular" className="bg-blooddiamond-muted/40 py-16">
-      <div className="mx-auto max-w-4xl px-6">
-        <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Kontaktformular</h2>
-        <p className="mt-3 text-sm text-blooddiamond-text/80">
-          Stellen Sie Ihre Termin-Anfrage direkt an Blood Diamond Tattoo Ink. in Pforzheim. Pflichtfelder sind mit * gekennzeichnet.
-        </p>
-        <form onSubmit={handleSubmit} className="mt-8 grid gap-6" noValidate>
-          <div aria-hidden="true" className="hidden">
-            <label>
-              Zusätzliche Informationen
-              <input
-                type="text"
-                name="honeypot"
-                tabIndex={-1}
-                autoComplete="off"
-              />
-            </label>
-          </div>
-          <div className="grid gap-6 sm:grid-cols-2">
-            <label className="block text-sm font-semibold text-white">
-              Name*
-              <input
-                type="text"
-                name="name"
-                required
-                className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
-              />
-            </label>
-            <label className="block text-sm font-semibold text-white">
-              E-Mail*
-              <input
-                type="email"
-                name="email"
-                required
-                className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
-              />
-            </label>
-          </div>
-          <label className="block text-sm font-semibold text-white">
-            Telefonnummer*
-            <input
-              type="tel"
-              name="phone"
-              required
-              className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
-            />
-          </label>
-          <label className="block text-sm font-semibold text-white">
-            Nachricht*
-            <textarea
-              name="message"
-              required
-              rows={5}
-              className="mt-2 w-full rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background px-3 py-2 text-white focus:border-blooddiamond-accent focus:outline-none"
-            />
-          </label>
-          <button
-            type="submit"
-            disabled={status === "loading"}
-            className="btn-primary flex items-center justify-center gap-2 disabled:opacity-70"
-          >
-            {status === "loading" ? "Senden..." : "Termin-Anfrage senden"}
-          </button>
-          {feedback ? (
-            <p
-              className={`text-sm ${status === "success" ? "text-emerald-400" : "text-rose-400"}`}
-              role="status"
-              aria-live="polite"
-            >
-              {feedback}
-            </p>
-          ) : null}
-        </form>
-        <p className="mt-6 text-xs text-blooddiamond-text/70">
-          Ihre Daten werden ausschließlich zur Terminvereinbarung verwendet und nicht an Dritte weitergegeben.
-        </p>
-      </div>
+    <section
+      id="kontaktformular"
+      className="max-w-5xl mx-auto mt-10 mb-20 bg-neutral-800 border border-neutral-700 rounded-xl p-8 text-center"
+    >
+      <h2 className="text-3xl text-blooddiamond-accent mb-4">Kontakt & Terminbuchung</h2>
+      <p className="text-neutral-300 mb-6">
+        Das Online-Kontaktformular ist derzeit deaktiviert.{" "}
+        Sie können uns jedoch jederzeit über unsere externe Kontaktseite erreichen.
+      </p>
+      <a
+        href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-block bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-md uppercase tracking-wide"
+      >
+        Kontaktseite öffnen
+      </a>
     </section>
   );
 }
