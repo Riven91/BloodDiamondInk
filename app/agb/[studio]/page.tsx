@@ -19,14 +19,14 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   if (!entry) {
     return {
-      title: "AGB | Blood Diamond Ink",
-      description: "Allgemeine Geschäftsbedingungen für Termine bei Blood Diamond Ink.",
+      title: "AGB | Blood Diamond Tattoo Ink.",
+      description: "Allgemeine Geschäftsbedingungen für Termine bei Blood Diamond Tattoo Ink.",
     };
   }
 
   return {
-    title: `AGB ${entry.city} | Blood Diamond Ink`,
-    description: `AGB und Studioregeln für ${entry.city}.`,
+    title: `Tattoo Studio ${entry.city} | AGB – Blood Diamond Tattoo Ink.`,
+    description: `AGB und Studioregeln für Blood Diamond Tattoo Ink. ${entry.city}.`,
   };
 }
 
@@ -37,10 +37,10 @@ export default function AgbPage({ params }: PageProps) {
     notFound();
   }
 
-  return (
-    <LegalDocumentArticle
-      document={entry.terms}
-      notice={`Gültig für Termine im Studio ${entry.city}. Rückfragen an ${entry.email}.`}
-    />
-  );
+  const notice =
+    entry.slug === "oetisheim"
+      ? undefined
+      : `Gültig für Termine im Studio ${entry.city}. Rückfragen an ${entry.email}.`;
+
+  return <LegalDocumentArticle document={entry.terms} notice={notice} />;
 }

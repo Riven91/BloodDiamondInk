@@ -48,12 +48,15 @@ export default function StandortePage() {
         </div>
       ) : (
         <div className="mt-6 overflow-hidden rounded-2xl border">
-          <iframe
-            width="100%"
-            height="480"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=8.5,48.5,9.5,49.5&layer=mapnik"
-            className="w-full h-[480px] border-0"
-          ></iframe>
+          <div className="w-full flex justify-center">
+            {/* Google My Maps Embed – Blood Diamond Tattoo Ink Standorte */}
+            <iframe
+              src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F"
+              width="100%"
+              height="480"
+              className="w-full h-[480px] border-0"
+            ></iframe>
+          </div>
         </div>
       )}
     </main>
