@@ -306,10 +306,14 @@ export const legalConfig: Record<LegalStudioSlug, LegalEntry> = {
       email: "pforzheim@blooddiamond-tattoo.de",
       phone: "01512 3426609",
     }),
-    terms: buildTerms({
-      studio: "Studio Ötisheim",
-      email: "pforzheim@blooddiamond-tattoo.de",
-    }),
+    terms: {
+      ...buildTerms({
+        studio: "Studio Ötisheim",
+        email: "pforzheim@blooddiamond-tattoo.de",
+      }),
+      heading: "Allgemeine Geschäftsbedingungen",
+      updated: "Stand: 16. Oktober 2025",
+    },
   },
   heilbronn: {
     slug: "heilbronn",
