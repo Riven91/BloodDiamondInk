@@ -9,6 +9,7 @@ export interface LegalDocument {
   heading: string;
   updated: string;
   sections: LegalSection[];
+  rawHtml?: string;
 }
 
 export interface LegalEntry {
@@ -22,6 +23,82 @@ export interface LegalEntry {
   privacy: LegalDocument;
   terms: LegalDocument;
 }
+
+const oetisheimImprintHtml = `
+<div style="max-width: 800px; margin: auto; color: #e9ecef; padding: 1rem;">
+
+  <h2 style="color: #0f5132; font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">
+    Impressum
+  </h2>
+
+  <p style="text-align: center; font-style: italic; margin-bottom: 2.5rem; color: #adb5bd;">
+    Stand: 16. Mai 2025
+  </p>
+
+  <!-- Studioadresse -->
+  <div style="margin-bottom: 2.5rem;">
+    <h3 style="font-size: 1.5rem; font-weight: bold; border-bottom: 1px solid #495057; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+      Anbieterkennzeichnung & Studioadresse
+    </h3>
+    <p style="margin: 0; line-height: 1.6;">
+      <strong>Blood Diamond Tattoo Ink</strong><br>
+      Inhaber: Kasper Nowicki<br>
+      Maulbronner Str. 38<br>
+      75443 Ötisheim (Pforzheim)<br>
+    </p>
+  </div>
+
+  <!-- Rechtliche Angaben -->
+  <div style="margin-bottom: 2.5rem;">
+    <h3 style="font-size: 1.5rem; font-weight: bold; border-bottom: 1px solid #495057; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+      Rechtliche Angaben
+    </h3>
+    <p style="margin: 0; line-height: 1.6;">
+      <strong>Telefon:</strong> 01512 3426609<br>
+      <strong>E-Mail:</strong> <a href="mailto:pforzheim@blooddiamond-tattoo.de" style="color: #6ea8fe; text-decoration: none;">pforzheim@blooddiamond-tattoo.de</a><br>
+      <br>
+      <strong>Angaben gemäß § 5 DDG</strong><br>
+      Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: DE [USt-ID einsetzen]<br>
+      <br>
+      <strong>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</strong><br>
+      Kasper Nowicki, Maulbronner Str. 38, 75443 Ötisheim<br>
+      <br>
+      <strong>Aufsichtsbehörde:</strong> Handwerkskammer Karlsruhe<br>
+      <strong>Berufsbezeichnung:</strong> Tätowierer – Handwerksbetrieb gemäß HwO<br>
+      <br>
+      <strong>Online-Streitbeilegung gemäß Art. 14 Abs. 1 ODR-VO:</strong><br>
+      Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit, die Sie hier finden: <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" style="color: #6ea8fe; text-decoration: none;">https://ec.europa.eu/consumers/odr/</a>
+    </p>
+  </div>
+
+  <!-- Haftungsausschluss -->
+  <div style="margin-bottom: 2.5rem;">
+    <h3 style="color: #0f5132; font-size: 1.5rem; font-weight: bold; border-bottom: 1px solid #495057; padding-bottom: 0.5rem; margin-bottom: 1rem;">
+      Haftungsausschluss
+    </h3>
+    <div style="line-height: 1.6;">
+        <p style="margin-bottom: 1rem;">
+          <strong>Haftung für Inhalte</strong><br>
+          Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+        </p>
+        <p style="margin-bottom: 1rem;">
+          <strong>Haftung für Links</strong><br>
+          Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+        </p>
+        <p>
+          <strong>Urheberrecht</strong><br>
+          Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Eine Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+        </p>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <p style="text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid #495057; font-size: 0.9rem; color: #adb5bd;">
+    © 2025 Blood Diamond Tattoo Ink – Alle Rechte vorbehalten.
+  </p>
+
+</div>
+`;
 
 const baseCompanyParagraphs = [
   "Blood Diamond Ink Studios GmbH",
@@ -213,25 +290,25 @@ function buildTerms({
 export const legalConfig: Record<LegalStudioSlug, LegalEntry> = {
   oetisheim: {
     slug: "oetisheim",
-    label: "Studio Oetisheim",
-    city: "Oetisheim",
-    email: "hello@blooddiamondink.example",
-    phone: "+49 7041 000000",
-    addressNotice: "Adresse folgt, 75443 Oetisheim",
-    imprint: buildImprint({
-      studio: "Studio Oetisheim (Backoffice)",
-      address: "Adresse folgt, 75443 Oetisheim",
-      email: "hello@blooddiamondink.example",
-      phone: "+49 7041 000000",
-    }),
+    label: "Studio Ötisheim",
+    city: "Ötisheim",
+    email: "pforzheim@blooddiamond-tattoo.de",
+    phone: "01512 3426609",
+    addressNotice: "Maulbronner Str. 38, 75443 Ötisheim",
+    imprint: {
+      heading: "Impressum – Studio Ötisheim",
+      updated: "Stand: 16. Mai 2025",
+      sections: [],
+      rawHtml: oetisheimImprintHtml,
+    },
     privacy: buildPrivacy({
-      studio: "Studio Oetisheim",
-      email: "hello@blooddiamondink.example",
-      phone: "+49 7041 000000",
+      studio: "Studio Ötisheim",
+      email: "pforzheim@blooddiamond-tattoo.de",
+      phone: "01512 3426609",
     }),
     terms: buildTerms({
-      studio: "Studio Oetisheim",
-      email: "hello@blooddiamondink.example",
+      studio: "Studio Ötisheim",
+      email: "pforzheim@blooddiamond-tattoo.de",
     }),
   },
   heilbronn: {

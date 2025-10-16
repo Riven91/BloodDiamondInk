@@ -7,6 +7,8 @@ interface HeroProps {
   ctaHref?: string;
 }
 
+// Cache-Buster: 16.10.2025 20:38
+
 export function Hero({ ctaLabel, ctaHref }: HeroProps) {
   return (
     <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-blooddiamond-background text-white">

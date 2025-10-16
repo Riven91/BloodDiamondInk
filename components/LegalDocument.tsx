@@ -1,31 +1,43 @@
-import type { LegalDocument } from "@/lib/legal.config";
+import { LegalDocument, LegalSection } from "@/lib/legal.config";
 
-interface LegalDocumentProps {
+interface LegalDocumentArticleProps {
   document: LegalDocument;
   notice?: string;
 }
 
-export function LegalDocumentArticle({ document, notice }: LegalDocumentProps) {
+function Section({ section }: { section: LegalSection }) {
   return (
-    <article className="mx-auto max-w-4xl space-y-8 px-6 py-16 text-sm leading-relaxed text-blooddiamond-text/80">
-      <header className="space-y-2">
-        <h1 className="font-display text-4xl uppercase text-blooddiamond-accent">{document.heading}</h1>
-        <p className="text-xs uppercase tracking-wide text-blooddiamond-text/50">{document.updated}</p>
-        {notice ? <p className="text-xs text-blooddiamond-text/60">{notice}</p> : null}
-      </header>
-      {document.sections.map((section) => (
-        <section
-          key={section.title}
-          className="rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 p-6 shadow-sm shadow-black/20"
-        >
-          <h2 className="font-display text-lg uppercase text-blooddiamond-text">{section.title}</h2>
-          <div className="mt-3 space-y-2">
-            {section.paragraphs.map((paragraph, index) => (
-              <p key={`${section.title}-${index}`}>{paragraph}</p>
-            ))}
-          </div>
-        </section>
-      ))}
+    <div className="space-y-4">
+      <h2 className="text-2xl font-bold tracking-tight">{section.title}</h2>
+      <div className="space-y-3">
+        {section.paragraphs.map((p, i) => (
+          <p key={i}>{p}</p>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function LegalDocumentArticle({ document, notice }: LegalDocumentArticleProps) {
+  if (document.rawHtml) {
+    return <div dangerouslySetInnerHTML={{ __html: document.rawHtml }} />;
+  }
+
+  return (
+    <article className="prose prose-invert mx-auto py-12 lg:py-24">
+      <div className="space-y-2 not-prose">
+        <h1 className="text-4xl font-extrabold tracking-tight lg:text-5xl">
+          {document.heading}
+        </h1>
+        <p className="text-muted-foreground">Zuletzt aktualisiert: {document.updated}</p>
+        {notice && <p className="text-amber-300">{notice}</p>}
+      </div>
+
+      <div className="mt-12 space-y-12">
+        {document.sections.map((section) => (
+          <Section key={section.title} section={section} />
+        ))}
+      </div>
     </article>
   );
 }
