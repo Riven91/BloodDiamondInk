@@ -37,10 +37,10 @@ export default function AgbPage({ params }: PageProps) {
     notFound();
   }
 
-  return (
-    <LegalDocumentArticle
-      document={entry.terms}
-      notice={`Gültig für Termine im Studio ${entry.city}. Rückfragen an ${entry.email}.`}
-    />
-  );
+  const notice =
+    entry.slug === "oetisheim"
+      ? undefined
+      : `Gültig für Termine im Studio ${entry.city}. Rückfragen an ${entry.email}.`;
+
+  return <LegalDocumentArticle document={entry.terms} notice={notice} />;
 }
