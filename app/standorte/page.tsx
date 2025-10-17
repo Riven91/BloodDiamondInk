@@ -41,7 +41,14 @@ export default function StandortePage() {
 
       {!consent ? (
         <div className="mt-12 rounded-2xl border p-6">
-          <p>Mit Klick lädst du Inhalte von OpenStreetMap. Es können technische Daten übertragen werden.</p>
+          <p>
+            Mit Klick lädst du Inhalte von Google Maps (KML-Daten). Es können personenbezogene Daten an Google übertragen
+            werden. Details in unserer{' '}
+            <Link href="/datenschutz/oetisheim" className="underline">
+              Datenschutzerklärung
+            </Link>
+            .
+          </p>
           <button onClick={() => setConsent(true)} className="btn-primary mt-3">
             Karte laden
           </button>
@@ -49,12 +56,13 @@ export default function StandortePage() {
       ) : (
         <div className="mt-6 overflow-hidden rounded-2xl border">
           <div className="w-full flex justify-center">
-            {/* Google My Maps Embed – Blood Diamond Tattoo Ink Standorte */}
             <iframe
-              src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F"
+              src={`https://www.google.com/maps?q=https://${process.env.NEXT_PUBLIC_SITE_URL || 'blooddiamondink-79184164-7f1b7.web.app'}/maps/standorte.kml&output=embed`}
               width="100%"
-              height="480"
-              className="w-full h-[480px] border-0"
+              height="350"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             ></iframe>
           </div>
         </div>

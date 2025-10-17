@@ -208,14 +208,23 @@ function buildPrivacy({
         ],
       },
       {
-        title: "6. Deine Rechte",
+        title: "6. Google Maps (Kartenservice)",
+        paragraphs: [
+          "Wir binden Google Maps der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, zur Darstellung interaktiver Karten mit KML-Daten ein.",
+          "Beim Laden der Karte werden technische Informationen wie IP-Adresse, ggf. Browser- und Geräteinformationen sowie Interaktionsdaten an Google übertragen.",
+          "Die Verarbeitung erfolgt je nach Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO oder auf Grundlage unseres berechtigten Interesses an einer ansprechenden Darstellung und leichten Orientierung nach Art. 6 Abs. 1 lit. f DSGVO.",
+          "Weitere Informationen findest du in der Datenschutzerklärung von Google: https://policies.google.com/privacy.",
+        ],
+      },
+      {
+        title: "7. Deine Rechte",
         paragraphs: [
           "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch.",
           "Beschwerden können an den Landesbeauftragten für den Datenschutz und die Informationsfreiheit Baden-Württemberg (Königstraße 10a, 70173 Stuttgart) gerichtet werden.",
         ],
       },
       {
-        title: "7. Datenschutzkontakt",
+        title: "8. Datenschutzkontakt",
         paragraphs: [
           `Für Datenschutzanfragen wende dich an ${email}. Wir beantworten Anfragen in der Regel innerhalb von 14 Tagen.`,
         ],
@@ -385,21 +394,30 @@ const boeblingenPrivacy: LegalDocument = {
       ],
     },
     {
-      title: "7. Einsatz von Cookies und Tracking-Technologien",
+      title: "7. Google Maps (Kartenservice)",
+      paragraphs: [
+        "Wir verwenden Google Maps der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, um interaktive Karten mit KML-Daten für die Studio-Orientierung bereitzustellen.",
+        "Beim Laden der Kartenansicht werden Informationen wie IP-Adresse, gegebenenfalls Browser- und Geräteinformationen sowie Interaktionsdaten an Google übermittelt.",
+        "Rechtsgrundlage ist je nach Einwilligung Art. 6 Abs. 1 lit. a DSGVO oder unser berechtigtes Interesse an einer nutzerfreundlichen Darstellung und Orientierung gemäß Art. 6 Abs. 1 lit. f DSGVO.",
+        "Weiterführende Informationen findest du in der Datenschutzerklärung von Google: https://policies.google.com/privacy.",
+      ],
+    },
+    {
+      title: "8. Einsatz von Cookies und Tracking-Technologien",
       paragraphs: [
         "Unsere Website kann Cookies und vergleichbare Technologien einsetzen, um die Benutzerfreundlichkeit zu verbessern. Du kannst den Einsatz von Cookies jederzeit über die Einstellungen deines Browsers steuern.",
         "Analysedienste werden nur aktiviert, wenn du zuvor eingewilligt hast.",
       ],
     },
     {
-      title: "8. Rechte der betroffenen Personen",
+      title: "9. Rechte der betroffenen Personen",
       paragraphs: [
         "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner personenbezogenen Daten.",
         "Beschwerden kannst du an den Landesbeauftragten für den Datenschutz und die Informationsfreiheit Baden-Württemberg, Königstraße 10a, 70173 Stuttgart, richten.",
       ],
     },
     {
-      title: "9. Kontakt für Datenschutzanfragen",
+      title: "10. Kontakt für Datenschutzanfragen",
       paragraphs: [
         "Für Fragen zum Datenschutz wende dich bitte an boeblingen@blooddiamond-tattoo.de oder telefonisch an 0162 4204789. Wir beantworten Anfragen in der Regel innerhalb von 14 Tagen.",
       ],

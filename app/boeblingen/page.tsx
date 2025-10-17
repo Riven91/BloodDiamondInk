@@ -178,12 +178,12 @@ export default function BoeblingenPage() {
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <iframe
-              src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F"
+              src={`https://www.google.com/maps?q=https://${process.env.NEXT_PUBLIC_SITE_URL || 'blooddiamondink-79184164-7f1b7.web.app'}/maps/standorte.kml&output=embed`}
               width="100%"
               height="350"
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
               allowFullScreen
-              title="Google My Maps – Blood Diamond Tattoo Ink. Böblingen"
             ></iframe>
           </div>
         </div>
