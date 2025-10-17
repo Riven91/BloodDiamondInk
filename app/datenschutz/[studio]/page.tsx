@@ -19,14 +19,14 @@ export function generateMetadata({ params }: PageProps): Metadata {
 
   if (!entry) {
     return {
-      title: "Datenschutz | Blood Diamond Ink",
-      description: "Informationen zur Verarbeitung personenbezogener Daten durch Blood Diamond Ink.",
+      title: "Datenschutz | Blood Diamond Tattoo Ink.",
+      description: "Informationen zur Verarbeitung personenbezogener Daten durch Blood Diamond Tattoo Ink.",
     };
   }
 
   return {
-    title: `Datenschutz ${entry.city} | Blood Diamond Ink`,
-    description: `Datenschutzhinweise für das Studio ${entry.city} von Blood Diamond Ink.`,
+    title: `Datenschutz ${entry.city} | Blood Diamond Tattoo Ink.`,
+    description: `Datenschutzhinweise für das Studio ${entry.city} von Blood Diamond Tattoo Ink.`,
   };
 }
 

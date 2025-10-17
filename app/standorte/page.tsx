@@ -41,19 +41,30 @@ export default function StandortePage() {
 
       {!consent ? (
         <div className="mt-12 rounded-2xl border p-6">
-          <p>Mit Klick lädst du Inhalte von OpenStreetMap. Es können technische Daten übertragen werden.</p>
+          <p>
+            Mit Klick lädst du Inhalte von Google Maps (KML-Daten). Es können personenbezogene Daten an Google übertragen
+            werden. Details in unserer{' '}
+            <Link href="/datenschutz/oetisheim" className="underline">
+              Datenschutzerklärung
+            </Link>
+            .
+          </p>
           <button onClick={() => setConsent(true)} className="btn-primary mt-3">
             Karte laden
           </button>
         </div>
       ) : (
         <div className="mt-6 overflow-hidden rounded-2xl border">
-          <iframe
-            width="100%"
-            height="480"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=8.5,48.5,9.5,49.5&layer=mapnik"
-            className="w-full h-[480px] border-0"
-          ></iframe>
+          <div className="w-full flex justify-center">
+            <iframe
+              src={`https://www.google.com/maps?q=https://${process.env.NEXT_PUBLIC_SITE_URL || 'blooddiamondink-79184164-7f1b7.web.app'}/maps/standorte.kml&output=embed`}
+              width="100%"
+              height="350"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       )}
     </main>
