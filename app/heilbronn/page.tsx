@@ -122,7 +122,7 @@ export default function HeilbronnPage() {
             Blood Diamond Tattoo Ink Heilbronn
           </h1>
           <p className="mt-4 text-base text-white/90">
-            Fineline, Realistic &amp; Cover-Up Tattoos in Heilbronn – professionelle Beratung, individuelle Motive &amp; höchste Hygienestandards.
+            Erleben Sie Tattoo-Kunst mit internationalem Anspruch – handverlesene Artists aus aller Welt, mehrfach ausgezeichnet mit der „Goldenen Nadel“. Realistic, Fineline und Cover-Up in Perfektion – exklusiv bei Blood Diamond Tattoo Ink. Heilbronn.
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <Link href="#kontaktformular" className="btn-primary">
@@ -163,7 +163,7 @@ export default function HeilbronnPage() {
               <p className="mt-2">Montag bis Samstag, 10–18 Uhr</p>
             </div>
             <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
-              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Leitung</h3>
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Inhaber</h3>
               <p className="mt-2">Kasper Nowicki</p>
             </div>
           </div>

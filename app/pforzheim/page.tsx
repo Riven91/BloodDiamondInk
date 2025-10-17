@@ -122,7 +122,7 @@ export default function PforzheimPage() {
             Tattoo Studio Pforzheim – Fineline, Realistic & Cover-Up
           </h1>
           <p className="mt-4 text-base text-white/90">
-            Erleben Sie handverlesene Artists, persönliche Beratung und maßgeschneiderte Motive bei Blood Diamond Tattoo Ink. in Pforzheim.
+            Internationale Tattoo-Artists, preisgekrönte Designs und höchste Präzision – Blood Diamond Tattoo Ink. Pforzheim vereint Kunst, Stil und Handwerk auf Weltklasse-Niveau. Ausgezeichnet mit der „Goldenen Nadel“ und bekannt für kompromisslose Hygiene.
           </p>
           <div className="mt-6 flex justify-center gap-4">
             <Link href="#kontaktformular" className="btn-primary">
@@ -134,6 +134,38 @@ export default function PforzheimPage() {
             >
               01512 3426609
             </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-blooddiamond-muted/30 py-16">
+        <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
+          <div>
+            <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Blood Diamond Tattoo Ink. in Pforzheim verbindet moderne Atmosphäre mit ruhigen Private Rooms für konzentriertes Arbeiten an Ihrem individuellen Tattoo-Projekt.
+            </p>
+          </div>
+          <div className="grid gap-4 text-sm text-white">
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Adresse</h3>
+              <p className="mt-2">Maulbronner Str. 38<br />75443 Ötisheim (Pforzheim)</p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Kontakt</h3>
+              <p className="mt-2">
+                Telefon: <a href="tel:+4915123426609" className="hover:text-blooddiamond-accent">01512 3426609</a>
+                <br />E-Mail: <a href="mailto:pforzheim@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent">pforzheim@blooddiamond-tattoo.de</a>
+              </p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Öffnungszeiten</h3>
+              <p className="mt-2">Montag bis Samstag, 10–18 Uhr</p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Inhaber</h3>
+              <p className="mt-2">Kasper Nowicki</p>
+            </div>
           </div>
         </div>
       </section>
