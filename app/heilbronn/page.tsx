@@ -128,6 +128,12 @@ export default function HeilbronnPage() {
             <Link href="#kontaktformular" className="btn-primary">
               Termin buchen
             </Link>
+            <a
+              href="tel:+4917630573128"
+              className="rounded-full border border-blooddiamond-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-blooddiamond-accent/20"
+            >
+              0176 30573128
+            </a>
           </div>
         </div>
       </section>
