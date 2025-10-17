@@ -1,10 +1,7 @@
-'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
 
 export default function StandortePage() {
-  const [consent, setConsent] = useState(false);
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
