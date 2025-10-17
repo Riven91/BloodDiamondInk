@@ -1,28 +1,12 @@
 {
   "hosting": {
-    "public": "out",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**"
-    ],
+    "source": ".",
     "headers": [
       {
-        "source": "**/index.html",
+        "source": "**/*.kml",
         "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "no-store, max-age=0, must-revalidate"
-          }
-        ]
-      },
-      {
-        "source": "**/*.@(jpg|jpeg|gif|png|svg|js|css|ttf|woff|woff2)",
-        "headers": [
-          {
-            "key": "Cache-Control",
-            "value": "public, max-age=31536000, immutable"
-          }
+          { "key": "Content-Type", "value": "application/vnd.google-earth.kml+xml; charset=utf-8" },
+          { "key": "Access-Control-Allow-Origin", "value": "*" }
         ]
       }
     ]
