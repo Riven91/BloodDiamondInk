@@ -170,20 +170,52 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
+      <section className="bg-blooddiamond-muted/30 py-16">
+        <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
+          <div>
+            <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Blood Diamond Tattoo Ink. in Böblingen verbindet moderne Atmosphäre mit ruhigen Private Rooms für konzentriertes Arbeiten an Ihrem individuellen Tattoo-Projekt.
+            </p>
+          </div>
+          <div className="grid gap-4 text-sm text-white">
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Adresse</h3>
+              <p className="mt-2">Stuttgarter Str. 21<br />71083 Herrenberg (Böblingen)</p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Kontakt</h3>
+              <p className="mt-2">
+                Telefon: <a href="tel:+491624204789" className="hover:text-blooddiamond-accent">0162 4204789</a>
+                <br />E-Mail: <a href="mailto:boeblingen@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent">boeblingen@blooddiamond-tattoo.de</a>
+              </p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Öffnungszeiten</h3>
+              <p className="mt-2">Montag bis Samstag, 10–18 Uhr</p>
+            </div>
+            <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
+              <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Inhaber</h3>
+              <p className="mt-2">Kevin Kaiser</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section className="bg-blooddiamond-background py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
             Der Standort von Blood Diamond Tattoo Ink. in Böblingen liegt verkehrsgünstig zwischen Stuttgart und dem Schwarzwald. Nutzen Sie die Karte, um Ihre Route zu planen.
           </p>
-          <div className="mt-8 flex justify-center">
+          <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <iframe
-              src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
+              src={`https://www.google.com/maps?q=https://${process.env.NEXT_PUBLIC_SITE_URL || 'blooddiamondink-79184164-7f1b7.web.app'}/maps/standorte.kml&output=embed`}
               width="100%"
-              height="400"
-              style={{ borderRadius: '0.5rem', border: '1px solid #404040' }}
-              allowFullScreen
+              height="350"
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             ></iframe>
           </div>
         </div>
