@@ -208,14 +208,23 @@ function buildPrivacy({
         ],
       },
       {
-        title: "6. Deine Rechte",
+        title: "6. Google Maps (Kartenservice)",
+        paragraphs: [
+          "Wir binden Google Maps der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, zur Darstellung interaktiver Karten mit KML-Daten ein.",
+          "Beim Laden der Karte werden technische Informationen wie IP-Adresse, ggf. Browser- und Geräteinformationen sowie Interaktionsdaten an Google übertragen.",
+          "Die Verarbeitung erfolgt je nach Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO oder auf Grundlage unseres berechtigten Interesses an einer ansprechenden Darstellung und leichten Orientierung nach Art. 6 Abs. 1 lit. f DSGVO.",
+          "Weitere Informationen findest du in der Datenschutzerklärung von Google: https://policies.google.com/privacy.",
+        ],
+      },
+      {
+        title: "7. Deine Rechte",
         paragraphs: [
           "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch.",
           "Beschwerden können an den Landesbeauftragten für den Datenschutz und die Informationsfreiheit Baden-Württemberg (Königstraße 10a, 70173 Stuttgart) gerichtet werden.",
         ],
       },
       {
-        title: "7. Datenschutzkontakt",
+        title: "8. Datenschutzkontakt",
         paragraphs: [
           `Für Datenschutzanfragen wende dich an ${email}. Wir beantworten Anfragen in der Regel innerhalb von 14 Tagen.`,
         ],
@@ -287,6 +296,190 @@ function buildTerms({
   };
 }
 
+const boeblingenImprint: LegalDocument = {
+  heading: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
+  updated: "Stand: 16. Oktober 2025",
+  sections: [
+    {
+      title: "Angaben gemäß § 5 DDG",
+      paragraphs: [
+        "Blood Diamond Tattoo Ink. Böblingen",
+        "Leitung: Kevin Kaiser",
+        "Stuttgarter Str. 21",
+        "71083 Herrenberg (Böblingen)",
+        "Telefon: 0162 4204789",
+        "E-Mail: boeblingen@blooddiamond-tattoo.de",
+      ],
+    },
+    {
+      title: "Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV",
+      paragraphs: [
+        "Kevin Kaiser",
+        "Stuttgarter Str. 21",
+        "71083 Herrenberg (Böblingen)",
+      ],
+    },
+    {
+      title: "Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG",
+      paragraphs: ["DE [Nummer folgt]"],
+    },
+    {
+      title: "Haftungsausschluss",
+      paragraphs: [
+        "Haftung für Inhalte: Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
+        "Haftung für Links: Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+      ],
+    },
+    {
+      title: "Urheberrecht",
+      paragraphs: [
+        "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Eine Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.",
+      ],
+    },
+    {
+      title: "Copyright",
+      paragraphs: ["© 2025 Blood Diamond Tattoo Ink. – Alle Rechte vorbehalten."],
+    },
+  ],
+};
+
+const boeblingenPrivacy: LegalDocument = {
+  heading: "Datenschutzerklärung – Blood Diamond Tattoo Ink. Böblingen",
+  updated: "Stand: 16. Oktober 2025",
+  sections: [
+    {
+      title: "1. Einleitung",
+      paragraphs: [
+        "Blood Diamond Tattoo Ink. Böblingen nimmt den Schutz personenbezogener Daten sehr ernst. Wir verarbeiten deine Informationen ausschließlich zur Terminplanung, Beratung und Nachbetreuung unserer Tattoo-Dienstleistungen.",
+        "Diese Datenschutzerklärung informiert dich über Art, Umfang und Zweck der Datenverarbeitung sowie über deine Rechte als betroffene Person.",
+      ],
+    },
+    {
+      title: "2. Verantwortliche Stelle",
+      paragraphs: [
+        "Verantwortlich im Sinne der DSGVO: Blood Diamond Tattoo Ink. Böblingen",
+        "Leitung: Kevin Kaiser",
+        "Stuttgarter Str. 21, 71083 Herrenberg (Böblingen)",
+        "Telefon: 0162 4204789",
+        "E-Mail: boeblingen@blooddiamond-tattoo.de",
+      ],
+    },
+    {
+      title: "3. Erhebung personenbezogener Daten",
+      paragraphs: [
+        "Wir verarbeiten personenbezogene Daten, die du uns freiwillig zur Verfügung stellst, insbesondere über unser Kontaktformular, per E-Mail oder telefonisch. Dazu gehören Name, Kontaktinformationen, Motivdetails sowie Referenzbilder.",
+        "Darüber hinaus erheben wir technische Daten (z. B. IP-Adresse, Browsertyp) bei der Nutzung unserer Website zur Gewährleistung der Systemsicherheit.",
+      ],
+    },
+    {
+      title: "4. Zwecke und Rechtsgrundlagen",
+      paragraphs: [
+        "Die Verarbeitung erfolgt zur Vorbereitung und Durchführung von Tattoo-Terminen, zur Kundenkommunikation und zur Erfüllung gesetzlicher Pflichten (Art. 6 Abs. 1 lit. b und c DSGVO).",
+        "Mit deiner Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) können wir deine Kontaktdaten für Follow-up-Kommunikation und Aftercare-Hinweise verwenden.",
+      ],
+    },
+    {
+      title: "5. Speicherdauer und Sicherheit",
+      paragraphs: [
+        "Personenbezogene Daten speichern wir nur so lange, wie es für die genannten Zwecke erforderlich ist oder gesetzliche Aufbewahrungspflichten bestehen.",
+        "Unsere Systeme sind durch technische und organisatorische Maßnahmen geschützt, um Daten vor Verlust, Manipulation oder unbefugtem Zugriff zu bewahren.",
+      ],
+    },
+    {
+      title: "6. Weitergabe an Dritte",
+      paragraphs: [
+        "Eine Weitergabe deiner Daten erfolgt ausschließlich, wenn dies zur Vertragserfüllung erforderlich ist (z. B. Steuerberatung) oder eine gesetzliche Verpflichtung besteht.",
+        "Dienstleister, die wir einsetzen, werden vertraglich zur Einhaltung der Datenschutzstandards verpflichtet.",
+        "Blood Diamond Tattoo Ink. Böblingen nutzt zentrale Systeme der Blood Diamond Tattoo Ink. Studios zur Termin- und Kund:innenverwaltung. Der Zugriff ist auf autorisierte Personen beschränkt und erfolgt auf Grundlage eines gemeinsamen Datenschutzkonzepts.",
+      ],
+    },
+    {
+      title: "7. Google Maps (Kartenservice)",
+      paragraphs: [
+        "Wir verwenden Google Maps der Google Ireland Limited, Gordon House, Barrow Street, Dublin 4, Ireland, um interaktive Karten mit KML-Daten für die Studio-Orientierung bereitzustellen.",
+        "Beim Laden der Kartenansicht werden Informationen wie IP-Adresse, gegebenenfalls Browser- und Geräteinformationen sowie Interaktionsdaten an Google übermittelt.",
+        "Rechtsgrundlage ist je nach Einwilligung Art. 6 Abs. 1 lit. a DSGVO oder unser berechtigtes Interesse an einer nutzerfreundlichen Darstellung und Orientierung gemäß Art. 6 Abs. 1 lit. f DSGVO.",
+        "Weiterführende Informationen findest du in der Datenschutzerklärung von Google: https://policies.google.com/privacy.",
+      ],
+    },
+    {
+      title: "8. Einsatz von Cookies und Tracking-Technologien",
+      paragraphs: [
+        "Unsere Website kann Cookies und vergleichbare Technologien einsetzen, um die Benutzerfreundlichkeit zu verbessern. Du kannst den Einsatz von Cookies jederzeit über die Einstellungen deines Browsers steuern.",
+        "Analysedienste werden nur aktiviert, wenn du zuvor eingewilligt hast.",
+      ],
+    },
+    {
+      title: "9. Rechte der betroffenen Personen",
+      paragraphs: [
+        "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung deiner personenbezogenen Daten.",
+        "Beschwerden kannst du an den Landesbeauftragten für den Datenschutz und die Informationsfreiheit Baden-Württemberg, Königstraße 10a, 70173 Stuttgart, richten.",
+      ],
+    },
+    {
+      title: "10. Kontakt für Datenschutzanfragen",
+      paragraphs: [
+        "Für Fragen zum Datenschutz wende dich bitte an boeblingen@blooddiamond-tattoo.de oder telefonisch an 0162 4204789. Wir beantworten Anfragen in der Regel innerhalb von 14 Tagen.",
+      ],
+    },
+  ],
+};
+
+const boeblingenTerms: LegalDocument = {
+  heading: "Allgemeine Geschäftsbedingungen – Blood Diamond Tattoo Ink. Böblingen",
+  updated: "Stand: 16. Oktober 2025",
+  sections: [
+    {
+      title: "1. Geltungsbereich",
+      paragraphs: [
+        "Diese AGB gelten für alle Dienstleistungen von Blood Diamond Tattoo Ink. Böblingen gegenüber Kund:innen des Studios Böblingen.",
+        "Abweichende Vereinbarungen bedürfen der Schriftform.",
+      ],
+    },
+    {
+      title: "2. Terminvereinbarung & Anzahlungen",
+      paragraphs: [
+        "Termine werden verbindlich, sobald die vereinbarte Anzahlung eingegangen ist. Die Höhe richtet sich nach Projektumfang und wird vorab kommuniziert.",
+        "Bei Absagen bis 72 Stunden vor dem Termin wird die Anzahlung als Guthaben für einen Ersatztermin gutgeschrieben. Danach verfällt sie zugunsten des Studios, es sei denn, der Termin kann neu vergeben werden.",
+      ],
+    },
+    {
+      title: "3. Vorbereitung & Gesundheit",
+      paragraphs: [
+        "Kund:innen sind verpflichtet, uns über relevante Vorerkrankungen, Allergien oder Medikamenteneinnahme zu informieren.",
+        "Wir behalten uns vor, Termine bei gesundheitlichen Bedenken oder fehlender Vorbereitung (z. B. Sonnenbrand) kurzfristig abzusagen.",
+      ],
+    },
+    {
+      title: "4. Preise & Zahlungsmodalitäten",
+      paragraphs: [
+        "Die Abrechnung erfolgt nach Zeitaufwand ab 150 € pro Stunde oder zum Festpreis. Zahlungsarten: Barzahlung oder EC-/Kreditkarte.",
+        "Offene Restbeträge sind unmittelbar nach der Session zu begleichen.",
+      ],
+    },
+    {
+      title: "5. Nachsorge & Haftung",
+      paragraphs: [
+        "Wir stellen Aftercare-Hinweise bereit und leisten innerhalb von sechs Wochen kostenfreie Nachkontrollen, sofern Pflegehinweise befolgt wurden.",
+        "Für Komplikationen, die auf unsachgemäße Pflege zurückzuführen sind, übernehmen wir keine Haftung.",
+      ],
+    },
+    {
+      title: "6. Gutscheine & Übertragbarkeit",
+      paragraphs: [
+        "Gutscheine sind drei Jahre gültig und auf andere Personen übertragbar, sofern das Studio informiert wird.",
+        "Rückfragen zu Gutscheinen richten Sie bitte an boeblingen@blooddiamond-tattoo.de.",
+      ],
+    },
+    {
+      title: "7. Schlussbestimmungen",
+      paragraphs: [
+        "Es gilt deutsches Recht. Gerichtsstand ist der Sitz des Studios, sofern gesetzlich zulässig.",
+      ],
+    },
+  ],
+};
+
 export const legalConfig: Record<LegalStudioSlug, LegalEntry> = {
   oetisheim: {
     slug: "oetisheim",
@@ -306,10 +499,14 @@ export const legalConfig: Record<LegalStudioSlug, LegalEntry> = {
       email: "pforzheim@blooddiamond-tattoo.de",
       phone: "01512 3426609",
     }),
-    terms: buildTerms({
-      studio: "Studio Ötisheim",
-      email: "pforzheim@blooddiamond-tattoo.de",
-    }),
+    terms: {
+      ...buildTerms({
+        studio: "Studio Ötisheim",
+        email: "pforzheim@blooddiamond-tattoo.de",
+      }),
+      heading: "Allgemeine Geschäftsbedingungen",
+      updated: "Stand: 16. Oktober 2025",
+    },
   },
   heilbronn: {
     slug: "heilbronn",
@@ -338,24 +535,12 @@ export const legalConfig: Record<LegalStudioSlug, LegalEntry> = {
     slug: "boeblingen",
     label: "Studio Böblingen",
     city: "Böblingen",
-    email: "boeblingen@blooddiamondink.example",
-    phone: "+49 7031 000000",
-    addressNotice: "Adresse folgt, 71032 Böblingen",
-    imprint: buildImprint({
-      studio: "Studio Böblingen",
-      address: "Adresse folgt, 71032 Böblingen",
-      email: "boeblingen@blooddiamondink.example",
-      phone: "+49 7031 000000",
-    }),
-    privacy: buildPrivacy({
-      studio: "Studio Böblingen",
-      email: "boeblingen@blooddiamondink.example",
-      phone: "+49 7031 000000",
-    }),
-    terms: buildTerms({
-      studio: "Studio Böblingen",
-      email: "boeblingen@blooddiamondink.example",
-    }),
+    email: "boeblingen@blooddiamond-tattoo.de",
+    phone: "0162 4204789",
+    addressNotice: "Stuttgarter Str. 21, 71083 Herrenberg (Böblingen)",
+    imprint: boeblingenImprint,
+    privacy: boeblingenPrivacy,
+    terms: boeblingenTerms,
   },
 };
 

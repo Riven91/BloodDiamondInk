@@ -9,8 +9,7 @@ const navLinks = [
   { href: "/standorte", label: "Standorte" },
   { href: "/pforzheim", label: "Pforzheim" },
   { href: "/heilbronn", label: "Heilbronn" },
-  { href: "/boeblingen", label: "Böblingen" },
-  { href: "/kontakt", label: "Kontakt" }
+  { href: "/boeblingen", label: "Böblingen" }
 ];
 
 export function Header() {
