@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid theme("colors.brand.ring");
+  outline-offset: 3px;
+}
+
+main {
+  flex: 1;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex w-fit items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-widest text-blooddiamond-text transition-colors duration-200 hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background disabled:cursor-not-allowed disabled:bg-blooddiamond-muted disabled:text-blooddiamond-text/40;
+  }
+
+  .social-link svg {
+    transition: color 0.25s ease-out;
+    height: 28px;
+    width: 28px;
+  }
+
+  .social-link.instagram {
+    color: #C13584;
+  }
+
+  .social-link.instagram:hover {
+    color: #E1306C;
+  }
+
+  .social-link.facebook {
+    color: #1877F2;
+  }
+
+  .social-link.facebook:hover {
+    color: #3b82f6;
+  }
+
+  .social-link.tiktok {
+    color: #0EE0D1;
+    filter: drop-shadow(0 0 4px rgba(0,0,0,0.5));
+  }
+
+  .social-link.tiktok:hover {
+    color: #24E1D4;
+  }
+
+  .social-link.youtube {
+    color: #FF0000;
+  }
+
+  .social-link.youtube:hover {
+    color: #FF4444;
+  }
+}
+
+@layer utilities {
+  .logo-safe {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
+  }
+  .logo-safe-on-dark {
+    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.85)) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+  }
+  .logo-safe-on-light {
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
+  }
+}
