@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
-import { Background } from "@/components/Background";
+import { PageBackground } from "@/components/PageBackground";
 
 export const metadata: Metadata = {
   title: "Blood Diamond Ink",
@@ -28,10 +28,8 @@ export default function RootLayout({
           href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
         />
       </head>
-      <body
-        className="bg-blooddiamond-background text-blooddiamond-text antialiased font-sans"
-      >
-        <Background />
+      <body className="relative bg-black text-white antialiased font-sans">
+        <PageBackground />
         <Header />
         <LayoutWrapper>
           <main className="bg-transparent">{children}</main>
