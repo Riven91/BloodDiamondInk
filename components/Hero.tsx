@@ -1,5 +1,4 @@
 
-import Image from "next/image";
 import Link from "next/link";
 
 interface HeroProps {
@@ -7,20 +6,22 @@ interface HeroProps {
   ctaHref?: string;
 }
 
-// Cache-Buster: 16.10.2025 20:38
+// Cache-Buster: 17.10.2025 10:30
 
 export function Hero({ ctaLabel, ctaHref }: HeroProps) {
   return (
-    <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-blooddiamond-background text-white">
+    <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white">
       <div className="absolute inset-0 z-0">
-        <Image
-          src="/backgrounds/hero-bg-1.jpg"
-          alt="Tattoo Artist bei der Arbeit"
-          fill
-          className="object-cover object-center opacity-10"
-          priority
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: "url('/ChatGPT Image 20. Okt. 2025, 21_03_42.png')",
+            backgroundSize: '40%',
+            backgroundPosition: 'center 30px',
+            backgroundRepeat: 'no-repeat',
+            backgroundAttachment: 'fixed',
+          }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-blooddiamond-background via-blooddiamond-background/80 to-transparent" />
       </div>
       <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
         <div className="space-y-3">

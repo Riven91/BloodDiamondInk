@@ -1,14 +1,1 @@
-backend:
-  runConfig:
-    minInstances: 0
-  env: []
-redirects:
-  - source: /impressum/oetisheim
-    destination: /impressum
-    type: 308
-  - source: /datenschutz/oetisheim
-    destination: /datenschutz
-    type: 308
-  - source: /agb/oetisheim
-    destination: /agb
-    type: 308
+runtime: nodejs20

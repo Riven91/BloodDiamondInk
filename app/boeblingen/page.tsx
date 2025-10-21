@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Hero } from "@/components/Hero";
 
 const faqItems = [
   {
@@ -91,7 +92,7 @@ function ContactNotice() {
         href="https://kontakt.blooddiamond-tattoo.de/boeblingen/"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-red-600 hover:bg-red-700 text-white py-3 px-6 rounded-md uppercase tracking-wide"
+        className="inline-block bg-brand hover:bg-brand-hover text-white py-3 px-6 rounded-md uppercase tracking-wide"
       >
         Kontaktseite öffnen
       </a>
@@ -105,46 +106,7 @@ export default function BoeblingenPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-blooddiamond-background text-white">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/backgrounds/hero-bg-1.jpg"
-            alt="Tattoo Artist bei Blood Diamond Tattoo Ink."
-            fill
-            className="object-cover object-center opacity-20"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-blooddiamond-background via-blooddiamond-background/85 to-transparent" />
-        </div>
-        <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
-          <p className="text-sm uppercase tracking-[0.35em] text-blooddiamond-accent">Blood Diamond Tattoo Ink.</p>
-          <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">
-            Tattoo Studio Böblingen – Fineline, Realistic & Cover-Up
-          </h1>
-          <p className="mt-4 text-base text-white/90">
-            Von Böblingen inspiriert, in der Welt vernetzt – unsere Artists aus Europa, Asien und Amerika bringen individuelle Designs mit globalem Stilgefühl. Qualität, Präzision und Sicherheit – ausgezeichnet mit der „Goldenen Nadel“, bei Blood Diamond Tattoo Ink. Böblingen.
-          </p>
-          <div className="mt-6 flex justify-center gap-4">
-            <Link href="#kontaktformular" className="btn-primary">
-              Termin buchen
-            </Link>
-            <a
-              href="https://wa.me/491624204789"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp chat starten"
-              title="WhatsApp chat starten"
-              className="inline-flex items-center gap-2 rounded-md bg-green-600 px-4 py-2 text-sm uppercase text-white transition hover:bg-green-700"
-            >
-              <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true" focusable="false" fill="currentColor">
-                <path d="M19.11 17.23c-.3-.15-1.74-.86-2.01-.96-.27-.1-.47-.15-.68.15s-.78.96-.95 1.16-.35.22-.65.07a6.77 6.77 0 0 1-2-1.23 7.46 7.46 0 0 1-1.38-1.72c-.15-.26 0-.4.11-.55.12-.15.26-.34.39-.52.13-.18.17-.3.26-.5.09-.2.05-.37-.02-.52-.07-.15-.68-1.64-.93-2.25-.24-.58-.48-.5-.66-.51h-.56c-.19 0-.5.07-.76.37s-1 1-1 2.43 1.02 2.82 1.16 3.02c.15.2 2.02 3.08 4.9 4.32.68.29 1.2.46 1.61.59.68.22 1.3.19 1.79.11.55-.08 1.74-.71 1.98-1.4.24-.69.24-1.28.17-1.4-.07-.12-.27-.2-.57-.35z" />
-                <path d="M26.7 5.3A12.5 12.5 0 0 0 5.25 23.5L4 28l4.62-1.2A12.5 12.5 0 1 0 26.7 5.31zM16 26.5a10.46 10.46 0 0 1-5.34-1.47l-.38-.22-2.74.71.73-2.67-.25-.39A10.5 10.5 0 1 1 26.5 16 10.52 10.52 0 0 1 16 26.5z" />
-              </svg>
-              <span>WhatsApp</span>
-            </a>
-          </div>
-        </div>
-      </section>
+      <Hero ctaLabel="Termin buchen" ctaHref="#kontaktformular" />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">

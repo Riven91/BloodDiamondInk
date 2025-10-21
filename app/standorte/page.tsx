@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function StandortePage() {
   const [consent, setConsent] = useState(false);
@@ -78,6 +79,16 @@ export default function StandortePage() {
           </div>
         </div>
       )}
+
+      <div className="mt-12 flex justify-center">
+        <Image
+          src="/brand/bdi-logo-transparent.webp"
+          alt="Blood Diamond Tattoo Ink. Logo"
+          width={200}
+          height={200}
+          className="opacity-30"
+        />
+      </div>
     </main>
   );
 }
