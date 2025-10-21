@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
 
@@ -48,6 +49,7 @@ export default function RootLayout({
         <LayoutWrapper>
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
+        <Footer />
       </body>
     </html>
   );
