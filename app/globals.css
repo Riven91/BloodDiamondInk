@@ -70,6 +70,39 @@ main {
   .social-link.youtube:hover {
     color: #FF4444;
   }
+
+  .hero {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero__overlay {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7),
+      rgba(0, 0, 0, 0.45),
+      rgba(0, 0, 0, 0.75)
+    );
+  }
+
+  .hero--home {
+    background-image: url("/ChatGPT Image 20. Okt. 2025, 21_03_42.png");
+  }
+
+  .hero--heilbronn {
+    background-image: url('/gallery/heilbronn-1.jpg');
+  }
+
+  .hero--pforzheim {
+    background-image: url('/gallery/pforzheim-1.jpg');
+  }
+
+  .hero--boeblingen {
+    background-image: url('/gallery/boeblingen-1.jpg');
+  }
 }
 
 @layer utilities {

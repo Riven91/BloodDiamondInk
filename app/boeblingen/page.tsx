@@ -106,6 +106,7 @@ export default function BoeblingenPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Hero
+        variant="boeblingen"
         title="Tattoo Studio Böblingen — Blood Diamond Tattoo Ink."
         description={`Von Böblingen inspiriert, in der Welt vernetzt – unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet – bei Blood Diamond Tattoo Ink Böblingen.`}
         ctaLabel="Termin buchen"
