@@ -30,7 +30,23 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   return (
-    <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white">
+    <section
+      className="relative hero-bg force-mobile-hero flex min-h-screen min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white"
+      style={{
+        backgroundImage: "url('/325.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+      }}
+    >
+      <img
+        src="/325.png"
+        alt=""
+        aria-hidden="true"
+        className="block md:hidden absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
+        style={{ zIndex: 0, opacity: 1 }}
+      />
       <div className="absolute inset-0 z-0">
         <div
           className="absolute inset-0 opacity-30"
