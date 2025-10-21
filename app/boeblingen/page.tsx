@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 
@@ -106,7 +105,14 @@ export default function BoeblingenPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <Hero ctaLabel="Termin buchen" ctaHref="#kontaktformular" />
+      <Hero
+        title="Tattoo Studio Böblingen — Blood Diamond Tattoo Ink."
+        description={`Von Böblingen inspiriert, in der Welt vernetzt – unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet – bei Blood Diamond Tattoo Ink Böblingen.`}
+        ctaLabel="Termin buchen"
+        ctaHref="#kontaktformular"
+        secondaryCtaLabel="WhatsApp"
+        secondaryCtaHref="https://wa.me/491624204789"
+      />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">

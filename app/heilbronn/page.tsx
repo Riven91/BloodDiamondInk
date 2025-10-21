@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 
@@ -106,7 +105,14 @@ export default function HeilbronnPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <Hero ctaLabel="Termin buchen" ctaHref="#kontaktformular" />
+      <Hero
+        title="Tattoo Studio Heilbronn — Blood Diamond Tattoo Ink."
+        description="Erleben Sie Tattoo-Kunst mit internationalem Anspruch – handverlesene Artists aus aller Welt, mehrfach ausgezeichnet mit der „Goldenen Nadel“. Realistic, Fineline und Cover-Up in Perfektion – exklusiv bei Blood Diamond Tattoo Ink. Heilbronn."
+        ctaLabel="Termin buchen"
+        ctaHref="#kontaktformular"
+        secondaryCtaLabel="WhatsApp"
+        secondaryCtaHref="https://wa.me/4917630573128"
+      />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
