@@ -1,14 +1,27 @@
 
+import type { ReactNode } from "react";
 import Link from "next/link";
 
 interface HeroProps {
+  title?: ReactNode;
+  description?: ReactNode;
   ctaLabel?: string;
   ctaHref?: string;
+  secondaryCtaLabel?: string;
+  secondaryCtaHref?: string;
 }
 
 // Cache-Buster: 17.10.2025 10:30
 
-export function Hero({ ctaLabel, ctaHref }: HeroProps) {
+export function Hero({
+  title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
+  description =
+    "Top-Künstler aus aller Welt – mehrfach mit der „Goldenen Nadel“ ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
+  ctaLabel,
+  ctaHref,
+  secondaryCtaLabel,
+  secondaryCtaHref,
+}: HeroProps) {
   return (
     <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white">
       <div className="absolute inset-0 z-0">
@@ -28,17 +41,24 @@ export function Hero({ ctaLabel, ctaHref }: HeroProps) {
           <p className="text-sm uppercase tracking-widest text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.
           </p>
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-            Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.
-          </h1>
-          <p className="mx-auto max-w-2xl text-white/90">
-            Top-Künstler aus aller Welt – mehrfach mit der „Goldenen Nadel“ ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).
-          </p>
+          <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
+          <p className="mx-auto max-w-2xl text-white/90">{description}</p>
         </div>
         {ctaLabel && ctaHref ? (
-          <div className="mt-6 flex justify-center gap-3">
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link href={ctaHref} className="btn-primary">
               {ctaLabel}
+            </Link>
+            {secondaryCtaLabel && secondaryCtaHref ? (
+              <Link href={secondaryCtaHref} className="rounded-2xl border px-5 py-3 hover:bg-gray-50">
+                {secondaryCtaLabel}
+              </Link>
+            ) : null}
+          </div>
+        ) : secondaryCtaLabel && secondaryCtaHref ? (
+          <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <Link href={secondaryCtaHref} className="rounded-2xl border px-5 py-3 hover:bg-gray-50">
+              {secondaryCtaLabel}
             </Link>
           </div>
         ) : null}
