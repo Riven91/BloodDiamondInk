@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 
@@ -106,7 +105,20 @@ export default function PforzheimPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <Hero ctaLabel="Termin buchen" ctaHref="#kontaktformular" />
+      <Hero
+        title={
+          <>
+            Pforzheim
+            <br />
+            Tattoo Studio Pforzheim – Fineline, Realistic & Cover-Up
+          </>
+        }
+        description="Internationale Tattoo-Artists, preisgekrönte Designs und höchste Präzision – Blood Diamond Tattoo Ink. Pforzheim vereint Kunst, Stil und Handwerk auf Weltklasse-Niveau. Ausgezeichnet mit der „Goldenen Nadel“ und bekannt für kompromisslose Hygiene."
+        ctaLabel="Termin buchen"
+        ctaHref="#kontaktformular"
+        secondaryCtaLabel="WhatsApp"
+        secondaryCtaHref="https://wa.me/4915123426609"
+      />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
