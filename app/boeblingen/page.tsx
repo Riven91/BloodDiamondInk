@@ -115,6 +115,16 @@ export default function BoeblingenPage() {
         secondaryCtaHref="https://wa.me/491624204789"
       />
 
+      <section
+        className="relative min-h-screen bg-cover bg-center"
+        style={{ backgroundImage: "url('/gallery/boeblingen-bg.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="relative z-10 flex min-h-screen items-center justify-center text-white text-center">
+          <h2 className="text-4xl font-bold">Studio Böblingen</h2>
+        </div>
+      </section>
+
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>

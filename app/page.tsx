@@ -45,6 +45,15 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <section
+        className="relative min-h-screen bg-cover bg-center"
+        style={{ backgroundImage: "url('/gallery/style-main.jpg')" }}
+      >
+        <div className="absolute inset-0 bg-black/25" />
+        <div className="relative z-10 flex min-h-screen items-center justify-center text-white text-center">
+          <h2 className="text-4xl font-bold">Blood Diamond Ink</h2>
+        </div>
+      </section>
       <LocationsTeaser />
       <StylesGrid />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
