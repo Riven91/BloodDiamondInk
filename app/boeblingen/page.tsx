@@ -106,7 +106,11 @@ export default function BoeblingenPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
-      <Hero ctaLabel="Termin buchen" ctaHref="#kontaktformular" />
+      <Hero
+        ctaLabel="Termin buchen"
+        ctaHref="#kontaktformular"
+        whatsAppHref="https://wa.me/491624204789"
+      />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
