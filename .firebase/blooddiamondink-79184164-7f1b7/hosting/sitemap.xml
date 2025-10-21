@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://acme.com</loc>
-<lastmod>2025-10-21T01:12:37.172Z</lastmod>
+<lastmod>2025-10-21T17:35:36.038Z</lastmod>
 <changefreq>yearly</changefreq>
 <priority>1</priority>
 </url>
 <url>
 <loc>https://acme.com/about</loc>
-<lastmod>2025-10-21T01:12:37.172Z</lastmod>
+<lastmod>2025-10-21T17:35:36.038Z</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.8</priority>
 </url>
 <url>
 <loc>https://acme.com/blog</loc>
-<lastmod>2025-10-21T01:12:37.172Z</lastmod>
+<lastmod>2025-10-21T17:35:36.038Z</lastmod>
 <changefreq>weekly</changefreq>
 <priority>0.5</priority>
 </url>
