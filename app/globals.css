@@ -83,3 +83,19 @@ main {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
   }
 }
+/* BEGIN: hero & section mobile fix — auto-inserted */
+.hero-bg,
+.section-bg {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Desktop default */
+}
+@media (max-width: 767px) {
+  .hero-bg,
+  .section-bg {
+    background-attachment: scroll !important;
+    background-position: center top;
+  }
+}
+/* END: hero & section mobile fix */
