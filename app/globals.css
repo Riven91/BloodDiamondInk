@@ -72,6 +72,65 @@ main {
   }
 }
 
+/* Hero-Grundlage: eigener Stacking-Context + sichere Höhe */
+.hero-bg {
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+}
+
+@supports (min-height: 100dvh) {
+  .hero-bg {
+    min-height: 100dvh;
+  }
+}
+
+/* Background über ::before – scrollend, unter Content, mit Overlay */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.55;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.35),
+    rgba(0, 0, 0, 0.55)
+  );
+}
+
+/* Seiten-spezifische Bilder — ACHTUNG: Pfade mit Leerzeichen IMMER in Quotes! */
+.hero--home.hero-bg::before {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    url("/444205012_122127133706262146_3415427702622748042_n.jpg");
+}
+
+.hero--pforzheim.hero-bg::before {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    url("/Schwarz Weiß Dunkel Modern Tattoo Termin Instagram Story.png");
+  /* Optional: falls Motiv zu hoch sitzt */
+  /* background-position: center 30%; */
+}
+
+.hero--heilbronn.hero-bg::before {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    url("/468841914_18028447166605337_6534412387055693830_n.jpg");
+}
+
+.hero--boeblingen.hero-bg::before {
+  background-image:
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55)),
+    url("/515710750_18054059327605337_5053906938835335426_n.jpg");
+}
+
 @layer utilities {
   .logo-safe {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
