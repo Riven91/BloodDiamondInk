@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
+import { PageBackground } from "@/components/PageBackground";
 
 
 const bebasNeue = Bebas_Neue({
@@ -33,23 +34,16 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body
-        className={`bg-blooddiamond-background text-blooddiamond-text antialiased ${bebasNeue.variable} ${inter.variable} font-body`}
+        className={`relative bg-black text-white antialiased font-sans min-h-dvh ${bebasNeue.variable} ${inter.variable}`}
       >
-        <div
-          className="fixed inset-0 z-[-1] opacity-5"
-          style={{
-            backgroundImage: "url('/ChatGPT Image 20. Okt. 2025, 21_03_42.png')",
-            backgroundSize: '40%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-          }}
-        />
-        <Header />
-        <LayoutWrapper>
-          <main className="bg-transparent">{children}</main>
-        </LayoutWrapper>
-        <Footer />
+        <PageBackground />
+        <div className="relative z-10">
+          <Header />
+          <LayoutWrapper>
+            <main className="bg-transparent">{children}</main>
+          </LayoutWrapper>
+          <Footer />
+        </div>
       </body>
     </html>
   );
