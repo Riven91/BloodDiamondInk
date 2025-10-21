@@ -83,3 +83,51 @@ main {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
   }
 }
+
+@media (max-width: 767.98px) {
+
+  /* --- Home Hero --- */
+  #heroHome img,
+  #heroHome span > img,
+  #heroHome picture > img,
+  #heroHome [data-hero-bg] {
+    object-position: center !important;
+  }
+  #heroHome {
+    background-position: center !important;
+  }
+
+  /* --- Pforzheim Hero --- */
+  #heroPforzheim img,
+  #heroPforzheim span > img,
+  #heroPforzheim picture > img,
+  #heroPforzheim [data-hero-bg] {
+    object-position: center !important;
+  }
+  #heroPforzheim {
+    background-position: center !important;
+  }
+
+  /* --- Heilbronn Hero --- */
+  #heroHeilbronn img,
+  #heroHeilbronn span > img,
+  #heroHeilbronn picture > img,
+  #heroHeilbronn [data-hero-bg] {
+    object-position: center !important;
+  }
+  #heroHeilbronn {
+    background-position: center !important;
+  }
+
+  /* --- Böblingen Hero --- */
+  #heroBoeblingen img,
+  #heroBoeblingen span > img,
+  #heroBoeblingen picture > img,
+  #heroBoeblingen [data-hero-bg] {
+    object-position: center !important;
+  }
+  #heroBoeblingen {
+    background-position: center !important;
+  }
+}
+
