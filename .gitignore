@@ -1,0 +1,50 @@
+# --- Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# --- Next.js
+.next/
+out/                 # kein Static-Export committen
+.next/cache/
+
+# --- Build Artifacts
+dist/
+build/
+
+# --- Testing
+coverage/
+
+# --- OS / Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Env/Secrets
+.env
+.env.*
+!.env.example        # nur Musterdatei tracken
+
+# --- Certificates/Keys
+*.pem
+
+# --- Firebase (Hosting / Web Frameworks / Functions)
+.firebase/           # lokale Firebase-Artefakte
+firebase-debug.log
+.storage/            # lokale Emulator-/Dump-Ordner (falls vorhanden)
+.firebaserc          # 👉 NICHT ignorieren, TRACKEN!
+firebase.json        # 👉 NICHT ignorieren, TRACKEN!
+functions/node_modules/
+functions/.cache/
+functions/.runtimeconfig.json
+.runtimeconfig.backup.json
+
+# --- Tool/Platform
+.vercel/
+.netlify/
+.turbo/

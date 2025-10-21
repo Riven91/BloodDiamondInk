@@ -1,0 +1,170 @@
+'use client';
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/standorte", label: "Standorte" },
+  { href: "/pforzheim", label: "Pforzheim" },
+  { href: "/heilbronn", label: "Heilbronn" },
+  { href: "/boeblingen", label: "Böblingen" }
+];
+
+export function Header() {
+  const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const originalOverflowRef = useRef<string | null>(null);
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      if (originalOverflowRef.current === null) {
+        originalOverflowRef.current = document.body.style.overflow;
+      }
+      document.body.style.overflow = "hidden";
+    } else {
+      if (originalOverflowRef.current !== null) {
+        document.body.style.overflow = originalOverflowRef.current;
+        originalOverflowRef.current = null;
+      } else {
+        document.body.style.overflow = "";
+      }
+    }
+
+    return () => {
+      if (originalOverflowRef.current !== null) {
+        document.body.style.overflow = originalOverflowRef.current;
+        originalOverflowRef.current = null;
+      } else {
+        document.body.style.overflow = "";
+      }
+    };
+  }, [isMenuOpen]);
+
+  const toggleMenu = () => {
+    setIsMenuOpen((prev) => !prev);
+  };
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-blooddiamond-primary/40 bg-blooddiamond-background/95 backdrop-blur">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <Link
+          href="/"
+          aria-label="Blood Diamond Ink Startseite"
+          className="flex items-center gap-3"
+        >
+          <Image
+            src="/brand/bdi-logo-transparent.webp"
+            alt="Blood Diamond Ink Logo"
+            width={80}
+            height={80}
+            priority
+          />
+          <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent">
+            Blood Diamond Tattoo Ink.
+          </span>
+        </Link>
+        <nav aria-label="Hauptnavigation" className="hidden md:block">
+          <ul className="hidden items-center gap-4 text-sm uppercase tracking-widest md:flex">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`rounded-md px-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background ${
+                      isActive
+                        ? "bg-brand text-blooddiamond-text"
+                        : "hover:bg-blooddiamond-muted/70 hover:text-blooddiamond-accent"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+        <button
+          type="button"
+          aria-label={isMenuOpen ? "Menü schließen" : "Menü öffnen"}
+          aria-expanded={isMenuOpen}
+          onClick={toggleMenu}
+          className="relative flex items-center justify-center md:hidden"
+          style={{
+            width: "44px",
+            height: "44px",
+            zIndex: 60,
+          }}
+        >
+          <span className="sr-only">Navigation</span>
+          <span className="pointer-events-none absolute inset-0" aria-hidden />
+          <span aria-hidden className="flex flex-col items-center justify-center gap-[6px]">
+            <span
+              className="block h-[2px] w-6 bg-blooddiamond-text transition-transform"
+              style={
+                isMenuOpen
+                  ? { transform: "translateY(7px) rotate(45deg)" }
+                  : { transform: "translateY(0) rotate(0deg)" }
+              }
+            />
+            <span
+              className="block h-[2px] w-6 bg-blooddiamond-text transition-opacity"
+              style={{ opacity: isMenuOpen ? 0 : 1 }}
+            />
+            <span
+              className="block h-[2px] w-6 bg-blooddiamond-text transition-transform"
+              style={
+                isMenuOpen
+                  ? { transform: "translateY(-7px) rotate(-45deg)" }
+                  : { transform: "translateY(0) rotate(0deg)" }
+              }
+            />
+          </span>
+        </button>
+      </div>
+      {isMenuOpen && (
+        <nav
+          aria-label="Mobile Navigation"
+          className="md:hidden"
+          style={{
+            position: "absolute",
+            top: "100%",
+            left: 0,
+            right: 0,
+            zIndex: 55,
+          }}
+        >
+          <ul className="space-y-2 border-b border-blooddiamond-primary/40 bg-blooddiamond-background px-6 py-4 text-base uppercase tracking-widest">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    onClick={handleLinkClick}
+                    aria-current={isActive ? "page" : undefined}
+                    className={`block rounded-md px-3 py-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background ${
+                      isActive
+                        ? "bg-brand text-blooddiamond-text"
+                        : "hover:bg-blooddiamond-muted/70 hover:text-blooddiamond-accent"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
+    </header>
+  );
+}
