@@ -13,7 +13,7 @@ interface HeroProps {
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description =
-    "Top-Künstler aus aller Welt – mehrfach mit der „Goldenen Nadel" ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
+    "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
   ctaLabel,
   ctaHref,
   secondaryCtaLabel,
