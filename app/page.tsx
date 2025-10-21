@@ -45,6 +45,18 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <section
+        className="section-bg relative"
+        style={{
+          backgroundImage: "url('/ChatGPT Image 20. Okt. 2025, 21_03_42.png')",
+          minHeight: "50vh"
+        }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.25)" }} />
+        <div className="relative z-10 container mx-auto px-6 py-20 text-white">
+          <h2 className="text-3xl font-bold mb-4">Blood Diamond Ink</h2>
+        </div>
+      </section>
       <LocationsTeaser />
       <StylesGrid />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">

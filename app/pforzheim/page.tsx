@@ -114,6 +114,19 @@ export default function PforzheimPage() {
         secondaryCtaHref="https://wa.me/4915123426609"
       />
 
+      <section
+        className="section-bg relative"
+        style={{
+          backgroundImage: "url('/gallery/pforzheim-1.jpg')",
+          minHeight: "50vh"
+        }}
+      >
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(0,0,0,0.25)" }} />
+        <div className="relative z-10 container mx-auto px-6 py-20 text-white">
+          <h2 className="text-3xl font-bold mb-4">Studio Pforzheim</h2>
+        </div>
+      </section>
+
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
