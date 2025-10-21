@@ -32,7 +32,7 @@ export function PageBackground() {
       style={{
         zIndex: -5,
         opacity: 0.55,
-        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url(${backgroundImage})`,
+        backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.55), rgba(0,0,0,0.35), rgba(0,0,0,0.55)), url("${backgroundImage}")`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
         backgroundPosition: "center"
