@@ -30,26 +30,14 @@ export function Hero({
     <section
       className="relative flex min-h-[100vh] md:min-h-screen items-center justify-center overflow-hidden text-white"
       style={{
-        backgroundImage: "url('/325.png')",
+        backgroundImage: "url('/Schwarz Weiß Dunkel Modern Tattoo Termin Instagram Story.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "scroll", // FIXED: War "fixed" - das killt Mobile!
+        backgroundAttachment: "scroll",
       }}
     >
-      {/* Logo-Overlay (auf allen Geräten) */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: "url('/ChatGPT Image 20. Okt. 2025, 21_03_42.png')",
-            backgroundSize: '40%',
-            backgroundPosition: 'center 30px',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'scroll', // FIXED: Auch hier auf scroll!
-          }}
-        />
-      </div>
+      {/* Logo-Overlay entfernt - nur Background */}
 
       {/* Content */}
       <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
