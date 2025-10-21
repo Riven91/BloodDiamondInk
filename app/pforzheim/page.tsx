@@ -106,14 +106,8 @@ export default function PforzheimPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Hero
-        title={
-          <>
-            Pforzheim
-            <br />
-            Tattoo Studio Pforzheim – Fineline, Realistic & Cover-Up
-          </>
-        }
-        description="Internationale Tattoo-Artists, preisgekrönte Designs und höchste Präzision – Blood Diamond Tattoo Ink. Pforzheim vereint Kunst, Stil und Handwerk auf Weltklasse-Niveau. Ausgezeichnet mit der „Goldenen Nadel“ und bekannt für kompromisslose Hygiene."
+        title="Pforzheim Tattoo Studio — Blood Diamond Tattoo Ink."
+        description="Internationale Tattoo-Artists, preisgekrönte Designs und höchste Präzision – Blood Diamond Tattoo Ink. Pforzheim vereint Kunst, Stil und Handwerk auf Weltklasse-Niveau. Artisten ausgezeichnet mit der „Goldenen Nadel“ und bekannt für kompromisslose Hygiene."
         ctaLabel="Termin buchen"
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
