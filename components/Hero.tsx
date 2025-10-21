@@ -1,4 +1,3 @@
-
 import type { ReactNode } from "react";
 import Link from "next/link";
 
@@ -11,12 +10,10 @@ interface HeroProps {
   secondaryCtaHref?: string;
 }
 
-// Cache-Buster: 17.10.2025 10:30
-
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description =
-    "Top-Künstler aus aller Welt – mehrfach mit der „Goldenen Nadel“ ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
+    "Top-Künstler aus aller Welt – mehrfach mit der „Goldenen Nadel" ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
   ctaLabel,
   ctaHref,
   secondaryCtaLabel,
@@ -31,23 +28,17 @@ export function Hero({
 
   return (
     <section
-      className="relative hero-bg force-mobile-hero flex min-h-screen min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white"
+      className="relative flex min-h-[100vh] md:min-h-screen items-center justify-center overflow-hidden text-white"
       style={{
         backgroundImage: "url('/325.png')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
+        backgroundAttachment: "scroll", // FIXED: War "fixed" - das killt Mobile!
       }}
     >
-      <img
-        src="/325.png"
-        alt=""
-        aria-hidden="true"
-        className="block md:hidden absolute inset-0 w-full h-full object-cover pointer-events-none select-none"
-        style={{ zIndex: 0, opacity: 1 }}
-      />
-      <div className="absolute inset-0 z-0">
+      {/* Logo-Overlay (auf allen Geräten) */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div
           className="absolute inset-0 opacity-30"
           style={{
@@ -55,11 +46,13 @@ export function Hero({
             backgroundSize: '40%',
             backgroundPosition: 'center 30px',
             backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
+            backgroundAttachment: 'scroll', // FIXED: Auch hier auf scroll!
           }}
         />
       </div>
-      <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
+
+      {/* Content */}
+      <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-widest text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.
@@ -67,6 +60,7 @@ export function Hero({
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
           <p className="mx-auto max-w-2xl text-white/90">{description}</p>
         </div>
+        
         {ctaLabel && ctaHref ? (
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link href={ctaHref} className="btn-primary">
