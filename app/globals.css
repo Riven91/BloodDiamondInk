@@ -103,3 +103,22 @@ main {
   }
 }
 /* === END: Mobile Hero Fix (/325.png) === */
+/* === BEGIN: force mobile hero (/325.png) === */
+@media (max-width: 767px) {
+  .force-mobile-hero {
+    background-image: url('/325.png') !important;
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+}
+/* iOS-Safari Absicherung */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 767px) {
+    .force-mobile-hero {
+      background-attachment: scroll !important;
+    }
+  }
+}
+/* === END: force mobile hero (/325.png) === */

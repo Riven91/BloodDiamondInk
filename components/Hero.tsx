@@ -31,7 +31,7 @@ export function Hero({
 
   return (
     <section
-      className="relative hero-bg flex min-h-screen min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white"
+      className="relative hero-bg force-mobile-hero flex min-h-screen min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white"
       style={{
         backgroundImage: "url('/325.png')",
         backgroundSize: "cover",
