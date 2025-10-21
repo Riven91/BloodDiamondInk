@@ -106,6 +106,7 @@ export default function HeilbronnPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Hero
+        className="hero-bg hero--heilbronn"
         title="Tattoo Studio Heilbronn — Blood Diamond Tattoo Ink."
         description="Erleben Sie Tattoo-Kunst mit internationalem Anspruch – handverlesene Artists aus aller Welt, mehrfach ausgezeichnet mit der „Goldenen Nadel“. Realistic, Fineline und Cover-Up in Perfektion – exklusiv bei Blood Diamond Tattoo Ink. Heilbronn."
         ctaLabel="Termin buchen"

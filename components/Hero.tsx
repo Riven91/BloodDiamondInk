@@ -1,6 +1,7 @@
 
 import type { ReactNode } from "react";
 import Link from "next/link";
+import clsx from "clsx";
 
 interface HeroProps {
   title?: ReactNode;
@@ -9,6 +10,7 @@ interface HeroProps {
   ctaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  className?: string;
 }
 
 // Cache-Buster: 17.10.2025 10:30
@@ -21,6 +23,7 @@ export function Hero({
   ctaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
+  className,
 }: HeroProps) {
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
@@ -30,20 +33,13 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   return (
-    <section className="relative flex min-h-[60vh] items-center justify-center overflow-hidden bg-transparent text-white">
-      <div className="absolute inset-0 z-0">
-        <div
-          className="absolute inset-0 opacity-30"
-          style={{
-            backgroundImage: "url('/ChatGPT Image 20. Okt. 2025, 21_03_42.png')",
-            backgroundSize: '40%',
-            backgroundPosition: 'center 30px',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-          }}
-        />
-      </div>
-      <div className="relative mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
+    <section
+      className={clsx(
+        "relative flex items-center justify-center overflow-hidden bg-transparent text-white",
+        className,
+      )}
+    >
+      <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-widest text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.
