@@ -4,11 +4,13 @@ import { usePathname } from "next/navigation";
 import { useMemo } from "react";
 
 const BACKGROUND_MAP: Record<string, string> = {
+const BACKGROUND_MAP = {
   "/": "/444205012_122127133706262146_3415427702622748042_n.jpg",
   "/boeblingen": "/515710750_18054059327605337_5053906938835335426_n.jpg",
   "/heilbronn": "/468841914_18028447166605337_6534412387055693830_n.jpg",
   "/pforzheim": "/Schwarz Weiß Dunkel Modern Tattoo Termin Instagram Story.png"
 };
+} as const satisfies Record<string, string>;
 
 const DEFAULT_BACKGROUND = BACKGROUND_MAP["/"];
 
