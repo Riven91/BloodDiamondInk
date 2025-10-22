@@ -147,12 +147,13 @@ main {
   }
 }
 
-/* === HERO DESKTOP TEXT OFFSET === */
+/* === HERO DESKTOP TEXT OFFSET (live) === */
 @media (min-width: 1024px) {
   .hero,
   [class*="Hero"],
   section[id*="hero"],
   header[class*="hero"] {
-    padding-top: 5rem !important; /* ca. 80 px Abstand zum Header */
+    padding-top: 5rem !important; /* ca. 80px Abstand zum Header */
   }
 }
+/* bump for css hash */
