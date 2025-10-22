@@ -27,7 +27,7 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   return (
-    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white">
+    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white bg-[url('/herobackground3.webp')] bg-cover bg-center md:bg-none">
       {/* Logo-Overlay entfernt - nur Background */}
 
       {/* Content */}

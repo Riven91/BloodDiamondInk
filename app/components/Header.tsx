@@ -13,7 +13,7 @@ export default function Header() {
   const closeMenu = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60">
+    <header className="sticky top-0 z-50 bg-black/80 backdrop-blur supports-[backdrop-filter]:bg-black/60 bg-[url('/herobackground3.webp')] bg-cover bg-center md:bg-none">
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           <Link href="/" onClick={closeMenu} className="shrink-0 inline-flex items-center gap-2">
