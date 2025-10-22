@@ -17,6 +17,35 @@ export function Header() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const originalOverflowRef = useRef<string | null>(null);
+  const headerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const headerElement = headerRef.current;
+    if (!headerElement || typeof window === "undefined") {
+      return;
+    }
+
+    const updateOffset = () => {
+      const height = headerElement.getBoundingClientRect().height;
+      const clampedHeight = Math.max(0, Math.min(height, 120));
+      document.documentElement.style.setProperty("--hero-header-offset", `${clampedHeight}px`);
+    };
+
+    updateOffset();
+
+    const resizeObserver = new ResizeObserver(() => {
+      updateOffset();
+    });
+
+    resizeObserver.observe(headerElement);
+    window.addEventListener("resize", updateOffset);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", updateOffset);
+      document.documentElement.style.setProperty("--hero-header-offset", "0px");
+    };
+  }, []);
 
   useEffect(() => {
     if (isMenuOpen) {
@@ -52,7 +81,10 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-blooddiamond-primary/40 bg-blooddiamond-background/95 backdrop-blur">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 border-b border-blooddiamond-primary/40 bg-blooddiamond-background/95 backdrop-blur"
+    >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"

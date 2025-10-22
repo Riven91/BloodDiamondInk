@@ -84,41 +84,49 @@ main {
   }
 }
 
-/* === BEGIN: Mobile Hero Fix (/325.png) === */
-.hero-bg {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed; /* Desktop beibehalten */
+:root {
+  --hero-bg-url: url("/Herobackground.png");
+  --hero-header-offset: 0px;
 }
-@media (max-width: 767px) {
-  .hero-bg {
-    background-attachment: scroll !important; /* Mobile sichtbar */
-    background-position: center top;
+
+/* make sure hero containers don't carry old inline backgrounds */
+#hero,
+[id^="hero"],
+.hero,
+.hero-section {
+  background: none !important;
+  background-image: none !important;
+}
+
+/* unified hero background (under content), mobile+desktop */
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 100svh !important;
+  box-sizing: border-box;
+  overflow: hidden;
+  z-index: 0;
+  isolation: isolate;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%),
+    var(--hero-bg-url) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important; /* never fixed */
+}
+
+/* prevent old pseudo background layers from showing */
+.hero-section::before,
+.hero-section::after { content: none !important; display: none !important; }
+
+@media (min-width: 768px) {
+  .hero-section {
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.32) 28%, rgba(0,0,0,0) 45%),
+      linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0.28) 100%),
+      var(--hero-bg-url) !important;
+    padding-top: clamp(0px, var(--hero-header-offset, 0px), 120px);
+    background-position: center 40% !important;
   }
 }
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 767px) {
-    .hero-bg { background-attachment: scroll !important; }
-  }
-}
-/* === END: Mobile Hero Fix (/325.png) === */
-/* === BEGIN: force mobile hero (/325.png) === */
-@media (max-width: 767px) {
-  .force-mobile-hero {
-    background-image: url('/325.png') !important;
-    background-attachment: scroll !important;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-  }
-}
-/* iOS-Safari Absicherung */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 767px) {
-    .force-mobile-hero {
-      background-attachment: scroll !important;
-    }
-  }
-}
-/* === END: force mobile hero (/325.png) === */
