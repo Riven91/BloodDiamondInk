@@ -119,7 +119,16 @@ export default function HeilbronnPage() {
           <div>
             <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
-              Blood Diamond Tattoo Ink. in Heilbronn verbindet moderne Atmosphäre mit ruhigen Private Rooms für konzentriertes Arbeiten an Ihrem individuellen Tattoo-Projekt.
+              Blood Diamond Tattoo Ink. steht für exklusive Tattoo-Kunst zwischen Heilbronn und Neckarsulm. Unser Studio verbindet moderne Atmosphäre, präzises Handwerk und ruhige Private Rooms. Hier zählt dein Motiv und dein Tempo.
+            </p>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Wir entwickeln maßgeschneiderte Designs in enger Abstimmung. Fineline, Realismus und Black &amp; Grey gehören zu unseren Stärken. Jedes Detail wird sorgfältig geplant und sauber umgesetzt. Keine Hektik, keine Massenabfertigung. Qualität hat Vorrang.
+            </p>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Kundinnen und Kunden aus Heilbronn, Neckarsulm, Bad Friedrichshall und Weinsberg schätzen die diskrete Umgebung, die individuelle Beratung und die Konzentration auf das Wesentliche. Dein Tattoo soll heute überzeugen und in vielen Jahren genauso stark wirken.
+            </p>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Buche jetzt deinen Termin und erlebe die Ruhe, Präzision und Verlässlichkeit von Blood Diamond Tattoo Ink.
             </p>
           </div>
           <div className="grid gap-4 text-sm text-white">
