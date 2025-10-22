@@ -122,3 +122,32 @@ main {
   }
 }
 /* === END: force mobile hero (/325.png) === */
+/* === BEGIN: force mobile bg to /325.png (auto) === */
+@media (max-width: 767px) {
+  /* trifft jedes Element, dessen inline style den problematischen Dateinamen enthält */
+  [style*="ChatGPT Image 20. Okt. 2025"] {
+    background-image: url('/325.png') !important;
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+  /* zusätzlich die URL-encodete Variante abdecken */
+  [style*="ChatGPT%20Image%2020.%20Okt.%202025"] {
+    background-image: url('/325.png') !important;
+    background-attachment: scroll !important;
+    background-size: cover !important;
+    background-position: center top !important;
+    background-repeat: no-repeat !important;
+  }
+}
+/* iOS-Safari Absicherung */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 767px) {
+    [style*="ChatGPT Image 20. Okt. 2025"],
+    [style*="ChatGPT%20Image%2020.%20Okt.%202025"] {
+      background-attachment: scroll !important;
+    }
+  }
+}
+/* === END: force mobile bg to /325.png (auto) === */
