@@ -1,8 +1,15 @@
 'use client';
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export function Footer() {
+  const pathname = usePathname();
+  const isBoeblingen = pathname?.toLowerCase().includes('/boeblingen');
+  const impressumHref = isBoeblingen ? '/impressum/boeblingen' : '/impressum';
+  const datenschutzHref = isBoeblingen ? '/datenschutz/boeblingen' : '/datenschutz';
+  const agbHref = isBoeblingen ? '/agb/boeblingen' : '/agb';
+
   return (
     <footer className="border-t border-blooddiamond-primary/30 bg-blooddiamond-muted/80">
       <div className="mx-auto max-w-6xl px-6 pb-4 pt-10">
@@ -71,13 +78,13 @@ export function Footer() {
           </div>
           <div className="flex flex-col gap-3 text-xs uppercase tracking-wide text-blooddiamond-text/70 md:text-right">
             <span className="font-display text-sm text-blooddiamond-text">Rechtliches</span>
-            <Link href="/impressum" className="hover:text-blooddiamond-accent">
+            <Link href={impressumHref} className="hover:text-blooddiamond-accent">
               Impressum
             </Link>
-            <Link href="/datenschutz" className="hover:text-blooddiamond-accent">
+            <Link href={datenschutzHref} className="hover:text-blooddiamond-accent">
               Datenschutz
             </Link>
-            <Link href="/agb" className="hover:text-blooddiamond-accent">
+            <Link href={agbHref} className="hover:text-blooddiamond-accent">
               AGB
             </Link>
           </div>
