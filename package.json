@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "diagnose-build": "npm run build && ls -l .next/static/css/"
   },
   "dependencies": {
     "@headlessui/react": "^2.1.2",
