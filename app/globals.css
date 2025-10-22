@@ -146,3 +146,13 @@ main {
     background-position: center 60% !important; /* bei Bedarf 55–70% */
   }
 }
+
+/* === HERO DESKTOP TEXT OFFSET === */
+@media (min-width: 1024px) {
+  .hero,
+  [class*="Hero"],
+  section[id*="hero"],
+  header[class*="hero"] {
+    padding-top: 5rem !important; /* ca. 80 px Abstand zum Header */
+  }
+}
