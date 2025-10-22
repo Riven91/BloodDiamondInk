@@ -125,11 +125,11 @@ main {
 @media (min-width: 768px) {
   .hero-section {
     background-image: url("/herofinal.png") !important;
-    background-position: center center !important;
+    background-position: center 60% !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
-    padding-top: 15px;
+    padding-top: 80px !important;
   }
   
   /* prevent old pseudo background layers from showing */
@@ -137,22 +137,5 @@ main {
   .hero-section::after { 
     content: none !important; 
     display: none !important; 
-  }
-}
-
-/* HERO DESKTOP OFFSET */
-@media (min-width:1024px){
-  .hero,[class*="Hero"],section[id*="hero"],header[class*="hero"]{
-    background-position: center 60% !important; /* bei Bedarf 55–70% */
-  }
-}
-
-/* === HERO DESKTOP TEXT OFFSET === */
-@media (min-width: 1024px) {
-  .hero,
-  [class*="Hero"],
-  section[id*="hero"],
-  header[class*="hero"] {
-    padding-top: 5rem !important; /* ca. 80 px Abstand zum Header */
   }
 }
