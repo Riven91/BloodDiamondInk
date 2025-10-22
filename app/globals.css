@@ -126,6 +126,21 @@ main {
     isolation: isolate;
     overflow: hidden;
     z-index: 0;
+    background-color: transparent !important;
+    background-image: url("/Herobackground2_v5.png") !important;
+    background-size: cover !important;
+    background-position: center 45% !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important; /* never fixed */
+  }
+}
+
+@media (min-width: 768px) {
+  body .hero-section {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    z-index: 0;
     background: none !important;
     filter: none !important;
     mix-blend-mode: normal !important;
