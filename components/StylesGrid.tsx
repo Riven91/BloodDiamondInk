@@ -4,22 +4,22 @@ const styles = [
   {
     title: "Realistic",
     description: "Fotorealistische Portraits und detailreiche Motive, gestochen mit höchster Präzision.",
-    image: "/styles/style1.jpg",
+    image: "/Herobackground.png",
   },
   {
     title: "Fineline",
     description: "Feine Linien, subtile Verläufe und elegante Minimal-Designs für klare Statements.",
-    image: "/styles/style2.jpg",
+    image: "/Herobackground.png",
   },
   {
     title: "Cover-Up",
     description: "Wir verwandeln ungeliebte Tattoos in neue Kunstwerke und beraten dich zum optimalen Ablauf.",
-    image: "/styles/style3.jpg",
+    image: "/Herobackground.png",
   },
   {
     title: "Black & Grey",
     description: "Satte Kontraste, weiche Schattierungen und langlebige Ergebnisse ohne Farbverlust.",
-    image: "/styles/style3.jpg",
+    image: "/Herobackground.png",
   }
 ];
 
