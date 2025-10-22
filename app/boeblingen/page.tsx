@@ -119,7 +119,16 @@ export default function BoeblingenPage() {
           <div>
             <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
-              Blood Diamond Tattoo Ink. in Böblingen verbindet moderne Atmosphäre mit ruhigen Private Rooms für konzentriertes Arbeiten an Ihrem individuellen Tattoo-Projekt.
+              Blood Diamond Tattoo Ink. steht für moderne Tattoo-Kunst in der Region Böblingen und Herrenberg. Unser Studio verbindet ästhetisches Design, präzises Handwerk und ruhige Private Rooms, in denen du und dein Motiv im Mittelpunkt stehen.
+            </p>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Wir entwickeln maßgeschneiderte Tattoos, abgestimmt auf deinen Stil und deine Persönlichkeit. Ob Fineline, Realismus oder Black &amp; Grey – jedes Motiv entsteht mit echter Hingabe und höchster Sorgfalt. Keine Eile, kein Massenbetrieb. Qualität, Hygiene und Atmosphäre haben Vorrang.
+            </p>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Kundinnen und Kunden aus Böblingen, Herrenberg, Sindelfingen und der gesamten Umgebung schätzen die diskrete Beratung, die moderne Ausstattung und die Möglichkeit, ihr Tattoo in einer ruhigen, konzentrierten Umgebung zu planen.
+            </p>
+            <p className="mt-4 text-sm text-blooddiamond-text/80">
+              Buche deinen Termin und erlebe die Kombination aus Ruhe, Präzision und Verlässlichkeit, für die Blood Diamond Tattoo Ink. bekannt ist.
             </p>
           </div>
           <div className="grid gap-4 text-sm text-white">
