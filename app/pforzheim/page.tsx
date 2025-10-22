@@ -118,9 +118,29 @@ export default function PforzheimPage() {
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
-            <p className="mt-4 text-sm text-blooddiamond-text/80">
-              Blood Diamond Tattoo Ink. in Pforzheim verbindet moderne Atmosphäre mit ruhigen Private Rooms für konzentriertes Arbeiten an Ihrem individuellen Tattoo-Projekt.
-            </p>
+            <div className="mt-4 text-sm text-blooddiamond-text/80">
+              <section className="space-y-5">
+                <p>
+                  Bei <strong>Blood Diamond Tattoo Ink.</strong> in Pforzheim trifft präzises Handwerk auf künstlerische Leidenschaft.
+                  Unser <strong>Tattoo-Studio in Pforzheim</strong> bietet eine moderne, ruhige Atmosphäre mit privaten Räumen für konzentriertes Arbeiten
+                  an deinem individuellen Tattoo-Projekt. Hier entstehen <strong>Realistic-, Fineline- und Black &amp; Grey-Tattoos</strong> auf höchstem Niveau –
+                  mit Liebe zum Detail und ausschließlich unter Verwendung hochwertiger, zertifizierter Farben.
+                </p>
+
+                <p>
+                  Unsere erfahrenen Tätowierer nehmen sich für jede Beratung die Zeit, die dein Motiv verdient.
+                  Ob du ein kleines Symbol, ein feines Lettering oder ein großflächiges Kunstwerk planst –
+                  bei <strong>Blood Diamond Tattoo Ink.</strong> bekommst du individuelle Betreuung von der ersten Idee bis zur professionellen Nachsorge.
+                </p>
+
+                <p>
+                  Termine werden ausschließlich nach Vereinbarung vergeben, damit wir uns voll und ganz auf dich und dein Tattoo konzentrieren können.
+                  Unser Anspruch ist es, Kunstwerke zu schaffen, die nicht nur unter die Haut gehen, sondern dich langfristig begleiten.
+                  <strong> Tattoo Pforzheim</strong> steht bei uns für Qualität, Erfahrung und Stil –
+                  umgesetzt in einer sauberen, modernen Umgebung, in der du dich rundum wohlfühlen kannst.
+                </p>
+              </section>
+            </div>
           </div>
           <div className="grid gap-4 text-sm text-white">
             <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
