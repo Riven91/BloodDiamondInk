@@ -125,11 +125,10 @@ main {
 @media (min-width: 768px) {
   .hero-section {
     background-image: url("/herofinal.png") !important;
-    background-position: center 60% !important;
+    background-position: center 30% !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
-    padding-top: 80px !important;
   }
   
   /* prevent old pseudo background layers from showing */

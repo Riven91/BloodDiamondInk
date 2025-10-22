@@ -5,7 +5,7 @@ import Link from "next/link";
 export function Hero() {
   return (
     <section id="hero" className="hero-section">
-      <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-16 sm:flex-row sm:items-center sm:gap-10 md:pt-32">
+      <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-16 sm:flex-row sm:items-center sm:gap-10">
         <div className="relative h-20 w-48 sm:h-24 sm:w-60">
           <Image
             src="/brand/logo-diamond-transparent.webp"
