@@ -35,6 +35,23 @@ export default function RootLayout({
       <body
         className={`bg-blooddiamond-background text-blooddiamond-text antialiased ${bebasNeue.variable} ${inter.variable} font-body`}
       >
+        {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+      (function(){
+        try{
+          if('serviceWorker' in navigator){
+            navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister().catch(()=>{}))).catch(()=>{});
+          }
+          if(window.caches && caches.keys){
+            caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).catch(()=>{});
+          }
+        }catch(e){}
+      })();
+    `,
+          }}
+        />
         <div
           className="fixed inset-0 z-[-1] opacity-5"
           style={{
