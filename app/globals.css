@@ -121,6 +121,15 @@ main {
   background-attachment: scroll !important; /* never fixed */
 }
 
+@media (min-width: 768px) {
+  .hero-section {
+    background-image:
+      linear-gradient(180deg, rgba(179, 0, 27, 0.05) 0%, rgba(179, 0, 27, 0.08) 100%),
+      var(--hero-bg-url) !important;
+    background-position: center 45% !important;
+  }
+}
+
 /* prevent old pseudo background layers from showing */
 .hero-section::before,
 .hero-section::after { content: none !important; display: none !important; }
