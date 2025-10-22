@@ -98,7 +98,7 @@ main {
   background-image: none !important;
 }
 
-/* unified hero background (under content), mobile+desktop */
+/* unified hero background (under content) */
 .hero-section {
   position: relative;
   width: 100%;
@@ -108,6 +108,7 @@ main {
   isolation: isolate;
 }
 
+/* Mobile hero background */
 @media (max-width: 767px) {
   .hero-section {
     background-image:
@@ -116,67 +117,32 @@ main {
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
-    background-attachment: scroll !important; /* never fixed */
+    background-attachment: scroll !important;
   }
 }
 
+/* Desktop hero background */
 @media (min-width: 768px) {
-  body .hero-section {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    z-index: 0;
-    background-color: transparent !important;
-    background-image: url("/Herobackground2_v5.png") !important;
-    background-size: cover !important;
-    background-position: center 45% !important;
-    background-repeat: no-repeat !important;
-    background-attachment: scroll !important; /* never fixed */
-  }
-}
-
-@media (min-width: 768px) {
-  body .hero-section {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    z-index: 0;
-    background: none !important;
-    filter: none !important;
-    mix-blend-mode: normal !important;
-  }
-
-  body .hero-section::before,
-  body .hero-section::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  body .hero-section :is([style*="background"], [style*="background-image"]) {
-    background: none !important;
-    background-image: none !important;
-  }
-
-  body .hero-section :is([style*="filter"], [style*="mix-blend-mode"]) {
-    filter: none !important;
-    mix-blend-mode: normal !important;
-  }
-
-  body .hero-section :is([data-hero-overlay], [data-hero-background], .hero-overlay, .hero-background) {
-    display: none !important;
-  }
-}
-/* === HERO DESKTOP FINAL (herofinal.png) === */
-/* Mobile bleibt unberührt (<1024px); kein Einfluss auf <img>, keine Galerieänderungen */
-@media (min-width: 1024px) {
-  /* Breite, nicht-invasive Selektoren für übliche Hero-Container */
-  .hero,
-  [class*="Hero"],
-  section[id*="hero"],
-  header[class*="hero"] {
-    background-image: url("/herofinal.png?v=final") !important;
+  .hero-section {
+    background-image: url("/herofinal.png") !important;
     background-position: center center !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    padding-top: 15px;
+  }
+  
+  /* prevent old pseudo background layers from showing */
+  .hero-section::before,
+  .hero-section::after { 
+    content: none !important; 
+    display: none !important; 
+  }
+}
+
+/* HERO DESKTOP OFFSET */
+@media (min-width:1024px){
+  .hero,[class*="Hero"],section[id*="hero"],header[class*="hero"]{
+    background-position: center 60% !important; /* bei Bedarf 55–70% */
   }
 }
