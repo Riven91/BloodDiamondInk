@@ -28,14 +28,7 @@ export function Hero({
 
   return (
     <section
-      className="relative flex min-h-[100vh] md:min-h-screen items-center justify-center overflow-hidden text-white"
-      style={{
-        backgroundImage: "url('/Schwarz%20Wei%C3%9F%20Dunkel%20Modern%20Tattoo%20Termin%20Instagram%20Story.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "scroll",
-      }}
+      className="hero-section relative flex min-h-[100vh] md:min-h-screen items-center justify-center overflow-hidden text-white"
     >
       {/* Logo-Overlay entfernt - nur Background */}
 

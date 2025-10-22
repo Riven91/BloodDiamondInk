@@ -84,41 +84,26 @@ main {
   }
 }
 
-/* === BEGIN: Mobile Hero Fix (/325.png) === */
-.hero-bg {
+:root { --hero-bg-url: url("/Herobackground.png"); }
+
+/* make sure hero containers don't carry old inline backgrounds */
+#hero, [id^="hero"], .hero, .hero-section { background: none !important; }
+
+/* unified hero background (under content), mobile+desktop */
+.hero-section {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  z-index: 0;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%),
+    var(--hero-bg-url);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed; /* Desktop beibehalten */
+  background-attachment: scroll; /* never fixed */
 }
-@media (max-width: 767px) {
-  .hero-bg {
-    background-attachment: scroll !important; /* Mobile sichtbar */
-    background-position: center top;
-  }
-}
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 767px) {
-    .hero-bg { background-attachment: scroll !important; }
-  }
-}
-/* === END: Mobile Hero Fix (/325.png) === */
-/* === BEGIN: force mobile hero (/325.png) === */
-@media (max-width: 767px) {
-  .force-mobile-hero {
-    background-image: url('/325.png') !important;
-    background-attachment: scroll !important;
-    background-size: cover !important;
-    background-position: center top !important;
-    background-repeat: no-repeat !important;
-  }
-}
-/* iOS-Safari Absicherung */
-@supports (-webkit-touch-callout: none) {
-  @media (max-width: 767px) {
-    .force-mobile-hero {
-      background-attachment: scroll !important;
-    }
-  }
-}
-/* === END: force mobile hero (/325.png) === */
+
+/* prevent old pseudo background layers from showing */
+.hero-section::before,
+.hero-section::after { content: none !important; display: none !important; }
