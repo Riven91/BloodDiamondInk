@@ -27,9 +27,7 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   return (
-    <section
-      className="hero-section relative flex min-h-[100vh] md:min-h-screen items-center justify-center overflow-hidden text-white"
-    >
+    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white">
       {/* Logo-Overlay entfernt - nur Background */}
 
       {/* Content */}

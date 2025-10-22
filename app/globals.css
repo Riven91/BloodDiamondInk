@@ -87,21 +87,29 @@ main {
 :root { --hero-bg-url: url("/Herobackground.png"); }
 
 /* make sure hero containers don't carry old inline backgrounds */
-#hero, [id^="hero"], .hero, .hero-section { background: none !important; }
+#hero,
+[id^="hero"],
+.hero,
+.hero-section {
+  background: none !important;
+  background-image: none !important;
+}
 
 /* unified hero background (under content), mobile+desktop */
 .hero-section {
   position: relative;
-  min-height: 100svh;
+  width: 100%;
+  min-height: 100svh !important;
   overflow: hidden;
   z-index: 0;
+  isolation: isolate;
   background-image:
     linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%),
-    var(--hero-bg-url);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll; /* never fixed */
+    var(--hero-bg-url) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  background-attachment: scroll !important; /* never fixed */
 }
 
 /* prevent old pseudo background layers from showing */
