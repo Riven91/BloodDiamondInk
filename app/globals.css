@@ -89,6 +89,12 @@ main {
   --hero-header-offset: 0px;
 }
 
+@media (min-width: 1024px) {
+  :root {
+    --hero-bg-url: url("/Herobackground2_v4.png?v=9999");
+  }
+}
+
 /* make sure hero containers don't carry old inline backgrounds */
 #hero,
 [id^="hero"],
@@ -115,16 +121,19 @@ main {
   background-attachment: scroll !important; /* never fixed */
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .hero-section {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     z-index: 0;
     background: none !important;
-    background-image: url("/Herobackground.png") !important;
+    background-image:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.12) 100%),
+      linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%),
+      var(--hero-bg-url) !important;
     background-size: cover !important;
-    background-position: center 45% !important;
+    background-position: center center !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
     filter: none !important;
