@@ -194,23 +194,20 @@ export default function BoeblingenPage() {
       <section className="bg-blooddiamond-background py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
-          <p className="mt-3 text-sm text-blooddiamond-text/80">
-            Drei Artists von Blood Diamond Tattoo Ink. begleiten Sie von der Idee bis zur perfekten Umsetzung in Böblingen.
-          </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {[
               {
-                name: "Artist 1",
+                name: "Teammitglied 1",
                 specialty: "Fineline & Illustrationen",
                 image: "/artists/artist1.jpg",
               },
               {
-                name: "Artist 2",
+                name: "Teammitglied 2",
                 specialty: "Realistic & Portraits",
                 image: "/artists/artist2.jpg",
               },
               {
-                name: "Artist 3",
+                name: "Teammitglied 3",
                 specialty: "Cover-Up & Blackwork",
                 image: "/artists/artist3.jpg",
               },
