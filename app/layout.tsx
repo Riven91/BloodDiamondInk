@@ -38,7 +38,7 @@ export default function RootLayout({
         <div
           className="fixed inset-0 z-[-1] opacity-5"
           style={{
-            backgroundImage: "url('/ChatGPT Image 20. Okt. 2025, 21_03_42.png')",
+            backgroundImage: "url('/Herobackground2_v4.png')",
             backgroundSize: '40%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
