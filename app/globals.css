@@ -166,3 +166,17 @@ main {
     display: none !important;
   }
 }
+/* === HERO DESKTOP FINAL (herofinal.png) === */
+/* Mobile bleibt unberührt (<1024px); kein Einfluss auf <img>, keine Galerieänderungen */
+@media (min-width: 1024px) {
+  /* Breite, nicht-invasive Selektoren für übliche Hero-Container */
+  .hero,
+  [class*="Hero"],
+  section[id*="hero"],
+  header[class*="hero"] {
+    background-image: url("/herofinal.png?v=final") !important;
+    background-position: center center !important;
+    background-size: cover !important;
+    background-repeat: no-repeat !important;
+  }
+}
