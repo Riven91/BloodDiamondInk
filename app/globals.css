@@ -91,7 +91,7 @@ main {
 
 @media (min-width: 768px) {
   :root {
-    --hero-bg-url: url("/Herobackground2.jpg");
+    --hero-bg-url: url("/Herobackground2_v4.png");
   }
 }
 
