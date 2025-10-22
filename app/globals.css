@@ -89,12 +89,6 @@ main {
   --hero-header-offset: 0px;
 }
 
-@media (min-width: 768px) {
-  :root {
-    --hero-bg-url: url("/Herobackground2_v4.png");
-  }
-}
-
 /* make sure hero containers don't carry old inline backgrounds */
 #hero,
 [id^="hero"],
@@ -123,13 +117,37 @@ main {
 
 @media (min-width: 768px) {
   .hero-section {
-    background-image:
-      linear-gradient(180deg, rgba(179, 0, 27, 0.05) 0%, rgba(179, 0, 27, 0.08) 100%),
-      var(--hero-bg-url) !important;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    z-index: 0;
+    background: none !important;
+    background-image: url("/Herobackground.png") !important;
+    background-size: cover !important;
     background-position: center 45% !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important;
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  .hero-section::before,
+  .hero-section::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .hero-section :is([style*="background"], [style*="background-image"]) {
+    background: none !important;
+    background-image: none !important;
+  }
+
+  .hero-section :is([style*="filter"], [style*="mix-blend-mode"]) {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+  }
+
+  .hero-section :is([data-hero-overlay], [data-hero-background], .hero-overlay, .hero-background) {
+    display: none !important;
   }
 }
-
-/* prevent old pseudo background layers from showing */
-.hero-section::before,
-.hero-section::after { content: none !important; display: none !important; }
