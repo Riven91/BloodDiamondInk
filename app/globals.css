@@ -84,7 +84,10 @@ main {
   }
 }
 
-:root { --hero-bg-url: url("/Herobackground.png"); }
+:root {
+  --hero-bg-url: url("/Herobackground.png");
+  --hero-header-offset: 0px;
+}
 
 /* make sure hero containers don't carry old inline backgrounds */
 #hero,
