@@ -89,12 +89,6 @@ main {
   --hero-header-offset: 0px;
 }
 
-@media (min-width: 1024px) {
-  :root {
-    --hero-bg-url: url("/Herobackground2_v4.png?v=9999");
-  }
-}
-
 /* make sure hero containers don't carry old inline backgrounds */
 #hero,
 [id^="hero"],
@@ -112,51 +106,48 @@ main {
   overflow: hidden;
   z-index: 0;
   isolation: isolate;
-  background-image:
-    linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%),
-    var(--hero-bg-url) !important;
-  background-size: cover !important;
-  background-position: center center !important;
-  background-repeat: no-repeat !important;
-  background-attachment: scroll !important; /* never fixed */
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 767px) {
   .hero-section {
+    background-image:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%),
+      var(--hero-bg-url) !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: scroll !important; /* never fixed */
+  }
+}
+
+@media (min-width: 768px) {
+  body .hero-section {
     position: relative;
     isolation: isolate;
     overflow: hidden;
     z-index: 0;
     background: none !important;
-    background-image:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.12) 100%),
-      linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, 0.25) 100%),
-      var(--hero-bg-url) !important;
-    background-size: cover !important;
-    background-position: center center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: scroll !important;
     filter: none !important;
     mix-blend-mode: normal !important;
   }
 
-  .hero-section::before,
-  .hero-section::after {
+  body .hero-section::before,
+  body .hero-section::after {
     content: none !important;
     display: none !important;
   }
 
-  .hero-section :is([style*="background"], [style*="background-image"]) {
+  body .hero-section :is([style*="background"], [style*="background-image"]) {
     background: none !important;
     background-image: none !important;
   }
 
-  .hero-section :is([style*="filter"], [style*="mix-blend-mode"]) {
+  body .hero-section :is([style*="filter"], [style*="mix-blend-mode"]) {
     filter: none !important;
     mix-blend-mode: normal !important;
   }
 
-  .hero-section :is([data-hero-overlay], [data-hero-background], .hero-overlay, .hero-background) {
+  body .hero-section :is([data-hero-overlay], [data-hero-background], .hero-overlay, .hero-background) {
     display: none !important;
   }
 }
