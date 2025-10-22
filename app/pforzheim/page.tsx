@@ -121,23 +121,23 @@ export default function PforzheimPage() {
             <div className="mt-4 text-sm text-blooddiamond-text/80">
               <section className="space-y-5">
                 <p>
-                  Bei <strong>Blood Diamond Tattoo Ink.</strong> in Pforzheim trifft präzises Handwerk auf künstlerische Leidenschaft.
-                  Unser <strong>Tattoo-Studio in Pforzheim</strong> bietet eine moderne, ruhige Atmosphäre mit privaten Räumen für konzentriertes Arbeiten
-                  an deinem individuellen Tattoo-Projekt. Hier entstehen <strong>Realistic-, Fineline- und Black &amp; Grey-Tattoos</strong> auf höchstem Niveau –
-                  mit Liebe zum Detail und ausschließlich unter Verwendung hochwertiger, zertifizierter Farben.
+                  Bei <strong>Blood Diamond Tattoo Ink.</strong> in <strong>Pforzheim</strong> verbinden sich präzises Handwerk und
+                  künstlerische Leidenschaft. Unser Tattoo-Studio in <strong>Pforzheim</strong> bietet eine moderne, ruhige
+                  Atmosphäre mit privaten Räumen, in denen wir uns ganz auf dein individuelles Tattoo-Projekt konzentrieren. Hier
+                  entstehen Realistic-, Fineline- und Black-&amp;-Grey-Tattoos auf höchstem Niveau – mit viel Liebe zum Detail und
+                  unter Verwendung ausschließlich hochwertiger, zertifizierter Farben.
                 </p>
-
                 <p>
-                  Unsere erfahrenen Tätowierer nehmen sich für jede Beratung die Zeit, die dein Motiv verdient.
-                  Ob du ein kleines Symbol, ein feines Lettering oder ein großflächiges Kunstwerk planst –
-                  bei <strong>Blood Diamond Tattoo Ink.</strong> bekommst du individuelle Betreuung von der ersten Idee bis zur professionellen Nachsorge.
+                  Unsere erfahrenen Tätowierer in <strong>Pforzheim</strong> nehmen sich für jede Beratung die Zeit, die dein Motiv
+                  verdient. Ob kleines Symbol, feines Lettering oder großflächiges Kunstwerk – bei <strong>Blood Diamond Tattoo
+                  Ink.</strong> erhältst du persönliche Betreuung von der ersten Idee bis zur professionellen Nachsorge.
                 </p>
-
                 <p>
-                  Termine werden ausschließlich nach Vereinbarung vergeben, damit wir uns voll und ganz auf dich und dein Tattoo konzentrieren können.
-                  Unser Anspruch ist es, Kunstwerke zu schaffen, die nicht nur unter die Haut gehen, sondern dich langfristig begleiten.
-                  <strong> Tattoo Pforzheim</strong> steht bei uns für Qualität, Erfahrung und Stil –
-                  umgesetzt in einer sauberen, modernen Umgebung, in der du dich rundum wohlfühlen kannst.
+                  Termine vergeben wir in <strong>Pforzheim</strong> ausschließlich nach Vereinbarung, damit wir uns voll und ganz
+                  auf dich und dein Tattoo konzentrieren können. Unser Ziel ist es, Kunstwerke zu schaffen, die dich langfristig
+                  begleiten und deinen Charakter widerspiegeln. <strong>Blood Diamond Tattoo Ink. Pforzheim</strong> steht für
+                  Qualität, Erfahrung und Stil – umgesetzt in einer sauberen, modernen Umgebung, in der du dich vom ersten Moment
+                  an wohlfühlen kannst.
                 </p>
               </section>
             </div>
@@ -163,30 +163,6 @@ export default function PforzheimPage() {
               <p className="mt-2">Kasper Nowicki</p>
             </div>
           </div>
-          <section className="mt-8 text-gray-800 leading-relaxed">
-            <h2 className="text-2xl font-bold text-green-600 mb-4">Über Blood Diamond Tattoo Ink. Pforzheim</h2>
-            <p>
-              Bei <strong>Blood Diamond Tattoo Ink.</strong> in <strong>Pforzheim</strong> verbinden sich präzises Handwerk und
-              künstlerische Leidenschaft. Unser Tattoo-Studio in <strong>Pforzheim</strong> bietet eine moderne, ruhige
-              Atmosphäre mit privaten Räumen, in denen wir uns ganz auf dein individuelles Tattoo-Projekt konzentrieren. Hier
-              entstehen Realistic-, Fineline- und Black-&amp;-Grey-Tattoos auf höchstem Niveau – mit viel Liebe zum Detail und
-              unter Verwendung ausschließlich hochwertiger, zertifizierter Farben.
-            </p>
-
-            <p className="mt-4">
-              Unsere erfahrenen Tätowierer in <strong>Pforzheim</strong> nehmen sich für jede Beratung die Zeit, die dein Motiv
-              verdient. Ob kleines Symbol, feines Lettering oder großflächiges Kunstwerk – bei <strong>Blood Diamond Tattoo
-              Ink.</strong> erhältst du persönliche Betreuung von der ersten Idee bis zur professionellen Nachsorge.
-            </p>
-
-            <p className="mt-4">
-              Termine vergeben wir in <strong>Pforzheim</strong> ausschließlich nach Vereinbarung, damit wir uns voll und ganz
-              auf dich und dein Tattoo konzentrieren können. Unser Ziel ist es, Kunstwerke zu schaffen, die dich langfristig
-              begleiten und deinen Charakter widerspiegeln. <strong>Blood Diamond Tattoo Ink. Pforzheim</strong> steht für
-              Qualität, Erfahrung und Stil – umgesetzt in einer sauberen, modernen Umgebung, in der du dich vom ersten Moment
-              an wohlfühlen kannst.
-            </p>
-          </section>
         </div>
       </section>
 

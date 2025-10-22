@@ -13,7 +13,7 @@ interface HeroProps {
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description =
-    "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-Grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
+    "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
   ctaLabel,
   ctaHref,
   secondaryCtaLabel,
@@ -27,7 +27,7 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   return (
-    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white bg-[url('/herobackground3.webp')] bg-cover bg-center md:bg-none">
+    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white bg-cover bg-center md:bg-none bg-[url('/herobackground3.webp')]">
       {/* Logo-Overlay entfernt - nur Background */}
 
       {/* Content */}
