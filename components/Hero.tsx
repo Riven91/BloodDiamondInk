@@ -32,10 +32,9 @@ export function Hero({
         <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
         <img src="/herobackground3.webp?v=pfz" alt="" className="h-full w-full object-cover" />
       </picture>
-      {/* Logo-Overlay entfernt - nur Background */}
 
       {/* Content */}
-      <div className="relative z-10 mx-auto max-w-3xl px-6 py-24 text-center sm:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-end px-6 pb-12 pt-0 text-center sm:min-h-0 sm:justify-center sm:py-32">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-widest text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.
@@ -43,7 +42,7 @@ export function Hero({
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
           <p className="mx-auto max-w-2xl text-white/90">{description}</p>
         </div>
-        
+
         {ctaLabel && ctaHref ? (
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link href={ctaHref} className="btn-primary">
