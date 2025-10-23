@@ -25,6 +25,19 @@ export function Hero({
   const secondaryCtaClassName = isWhatsAppCta
     ? "inline-flex items-center gap-2 rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
+    
+  const desktopStyle = {
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    padding: '0.5rem 0.75rem',
+    borderRadius: '6px',
+    color: '#FFFFFF'
+  };
+
+  const kickerDesktopStyle = {
+    backgroundColor: 'rgba(0,0,0,0.55)',
+    padding: '0.5rem 0.75rem',
+    borderRadius: '6px',
+  };
 
   return (
     <section className="hero-section relative flex items-center justify-center overflow-hidden text-white md:bg-none">
@@ -34,19 +47,26 @@ export function Hero({
       </picture>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center sm:min-h-0 sm:justify-center sm:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
         <div className="space-y-3">
-          <p className="text-sm uppercase tracking-widest text-blooddiamond-accent">
+          {/* Kicker */}
+          <p className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.
           </p>
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
+          <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent" style={kickerDesktopStyle}>
+            Blood Diamond Tattoo Ink.
+          </p>
           
-          {/* Desktop description (default) */}
-          <p className="hidden sm:block mx-auto max-w-2xl sm:text-white/90">{description}</p>
+          {/* Title */}
+          <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
+          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
+
+          {/* Desktop description (styled) */}
+          <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
           
-          {/* Mobile description with background */}
+          {/* Mobile description (pre-existing style) */}
           <p
-            className="block sm:hidden mx-auto max-w-2xl"
+            className="block md:hidden mx-auto max-w-2xl"
             style={{
               color: '#FFFFFF',
               backgroundColor: 'rgba(0,0,0,0.7)',
@@ -103,7 +123,7 @@ export function Hero({
                     className="h-5 w-5 fill-current"
                     viewBox="0 0 32 32"
                   >
-                    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.554.815 4.919 2.207 6.864L4.52 27.48a1 1 0 0 0 1.207 1.29l5.595-1.676A11.89 11.89 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10a9.9 9.9 0 0 1-3.78-.75.999.999 0 0 0-.692-.048l-4.41 1.323 1.335-4.009a1 1 0 0 0-.137-.88A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10Zm-4.18 5a1 1 0 0 0-.81.396c-.476.605-1.042 1.53-1.12 2.4-.18 2.074 1.165 4.395 3.784 6.84 2.64 2.465 5.106 3.61 7.287 3.37.856-.086 1.717-.582 2.276-1.02a1 1 0 0 0 .142-1.44l-1.86-2.02a1 1 0 0 0-1.178-.233l-2.003.9a1 1 0 0 1-1.083-.178l-2.42-2.24a1 1 0 0 1-.138-1.27l.966-1.448a1 1 0 0 0-.01-1.125l-1.34-2.02A1 1 0 0 0 11.82 10Z" />
+                    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.554.815 4.919 2.207 6.864L4.52 27.48a1 1 0 0 0 1.207 1.29l5.595-1.676A11.89 11.89 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10a9.9 9.9 0 0 1-3.78-.75.999.999 0 0 0-.692-.048l-4.41 1.323 1.335-4.009a1 1 0 0 0-.137-.88A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10Zm-4.18 5a1 1 0 0 0-.81.396c-.476.605-1.042 1.53-1.12 2.4-.18 2.074 1.165 4.395 3.784 6.84 2.64 2.465 5.106 3.61 7.287 3.37.856-.086 1.717-.582 2.276-1.02a1 1 0 0 0 .142-1.44l-1.86-2.02a1 1 0 0 0-1.178-.233l-2.003.9a1 1 0 0 1-1.083-.178l-2.24-2.24a1 1 0 0 1-.138-1.27l.966-1.448a1 1 0 0 0-.01-1.125l-1.34-2.02A1 1 0 0 0 11.82 10Z" />
                   </svg>
                   {secondaryCtaLabel}
                 </>
