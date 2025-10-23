@@ -152,44 +152,49 @@ main {
 @media (max-width: 767px) {
   :root {
     --hero-bg-url: url("/herobackground3.webp");
-    /* Feintuning-Variablen */
-    --hero-bg-size: 65% auto;
-    --hero-min-height: 52vh;
-    --hero-overlay: rgba(0, 0, 0, 0.72);
-    --hero-overlay-blur: 1.2px;
+    --hero-overlay: rgba(0, 0, 0, 0.88);
     --hero-title-color: #ffffff;
-    --hero-title-shadow: 0 2px 10px rgba(0, 0, 0, 0.55);
+    --hero-title-shadow: 0 2px 12px rgba(0,0,0,0.6);
   }
 
+  /* Hero-Container: komplettes quadratisches Motiv sichtbar */
   .hero {
-    background-image: var(--hero-bg-url);
-    background-repeat: no-repeat;
-    background-position: center 12%;
-    background-size: var(--hero-bg-size);
-    min-height: var(--hero-min-height);
+    background-image: var(--hero-bg-url) !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    background-size: contain !important;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    min-height: 0 !important;
     position: relative;
   }
 
+  /* starker Transparenz-Schleier */
   .hero::before {
     content: "";
     position: absolute;
     inset: 0;
     background: var(--hero-overlay);
-    backdrop-filter: blur(var(--hero-overlay-blur)) brightness(0.92);
     z-index: 1;
   }
 
+  /* Inhalt über Overlay */
   .hero > * { position: relative; z-index: 2; }
 
   /* Überschrift im Hero */
   .hero h1,
   .hero .hero-title {
-    color: var(--hero-title-color);
+    color: var(--hero-title-color) !important;
     text-shadow: var(--hero-title-shadow);
     font-weight: 700;
     letter-spacing: 0.4px;
     line-height: 1.1;
-    font-size: clamp(1.5rem, 4.8vw, 1.95rem);
-    margin-top: 0.25rem;
+    font-size: clamp(1.45rem, 4.6vw, 1.9rem);
+    margin-top: 0.2rem;
   }
+}
+
+/* Optional: sehr kleine Geräte (<= 380px) – minimal mehr Platz oben */
+@media (max-width: 380px) {
+  .hero { background-position: center 4% !important; }
 }
