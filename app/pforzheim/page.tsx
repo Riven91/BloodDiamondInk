@@ -117,7 +117,7 @@ export default function PforzheimPage() {
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
-            <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos</h2>
+            <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos Pforzheim / Ötisheim</h2>
             <div className="mt-4 text-sm text-blooddiamond-text/80">
               <section className="space-y-5">
                 <p>
