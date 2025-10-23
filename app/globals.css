@@ -150,17 +150,22 @@ main {
 }
 
 @media (max-width: 767px) {
+  /* Feintuning als Variablen, damit du schnell nachregeln kannst */
   :root {
     --hero-bg-url: url("/herobackground3.webp");
+    --hero-overlay: rgba(0, 0, 0, 0.48);
+    --hero-title-color: #ffffff;
+    --hero-title-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
+    --hero-bg-size: 80% auto;
+    --hero-min-height: 55vh;
   }
-  
+
   .hero {
     background-image: var(--hero-bg-url);
     background-repeat: no-repeat;
     background-position: center top;
-    background-size: contain;
-    background-attachment: scroll;
-    min-height: 60vh;
+    background-size: var(--hero-bg-size);
+    min-height: var(--hero-min-height);
     position: relative;
   }
 
@@ -168,7 +173,7 @@ main {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0, 0, 0, 0.35);
+    background: var(--hero-overlay);
     backdrop-filter: brightness(0.9);
     z-index: 1;
   }
@@ -178,14 +183,14 @@ main {
     z-index: 2;
   }
 
+  /* Überschrift im Hero */
   .hero h1,
   .hero .hero-title {
-    font-family: "Montserrat", "Helvetica Neue", sans-serif;
+    color: var(--hero-title-color);
+    text-shadow: var(--hero-title-shadow);
     font-weight: 700;
-    font-size: clamp(1.6rem, 5vw, 2rem);
     letter-spacing: 0.5px;
-    text-transform: uppercase;
-    color: #ffffff;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+    line-height: 1.1;
+    font-size: clamp(1.6rem, 5vw, 2rem);
   }
 }
