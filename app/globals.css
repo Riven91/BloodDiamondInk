@@ -152,10 +152,12 @@ main {
 /* NUR MOBILE */
 @media (max-width: 767px) {
   :root {
-    --hero-bg-url: url("/herobackground3.webp"); /* bleibt unverändert */
-    --hero-overlay: rgba(0,0,0,0.88);            /* sehr stark für Kontrast */
-    --hero-title-color: #fff;
-    --hero-title-shadow: 0 2px 12px rgba(0,0,0,0.6);
+    --hero-bg-url: url("/herobackground3.webp");
+    --hero-overlay: rgba(0,0,0,0.88);
+    --hero-title-color: #0e0e10;
+    --hero-title-stroke: 0.35px rgba(0,0,0,0.25);
+    --hero-title-shadow: none;
+    --hero-subtitle-color: #1a2f28;
   }
 
   /* 1) Quadratischer Viewport -> komplette Grafik sichtbar (ohne Verzerrung) */
@@ -163,10 +165,10 @@ main {
     background-image: var(--hero-bg-url) !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
-    background-size: contain !important;   /* zeigt das GANZE Bild */
-    aspect-ratio: 1 / 1;                   /* Container wird quadratisch */
+    background-size: contain !important;
+    aspect-ratio: 1 / 1;
     height: auto;
-    min-height: 0 !important;              /* frühere vh-Werte neutralisieren */
+    min-height: 0 !important;
     position: relative;
     overflow: hidden;
   }
@@ -185,12 +187,20 @@ main {
 
   .hero h1, .hero .hero-title {
     color: var(--hero-title-color) !important;
+    -webkit-text-stroke: var(--hero-title-stroke);
     text-shadow: var(--hero-title-shadow);
     font-weight: 700;
     letter-spacing: 0.3px;
     line-height: 1.1;
     font-size: clamp(1.45rem, 4.6vw, 1.9rem);
     margin: 0.2rem 0 0;
+  }
+
+  .hero .hero-subtitle,
+  .hero .hero-kicker {
+    color: var(--hero-subtitle-color) !important;
+    font-weight: 600;
+    letter-spacing: 0.2px;
   }
 
   /* 4) Optional: wenn oben UI/Logo stört, Inhalt minimal nach unten rücken */
