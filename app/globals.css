@@ -124,13 +124,6 @@ main {
     content: none !important;
     display: none !important;
   }
-
-  .hero h1,
-  .hero .hero-title,
-  .hero .hero-subtitle,
-  .hero p {
-    color: #8FFF9A !important;
-  }
 }
 
 /* Desktop hero background */

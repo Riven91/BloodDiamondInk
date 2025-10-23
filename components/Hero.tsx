@@ -40,7 +40,23 @@ export function Hero({
             Blood Diamond Tattoo Ink.
           </p>
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">{title}</h1>
-          <p className="mx-auto max-w-2xl text-white/90">{description}</p>
+          
+          {/* Desktop description (default) */}
+          <p className="hidden sm:block mx-auto max-w-2xl sm:text-white/90">{description}</p>
+          
+          {/* Mobile description with background */}
+          <p
+            className="block sm:hidden mx-auto max-w-2xl"
+            style={{
+              color: '#FFFFFF',
+              backgroundColor: 'rgba(0,0,0,0.7)',
+              padding: '0.35rem 0.5rem',
+              borderRadius: '4px',
+              textShadow: '0 1px 3px rgba(0,0,0,0.6)'
+            }}
+          >
+            {description}
+          </p>
         </div>
 
         {ctaLabel && ctaHref ? (
