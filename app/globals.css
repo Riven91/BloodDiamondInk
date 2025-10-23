@@ -28,10 +28,6 @@ main {
 }
 
 @layer components {
-  .bg-hero-mobile {
-    background-image: url('/herobackground3.webp') !important;
-  }
-
   .btn-primary {
     @apply inline-flex w-fit items-center justify-center rounded-md bg-brand px-6 py-3 text-sm font-semibold uppercase tracking-widest text-blooddiamond-text transition-colors duration-200 hover:bg-brand-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background disabled:cursor-not-allowed disabled:bg-blooddiamond-muted disabled:text-blooddiamond-text/40;
   }
@@ -89,7 +85,6 @@ main {
 }
 
 :root {
-  --hero-bg-url: url("/Herobackground.png");
   --hero-header-offset: 0px;
 }
 
@@ -117,7 +112,7 @@ main {
   .hero-section {
     background-image:
       linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.35) 100%),
-      var(--hero-bg-url) !important;
+      url('/herobackground3.webp') !important;
     background-size: cover !important;
     background-position: center center !important;
     background-repeat: no-repeat !important;
