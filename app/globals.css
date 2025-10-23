@@ -134,11 +134,22 @@ main {
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
   }
-  
+
   /* prevent old pseudo background layers from showing */
   .hero-section::before,
-  .hero-section::after { 
-    content: none !important; 
-    display: none !important; 
+  .hero-section::after {
+    content: none !important;
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px){
+  header.hero, section.hero, .hero, .mobile-hero,
+  header.hero::before, header.hero::after,
+  section.hero::before, section.hero::after,
+  .hero::before, .hero::after,
+  .mobile-hero::before, .mobile-hero::after{
+    background: none !important;
+    background-image: none !important;
   }
 }
