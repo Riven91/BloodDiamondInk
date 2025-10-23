@@ -34,7 +34,7 @@ export function Hero({
       </picture>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-end px-6 pb-12 pt-0 text-center sm:min-h-0 sm:justify-center sm:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center sm:min-h-0 sm:justify-center sm:py-32">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-widest text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.
