@@ -43,7 +43,13 @@ export function Hero({
     <section className="hero-section relative flex items-center justify-center overflow-hidden text-white md:bg-none">
       <picture className="absolute inset-0 md:hidden pointer-events-none" aria-hidden="true">
         <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
-        <img src="/herobackground3.webp?v=pfz" alt="" className="h-full w-full object-cover" />
+        <img
+          src="/herobackground3.webp?v=pfz"
+          alt=""
+          className="h-full w-full object-cover"
+          decoding="async"
+          loading="eager"
+        />
       </picture>
 
       {/* Mobile: bottom-right overlay logo */}
@@ -56,7 +62,7 @@ export function Hero({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
         <div className="space-y-3">
           {/* Kicker */}
           <p className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent">

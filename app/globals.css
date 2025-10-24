@@ -7,7 +7,7 @@
 }
 
 body {
-  min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
 }
@@ -110,11 +110,13 @@ main {
 /* Mobile hero background */
 @media (max-width: 767px) {
   .hero-section {
-    background-image: url("/herobackground3.webp") !important;
-    background-color: rgba(0, 0, 0, 0.62);
-    background-blend-mode: multiply;
-    background-size: cover !important;
-    background-position: center center !important;
+    /* Mobile: kein CSS-Background – wir rendern über <picture> im TSX */
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    background-blend-mode: normal !important;
+    background-size: auto !important;
+    background-position: initial !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
   }
