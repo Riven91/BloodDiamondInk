@@ -1,6 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -17,7 +18,15 @@ export default function Header() {
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           <Link href="/" onClick={closeMenu} className="shrink-0 inline-flex items-center gap-2">
-            <img src="/logo-blooddiamond.svg" alt="Blood Diamond Ink" className="h-8 w-auto" draggable={false} />
+            <Image
+              src="/logo-blooddiamond.svg"
+              alt="Blood Diamond Ink"
+              width={160}
+              height={48}
+              priority
+              draggable={false}
+              className="h-8 w-auto"
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-6">

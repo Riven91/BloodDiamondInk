@@ -131,9 +131,10 @@ main {
 /* Desktop hero background */
 @media (min-width: 768px) {
   .hero-section {
-    background-image: url("/herofinal.png") !important;
-    background-position: center 30% !important;
-    background-size: cover !important;
+    background: none !important;
+    background-image: none !important;
+    background-color: transparent !important;
+    background-size: auto !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
   }
