@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { ReactNode } from "react";
 import Link from "next/link";
 import HeroGoogleBadges from "./HeroGoogleBadges";
@@ -43,29 +44,34 @@ export function Hero({
   };
 
   return (
-    <section className="hero-section relative min-h-[60svh] md:min-h-[70vh] pt-16 md:pt-0 pb-[calc(env(safe-area-inset-bottom)+5rem)] md:pb-0 flex items-center justify-center overflow-visible text-white md:bg-none">
-      <picture className="absolute inset-0 md:hidden pointer-events-none" aria-hidden="true">
-        <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
-        <img
-          src="/herobackground3.webp?v=pfz"
-          alt=""
-          className="h-full w-full object-contain md:object-cover"
-          decoding="async"
-          loading="eager"
-        />
-      </picture>
+    <section className="hero-section relative min-h-[60svh] md:min-h-[70vh] pt-16 md:pt-0 pb-[calc(env(safe-area-inset-bottom)+5rem)] md:pb-0 flex items-center justify-center overflow-visible text-white">
+      <div className="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+        <picture>
+          <source media="(min-width: 768px)" srcSet="/herobackground3.webp" type="image/webp" />
+          <source media="(min-width: 768px)" srcSet="/herofinal.png" type="image/png" />
+          <source media="(max-width: 767px)" srcSet="/herobackground3.webp" type="image/webp" />
+          <source media="(max-width: 767px)" srcSet="/herofinal.png" type="image/png" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/herofinal.png"
+            alt=""
+            className="h-full w-full object-cover"
+            decoding="async"
+            loading="eager"
+          />
+        </picture>
+      </div>
 
-<div className="absolute md:hidden bottom-6 right-6 pointer-events-none z-0">
-  <img
-    src="/bdi-logo-transparent-600.webp"
-    alt="Blood Diamond Tattoo Ink Logo"
-    className="
-      opacity-100 w-32 sm:w-36
-      [filter:drop-shadow(0_0_4px_rgba(255,255,255,0.55))_drop-shadow(0_0_12px_rgba(16,185,129,0.55))]
-      brightness-110
-    "
-  />
-</div>
+      <div className="absolute md:hidden bottom-6 right-6 pointer-events-none z-0">
+        <Image
+          src="/bdi-logo-transparent-600.webp"
+          alt="Blood Diamond Tattoo Ink Logo"
+          width={192}
+          height={192}
+          priority
+          className="w-32 sm:w-36 opacity-100 [filter:drop-shadow(0_0_4px_rgba(255,255,255,0.55))_drop-shadow(0_0_12px_rgba(16,185,129,0.55))] brightness-110"
+        />
+      </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">

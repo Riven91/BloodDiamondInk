@@ -5,10 +5,33 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
+const ogImage = "/og/og-pforzheim.jpg";
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://blooddiamondink.de"),
   title: "Blood Diamond Ink",
   description:
-    "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Pforzheim, Heilbronn und Böblingen."
+    "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Pforzheim, Heilbronn und Böblingen.",
+  openGraph: {
+    title: "Blood Diamond Ink",
+    description:
+      "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Pforzheim, Heilbronn und Böblingen.",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Blood Diamond Tattoo Ink – Studios in Baden-Württemberg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blood Diamond Ink",
+    description:
+      "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Pforzheim, Heilbronn und Böblingen.",
+    images: [ogImage],
+  },
 };
 
 export default function RootLayout({
@@ -20,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
-        {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
+        {/* TODO: Entfernen, sobald alte Service Worker im Live-Betrieb deregistriert sind */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -40,11 +63,11 @@ export default function RootLayout({
         <div
           className="fixed inset-0 z-[-1] opacity-5"
           style={{
-            backgroundImage: "url('/Herobackground2_v5.png')",
-            backgroundSize: '40%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
+            backgroundImage: "url('/herobackground3.webp')",
+            backgroundSize: "40%",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
           }}
         />
         <Header />
