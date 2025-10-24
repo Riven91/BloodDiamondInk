@@ -2,14 +2,17 @@ import Image from "next/image";
 
 const styles = [
   {
-    title: "Realistic",
+    title: "Realistik",
     description: "Fotorealistische Portraits und detailreiche Motive, gestochen mit höchster Präzision.",
-    image: "/Herobackground.png",
+    image: "/realistic1.jpg",
+    alt: "Realistisches Tattoo-Beispiel",
+    priority: true,
   },
   {
     title: "Fineline",
     description: "Feine Linien, subtile Verläufe und elegante Minimal-Designs für klare Statements.",
-    image: "/Herobackground.png",
+    image: "/fineline1.jpg",
+    alt: "Fineline Tattoo-Beispiel",
   },
   {
     title: "Cover-Up",
@@ -19,13 +22,17 @@ const styles = [
   {
     title: "Black & Grey",
     description: "Satte Kontraste, weiche Schattierungen und langlebige Ergebnisse ohne Farbverlust.",
-    image: "/Herobackground.png",
+    image: "/blackgrey1.jpg",
+    alt: "Black & Grey Tattoo-Beispiel",
   }
 ];
 
 export function StylesGrid() {
   return (
-    <section className="mx-auto max-w-6xl px-6 py-16">
+    <section
+      className="mx-auto max-w-6xl px-6 pb-16"
+      style={{ paddingTop: "calc(var(--hero-header-offset) + 2rem)" }}
+    >
       <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2 className="font-display text-4xl uppercase text-blooddiamond-accent">Unsere Signature-Styles</h2>
@@ -40,13 +47,14 @@ export function StylesGrid() {
             key={style.title}
             className="overflow-hidden rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/20"
           >
-            <div className="relative h-40 w-full">
+            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl">
               <Image
                 src={style.image}
-                alt={`${style.title} Tattoo Beispiel`}
+                alt={style.alt ?? `${style.title} Tattoo Beispiel`}
                 fill
-                className="object-cover object-center opacity-80"
-                sizes="(min-width: 768px) 50vw, 100vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                className="object-cover object-center"
+                priority={style.priority}
               />
             </div>
             <div className="p-6">
