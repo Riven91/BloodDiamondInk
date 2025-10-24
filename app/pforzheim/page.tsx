@@ -112,6 +112,7 @@ export default function PforzheimPage() {
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/4915123426609"
+        city="pforzheim"
       />
 
       <section className="bg-blooddiamond-muted/30 py-16">

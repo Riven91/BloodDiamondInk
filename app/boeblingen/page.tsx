@@ -112,6 +112,7 @@ export default function BoeblingenPage() {
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/491624204789"
+        city="boeblingen"
       />
 
       <section className="bg-blooddiamond-muted/30 py-16">

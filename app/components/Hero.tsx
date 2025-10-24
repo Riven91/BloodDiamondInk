@@ -1,12 +1,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import HeroGoogleBadges from "@/components/HeroGoogleBadges";
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="hero-section bg-hero-mobile bg-cover bg-center md:bg-none"
+      className="hero-section relative min-h-[60svh] md:min-h-[70vh] pt-16 md:pt-0 pb-[calc(env(safe-area-inset-bottom)+5rem)] md:pb-0 overflow-visible bg-hero-mobile bg-contain md:bg-cover bg-center md:bg-none"
     >
       <div className="mx-auto flex max-w-6xl flex-col items-start gap-6 px-4 py-16 sm:flex-row sm:items-center sm:gap-10">
         <div className="relative h-20 w-48 sm:h-24 sm:w-60">
@@ -38,6 +39,7 @@ export function Hero() {
           </div>
         </div>
       </div>
+      <HeroGoogleBadges city="home" />
     </section>
   );
 }

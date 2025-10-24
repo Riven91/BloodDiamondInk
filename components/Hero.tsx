@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import HeroGoogleBadges from "./HeroGoogleBadges";
 
 interface HeroProps {
   title?: ReactNode;
@@ -8,6 +9,7 @@ interface HeroProps {
   ctaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  city?: "home" | "pforzheim" | "heilbronn" | "boeblingen";
 }
 
 export function Hero({
@@ -18,6 +20,7 @@ export function Hero({
   ctaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
+  city = "home",
 }: HeroProps) {
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
@@ -40,13 +43,13 @@ export function Hero({
   };
 
   return (
-    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white md:bg-none">
+    <section className="hero-section relative min-h-[60svh] md:min-h-[70vh] pt-16 md:pt-0 pb-[calc(env(safe-area-inset-bottom)+5rem)] md:pb-0 flex items-center justify-center overflow-visible text-white md:bg-none">
       <picture className="absolute inset-0 md:hidden pointer-events-none" aria-hidden="true">
         <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
         <img
           src="/herobackground3.webp?v=pfz"
           alt=""
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain md:object-cover"
           decoding="async"
           loading="eager"
         />
@@ -66,35 +69,39 @@ export function Hero({
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
-        <div className="space-y-3">
-          {/* Kicker */}
-          <p className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent">
-            Blood Diamond Tattoo Ink.
-          </p>
-          <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent" style={kickerDesktopStyle}>
-            Blood Diamond Tattoo Ink.
-          </p>
-          
-          {/* Title */}
-          <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
-          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
+        <div className="relative flex flex-col items-center md:items-start">
+          <div className="relative text-center md:text-left md:absolute md:inset-x-0 md:top-4">
+            {/* Kicker */}
+            <p className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent">
+              Blood Diamond Tattoo Ink.
+            </p>
+            <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent" style={kickerDesktopStyle}>
+              Blood Diamond Tattoo Ink.
+            </p>
 
-          {/* Desktop description (styled) */}
-          <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
-          
-          {/* Mobile description (pre-existing style) */}
-          <p
-            className="block md:hidden mx-auto max-w-2xl"
-            style={{
-              color: '#FFFFFF',
-              backgroundColor: 'rgba(0,0,0,0.7)',
-              padding: '0.35rem 0.5rem',
-              borderRadius: '4px',
-              textShadow: '0 1px 3px rgba(0,0,0,0.6)'
-            }}
-          >
-            {description}
-          </p>
+            {/* Title */}
+            <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
+            <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
+          </div>
+
+          <div className="absolute left-1/2 -translate-x-1/2 top-[48%] px-4 md:static md:translate-x-0 md:top-auto md:px-0">
+            {/* Desktop description (styled) */}
+            <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
+
+            {/* Mobile description (pre-existing style) */}
+            <p
+              className="block md:hidden mx-auto max-w-2xl"
+              style={{
+                color: '#FFFFFF',
+                backgroundColor: 'rgba(0,0,0,0.7)',
+                padding: '0.35rem 0.5rem',
+                borderRadius: '4px',
+                textShadow: '0 1px 3px rgba(0,0,0,0.6)'
+              }}
+            >
+              {description}
+            </p>
+          </div>
         </div>
 
         {ctaLabel && ctaHref ? (
@@ -152,6 +159,7 @@ export function Hero({
           </div>
         ) : null}
       </div>
+      <HeroGoogleBadges city={city} />
     </section>
   );
 }
