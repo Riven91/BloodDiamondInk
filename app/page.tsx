@@ -44,7 +44,7 @@ const faqItems = [
 export default function HomePage() {
   return (
     <>
-      <Hero />
+      <Hero city="home" />
       <LocationsTeaser />
       <StylesGrid />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">

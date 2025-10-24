@@ -112,6 +112,7 @@ export default function HeilbronnPage() {
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/4917630573128"
+        city="heilbronn"
       />
 
       <section className="bg-blooddiamond-muted/30 py-16">
