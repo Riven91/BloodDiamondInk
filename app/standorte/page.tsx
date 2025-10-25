@@ -86,7 +86,7 @@ export default function StandortePage() {
           alt="Blood Diamond Tattoo Ink. Logo"
           width={200}
           height={200}
-          className="opacity-30"
+          className="opacity-30 brightness-110 [filter:drop-shadow(0_0_10px_rgba(16,185,129,0.75))_drop-shadow(0_0_16px_rgba(16,185,129,0.45))]"
         />
       </div>
     </main>
