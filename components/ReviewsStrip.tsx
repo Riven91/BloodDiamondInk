@@ -5,7 +5,8 @@ type Variant = "home" | "pforzheim" | "heilbronn" | "boeblingen";
 export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }) {
   const itemsHome = [
     {
-      city: "Pforzheim",
+      src: "/bloodd1.png",
+      alt: "Google-Bewertungen Pforzheim",
       mobileClass: "top-[66%] left-[2%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
@@ -15,7 +16,8 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
-      city: "Böblingen",
+      src: "/bloodd%203.png",
+      alt: "Google-Bewertungen Böblingen",
       mobileClass: "top-[66%] right-[2%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
@@ -67,8 +69,15 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
   return (
     <div className="mx-auto w-full max-w-3xl px-6 pt-4">
       <div className="grid grid-cols-1 items-center justify-items-center overflow-hidden min-h-[5rem] md:min-h-[6rem]">
-        <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-6 py-4 shadow-lg shadow-black/30">
-          <GoogleRating city={cityLabel[variant]} />
+        <div className="relative h-10 md:h-12">
+          <Image
+            src={it.src}
+            alt={it.alt}
+            fill
+            sizes="200px"
+            className="object-contain transform origin-center scale-[2] md:scale-[2]"
+            priority={false}
+          />
         </div>
       </div>
     </div>
