@@ -2,6 +2,7 @@ import { Hero } from "@/components/Hero";
 import { StylesGrid } from "@/components/StylesGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { Gallery } from "@/components/Gallery";
+import ReviewsStrip from "@/components/ReviewsStrip";
 import { Metadata } from "next";
 import { LocationsTeaser } from "./components/LocationsTeaser";
 
@@ -45,6 +46,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <ReviewsStrip variant="home" />
       <LocationsTeaser />
       <StylesGrid />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
