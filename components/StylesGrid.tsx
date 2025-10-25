@@ -20,6 +20,14 @@ const styles = [
     imageSrc: "/blackgrey1.jpeg",
     alt: "Black & Grey Tattoo – Beispiel",
   },
+  {
+    caption: "Cover-Up",
+    title: "Cover-Up",
+    description:
+      "Präzise Überarbeitungen lassen alte Motive verschwinden und schaffen Raum für ein neues, stimmiges Design.",
+    imageSrc: null,
+    alt: "",
+  },
 ];
 
 export function StylesGrid() {
@@ -39,19 +47,25 @@ export function StylesGrid() {
             key={style.title}
             className="overflow-hidden rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/20"
           >
-            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl">
-              <img
-                src={style.imageSrc}
-                alt={style.alt}
-                className="absolute inset-0 h-full w-full object-cover"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
+            {style.imageSrc ? (
+              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl">
+                <img
+                  src={style.imageSrc}
+                  alt={style.alt}
+                  className="absolute inset-0 h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+            ) : (
+              <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100" />
+            )}
             <p className="mt-2 text-center text-sm md:text-base leading-snug">{style.caption}</p>
             <div className="p-6 pt-4">
               <h3 className="font-display text-2xl uppercase text-blooddiamond-accent">{style.title}</h3>
-              <p className="mt-2 text-sm text-white/80">{style.description}</p>
+              {style.description ? (
+                <p className="mt-2 text-sm text-white/80">{style.description}</p>
+              ) : null}
             </div>
           </article>
         ))}

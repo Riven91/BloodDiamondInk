@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
+import ReviewsStrip from "@/components/ReviewsStrip";
 
 interface HeroProps {
   title?: ReactNode;
@@ -8,6 +9,7 @@ interface HeroProps {
   ctaHref?: string;
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
+  city?: "home" | "pforzheim" | "heilbronn" | "boeblingen";
 }
 
 export function Hero({
@@ -18,6 +20,7 @@ export function Hero({
   ctaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
+  city = "home",
 }: HeroProps) {
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
@@ -46,29 +49,20 @@ export function Hero({
         <img
           src="/herobackground3.webp?v=pfz"
           alt=""
-          className="h-full w-full object-cover"
+          className="h-full w-full object-contain md:object-cover object-center"
           decoding="async"
           loading="eager"
         />
       </picture>
 
-<div className="absolute md:hidden bottom-6 right-6 pointer-events-none z-0">
-  <img
-    src="/bdi-logo-transparent-600.webp"
-    alt="Blood Diamond Tattoo Ink Logo"
-    className="
-      opacity-100 w-32 sm:w-36
-      [filter:drop-shadow(0_0_4px_rgba(255,255,255,0.55))_drop-shadow(0_0_12px_rgba(16,185,129,0.55))]
-      brightness-110
-    "
-  />
-</div>
-
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
         <div className="space-y-3">
           {/* Kicker */}
-          <p className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent">
+          <p
+            className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md"
+            style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
+          >
             Blood Diamond Tattoo Ink.
           </p>
           <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent" style={kickerDesktopStyle}>
@@ -81,12 +75,12 @@ export function Hero({
 
           {/* Desktop description (styled) */}
           <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
-          
+
           {/* MOBILE: Fließtext fest über dem Diamanten */}
           <p
             className="
               md:hidden
-              absolute left-1/2 top-[56%]
+              absolute left-1/2 top-[52%]
               -translate-x-1/2 -translate-y-1/2
               z-10 w-[88%] max-w-md
               text-center text-white leading-snug
@@ -150,6 +144,29 @@ export function Hero({
             </Link>
           </div>
         ) : null}
+      </div>
+
+      {/* Rezensionen unten im Bild (mobil + desktop) */}
+      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 md:px-6 md:pb-6">
+        {city === "home" ? (
+          <div className="hidden md:block">
+            <ReviewsStrip variant="home" />
+          </div>
+        ) : (
+          <div className="hidden md:block">
+            <ReviewsStrip variant={city} />
+          </div>
+        )}
+        {/* mobil */}
+        {city === "home" ? (
+          <div className="md:hidden">
+            <ReviewsStrip variant="home" />
+          </div>
+        ) : (
+          <div className="md:hidden">
+            <ReviewsStrip variant={city} />
+          </div>
+        )}
       </div>
     </section>
   );
