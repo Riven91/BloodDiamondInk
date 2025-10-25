@@ -248,10 +248,12 @@ export function Hero({
               <div className="hidden md:block">{renderButtonBlock()}</div>
               <div
                 className={
-                  "md:hidden absolute left-1/2 -translate-x-1/2 flex flex-col gap-3 w-[90%] max-w-sm text-center z-20 " +
-                  (city === "home"
-                    ? "bottom-[max(1rem,env(safe-area-inset-bottom))]"
-                    : "bottom-[var(--cta-bottom,12%)]")
+                  [
+                    "md:hidden z-20 px-4 flex flex-col gap-3 text-center",
+                    city === "home"
+                      ? "absolute inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] mx-auto w-[90%] max-w-sm"
+                      : "fixed left-1/2 -translate-x-1/2 bottom-[calc(env(safe-area-inset-bottom)+14px)] w-[90%] max-w-sm"
+                  ].join(" ")
                 }
               >
                 {renderButtonBlock()}
