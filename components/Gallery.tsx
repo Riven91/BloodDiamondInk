@@ -80,20 +80,22 @@ export function Gallery() {
           <li>Letterworking &amp; New School Styles mit individueller Kreativität</li>
         </ul>
       </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-        {galleryItems.map((item) => (
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
+        {galleryItems.map((item, index) => (
           <figure
             key={item.src}
-            className="group relative overflow-hidden rounded-2xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/30 transition-transform duration-500 hover:scale-105"
+            className="group relative w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/30 transition-transform duration-500 hover:scale-105"
           >
-            <Image
-              src={item.src}
-              alt={item.alt}
-              width={400}
-              height={500}
-              loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+            <div className="relative aspect-[4/5] w-full">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                priority={index < 6}
+                sizes="(min-width:1280px) 25vw, (min-width:768px) 33vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
           </figure>
         ))}
       </div>
