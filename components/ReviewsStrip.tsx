@@ -24,14 +24,14 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       alt: "Google-Bewertungen Pforzheim",
       dataReview: "pforzheim",
       className:
-        "md:static md:transform-none md:scale-100 absolute !left-0 top-[66%] -translate-y-1/2 ml-[4vw] pointer-events-auto scale-[0.6] sm:scale-[0.7]",
+        "md:static md:transform-none md:scale-100 absolute top-[65%] left-[2vw] -translate-y-1/2 scale-[0.6] sm:scale-[0.7] pointer-events-auto z-20",
       desktopClass: "md:-translate-y-6",
     },
     {
       key: "heilbronn",
       dataReview: "heilbronn",
       className:
-        "md:static md:translate-x-0 md:scale-100 absolute left-1/2 top-[88%] -translate-x-1/2 -translate-y-1/2 pointer-events-auto scale-[0.6] sm:scale-[0.7]",
+        "md:static md:translate-x-0 md:scale-100 absolute top-[87%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.6] sm:scale-[0.7] pointer-events-auto z-10",
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
@@ -40,7 +40,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       alt: "Google-Bewertungen Böblingen",
       dataReview: "boeblingen",
       className:
-        "md:static md:transform-none md:scale-100 absolute !right-0 top-[66%] -translate-y-1/2 mr-[4vw] pointer-events-auto scale-[0.6] sm:scale-[0.7]",
+        "md:static md:transform-none md:scale-100 absolute top-[65%] right-[2vw] -translate-y-1/2 scale-[0.6] sm:scale-[0.7] pointer-events-auto z-20",
       desktopClass: "md:-translate-y-6",
     },
   ];
@@ -50,7 +50,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       <div className="mx-auto w-full max-w-5xl px-6 pt-6">
         <div
           className="
-            relative pointer-events-none isolation-isolate z-20 min-h-[320px]
+            relative pointer-events-none overflow-visible isolation-isolate z-20 min-h-[320px]
             md:min-h-0 md:flex md:flex-nowrap md:items-end md:justify-center md:gap-10
           "
         >
