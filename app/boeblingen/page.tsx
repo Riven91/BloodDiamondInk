@@ -223,20 +223,22 @@ export default function BoeblingenPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30">
+            <div className="relative w-full aspect-[4/3] rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30 p-2">
               <Image
                 src="/Team1.jpeg"
                 alt="Team von Blood Diamond Tattoo Ink. in Böblingen"
                 fill
-                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+                className="object-contain"
               />
             </div>
-            <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30">
+            <div className="relative w-full aspect-[4/3] rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30 p-2">
               <Image
                 src="/pokale.jpeg"
                 alt="Auszeichnungen und Pokale von Blood Diamond Tattoo Ink."
                 fill
-                className="object-cover"
+                sizes="(min-width: 640px) 50vw, 100vw"
+                className="object-contain"
               />
             </div>
           </div>

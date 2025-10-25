@@ -103,17 +103,20 @@ const galleryItems: GalleryItem[] = [
 ];
 
 export function Gallery() {
+  // Caption-Option: Standard = ohne Bildunterschriften.
+  // Falls später gewünscht, kann pro Bild eine optionale caption angezeigt werden.
   return (
     <div className="mt-8 space-y-8">
       <div>
-        <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">
-          Einblicke in aktuelle Projekte und Heal-Pieces aus unseren Studios
-        </h2>
-        <p className="text-sm md:text-base text-gray-300 mt-2 mb-4">
-          Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen Realistic, Geometric, Letterworking, New School und Mandala.
-          Alle Motive werden individuell entworfen – von filigranen Linien bis zu großflächigen Projekten.
+        <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Galerie</h2>
+        <p className="text-sm md:text-base text-gray-300 mt-2">
+          Einblicke in aktuelle Projekte und Heal Pieces aus unseren Studios.
         </p>
-        <ul className="list-disc list-inside text-gray-300 space-y-1">
+        <p className="mt-2 text-sm md:text-base text-gray-300">
+          Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen Realistic, Geometric, Letterworking, New School und Mandala.
+          Alle Motive werden individuell entworfen, von filigranen Linien bis zu großflächigen Projekten.
+        </p>
+        <ul className="mt-4 list-disc list-inside text-gray-300 space-y-1">
           <li>Authentische Tattoo-Artworks aus Pforzheim, Heilbronn und Böblingen</li>
           <li>Realistic &amp; Black-and-Grey Tattoos mit höchster Präzision</li>
           <li>Geometric und Mandala Designs mit Feinlinienkunst</li>
