@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import ReviewsStrip from "@/components/ReviewsStrip";
 
 const faqItems = [
   {
@@ -113,6 +114,8 @@ export default function BoeblingenPage() {
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/491624204789"
       />
+
+      <ReviewsStrip variant="boeblingen" />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
