@@ -21,19 +21,22 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       key: "pforzheim",
       src: "/bloodd1.png",
       alt: "Google-Bewertungen Pforzheim",
-      mobileClass: "top-[66%] left-[1%] max-[360px]:left-[0.5%] -translate-y-1/2",
+      mobileClass:
+        "pointer-events-auto top-[66%] left-[0.5%] -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
       desktopClass: "md:-translate-y-6",
     },
     {
       key: "heilbronn",
-      mobileClass: "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2",
+      mobileClass:
+        "pointer-events-auto top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
       key: "boeblingen",
       src: "/bloodd%203.png",
       alt: "Google-Bewertungen Böblingen",
-      mobileClass: "top-[66%] right-[1%] max-[360px]:right-[0.5%] -translate-y-1/2",
+      mobileClass:
+        "pointer-events-auto top-[66%] right-[0.5%] -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
       desktopClass: "md:-translate-y-6",
     },
   ];
@@ -53,9 +56,8 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
                 key={it.key}
                 className={
                   [
-                    "pointer-events-auto absolute transform origin-center",
+                    "absolute transform origin-center",
                     it.mobileClass,
-                    "scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
                     "md:static md:flex-none md:transform",
                     it.desktopClass,
                   ].join(" ")
