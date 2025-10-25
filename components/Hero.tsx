@@ -60,12 +60,12 @@ export function Hero({
         <div className="space-y-3">
           {/* Kicker */}
           <p
-            className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md"
+            className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
             style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
           >
             Blood Diamond Tattoo Ink.
           </p>
-          <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent" style={kickerDesktopStyle}>
+          <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent order-[30]" style={kickerDesktopStyle}>
             Blood Diamond Tattoo Ink.
           </p>
           
@@ -74,7 +74,12 @@ export function Hero({
           <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
 
           {ctaLabel && ctaHref ? (
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <div
+              className={
+                "mt-6 flex flex-wrap justify-center gap-3 " +
+                (city !== "home" ? "order-[40]" : "")
+              }
+            >
               <Link href={ctaHref} className="btn-primary">
                 {ctaLabel}
               </Link>
@@ -103,7 +108,12 @@ export function Hero({
               ) : null}
             </div>
           ) : secondaryCtaLabel && secondaryCtaHref ? (
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
+            <div
+              className={
+                "mt-6 flex flex-wrap justify-center gap-3 " +
+                (city !== "home" ? "order-[40]" : "")
+              }
+            >
               <Link
                 href={secondaryCtaHref}
                 className={secondaryCtaClassName}
