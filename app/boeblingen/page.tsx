@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import SocialHint from "@/components/SocialHint";
 
 const faqItems = [
   {
@@ -223,27 +224,29 @@ export default function BoeblingenPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <div className="relative w-full aspect-[4/3] rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30 p-2">
+            <div className="relative w-full rounded-xl bg-black/25 p-2">
               <Image
                 src="/Team1.jpeg"
                 alt="Team von Blood Diamond Tattoo Ink. in Böblingen"
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="object-contain"
+                width={1024}
+                height={1280}
+                className="w-full h-auto object-contain"
               />
             </div>
-            <div className="relative w-full aspect-[4/3] rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30 p-2">
+            <div className="relative w-full rounded-xl bg-black/25 p-2">
               <Image
                 src="/pokale.jpeg"
                 alt="Auszeichnungen und Pokale von Blood Diamond Tattoo Ink."
-                fill
-                sizes="(min-width: 640px) 50vw, 100vw"
-                className="object-contain"
+                width={960}
+                height={1280}
+                className="w-full h-auto object-contain"
               />
             </div>
           </div>
         </div>
       </section>
+
+      <SocialHint />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto max-w-5xl px-6">
@@ -270,7 +273,7 @@ export default function BoeblingenPage() {
             <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
               <h3 className="text-lg font-semibold text-white">Regionale Verankerung</h3>
               <p className="mt-3 text-sm text-blooddiamond-text/70">
-                Blood Diamond Tattoo Ink. Böblingen vernetzt lokale Kunstschaffende und veranstaltet regelmäßige Walk-In Days für spontane Tattoo-Projekte.
+                Blood Diamond Tattoo Ink. Böblingen vernetzt lokale und globale Kunstschaffende und veranstaltet regelmäßige Walk-In Days für spontane Tattoo-Projekte.
               </p>
             </div>
           </div>

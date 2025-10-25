@@ -34,7 +34,7 @@ export function Footer() {
               </a>
 
               <a
-                href="https://www.facebook.com/blooddiamondtattoo"
+                href="https://www.facebook.com/profile.php?id=61557864394966"
                 aria-label="Facebook"
                 title="Facebook"
                 target="_blank"
