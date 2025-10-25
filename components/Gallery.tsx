@@ -44,62 +44,6 @@ const galleryItems: GalleryItem[] = [
     src: "/gallery/boeblingen-3.jpg",
     alt: "Micro-Realistic Floral Detail in Böblingen",
   },
-  {
-    src: "/blackgrey2.jpeg",
-    alt: "BlackRay 2",
-  },
-  {
-    src: "/blackgrey3.jpeg",
-    alt: "BlackRay 3",
-  },
-  {
-    src: "/blackgrey4.jpeg",
-    alt: "BlackRay 4",
-  },
-  {
-    src: "/blackgrey5.jpeg",
-    alt: "BlackRay 5",
-  },
-  {
-    src: "/blackgrey6.jpeg",
-    alt: "BlackRay 6",
-  },
-  {
-    src: "/dark1.jpeg",
-    alt: "Dark 1",
-  },
-  {
-    src: "/fineline2.jpeg",
-    alt: "Fineline 2",
-  },
-  {
-    src: "/fineline3.jpeg",
-    alt: "Fineline 3",
-  },
-  {
-    src: "/realistic2.jpeg",
-    alt: "Realistik 2",
-  },
-  {
-    src: "/realistic3.jpeg",
-    alt: "Realistik 3",
-  },
-  {
-    src: "/realistic4.jpeg",
-    alt: "Realistik 4",
-  },
-  {
-    src: "/realistic5.jpeg",
-    alt: "Realistik 5",
-  },
-  {
-    src: "/realistic6.jpeg",
-    alt: "Realistik 6",
-  },
-  {
-    src: "/realistic7.jpeg",
-    alt: "Realistik 7",
-  },
 ];
 
 export function Gallery() {
@@ -110,7 +54,20 @@ export function Gallery() {
       <div>
         <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Galerie</h2>
         <p className="text-sm md:text-base text-gray-300 mt-2">
-          Einblicke in aktuelle Projekte und Heal Pieces aus unseren Studios.
+          Einblicke in aktuelle Projekte und Heal Pieces aus unseren Tattoo Studios.
+        </p>
+        <p className="mt-4 text-gray-300 text-sm md:text-base">
+          Dir gefallen die Tattoos? Für noch mehr Einblicke folge uns auf{" "}
+          <a
+            href="https://www.facebook.com/profile.php?id=61557864394966"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-gray-400 hover:decoration-white"
+          >
+            Facebook
+          </a>
+          . In unserer <a href="/galerie" className="underline decoration-gray-400 hover:decoration-white">Galerie</a> findest
+          du weitere Projekte und Heal-Pieces.
         </p>
         <p className="mt-2 text-sm md:text-base text-gray-300">
           Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen Realistic, Geometric, Letterworking, New School und Mandala.

@@ -22,13 +22,13 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       src: "/bloodd1.png",
       alt: "Google-Bewertungen Pforzheim",
       mobileClass:
-        "pointer-events-auto top-[66%] left-[0.5%] -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
+        "top-[66%] left-[0.25%] -translate-y-1/2 scale-[0.6] sm:scale-[0.7] md:scale-100 pointer-events-auto [@media(max-width:360px)]:scale-[0.5]",
       desktopClass: "md:-translate-y-6",
     },
     {
       key: "heilbronn",
       mobileClass:
-        "pointer-events-auto top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
+        "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.6] sm:scale-[0.7] md:scale-100 pointer-events-auto",
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
@@ -36,7 +36,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       src: "/bloodd%203.png",
       alt: "Google-Bewertungen Böblingen",
       mobileClass:
-        "pointer-events-auto top-[66%] right-[0.5%] -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
+        "top-[66%] right-[0.25%] -translate-y-1/2 scale-[0.6] sm:scale-[0.7] md:scale-100 pointer-events-auto [@media(max-width:360px)]:scale-[0.5]",
       desktopClass: "md:-translate-y-6",
     },
   ];

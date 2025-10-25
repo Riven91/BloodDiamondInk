@@ -27,10 +27,11 @@ const styles = [
     title: "Cover-Up",
     description:
       "Präzise Überarbeitungen lassen alte Motive verschwinden und schaffen Raum für ein neues, stimmiges Design.",
-    imageSrc: "/signature/coverup1.jpeg",
+    imageSrc: "/coverup1.jpeg",
     alt: "Signature Style – Cover-Up",
     imageVariant: "contain" as const,
-    aspectRatioClass: "aspect-[4/5]",
+    imageWidth: 1200,
+    imageHeight: 1500,
   },
   {
     caption: "Geometric",
@@ -57,10 +58,11 @@ const styles = [
     caption: "Mandala",
     title: "Mandala",
     description: "Meditative Ornamentik mit feinen Linien und perfekter Symmetrie.",
-    imageSrc: "/signature/mandala1 (1).jpeg",
+    imageSrc: "/mandala1 (1).jpeg",
     alt: "Signature Style – Mandala",
     imageVariant: "contain" as const,
-    aspectRatioClass: "aspect-[4/5]",
+    imageWidth: 1200,
+    imageHeight: 1500,
   },
 ];
 
@@ -82,26 +84,32 @@ export function StylesGrid() {
             className="overflow-hidden rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/20"
           >
             {style.imageSrc ? (
-              <div
-                className={`relative w-full ${style.aspectRatioClass ?? "aspect-[3/4]"} rounded-2xl ${
-                  style.imageVariant === "contain" ? "bg-black/30 p-2" : "overflow-hidden"
-                }`}
-              >
-                <div className={`relative h-full w-full ${style.imageVariant === "contain" ? "rounded-xl" : ""}`}>
+              style.imageVariant === "contain" ? (
+                <div className="relative rounded-lg bg-black/30 p-2">
+                  <Image
+                    src={style.imageSrc}
+                    alt={style.alt || style.title}
+                    width={style.imageWidth ?? 1200}
+                    height={style.imageHeight ?? 1500}
+                    className="w-full h-auto object-contain rounded-md"
+                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 40vw, 400px"
+                    loading="lazy"
+                  />
+                </div>
+              ) : (
+                <div
+                  className={`relative w-full ${style.aspectRatioClass ?? "aspect-[3/4]"} overflow-hidden rounded-2xl`}
+                >
                   <Image
                     src={style.imageSrc}
                     alt={style.alt || style.title}
                     fill
-                    className={
-                      style.imageVariant === "contain"
-                        ? "object-contain rounded-xl"
-                        : "object-cover"
-                    }
+                    className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                     loading="lazy"
                   />
                 </div>
-              </div>
+              )
             ) : (
               <div className="relative w-full aspect-[3/4] overflow-hidden rounded-2xl bg-gray-100" />
             )}
