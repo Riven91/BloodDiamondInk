@@ -69,6 +69,10 @@ export function Hero({
             Blood Diamond Tattoo Ink.
           </p>
           
+          {/* Title */}
+          <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
+          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
+
           {ctaLabel && ctaHref ? (
             <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Link href={ctaHref} className="btn-primary">
@@ -123,10 +127,6 @@ export function Hero({
               </Link>
             </div>
           ) : null}
-
-          {/* Title */}
-          <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
-          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
 
           {/* Desktop description (styled) */}
           <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
