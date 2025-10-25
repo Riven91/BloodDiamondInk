@@ -1,7 +1,7 @@
 const styles = [
   {
-    caption: "Realistik",
-    title: "Realistik",
+    caption: "Realistic",
+    title: "Realistic",
     description: "Fotorealistische Portraits und detailreiche Motive, gestochen mit höchster Präzision.",
     imageSrc: "/realistic1.jpeg",
     alt: "Realistic Tattoo – Beispiel",
@@ -27,6 +27,34 @@ const styles = [
       "Präzise Überarbeitungen lassen alte Motive verschwinden und schaffen Raum für ein neues, stimmiges Design.",
     imageSrc: null,
     alt: "",
+  },
+  {
+    caption: "Geometric",
+    title: "Geometric",
+    description: "Symmetrische Muster und klare Linien, die Körperformen präzise betonen.",
+    imageSrc: "/geometric.jpeg",
+    alt: "Geometric Tattoo – Beispiel",
+  },
+  {
+    caption: "Letterworking",
+    title: "Letterworking",
+    description: "Handgezeichnete Schriftzüge mit individuellen Typografien für persönliche Statements.",
+    imageSrc: "/letterworking.jpeg",
+    alt: "Letterworking Tattoo – Beispiel",
+  },
+  {
+    caption: "New School",
+    title: "New School",
+    description: "Farbintensive Motive mit dynamischen Formen und illustrativen Details.",
+    imageSrc: "/newschool.jpeg",
+    alt: "New School Tattoo – Beispiel",
+  },
+  {
+    caption: "Mandala",
+    title: "Mandala",
+    description: "Meditative Ornamentik mit feinen Linien und perfekter Symmetrie.",
+    imageSrc: "/styles/style1.jpg",
+    alt: "Mandala Tattoo – Beispiel",
   },
 ];
 
