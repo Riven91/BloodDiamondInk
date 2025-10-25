@@ -14,29 +14,33 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     key: CityVariant;
     src?: string;
     alt?: string;
-    mobileClass: string;
+    dataReview: "pforzheim" | "heilbronn" | "boeblingen";
+    className: string;
     desktopClass?: string;
   }> = [
     {
       key: "pforzheim",
       src: "/bloodd1.png",
       alt: "Google-Bewertungen Pforzheim",
-      mobileClass:
-        "top-[66%] left-[0.25%] -translate-y-1/2 scale-[0.6] sm:scale-[0.7] md:scale-100 pointer-events-auto [@media(max-width:360px)]:scale-[0.5]",
+      dataReview: "pforzheim",
+      className:
+        "md:static md:transform-none md:scale-100 absolute !left-0 top-[66%] -translate-y-1/2 ml-[4vw] pointer-events-auto scale-[0.6] sm:scale-[0.7]",
       desktopClass: "md:-translate-y-6",
     },
     {
       key: "heilbronn",
-      mobileClass:
-        "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.6] sm:scale-[0.7] md:scale-100 pointer-events-auto",
+      dataReview: "heilbronn",
+      className:
+        "md:static md:translate-x-0 md:scale-100 absolute left-1/2 top-[88%] -translate-x-1/2 -translate-y-1/2 pointer-events-auto scale-[0.6] sm:scale-[0.7]",
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
       key: "boeblingen",
       src: "/bloodd%203.png",
       alt: "Google-Bewertungen Böblingen",
-      mobileClass:
-        "top-[66%] right-[0.25%] -translate-y-1/2 scale-[0.6] sm:scale-[0.7] md:scale-100 pointer-events-auto [@media(max-width:360px)]:scale-[0.5]",
+      dataReview: "boeblingen",
+      className:
+        "md:static md:transform-none md:scale-100 absolute !right-0 top-[66%] -translate-y-1/2 mr-[4vw] pointer-events-auto scale-[0.6] sm:scale-[0.7]",
       desktopClass: "md:-translate-y-6",
     },
   ];
@@ -50,17 +54,18 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
             md:min-h-0 md:flex md:flex-nowrap md:items-end md:justify-center md:gap-10
           "
         >
-          <div className="md:contents">
-            {itemsHome.map((it) => (
+          {itemsHome.map((it) => (
+            <div key={it.key} data-review={it.dataReview} className="md:contents">
               <div
-                key={it.key}
                 className={
                   [
-                    "absolute transform origin-center",
-                    it.mobileClass,
-                    "md:static md:flex-none md:transform",
+                    "absolute origin-center",
+                    it.className,
+                    "md:flex-none",
                     it.desktopClass,
-                  ].join(" ")
+                  ]
+                    .filter(Boolean)
+                    .join(" ")
                 }
               >
                 <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
@@ -77,8 +82,8 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     );
