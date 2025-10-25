@@ -82,16 +82,15 @@ export function Hero({
           {/* Desktop description (styled) */}
           <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
           
-          {/* Mobile description (pre-existing style) */}
+          {/* MOBILE: Fließtext fest über dem Diamanten */}
           <p
-            className="block md:hidden mx-auto max-w-2xl"
-            style={{
-              color: '#FFFFFF',
-              backgroundColor: 'rgba(0,0,0,0.7)',
-              padding: '0.35rem 0.5rem',
-              borderRadius: '4px',
-              textShadow: '0 1px 3px rgba(0,0,0,0.6)'
-            }}
+            className="
+              md:hidden
+              absolute left-1/2 top-[56%]
+              -translate-x-1/2 -translate-y-1/2
+              z-10 w-[88%] max-w-md
+              text-center text-white leading-snug
+            "
           >
             {description}
           </p>
