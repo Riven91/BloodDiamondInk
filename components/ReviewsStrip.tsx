@@ -10,26 +10,30 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
   ];
 
   if (variant === "home") {
+    const offsets = [
+      "-translate-y-4 md:-translate-y-6",
+      "translate-y-6 md:translate-y-8",
+      "-translate-y-4 md:-translate-y-6",
+    ];
+
     return (
-      <div className="mx-auto w-full max-w-3xl px-6 pt-4">
-        <div className="grid grid-cols-3 items-center gap-4">
+      <div className="mx-auto w-full max-w-5xl px-6 pt-6">
+        <div className="relative isolation-isolate z-20 flex flex-wrap items-end justify-center gap-6 md:flex-nowrap md:gap-10">
           {itemsHome.map((it, idx) => (
             <div
               key={it.src}
-              className={
-                "relative h-20 md:h-24" +
-                (idx === 0 ? " -translate-y-1 md:-translate-y-2" : "") +
-                (idx === 2 ? " -translate-y-1 md:-translate-y-2" : "")
-              }
+              className={`pointer-events-auto transform ${offsets[idx] ?? ""}`}
             >
-              <Image
-                src={it.src}
-                alt={it.alt}
-                fill
-                sizes="(max-width: 768px) 33vw, 240px"
-                className="object-contain"
-                priority={false}
-              />
+              <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
+                <Image
+                  src={it.src}
+                  alt={it.alt}
+                  fill
+                  sizes="(max-width: 768px) 60vw, 320px"
+                  className="object-contain"
+                  priority={false}
+                />
+              </div>
             </div>
           ))}
         </div>
