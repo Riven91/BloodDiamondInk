@@ -5,21 +5,22 @@ type Variant = "home" | "pforzheim" | "heilbronn" | "boeblingen";
 export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }) {
   const itemsHome = [
     {
-      city: "Pforzheim",
-      mobileClass:
-        "top-[66%] left-[2%] -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 origin-center",
+      city: "pforzheim",
+      src: "/bloodd1.png",
+      alt: "Google-Bewertungen Pforzheim",
+      mobileClass: "top-[66%] left-[2%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
     {
-      city: "Heilbronn",
-      mobileClass:
-        "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 origin-center",
+      city: "heilbronn",
+      mobileClass: "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2",
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
-      city: "Böblingen",
-      mobileClass:
-        "top-[66%] right-[2%] -translate-y-1/2 scale-[0.65] sm:scale-[0.75] md:scale-100 origin-center",
+      city: "boeblingen",
+      src: "/bloodd%203.png",
+      alt: "Google-Bewertungen Böblingen",
+      mobileClass: "top-[66%] right-[2%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
   ];
@@ -48,13 +49,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
               >
                 <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div
-                      className="
-                        rounded-2xl border border-blooddiamond-primary/40
-                        bg-blooddiamond-background/60 px-3 py-3 backdrop-blur-sm shadow-lg shadow-black/30
-                        md:bg-blooddiamond-background/80 md:px-4 md:py-6 md:backdrop-blur-none
-                      "
-                    >
+                    <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-4 py-6 shadow-lg shadow-black/30">
                       <GoogleRating city={it.city} />
                     </div>
                   </div>
@@ -74,17 +69,9 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
   };
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 pt-4">
-      <div className="grid grid-cols-1 items-center justify-items-center overflow-hidden min-h-[5rem] md:min-h-[6rem]">
-        <div
-          className="
-            rounded-2xl border border-blooddiamond-primary/40
-            bg-blooddiamond-background/60 px-3 py-3 backdrop-blur-sm shadow-lg shadow-black/30
-            md:bg-blooddiamond-background/80 md:px-6 md:py-4 md:backdrop-blur-none
-          "
-        >
-          <GoogleRating city={cityLabel[variant]} />
-        </div>
+    <div className="mx-auto w-full max-w-3xl px-6 pt-4 flex justify-center">
+      <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-4 py-6 shadow-lg shadow-black/30">
+        <GoogleRating city={variant} />
       </div>
     </div>
   );

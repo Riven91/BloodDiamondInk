@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import GoogleRating from "@/components/GoogleRating";
 
 const faqItems = [
   {
@@ -114,6 +115,16 @@ export default function PforzheimPage() {
         secondaryCtaHref="https://wa.me/4915123426609"
         city="pforzheim"
       />
+
+      <section className="bg-blooddiamond-background/60 py-6">
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="flex justify-center">
+            <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-6 py-4 shadow-lg shadow-black/30">
+              <GoogleRating city="Pforzheim" />
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
