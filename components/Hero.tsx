@@ -211,6 +211,7 @@ export function Hero({
     return null;
   };
 
+  // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
       ref={heroRef}

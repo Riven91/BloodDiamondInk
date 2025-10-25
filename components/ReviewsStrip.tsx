@@ -1,25 +1,22 @@
-import Image from "next/image";
+import GoogleRating from "@/components/GoogleRating";
 
 type Variant = "home" | "pforzheim" | "heilbronn" | "boeblingen";
 
 export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }) {
   const itemsHome = [
     {
-      src: "/bloodd1.png",
-      alt: "Google-Bewertungen Pforzheim",
-      mobileClass: "top-[66%] left-[6%] -translate-y-1/2",
+      city: "Pforzheim",
+      mobileClass: "top-[66%] left-[2%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
     {
-      src: "/bloodd2.png",
-      alt: "Google-Bewertungen Heilbronn",
+      city: "Heilbronn",
       mobileClass: "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2",
-      desktopClass: "md:translate-y-8",
+      desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
-      src: "/bloodd%203.png",
-      alt: "Google-Bewertungen Böblingen",
-      mobileClass: "top-[64%] right-[4%] -translate-y-1/2",
+      city: "Böblingen",
+      mobileClass: "top-[66%] right-[2%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
   ];
@@ -36,7 +33,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
           <div className="md:contents">
             {itemsHome.map((it) => (
               <div
-                key={it.src}
+                key={it.city}
                 className={
                   [
                     "pointer-events-auto absolute transform",
@@ -47,14 +44,11 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
                 }
               >
                 <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
-                  <Image
-                    src={it.src}
-                    alt={it.alt}
-                    fill
-                    sizes="(max-width: 768px) 60vw, 320px"
-                    className="object-contain"
-                    priority={false}
-                  />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-4 py-6 shadow-lg shadow-black/30">
+                      <GoogleRating city={it.city} />
+                    </div>
+                  </div>
                 </div>
               </div>
             ))}
@@ -64,26 +58,17 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     );
   }
 
-  const mapOne: Record<Exclude<Variant, "home">, { src: string; alt: string }> = {
-    pforzheim: { src: "/bloodd1.png", alt: "Google-Bewertungen Pforzheim" },
-    heilbronn: { src: "/bloodd2.png", alt: "Google-Bewertungen Heilbronn" },
-    boeblingen: { src: "/bloodd%203.png", alt: "Google-Bewertungen Böblingen" },
+  const cityLabel: Record<Exclude<Variant, "home">, string> = {
+    pforzheim: "Pforzheim",
+    heilbronn: "Heilbronn",
+    boeblingen: "Böblingen",
   };
-
-  const it = mapOne[variant];
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 pt-4">
-      <div className="grid grid-cols-1 items-center">
-        <div className="relative h-10 md:h-12">
-          <Image
-            src={it.src}
-            alt={it.alt}
-            fill
-            sizes="200px"
-            className="object-contain"
-            priority={false}
-          />
+      <div className="grid grid-cols-1 items-center justify-items-center overflow-hidden min-h-[5rem] md:min-h-[6rem]">
+        <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-6 py-4 shadow-lg shadow-black/30">
+          <GoogleRating city={cityLabel[variant]} />
         </div>
       </div>
     </div>
