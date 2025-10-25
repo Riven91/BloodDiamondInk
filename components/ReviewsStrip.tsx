@@ -1,26 +1,39 @@
 import GoogleRating from "@/components/GoogleRating";
 
 type Variant = "home" | "pforzheim" | "heilbronn" | "boeblingen";
+type CityVariant = Exclude<Variant, "home">;
+
+const cityLabels: Record<CityVariant, string> = {
+  pforzheim: "Pforzheim",
+  heilbronn: "Heilbronn",
+  boeblingen: "Böblingen",
+};
 
 export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }) {
-  const itemsHome = [
+  const itemsHome: Array<{
+    key: CityVariant;
+    src?: string;
+    alt?: string;
+    mobileClass: string;
+    desktopClass?: string;
+  }> = [
     {
-      city: "pforzheim",
+      key: "pforzheim",
       src: "/bloodd1.png",
       alt: "Google-Bewertungen Pforzheim",
-      mobileClass: "top-[66%] left-[2%] -translate-y-1/2",
+      mobileClass: "top-[66%] left-[1%] max-[360px]:left-[0.5%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
     {
-      city: "heilbronn",
+      key: "heilbronn",
       mobileClass: "top-[88%] left-1/2 -translate-x-1/2 -translate-y-1/2",
       desktopClass: "md:translate-y-8 md:translate-x-0",
     },
     {
-      city: "boeblingen",
+      key: "boeblingen",
       src: "/bloodd%203.png",
       alt: "Google-Bewertungen Böblingen",
-      mobileClass: "top-[66%] right-[2%] -translate-y-1/2",
+      mobileClass: "top-[66%] right-[1%] max-[360px]:right-[0.5%] -translate-y-1/2",
       desktopClass: "md:-translate-y-6",
     },
   ];
@@ -37,7 +50,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
           <div className="md:contents">
             {itemsHome.map((it) => (
               <div
-                key={it.city}
+                key={it.key}
                 className={
                   [
                     "pointer-events-auto absolute transform origin-center",
@@ -57,7 +70,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
                         md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl
                       "
                     >
-                      <GoogleRating city={it.city} />
+                      <GoogleRating city={cityLabels[it.key]} />
                     </div>
                   </div>
                 </div>
@@ -78,7 +91,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
           md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl
         "
       >
-        <GoogleRating city={variant} />
+        <GoogleRating city={cityLabels[variant]} />
       </div>
     </div>
   );

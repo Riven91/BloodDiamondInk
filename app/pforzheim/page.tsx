@@ -191,23 +191,28 @@ export default function PforzheimPage() {
       <section className="bg-blooddiamond-muted/20 py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Studio</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-2">
-            <div className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
-              <Image
-                src="/gallery/pforzheim-1.jpg"
-                alt="Studioansicht von Blood Diamond Tattoo Ink. in Pforzheim"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <div className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
-              <Image
-                src="/gallery/pforzheim-2.jpg"
-                alt="Tattoo-Bereich von Blood Diamond Tattoo Ink. in Pforzheim"
-                fill
-                className="object-cover"
-              />
-            </div>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {[
+              {
+                src: "/Studio1.jpeg",
+                alt: "Empfangsbereich von Blood Diamond Tattoo Ink. in Pforzheim",
+              },
+              {
+                src: "/Studio2.jpeg",
+                alt: "Tattoo-Arbeitsplatz bei Blood Diamond Tattoo Ink. in Pforzheim",
+              },
+              {
+                src: "/Studio3.jpeg",
+                alt: "Detailansicht des Studios von Blood Diamond Tattoo Ink. in Pforzheim",
+              },
+            ].map((image) => (
+              <div
+                key={image.src}
+                className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40"
+              >
+                <Image src={image.src} alt={image.alt} fill className="object-cover" />
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -215,15 +220,23 @@ export default function PforzheimPage() {
       <section className="bg-blooddiamond-background py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {["/artists/artist1.jpg", "/artists/artist2.jpg", "/artists/artist3.jpg"].map((image) => (
-              <div
-                key={image}
-                className="relative h-56 w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30"
-              >
-                <Image src={image} alt="" fill className="object-cover" />
-              </div>
-            ))}
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+            <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30">
+              <Image
+                src="/Team1.jpeg"
+                alt="Team von Blood Diamond Tattoo Ink. in Pforzheim"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="relative h-56 w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30">
+              <Image
+                src="/pokale.jpeg"
+                alt="Auszeichnungen und Pokale von Blood Diamond Tattoo Ink."
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
