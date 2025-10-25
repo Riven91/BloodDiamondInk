@@ -98,7 +98,7 @@ export function StylesGrid() {
                 </div>
               ) : (
                 <div
-                  className={`relative w-full ${style.aspectRatioClass ?? "aspect-[3/4]"} overflow-hidden rounded-2xl`}
+                  className={`relative w-full aspect-[3/4] overflow-hidden rounded-2xl`}
                 >
                   <Image
                     src={style.imageSrc}

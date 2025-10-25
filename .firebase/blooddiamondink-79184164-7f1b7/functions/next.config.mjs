@@ -1,5 +1,5 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+// next.config.mjs
+var nextConfig = {
   reactStrictMode: true,
   images: {
     unoptimized: true
@@ -14,22 +14,24 @@ const nextConfig = {
       { source: "/kontakt", destination: "/", permanent: true },
       { source: "/contact", destination: "/", permanent: true },
       {
-        source: '/impressum/oetisheim',
-        destination: '/impressum',
-        permanent: true,
+        source: "/impressum/oetisheim",
+        destination: "/impressum",
+        permanent: true
       },
       {
-        source: '/datenschutz/oetisheim',
-        destination: '/datenschutz',
-        permanent: true,
+        source: "/datenschutz/oetisheim",
+        destination: "/datenschutz",
+        permanent: true
       },
       {
-        source: '/agb/oetisheim',
-        destination: '/agb',
-        permanent: true,
-      },
+        source: "/agb/oetisheim",
+        destination: "/agb",
+        permanent: true
+      }
     ];
   }
 };
-
-export default nextConfig;
+var next_config_default = nextConfig;
+export {
+  next_config_default as default
+};
