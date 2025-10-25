@@ -204,9 +204,15 @@ export default function HeilbronnPage() {
             ].map((image) => (
               <div
                 key={image.src}
-                className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40"
+                className="relative w-full aspect-[4/5] overflow-hidden rounded-2xl border border-blooddiamond-primary/40"
               >
-                <Image src={image.src} alt={image.alt} fill className="object-cover" />
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 100vw"
+                  className="object-cover"
+                />
               </div>
             ))}
           </div>
@@ -217,29 +223,33 @@ export default function HeilbronnPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
           <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-            <div className="relative w-full rounded-xl bg-black/25 p-2">
-              <Image
-                src="/Team1.jpeg"
-                alt="Team von Blood Diamond Tattoo Ink. in Heilbronn"
-                width={1024}
-                height={1280}
-                className="w-full h-auto object-contain"
-              />
+            <div className="rounded-xl bg-black/25 p-2">
+              <div className="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-lg">
+                <Image
+                  src="/Team1.jpeg"
+                  alt="Team von Blood Diamond Tattoo Ink. in Heilbronn"
+                  fill
+                  sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
-            <div className="relative w-full rounded-xl bg-black/25 p-2">
-              <Image
-                src="/pokale.jpeg"
-                alt="Auszeichnungen und Pokale von Blood Diamond Tattoo Ink."
-                width={960}
-                height={1280}
-                className="w-full h-auto object-contain"
-              />
+            <div className="rounded-xl bg-black/25 p-2">
+              <div className="relative w-full aspect-[4/5] md:aspect-[3/4] overflow-hidden rounded-lg">
+                <Image
+                  src="/pokale.jpeg"
+                  alt="Auszeichnungen und Pokale von Blood Diamond Tattoo Ink."
+                  fill
+                  sizes="(min-width:1024px) 25vw, (min-width:768px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      // TODO: Reaktivieren, falls Social-Hinweis wieder eingeblendet werden soll.
+      {/* TODO: Reaktivieren, falls Social-Hinweis wieder eingeblendet werden soll. */}
       {/*
         --- Social/SEO Text vorübergehend deaktiviert ---
         <SocialHint />
