@@ -1,52 +1,23 @@
-"use client";
-
+import fs from "node:fs";
 import Image from "next/image";
+import path from "node:path";
 
-interface GalleryItem {
-  src: string;
-  alt: string;
+const galerieDir = path.join(process.cwd(), "public", "Galerie 2");
+
+function getGalleryImages(): string[] {
+  if (!fs.existsSync(galerieDir)) {
+    return [];
+  }
+
+  return fs
+    .readdirSync(galerieDir)
+    .filter((file) => /\.(png|jpe?g|webp)$/i.test(file))
+    .sort();
 }
 
-const galleryItems: GalleryItem[] = [
-  {
-    src: "/gallery/pforzheim-1.jpg",
-    alt: "Feine Linienarbeit eines floralen Sleeves in Pforzheim",
-  },
-  {
-    src: "/gallery/pforzheim-2.jpg",
-    alt: "Black & Grey Portrait mit weichen Schattierungen in Pforzheim",
-  },
-  {
-    src: "/gallery/pforzheim-3.jpg",
-    alt: "Cover-Up Konzept mit Zeichnung und finalem Ergebnis in Pforzheim",
-  },
-  {
-    src: "/gallery/heilbronn-1.jpg",
-    alt: "Aftercare-Snapshot eines healed Realistic Tattoos in Heilbronn",
-  },
-  {
-    src: "/gallery/heilbronn-2.jpg",
-    alt: "Artist bei der Fineline-Vorzeichnung in Heilbronn",
-  },
-  {
-    src: "/gallery/heilbronn-3.jpg",
-    alt: "Detailaufnahme eines Blackwork-Ornaments in Heilbronn",
-  },
-  {
-    src: "/gallery/boeblingen-1.jpg",
-    alt: "Lettering mit dezentem Glow in Böblingen",
-  },
-  {
-    src: "/gallery/boeblingen-2.jpg",
-    alt: "Matching Tattoos aus einer Duo-Session in Böblingen",
-  },
-  {
-    src: "/gallery/boeblingen-3.jpg",
-    alt: "Micro-Realistic Floral Detail in Böblingen",
-  },
-];
-
 export function Gallery() {
+  const images = getGalleryImages();
+
   // Caption-Option: Standard = ohne Bildunterschriften.
   // Falls später gewünscht, kann pro Bild eine optionale caption angezeigt werden.
   return (
@@ -81,15 +52,15 @@ export function Gallery() {
         </ul>
       </div>
       <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
-        {galleryItems.map((item, index) => (
+        {images.map((image, index) => (
           <figure
-            key={item.src}
+            key={image}
             className="group relative w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/30 transition-transform duration-500 hover:scale-105"
           >
             <div className="relative aspect-[4/5] w-full">
               <Image
-                src={item.src}
-                alt={item.alt}
+                src={`/Galerie 2/${image}`}
+                alt={`Galerie-Bild ${index + 1}`}
                 fill
                 priority={index < 6}
                 sizes="(min-width:1280px) 25vw, (min-width:768px) 33vw, 50vw"
@@ -99,6 +70,11 @@ export function Gallery() {
           </figure>
         ))}
       </div>
+      {images.length === 0 && (
+        <p className="text-gray-400 text-sm italic">
+          Noch keine Bilder vorhanden. Bald folgen neue Projekte.
+        </p>
+      )}
     </div>
   );
 }
