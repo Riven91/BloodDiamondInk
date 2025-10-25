@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import ReviewsStrip from "@/components/ReviewsStrip";
