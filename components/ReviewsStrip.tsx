@@ -30,7 +30,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       <div className="mx-auto w-full max-w-5xl px-6 pt-6">
         <div
           className="
-            relative isolation-isolate z-20 min-h-[320px]
+            relative pointer-events-none isolation-isolate z-20 min-h-[320px]
             md:min-h-0 md:flex md:flex-nowrap md:items-end md:justify-center md:gap-10
           "
         >
