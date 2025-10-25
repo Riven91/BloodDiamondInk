@@ -154,7 +154,13 @@ export function Hero({
           {hasPrimaryCta || hasSecondaryCta ? (
             <>
               <div className="hidden md:block">{renderButtonBlock()}</div>
-              <div className="md:hidden absolute bottom-[5%] left-1/2 -translate-x-1/2 flex flex-col gap-3 w-[90%] max-w-sm text-center">
+              <div
+                className={`md:hidden absolute left-1/2 -translate-x-1/2 flex flex-col gap-3 w-[90%] max-w-sm text-center z-20 ${
+                  city === "home"
+                    ? "bottom-[max(1rem,env(safe-area-inset-bottom))]"
+                    : "bottom-[12%]"
+                }`}
+              >
                 {renderButtonBlock()}
               </div>
             </>
