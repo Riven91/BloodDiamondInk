@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
-import ReviewsStrip from "@/components/ReviewsStrip";
 
 const faqItems = [
   {
@@ -113,9 +112,8 @@ export default function PforzheimPage() {
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/4915123426609"
+        city="pforzheim"
       />
-
-      <ReviewsStrip variant="pforzheim" />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
