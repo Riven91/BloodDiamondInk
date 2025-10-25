@@ -239,7 +239,12 @@ export default function HeilbronnPage() {
         </div>
       </section>
 
-      <SocialHint />
+      // TODO: Reaktivieren, falls Social-Hinweis wieder eingeblendet werden soll.
+      {/*
+        --- Social/SEO Text vorübergehend deaktiviert ---
+        <SocialHint />
+        --- Ende deaktiviert ---
+      */}
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto max-w-5xl px-6">
