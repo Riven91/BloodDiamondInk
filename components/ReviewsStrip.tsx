@@ -40,8 +40,9 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
                 key={it.city}
                 className={
                   [
-                    "pointer-events-auto absolute transform",
+                    "pointer-events-auto absolute transform origin-center",
                     it.mobileClass,
+                    "scale-[0.65] sm:scale-[0.75] md:scale-100 max-[360px]:scale-[0.6]",
                     "md:static md:flex-none md:transform",
                     it.desktopClass,
                   ].join(" ")
@@ -49,7 +50,13 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
               >
                 <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-4 py-6 shadow-lg shadow-black/30">
+                    <div
+                      className="
+                        rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-2.5 py-3
+                        shadow-lg shadow-black/30 backdrop-blur-sm
+                        md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl
+                      "
+                    >
                       <GoogleRating city={it.city} />
                     </div>
                   </div>
@@ -62,15 +69,15 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     );
   }
 
-  const cityLabel: Record<Exclude<Variant, "home">, string> = {
-    pforzheim: "Pforzheim",
-    heilbronn: "Heilbronn",
-    boeblingen: "Böblingen",
-  };
-
   return (
     <div className="mx-auto w-full max-w-3xl px-6 pt-4 flex justify-center">
-      <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 px-4 py-6 shadow-lg shadow-black/30">
+      <div
+        className="
+          rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-2.5 py-3
+          shadow-lg shadow-black/30 backdrop-blur-sm
+          md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl
+        "
+      >
         <GoogleRating city={variant} />
       </div>
     </div>
