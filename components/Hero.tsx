@@ -42,6 +42,84 @@ export function Hero({
     borderRadius: '6px',
   };
 
+  const hasPrimaryCta = Boolean(ctaLabel && ctaHref);
+  const hasSecondaryCta = Boolean(secondaryCtaLabel && secondaryCtaHref);
+
+  const renderButtonBlock = () => {
+    if (hasPrimaryCta) {
+      return (
+        <div
+          className={
+            "mt-6 flex flex-wrap justify-center gap-3 " +
+            (city !== "home" ? "order-[40]" : "")
+          }
+        >
+          <Link href={ctaHref!} className="btn-primary">
+            {ctaLabel}
+          </Link>
+          {hasSecondaryCta ? (
+            <Link
+              href={secondaryCtaHref!}
+              className={secondaryCtaClassName}
+              aria-label={isWhatsAppCta ? "WhatsApp chat öffnen" : undefined}
+            >
+              {isWhatsAppCta ? (
+                <>
+                  <svg
+                    aria-hidden="true"
+                    focusable="false"
+                    className="h-5 w-5 fill-current"
+                    viewBox="0 0 32 32"
+                  >
+                    <path d="M16 3C9.373 3 4 8.373 4 15c0 2.554.815 4.919 2.207 6.864L4.52 27.48a1 1 0 0 0 1.207 1.29l5.595-1.676A11.89 11.89 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10a9.9 9.9 0 0 1-3.78-.75.999.999 0 0 0-.692-.048l-4.41 1.323 1.335-4.009a1 1 0 0 0-.137-.88A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10Zm-4.18 5a1 1 0 0 0-.81.396c-.476.605-1.042 1.53-1.12 2.4-.18 2.074 1.165 4.395 3.784 6.84 2.64 2.465 5.106 3.61 7.287 3.37.856-.086 1.717-.582 2.276-1.02a1 1 0 0 0 .142-1.44l-1.86-2.02a1 1 0 0 0-1.178-.233l-2.003.9a1 1 0 0 1-1.083-.178l-2.24-2.24a1 1 0 0 1-.138-1.27l.966-1.448a1 1 0 0 0-.01-1.125l-1.34-2.02A1 1 0 0 0 11.82 10Z" />
+                  </svg>
+                  {secondaryCtaLabel}
+                </>
+              ) : (
+                secondaryCtaLabel
+              )}
+            </Link>
+          ) : null}
+        </div>
+      );
+    }
+
+    if (hasSecondaryCta) {
+      return (
+        <div
+          className={
+            "mt-6 flex flex-wrap justify-center gap-3 " +
+            (city !== "home" ? "order-[40]" : "")
+          }
+        >
+          <Link
+            href={secondaryCtaHref!}
+            className={secondaryCtaClassName}
+            aria-label={isWhatsAppCta ? "WhatsApp chat öffnen" : undefined}
+          >
+            {isWhatsAppCta ? (
+              <>
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  className="h-5 w-5 fill-current"
+                  viewBox="0 0 32 32"
+                >
+                  <path d="M16 3C9.373 3 4 8.373 4 15c0 2.554.815 4.919 2.207 6.864L4.52 27.48a1 1 0 0 0 1.207 1.29l5.595-1.676A11.89 11.89 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10a9.9 9.9 0 0 1-3.78-.75.999.999 0 0 0-.692-.048l-4.41 1.323 1.335-4.009a1 1 0 0 0-.137-.88A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10Zm-4.18 5a1 1 0 0 0-.81.396c-.476.605-1.042 1.53-1.12 2.4-.18 2.074 1.165 4.395 3.784 6.84 2.64 2.465 5.106 3.61 7.287 3.37.856-.086 1.717-.582 2.276-1.02a1 1 0 0 0 .142-1.44l-1.86-2.02a1 1 0 0 0-1.178-.233l-2.003.9a1 1 0 0 1-1.083-.178l-2.42-2.24a1 1 0 0 1-.138-1.27l.966-1.448a1 1 0 0 0-.01-1.125l-1.34-2.02A1 1 0 0 0 11.82 10Z" />
+                </svg>
+                {secondaryCtaLabel}
+              </>
+            ) : (
+              secondaryCtaLabel
+            )}
+          </Link>
+        </div>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <section className="hero-section relative flex items-center justify-center overflow-hidden text-white md:bg-none">
       <picture className="absolute inset-0 md:hidden pointer-events-none" aria-hidden="true">
@@ -60,7 +138,7 @@ export function Hero({
         <div className="space-y-3">
           {/* Kicker */}
           <p
-            className="block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
+            className="inline-block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
             style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
           >
             Blood Diamond Tattoo Ink.
@@ -73,69 +151,13 @@ export function Hero({
           <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
           <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
 
-          {ctaLabel && ctaHref ? (
-            <div
-              className={
-                "mt-6 flex flex-wrap justify-center gap-3 " +
-                (city !== "home" ? "order-[40]" : "")
-              }
-            >
-              <Link href={ctaHref} className="btn-primary">
-                {ctaLabel}
-              </Link>
-              {secondaryCtaLabel && secondaryCtaHref ? (
-                <Link
-                  href={secondaryCtaHref}
-                  className={secondaryCtaClassName}
-                  aria-label={isWhatsAppCta ? "WhatsApp chat öffnen" : undefined}
-                >
-                  {isWhatsAppCta ? (
-                    <>
-                      <svg
-                        aria-hidden="true"
-                        focusable="false"
-                        className="h-5 w-5 fill-current"
-                        viewBox="0 0 32 32"
-                      >
-                        <path d="M16 3C9.373 3 4 8.373 4 15c0 2.554.815 4.919 2.207 6.864L4.52 27.48a1 1 0 0 0 1.207 1.29l5.595-1.676A11.89 11.89 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10a9.9 9.9 0 0 1-3.78-.75.999.999 0 0 0-.692-.048l-4.41 1.323 1.335-4.009a1 1 0 0 0-.137-.88A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10Zm-4.18 5a1 1 0 0 0-.81.396c-.476.605-1.042 1.53-1.12 2.4-.18 2.074 1.165 4.395 3.784 6.84 2.64 2.465 5.106 3.61 7.287 3.37.856-.086 1.717-.582 2.276-1.02a1 1 0 0 0 .142-1.44l-1.86-2.02a1 1 0 0 0-1.178-.233l-2.003.9a1 1 0 0 1-1.083-.178l-2.24-2.24a1 1 0 0 1-.138-1.27l.966-1.448a1 1 0 0 0-.01-1.125l-1.34-2.02A1 1 0 0 0 11.82 10Z" />
-                      </svg>
-                      {secondaryCtaLabel}
-                    </>
-                  ) : (
-                    secondaryCtaLabel
-                  )}
-                </Link>
-              ) : null}
-            </div>
-          ) : secondaryCtaLabel && secondaryCtaHref ? (
-            <div
-              className={
-                "mt-6 flex flex-wrap justify-center gap-3 " +
-                (city !== "home" ? "order-[40]" : "")
-              }
-            >
-              <Link
-                href={secondaryCtaHref}
-                className={secondaryCtaClassName}
-                aria-label={isWhatsAppCta ? "WhatsApp chat öffnen" : undefined}
-              >
-                {isWhatsAppCta ? (
-                  <>
-                    <svg
-                      aria-hidden="true"
-                      focusable="false"
-                      className="h-5 w-5 fill-current"
-                      viewBox="0 0 32 32"
-                    >
-                      <path d="M16 3C9.373 3 4 8.373 4 15c0 2.554.815 4.919 2.207 6.864L4.52 27.48a1 1 0 0 0 1.207 1.29l5.595-1.676A11.89 11.89 0 0 0 16 27c6.627 0 12-5.373 12-12S22.627 3 16 3Zm0 2c5.514 0 10 4.486 10 10s-4.486 10-10 10a9.9 9.9 0 0 1-3.78-.75.999.999 0 0 0-.692-.048l-4.41 1.323 1.335-4.009a1 1 0 0 0-.137-.88A9.94 9.94 0 0 1 6 15c0-5.514 4.486-10 10-10Zm-4.18 5a1 1 0 0 0-.81.396c-.476.605-1.042 1.53-1.12 2.4-.18 2.074 1.165 4.395 3.784 6.84 2.64 2.465 5.106 3.61 7.287 3.37.856-.086 1.717-.582 2.276-1.02a1 1 0 0 0 .142-1.44l-1.86-2.02a1 1 0 0 0-1.178-.233l-2.003.9a1 1 0 0 1-1.083-.178l-2.42-2.24a1 1 0 0 1-.138-1.27l.966-1.448a1 1 0 0 0-.01-1.125l-1.34-2.02A1 1 0 0 0 11.82 10Z" />
-                    </svg>
-                    {secondaryCtaLabel}
-                  </>
-                ) : (
-                  secondaryCtaLabel
-                )}
-              </Link>
-            </div>
+          {hasPrimaryCta || hasSecondaryCta ? (
+            <>
+              <div className="hidden md:block">{renderButtonBlock()}</div>
+              <div className="md:hidden absolute bottom-[5%] left-1/2 -translate-x-1/2 flex flex-col gap-3 w-[90%] max-w-sm text-center">
+                {renderButtonBlock()}
+              </div>
+            </>
           ) : null}
 
           {/* Desktop description (styled) */}
