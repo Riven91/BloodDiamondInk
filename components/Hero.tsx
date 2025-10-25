@@ -1,6 +1,62 @@
-import type { ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import ReviewsStrip from "@/components/ReviewsStrip";
+
+let safeAreaProbe: HTMLDivElement | null = null;
+
+function readSafeAreaInsetBottom(): number {
+  if (typeof window === "undefined" || typeof document === "undefined") {
+    return 0;
+  }
+
+  const docStyle = getComputedStyle(document.documentElement);
+  const rawEnv = docStyle.getPropertyValue("env(safe-area-inset-bottom)").trim();
+  if (rawEnv && rawEnv.endsWith("px")) {
+    const parsed = Number(rawEnv.slice(0, -2));
+    if (Number.isFinite(parsed)) {
+      return parsed;
+    }
+  }
+
+  if (!safeAreaProbe) {
+    safeAreaProbe = document.createElement("div");
+    safeAreaProbe.style.cssText =
+      "position:fixed; bottom:0; left:0; width:0; height:env(safe-area-inset-bottom); height:constant(safe-area-inset-bottom); pointer-events:none; opacity:0; z-index:-1;";
+    document.body.appendChild(safeAreaProbe);
+  }
+
+  const computed = window.getComputedStyle(safeAreaProbe);
+  const raw = computed.height.trim();
+  const parsed = Number(raw.replace("px", ""));
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function computeCtaBottom(): string {
+  const vh = typeof window !== "undefined" ? Math.max(window.innerHeight, 1) : 1;
+  const vw = typeof window !== "undefined" ? Math.max(window.innerWidth, 1) : 1;
+  const ar = vw / vh;
+
+  const safe = readSafeAreaInsetBottom();
+
+  let percent: number;
+  if (ar < 0.55) {
+    percent = 16;
+  } else if (ar < 0.7) {
+    percent = 14;
+  } else if (ar < 0.85) {
+    percent = 12;
+  } else {
+    percent = 10;
+  }
+
+  if (vh < 640) percent += 2;
+
+  percent = Math.max(8, Math.min(percent, 18));
+
+  const pxExtra = Math.min(16, safe || 8);
+
+  return `calc(${percent}vh + ${pxExtra}px)`;
+}
 
 interface HeroProps {
   title?: ReactNode;
@@ -22,6 +78,39 @@ export function Hero({
   secondaryCtaHref,
   city = "home",
 }: HeroProps) {
+  const heroRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const el = heroRef.current ?? document.documentElement;
+
+    if (city === "home") {
+      el?.style.removeProperty("--cta-bottom");
+      return;
+    }
+
+    if (!el || typeof window === "undefined") {
+      return;
+    }
+
+    const apply = () => {
+      el.style.setProperty("--cta-bottom", computeCtaBottom());
+    };
+
+    apply();
+    window.addEventListener("resize", apply, { passive: true });
+    window.addEventListener("orientationchange", apply);
+
+    return () => {
+      window.removeEventListener("resize", apply);
+      window.removeEventListener("orientationchange", apply);
+      el.style.removeProperty("--cta-bottom");
+      if (safeAreaProbe && safeAreaProbe.parentNode) {
+        safeAreaProbe.parentNode.removeChild(safeAreaProbe);
+        safeAreaProbe = null;
+      }
+    };
+  }, [city]);
+
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
 
@@ -121,7 +210,10 @@ export function Hero({
   };
 
   return (
-    <section className="hero-section relative flex items-center justify-center overflow-hidden text-white md:bg-none">
+    <section
+      ref={heroRef}
+      className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
+    >
       <picture className="absolute inset-0 md:hidden pointer-events-none" aria-hidden="true">
         <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
         <img
@@ -155,11 +247,12 @@ export function Hero({
             <>
               <div className="hidden md:block">{renderButtonBlock()}</div>
               <div
-                className={`md:hidden absolute left-1/2 -translate-x-1/2 flex flex-col gap-3 w-[90%] max-w-sm text-center z-20 ${
-                  city === "home"
+                className={
+                  "md:hidden absolute left-1/2 -translate-x-1/2 flex flex-col gap-3 w-[90%] max-w-sm text-center z-20 " +
+                  (city === "home"
                     ? "bottom-[max(1rem,env(safe-area-inset-bottom))]"
-                    : "bottom-[12%]"
-                }`}
+                    : "bottom-[var(--cta-bottom,12%)]")
+                }
               >
                 {renderButtonBlock()}
               </div>
