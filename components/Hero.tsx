@@ -141,8 +141,10 @@ export function Hero({
       return (
         <div
           className={
-            "mt-6 flex flex-wrap justify-center gap-3 " +
-            (city !== "home" ? "order-[40]" : "")
+            [
+              "mt-4 md:mt-6 flex flex-wrap justify-center gap-3",
+              city !== "home" ? "order-[40]" : "",
+            ].join(" ")
           }
         >
           <Link href={ctaHref!} className="btn-primary">
@@ -179,8 +181,10 @@ export function Hero({
       return (
         <div
           className={
-            "mt-6 flex flex-wrap justify-center gap-3 " +
-            (city !== "home" ? "order-[40]" : "")
+            [
+              "mt-4 md:mt-6 flex flex-wrap justify-center gap-3",
+              city !== "home" ? "order-[40]" : "",
+            ].join(" ")
           }
         >
           <Link
@@ -211,6 +215,7 @@ export function Hero({
     return null;
   };
 
+  // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
       ref={heroRef}
@@ -251,7 +256,8 @@ export function Hero({
               <div
                 className={
                   [
-                    "md:hidden z-20 px-4 flex flex-col gap-3 text-center",
+                    "md:hidden z-20 flex flex-col gap-3 text-center rounded-lg bg-black/60 px-3 py-2 shadow-lg backdrop-blur-sm",
+                    "[&_a,button]:text-sm [&_a,button]:px-3 [&_a,button]:py-2",
                     city === "home"
                       ? "absolute inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] mx-auto w-[90%] max-w-sm"
                       : "fixed left-1/2 -translate-x-1/2 bottom-[calc(env(safe-area-inset-bottom)+14px)] w-[90%] max-w-sm"

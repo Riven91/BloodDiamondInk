@@ -215,40 +215,13 @@ export default function PforzheimPage() {
       <section className="bg-blooddiamond-background py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                name: "Teammitglied 1",
-                specialty: "Fineline & Illustrationen",
-                image: "/artists/artist1.jpg",
-              },
-              {
-                name: "Teammitglied 2",
-                specialty: "Realistic & Portraits",
-                image: "/artists/artist2.jpg",
-              },
-              {
-                name: "Teammitglied 3",
-                specialty: "Cover-Up & Blackwork",
-                image: "/artists/artist3.jpg",
-              },
-            ].map((artist) => (
+          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+            {["/artists/artist1.jpg", "/artists/artist2.jpg", "/artists/artist3.jpg"].map((image) => (
               <div
-                key={artist.name}
-                className="overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30"
+                key={image}
+                className="relative h-56 w-full overflow-hidden rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30"
               >
-                <div className="relative h-56 w-full">
-                  <Image
-                    src={artist.image}
-                    alt={`${artist.name} von Blood Diamond Tattoo Ink.`}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="p-5">
-                  <h3 className="text-lg font-semibold text-white">{artist.name}</h3>
-                  <p className="mt-2 text-sm text-blooddiamond-text/70">{artist.specialty}</p>
-                </div>
+                <Image src={image} alt="" fill className="object-cover" />
               </div>
             ))}
           </div>
