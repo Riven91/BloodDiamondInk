@@ -6,6 +6,8 @@ export default function SignatureStyles() {
     { src: "/fineline1.jpeg", alt: "Signature Style – Fineline" },
     { src: "/coverup1.jpeg", alt: "Signature Style – Cover-Up" },
     { src: "/mandala1 (1).jpeg", alt: "Signature Style – Mandala" },
+    { src: "/geometric1.jpeg", alt: "Signature Style – Geometric" },
+    { src: "/letterworking1.jpeg", alt: "Signature Style – Letterworking" },
   ];
 
   return (
@@ -14,7 +16,7 @@ export default function SignatureStyles() {
         Unsere Signature Styles
       </h2>
 
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
         {styles.map((item, i) => (
           <div
             key={i}
@@ -25,7 +27,7 @@ export default function SignatureStyles() {
               alt={item.alt}
               fill
               className="absolute inset-0 w-full h-full object-cover"
-              sizes="(max-width:768px)50vw,(max-width:1200px)25vw,300px"
+              sizes="(max-width:640px)50vw,(max-width:1024px)33vw,300px"
               loading="lazy"
             />
           </div>
