@@ -1,14 +1,10 @@
 {
-  "hosting": {
+  "apphosting": {
     "source": ".",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
-    ],
-    "frameworksBackend": {
-      "id": "diamond3",
-      "region": "europe-west4"
-    }
+    ]
   }
 }
