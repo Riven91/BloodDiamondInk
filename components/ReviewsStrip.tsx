@@ -86,9 +86,9 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
             {itemsHome.map((it) => (
               <div
                 key={it.key}
-                className={[\
+                className={[
                   "md:flex md:flex-none md:transform md:origin-center md:pointer-events-auto",
-                  it.desktopClass,\
+                  it.desktopClass,
                 ]
                   .filter(Boolean)
                   .join(" ")}
