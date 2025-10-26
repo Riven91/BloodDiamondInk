@@ -1,6 +1,7 @@
 import { Hero } from "@/components/Hero";
 import { StylesGrid } from "@/components/StylesGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
+import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
 import { Metadata } from "next";
 import { LocationsTeaser } from "./components/LocationsTeaser";
@@ -47,6 +48,7 @@ export default function HomePage() {
       <Hero city="home" />
       <LocationsTeaser />
       <StylesGrid />
+      <AwardsSection />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
         <Gallery />
       </section>
