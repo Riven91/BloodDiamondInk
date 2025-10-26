@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-const CARD = "relative overflow-hidden rounded-xl bg-black/30 aspect-[2/3]";
-const IMG = "absolute inset-0 w-full h-full object-cover";
+const SS_CARD = "relative overflow-hidden rounded-xl bg-black/30 aspect-[4/5]";
+const SS_IMG = "absolute inset-0 w-full h-full object-cover";
 
 const styles = [
   { src: "/blackgrey1.jpeg", alt: "Signature Style – Black & Grey" },
@@ -23,15 +23,15 @@ export function StylesGrid() {
           </p>
         </div>
       </div>
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
         {styles.map((it, i) => (
-          <div key={i} className={CARD}>
+          <div key={i} className={SS_CARD}>
             <Image
               src={it.src}
               alt={it.alt}
               fill
-              className={IMG}
-              sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 300px"
+              className={SS_IMG}
+              sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
               loading="lazy"
             />
           </div>

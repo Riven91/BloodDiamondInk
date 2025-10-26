@@ -128,6 +128,23 @@ main {
   }
 }
 
+@media (max-width: 767px) {
+  .badges-container {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    transform: none !important;
+  }
+
+  .badges-container [data-badge] {
+    transform: scale(0.5) !important;
+    transform-origin: center !important;
+    margin: 0 !important;
+  }
+}
+
 /* Desktop hero background */
 @media (min-width: 768px) {
   .hero-section {
