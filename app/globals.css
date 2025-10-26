@@ -109,11 +109,6 @@ main {
 
 /* Mobile hero background */
 @media (max-width: 767px) {
-  /* Podest: HN oben, PF/BB gleich tief links/rechts */
-  [data-badge="heilbronn"]  { transform: translate(0, -18px) !important; }
-  [data-badge="pforzheim"]  { transform: translate(-84px, 8px) !important; }
-  [data-badge="boeblingen"] { transform: translate( 84px, 8px) !important; }
-
   .hero-section {
     /* Mobile: kein CSS-Background – wir rendern über <picture> im TSX */
     background: none !important;
@@ -130,23 +125,6 @@ main {
   .hero-section::after {
     content: none !important;
     display: none !important;
-  }
-}
-
-@media (max-width: 767px) {
-  .badges-container {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    flex-wrap: wrap !important;
-    gap: 8px !important;
-    transform: none !important;
-  }
-
-  .badges-container [data-badge] {
-    transform: scale(0.5) !important;
-    transform-origin: center !important;
-    margin: 0 !important;
   }
 }
 

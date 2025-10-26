@@ -17,7 +17,7 @@ function BadgeCard({
   className?: string;
 }) {
   const baseClassName =
-    "z-10 pointer-events-auto rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-2.5 py-3 shadow-lg shadow-black/30 backdrop-blur-sm md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl";
+    "z-10 pointer-events-auto rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-4 py-3 shadow-lg shadow-black/30 backdrop-blur-sm md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl";
 
   return (
     <div
@@ -41,18 +41,22 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
   const itemsHome: Array<{
     key: CityVariant;
     desktopClass?: string;
+    mobileClass?: string;
   }> = [
     {
       key: "pforzheim",
       desktopClass: "md:-translate-y-6",
+      mobileClass: "transform -translate-x-16 translate-y-4 scale-90"
     },
     {
       key: "heilbronn",
       desktopClass: "md:translate-y-8 md:translate-x-0",
+      mobileClass: "transform -translate-y-4 scale-105"
     },
     {
       key: "boeblingen",
       desktopClass: "md:-translate-y-6",
+      mobileClass: "transform translate-x-16 translate-y-4 scale-90"
     },
   ];
 
@@ -61,24 +65,18 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       <div className="mx-auto w-full max-w-5xl px-6 pt-6">
         <div
           className="
-            relative pointer-events-none isolation-isolate z-20 min-h-[320px]
-            md:min-h-0 md:flex md:flex-nowrap md:items-end md:justify-center md:gap-10
+            relative pointer-events-none isolation-isolate z-20 flex min-h-[320px]
+            items-center justify-center
+            md:min-h-0 md:flex-nowrap md:items-end md:gap-10
           "
         >
-          <div className="md:hidden flex w-full justify-center">
-            <div className="relative flex justify-center items-center mt-4 px-4 z-10 max-md:mt-5">
-              <BadgeCard
-                city="pforzheim"
-                className="scale-[0.6] sm:scale-[0.7] md:scale-100"
-              />
-              <BadgeCard
-                city="heilbronn"
-                className="scale-[0.6] sm:scale-[0.7] md:scale-100"
-              />
-              <BadgeCard
-                city="boeblingen"
-                className="scale-[0.6] sm:scale-[0.7] md:scale-100"
-              />
+          <div className="contents md:hidden">
+            <div className="relative flex items-center justify-center w-full h-full">
+              {itemsHome.map((it) => (
+                <div key={it.key} className={`absolute ${it.mobileClass}`}>
+                  <BadgeCard city={it.key} />
+                </div>
+              ))}
             </div>
           </div>
 
