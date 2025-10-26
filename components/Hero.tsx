@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
+import ReviewsStrip from "@/components/ReviewsStrip";
 
 let safeAreaProbe: HTMLDivElement | null = null;
 
@@ -287,28 +288,34 @@ export function Hero({
 
       </div>
 
-      {/* Google Trust Badge – zentral unten im Hero */}
-      <div className="pointer-events-auto absolute bottom-6 left-1/2 -translate-x-1/2 z-40">
-        <div className="flex items-center gap-3 bg-black/70 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg text-white max-w-[340px]">
-          {/* Google-Logo (dein Dateiname) */}
-          <img
-            src="/Google__G__logo.svg.png"
-            alt="Google Logo"
-            className="w-7 h-7 flex-shrink-0"
-          />
+      {/* Google Trust Badge oder Rezensionen unten im Bild */}
+      {city === "home" ? (
+        <div className="pointer-events-auto absolute bottom-6 left-1/2 -translate-x-1/2 z-40">
+          <div className="flex items-center gap-3 bg-black/70 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg text-white max-w-[340px]">
+            {/* Google-Logo (dein Dateiname) */}
+            <img
+              src="/Google__G__logo.svg.png"
+              alt="Google Logo"
+              className="w-7 h-7 flex-shrink-0"
+            />
 
-          {/* Text */}
-          <div className="text-[11px] leading-tight text-center">
-            <div className="font-semibold">
-              Blood Diamond Tattoo Ink. Studios
-            </div>
-            <div>in Pforzheim, Heilbronn & Böblingen</div>
-            <div className="text-yellow-500 text-sm font-medium mt-1" aria-label="5 von 5 Sternen">
-              ★★★★★
+            {/* Text */}
+            <div className="text-[11px] leading-tight text-center">
+              <div className="font-semibold">
+                Blood Diamond Tattoo Ink. Studios
+              </div>
+              <div>in Pforzheim, Heilbronn & Böblingen</div>
+              <div className="text-yellow-500 text-sm font-medium mt-1" aria-label="5 von 5 Sternen">
+                ★★★★★
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 md:px-6 md:pb-6">
+          <ReviewsStrip variant={city} />
+        </div>
+      )}
     </section>
   );
 }
