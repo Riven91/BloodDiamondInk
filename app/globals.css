@@ -144,3 +144,19 @@ main {
     display: none !important;
   }
 }
+
+@media (max-width: 767px) {
+  .badges-container {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 8px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  [data-badge] {
+    transform-origin: center center !important;
+  }
+}

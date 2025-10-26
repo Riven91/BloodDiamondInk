@@ -288,28 +288,28 @@ export function Hero({
 
       </div>
 
-      {/* Rezensionen unten im Bild (mobil + desktop) */}
-      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 md:px-6 md:pb-6">
-        {city === "home" ? (
-          <div className="hidden md:block">
-            <ReviewsStrip variant="home" />
+      {/* Google Trust Badge oder Rezensionen unten im Bild */}
+      {city === "home" ? (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/95 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg text-gray-800 flex items-center gap-3 z-50 max-w-[320px]">
+          {/* Google-Logo */}
+          <img
+            src="/google-logo.svg"
+            alt="Google Logo"
+            className="w-6 h-6 flex-shrink-0"
+          />
+
+          {/* Textinhalt */}
+          <div className="text-[11px] leading-tight text-center">
+            <div className="font-semibold">PlatDiamond Tattoo Studios</div>
+            <div>in Pforzheim, Heilbronn & Böblingen</div>
+            <div className="text-yellow-500 text-sm font-medium mt-1">★★★★★</div>
           </div>
-        ) : (
-          <div className="hidden md:block">
-            <ReviewsStrip variant={city} />
-          </div>
-        )}
-        {/* mobil */}
-        {city === "home" ? (
-          <div className="md:hidden">
-            <ReviewsStrip variant="home" />
-          </div>
-        ) : (
-          <div className="md:hidden">
-            <ReviewsStrip variant={city} />
-          </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-4 md:px-6 md:pb-6">
+          <ReviewsStrip variant={city} />
+        </div>
+      )}
     </section>
   );
 }

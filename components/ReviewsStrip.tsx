@@ -46,17 +46,17 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     {
       key: "pforzheim",
       desktopClass: "md:translate-y-4",
-      mobileClass: "transform -translate-x-12 scale-75"
+      mobileClass: "transform -translate-x-16 -translate-y-6 scale-75"
     },
     {
       key: "heilbronn",
       desktopClass: "md:-translate-y-5",
-      mobileClass: "transform -translate-y-5 scale-90"
+      mobileClass: "transform translate-y-0 scale-75"
     },
     {
       key: "boeblingen",
       desktopClass: "md:translate-y-4",
-      mobileClass: "transform translate-x-12 scale-75"
+      mobileClass: "transform translate-x-16 -translate-y-6 scale-75"
     },
   ];
 
