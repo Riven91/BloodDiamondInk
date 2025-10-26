@@ -64,11 +64,9 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     return (
       <div className="mx-auto w-full max-w-5xl px-6 pt-6">
         <div
-          className="
-            relative pointer-events-none isolation-isolate z-20 flex min-h-[160px]
-            items-end justify-center
-            md:min-h-0 md:flex-nowrap md:items-end md:gap-4
-          "
+          className={
+            "relative pointer-events-none isolation-isolate z-20 flex min-h-[160px] items-end justify-center md:min-h-0 md:flex-nowrap md:items-end md:gap-4"
+          }
         >
           {/* Mobile layout */}
           <div className="contents md:hidden">
@@ -102,18 +100,10 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     );
   }
 
-  const locationBadges: CityVariant[] = ["pforzheim", "heilbronn", "boeblingen"];
-
+  // For city-specific pages, render only the badge for that city.
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 pt-4">
-      <div className="badges-container flex flex-wrap items-center justify-center gap-2 md:hidden">
-        {locationBadges.map((cityKey) => (
-          <BadgeCard key={cityKey} city={cityKey} />
-        ))}
-      </div>
-      <div className="hidden md:flex md:justify-center">
-        <BadgeCard city={variant} />
-      </div>
+    <div className="flex w-full items-center justify-center">
+      <BadgeCard city={variant} />
     </div>
   );
 }
