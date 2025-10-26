@@ -249,6 +249,26 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
+      <section className="py-10 sm:py-14 bg-transparent">
+        <p className="text-center text-gray-200 text-lg sm:text-xl leading-relaxed mt-4 mb-8 px-4 max-w-3xl mx-auto">
+          Begeistert von unserer Tattoo-Kunst? Entdecke in unserer{" "}
+          <a
+            href="/#galerie"
+            className="text-emerald-500 hover:text-emerald-400 transition-colors font-semibold"
+          >
+            Galerie
+          </a>{" "}
+          weitere Meisterwerke aus Pforzheim, Heilbronn und Böblingen – oder folge uns auf{" "}
+          <a
+            href="#footer"
+            className="text-emerald-500 hover:text-emerald-400 transition-colors font-semibold"
+          >
+            Social Media
+          </a>{" "}
+          für tägliche Einblicke in unsere Tattoo-Studios, Artists und preisgekrönten Styles.
+        </p>
+      </section>
+
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio Highlights – Tattoo Böblingen</h2>

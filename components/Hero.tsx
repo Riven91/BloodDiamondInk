@@ -291,7 +291,7 @@ export function Hero({
       {/* Google Trust Badge oder Rezensionen unten im Bild */}
       {city === "home" ? (
         <div className="pointer-events-auto absolute bottom-6 left-1/2 -translate-x-1/2 z-40">
-          <div className="flex items-center gap-3 bg-black/70 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg text-white max-w-[340px]">
+          <div className="flex items-center gap-3 backdrop-blur-sm rounded-xl px-4 py-3 shadow-lg text-white max-w-[340px]">
             {/* Google-Logo (dein Dateiname) */}
             <img
               src="/Google__G__logo.svg.png"
