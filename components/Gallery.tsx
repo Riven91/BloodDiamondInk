@@ -9,42 +9,6 @@ interface GalleryItem {
 
 const galleryItems: GalleryItem[] = [
   {
-    src: "/gallery/pforzheim-1.jpg",
-    alt: "Feine Linienarbeit eines floralen Sleeves in Pforzheim",
-  },
-  {
-    src: "/gallery/pforzheim-2.jpg",
-    alt: "Black & Grey Portrait mit weichen Schattierungen in Pforzheim",
-  },
-  {
-    src: "/gallery/pforzheim-3.jpg",
-    alt: "Cover-Up Konzept mit Zeichnung und finalem Ergebnis in Pforzheim",
-  },
-  {
-    src: "/gallery/heilbronn-1.jpg",
-    alt: "Aftercare-Snapshot eines healed Realistic Tattoos in Heilbronn",
-  },
-  {
-    src: "/gallery/heilbronn-2.jpg",
-    alt: "Artist bei der Fineline-Vorzeichnung in Heilbronn",
-  },
-  {
-    src: "/gallery/heilbronn-3.jpg",
-    alt: "Detailaufnahme eines Blackwork-Ornaments in Heilbronn",
-  },
-  {
-    src: "/gallery/boeblingen-1.jpg",
-    alt: "Lettering mit dezentem Glow in Böblingen",
-  },
-  {
-    src: "/gallery/boeblingen-2.jpg",
-    alt: "Matching Tattoos aus einer Duo-Session in Böblingen",
-  },
-  {
-    src: "/gallery/boeblingen-3.jpg",
-    alt: "Micro-Realistic Floral Detail in Böblingen",
-  },
-  {
     src: "/blackgrey2.jpeg",
     alt: "BlackRay 2",
   },
