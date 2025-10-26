@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import { GutscheinLink } from "@/components/GutscheinLink";
 
 const faqItems = [
   {
@@ -126,6 +127,7 @@ export default function HeilbronnPage() {
         secondaryCtaHref="https://wa.me/4917630573128"
         city="heilbronn"
       />
+      <GutscheinLink />
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
@@ -239,6 +241,20 @@ export default function HeilbronnPage() {
               />
             </div>
           </div>
+          <section className="text-center max-w-2xl mx-auto mt-6 text-gray-200">
+            <h3 className="text-lg font-semibold mb-3">Gemeinsam stark.</h3>
+            <p className="text-sm leading-relaxed">
+              Das Team von <strong>Blood Diamond Tattoo Ink Studios</strong> wurde auf Tattoo-Conventions in
+              <strong> Stuttgart</strong> und <strong> Rastatt</strong> ausgezeichnet, darunter in den Kategorien
+              <em> „Best of Show“</em>, <em>„Best of Color“</em> und <em>„Best of Blackwork“</em>.
+            </p>
+            <p className="text-sm leading-relaxed mt-2">
+              <strong>Diese Erfolge stehen für das, was uns antreibt: Leidenschaft, Präzision und Hingabe zu Tattoo Art.</strong>
+            </p>
+            <p className="text-sm leading-relaxed mt-2">
+              Unsere Künstler bringen diese Erfahrung in jedes Studio ein, in <strong>Pforzheim</strong>, <strong>Heilbronn</strong> und <strong>Böblingen</strong>.
+            </p>
+          </section>
         </div>
       </section>
 

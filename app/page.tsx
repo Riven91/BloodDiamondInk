@@ -3,6 +3,7 @@ import { StylesGrid } from "@/components/StylesGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
+import { GutscheinLink } from "@/components/GutscheinLink";
 import { Metadata } from "next";
 import { LocationsTeaser } from "./components/LocationsTeaser";
 
@@ -46,6 +47,7 @@ export default function HomePage() {
   return (
     <>
       <Hero city="home" />
+      <GutscheinLink />
       <LocationsTeaser />
       <StylesGrid />
       <AwardsSection />

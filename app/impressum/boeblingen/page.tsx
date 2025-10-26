@@ -62,9 +62,15 @@ export default function ImpressumBoeblingenPage() {
           <p>
             Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
             <br />
-            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer" className="text-blooddiamond-accent hover:underline">
-              https://ec.europa.eu/consumers/odr/
+            <a
+              href="https://consumer-redress.ec.europa.eu/dispute-resolution-bodies/germany-aussergerichtliche-streitbeilegungsstelle-fur-verbraucher-und-unternehmer-e-v_en?prefLang=de"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blooddiamond-accent hover:underline"
+            >
+              https://consumer-redress.ec.europa.eu/dispute-resolution-bodies/germany-aussergerichtliche-streitbeilegungsstelle-fur-verbraucher-und-unternehmer-e-v_en?prefLang=de
             </a>
+            . Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.
           </p>
         </section>
         
