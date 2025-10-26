@@ -91,12 +91,15 @@ export function Gallery() {
         </ul>
         <p className="mt-6 text-center text-sm leading-relaxed text-gray-300 md:text-base">
           Entdecke noch mehr außergewöhnliche Kunstwerke unserer internationalen Tattoo-Artists aus unseren Tattoo-Studios in
-          Pforzheim, Heilbronn und Böblingen. Folge{\' '}\n          <a
+          Pforzheim, Heilbronn und Böblingen. Folge{' '}
+          <a
             href="#footer"
             className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400"
           >
             Blood Diamond Tattoo Ink
-          </a>.{\' '}\n          auf unseren Social-Media-Kanälen für weitere Einblicke in Realistic, Fineline, Black & Grey, Cover-Up und Mandala
+          </a>
+          . {' '}
+          auf unseren Social-Media-Kanälen für weitere Einblicke in Realistic, Fineline, Black & Grey, Cover-Up und Mandala
           Tattoos.
         </p>
       </div>
