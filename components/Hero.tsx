@@ -307,7 +307,7 @@ export function Hero({
               {/* Logo + Stars Row */}
               <div className="flex items-center justify-center" style={{ gap: '8px' }}>
                 <Image
-                  src="/google-color.svg"
+                  src="/Google__G__logo.svg.png"
                   alt="Google Logo"
                   width={80}
                   height={27}
