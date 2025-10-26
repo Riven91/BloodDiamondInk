@@ -287,38 +287,11 @@ export function Hero({
 
       </div>
 
-      {/* === CONDITIONAL GOOGLE BADGE AREA === */}
-      {city === "home" ? (
-        <>
-          {/* === BEGIN BLOOD DIAMOND GOOGLE TRUST BADGE (HOME) === */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 text-white text-center drop-shadow-md pointer-events-auto">
-            <div className="flex flex-col items-center gap-1">
-              <Image
-                src="/Google__G__logo.svg.png"
-                alt="Google Logo"
-                width={24}
-                height={24}
-                className="opacity-90"
-              />
-              <div className="text-xs font-semibold tracking-wide">
-                Blood Diamond Tattoo Ink. Studios
-              </div>
-              <div className="text-[11px] opacity-90">
-                in Pforzheim, Heilbronn & Böblingen
-              </div>
-              <div className="text-yellow-400 text-sm mt-1" aria-label="5 von 5 Sternen">
-                ★★★★★
-              </div>
-            </div>
-          </div>
-          {/* === END BLOOD DIAMOND GOOGLE TRUST BADGE (HOME) === */}
-        </>
-      ) : (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center space-x-4 md:space-x-8">
-          <ReviewsStrip variant={city} />
-        </div>
-      )}
-      {/* === END CONDITIONAL GOOGLE BADGE AREA === */}
+      {/* === UNIFIED GOOGLE BADGE AREA === */}
+      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center space-x-4 md:space-x-8">
+        <ReviewsStrip variant={city} />
+      </div>
+      {/* === END UNIFIED GOOGLE BADGE AREA === */}
     </section>
   );
 }
