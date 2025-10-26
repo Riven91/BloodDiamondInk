@@ -102,9 +102,18 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     );
   }
 
+  const locationBadges: CityVariant[] = ["pforzheim", "heilbronn", "boeblingen"];
+
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 pt-4 flex justify-center">
-      <BadgeCard city={variant} />
+    <div className="mx-auto w-full max-w-3xl px-6 pt-4">
+      <div className="badges-container flex flex-wrap items-center justify-center gap-2 md:hidden">
+        {locationBadges.map((cityKey) => (
+          <BadgeCard key={cityKey} city={cityKey} />
+        ))}
+      </div>
+      <div className="hidden md:flex md:justify-center">
+        <BadgeCard city={variant} />
+      </div>
     </div>
   );
 }

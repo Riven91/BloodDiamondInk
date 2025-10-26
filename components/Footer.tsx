@@ -11,7 +11,7 @@ export function Footer() {
   const agbHref = isBoeblingen ? '/agb/boeblingen' : '/agb';
 
   return (
-    <footer className="border-t border-blooddiamond-primary/30 bg-blooddiamond-muted/80">
+    <footer id="footer" className="border-t border-blooddiamond-primary/30 bg-blooddiamond-muted/80">
       <div className="mx-auto max-w-6xl px-6 pb-4 pt-10">
         <div className="flex flex-col gap-8 text-sm text-blooddiamond-text/60 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm space-y-4">

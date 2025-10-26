@@ -2,6 +2,9 @@
 
 import Image from "next/image";
 
+const GAL_CARD = "relative overflow-hidden rounded-xl bg-black/30 aspect-[4/5]";
+const GAL_IMG = "absolute inset-0 w-full h-full object-cover";
+
 interface GalleryItem {
   src: string;
   alt: string;
@@ -86,22 +89,31 @@ export function Gallery() {
           <li>Geometric und Mandala Designs mit Feinlinienkunst</li>
           <li>Letterworking &amp; New School Styles mit individueller Kreativität</li>
         </ul>
-      </div>
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-        {galleryItems.map((item) => (
-          <figure
-            key={item.src}
-            className="group relative overflow-hidden rounded-2xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60 shadow-lg shadow-black/30 transition-transform duration-500 hover:scale-105"
+        <p className="mt-6 text-center text-sm leading-relaxed text-gray-300 md:text-base">
+          Entdecke noch mehr außergewöhnliche Kunstwerke unserer internationalen Tattoo-Artists aus unseren Tattoo-Studios in
+          Pforzheim, Heilbronn und Böblingen. Folge{' '}
+          <a
+            href="#footer"
+            className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400"
           >
+            Blood Diamond Tattoo Ink
+          </a>{' '}
+          auf unseren Social-Media-Kanälen für weitere Einblicke in Realistic, Fineline, Black &amp; Grey, Cover-Up und Mandala
+          Tattoos.
+        </p>
+      </div>
+      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+        {galleryItems.map((item) => (
+          <div key={item.src} className={GAL_CARD}>
             <Image
               src={item.src}
               alt={item.alt}
-              width={400}
-              height={500}
+              fill
+              className={GAL_IMG}
+              sizes="(max-width:640px) 50vw, (max-width:1024px) 25vw, 300px"
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-          </figure>
+          </div>
         ))}
       </div>
     </div>
