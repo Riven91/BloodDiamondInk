@@ -235,13 +235,17 @@ export function Hero({
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
         <div className="space-y-3">
           {/* Kicker */}
+          {/* protected: keep black background on brand badge */}
           <p
-            className="inline-block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
+            className="hero-brand-badge inline-block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
             style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
           >
             Blood Diamond Tattoo Ink.
           </p>
-          <p className="hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent order-[30]" style={kickerDesktopStyle}>
+          <p
+            className="hero-brand-badge hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent order-[30]"
+            style={kickerDesktopStyle}
+          >
             Blood Diamond Tattoo Ink.
           </p>
           
@@ -256,6 +260,7 @@ export function Hero({
                 className={
                   [
                     "md:hidden z-20 flex flex-col gap-3 text-center rounded-lg bg-black/60 px-3 py-2 shadow-lg backdrop-blur-sm",
+                    "md:bg-transparent md:shadow-none md:backdrop-blur-0",
                     "[&_a,button]:text-sm [&_a,button]:px-3 [&_a,button]:py-2",
                     city === "home"
                       ? "absolute inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] mx-auto w-[90%] max-w-sm"
