@@ -287,11 +287,46 @@ export function Hero({
 
       </div>
 
-      {/* === UNIFIED GOOGLE BADGE AREA === */}
-      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center space-x-4 md:space-x-8">
-        <ReviewsStrip variant={city} />
-      </div>
-      {/* === END UNIFIED GOOGLE BADGE AREA === */}
+      {/* === CONDITIONAL GOOGLE BADGE AREA === */}
+      {city === "home" ? (
+        <>
+          {/* === BEGIN BLOOD DIAMOND GOOGLE TRUST BADGE (HOME) === */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 text-white text-center drop-shadow-md pointer-events-auto">
+            <div className="flex flex-col items-center gap-2">
+
+              {/* Text Block */}
+              <div>
+                <div className="text-sm md:text-base font-semibold tracking-wide underline">
+                  Blood Diamond Tattoo Ink. Studios
+                </div>
+                <div className="text-xs opacity-90">
+                  in Pforzheim, Heilbronn & Böblingen
+                </div>
+              </div>
+
+              {/* Logo + Stars Row */}
+              <div className="flex items-center justify-center" style={{ gap: '8px' }}>
+                <Image
+                  src="/google-color.svg"
+                  alt="Google Logo"
+                  width={80}
+                  height={27}
+                />
+                <div style={{ color: '#FFD700', fontSize: '18px', letterSpacing: '3px' }} aria-label="5 von 5 Sternen">
+                  ★★★★★
+                </div>
+              </div>
+
+            </div>
+          </div>
+          {/* === END BLOOD DIAMOND GOOGLE TRUST BADGE (HOME) === */}
+        </>
+      ) : (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center space-x-4 md:space-x-8">
+          <ReviewsStrip variant={city} />
+        </div>
+      )}
+      {/* === END CONDITIONAL GOOGLE BADGE AREA === */}
     </section>
   );
 }
