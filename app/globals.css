@@ -109,6 +109,11 @@ main {
 
 /* Mobile hero background */
 @media (max-width: 767px) {
+  /* Podest: HN oben, PF/BB gleich tief links/rechts */
+  [data-badge="heilbronn"]  { transform: translate(0, -18px) !important; }
+  [data-badge="pforzheim"]  { transform: translate(-84px, 8px) !important; }
+  [data-badge="boeblingen"] { transform: translate( 84px, 8px) !important; }
+
   .hero-section {
     /* Mobile: kein CSS-Background – wir rendern über <picture> im TSX */
     background: none !important;

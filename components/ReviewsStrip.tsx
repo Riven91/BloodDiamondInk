@@ -66,18 +66,18 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
           "
         >
           <div className="md:hidden flex w-full justify-center">
-            <div className="relative flex flex-col items-center gap-3 mt-4 px-4 z-10 max-md:mt-5">
+            <div className="relative flex justify-center items-center mt-4 px-4 z-10 max-md:mt-5">
               <BadgeCard
                 city="pforzheim"
-                className="scale-[0.6] sm:scale-[0.7] md:scale-100 max-md:translate-x-[-90px] max-md:translate-y-[-18px]"
+                className="scale-[0.6] sm:scale-[0.7] md:scale-100"
               />
               <BadgeCard
                 city="heilbronn"
-                className="scale-[0.6] sm:scale-[0.7] md:scale-100 max-md:translate-x-0 max-md:translate-y-0"
+                className="scale-[0.6] sm:scale-[0.7] md:scale-100"
               />
               <BadgeCard
                 city="boeblingen"
-                className="scale-[0.6] sm:scale-[0.7] md:scale-100 max-md:translate-x-[90px] max-md:translate-y-[-18px]"
+                className="scale-[0.6] sm:scale-[0.7] md:scale-100"
               />
             </div>
           </div>
