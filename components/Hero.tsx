@@ -309,8 +309,9 @@ export function Hero({
                 <Image
                   src="/Google__G__logo.svg.png"
                   alt="Google Logo"
-                  width={80}
-                  height={27}
+                  width={32}
+                  height={32}
+                  className="w-7 h-7 md:w-8 md:h-8"
                 />
                 <div style={{ color: '#FFD700', fontSize: '18px', letterSpacing: '3px' }} aria-label="5 von 5 Sternen">
                   ★★★★★
