@@ -9,6 +9,34 @@ const cityLabels: Record<CityVariant, string> = {
   boeblingen: "Böblingen",
 };
 
+function BadgeCard({
+  city,
+  className,
+}: {
+  city: CityVariant;
+  className?: string;
+}) {
+  const baseClassName =
+    "z-10 pointer-events-auto rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-2.5 py-3 shadow-lg shadow-black/30 backdrop-blur-sm md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl";
+
+  return (
+    <div
+      data-badge={city}
+      className={[baseClassName, className].filter(Boolean).join(" ")}
+    >
+      <GoogleRating city={cityLabels[city]} />
+    </div>
+  );
+}
+
+const renderDesktopBadge = (city: CityVariant) => (
+  <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
+    <div className="absolute inset-0 flex items-center justify-center">
+      <BadgeCard city={city} />
+    </div>
+  </div>
+);
+
 export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }) {
   const itemsHome: Array<{
     key: CityVariant;
@@ -28,22 +56,6 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
     },
   ];
 
-  const renderBadge = (city: CityVariant) => (
-    <div className="relative h-60 w-48 sm:w-56 md:h-72 md:w-64">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div
-          className="
-            rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-2.5 py-3
-            shadow-lg shadow-black/30 backdrop-blur-sm
-            md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl
-          "
-        >
-          <GoogleRating city={cityLabels[city]} />
-        </div>
-      </div>
-    </div>
-  );
-
   if (variant === "home") {
     return (
       <div className="mx-auto w-full max-w-5xl px-6 pt-6">
@@ -53,23 +65,20 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
             md:min-h-0 md:flex md:flex-nowrap md:items-end md:justify-center md:gap-10
           "
         >
-          {/* MOBILE OVERLAY: Pforzheim links, Böblingen rechts */}
-          <div className="md:hidden absolute inset-x-0 bottom-[14%] z-30 px-3 pointer-events-none">
-            <div className="flex items-end justify-between gap-1 [@media(max-width:360px)]:[&>*]:scale-[0.55]">
-              <div className="pointer-events-auto scale-[0.6] sm:scale-[0.7]">
-                {renderBadge("pforzheim")}
-              </div>
-
-              <div className="pointer-events-auto scale-[0.6] sm:scale-[0.7]">
-                {renderBadge("boeblingen")}
-              </div>
-            </div>
-          </div>
-
-          {/* MOBILE: Heilbronn unten mittig */}
-          <div className="md:hidden absolute left-1/2 bottom-[6%] -translate-x-1/2 z-20 pointer-events-none">
-            <div className="pointer-events-auto scale-[0.6] sm:scale-[0.7]">
-              {renderBadge("heilbronn")}
+          <div className="md:hidden flex w-full justify-center">
+            <div className="relative flex flex-col items-center gap-3 mt-4 px-4 z-10 max-md:mt-5">
+              <BadgeCard
+                city="pforzheim"
+                className="scale-[0.6] sm:scale-[0.7] md:scale-100 max-md:translate-x-[-90px] max-md:translate-y-[-18px]"
+              />
+              <BadgeCard
+                city="heilbronn"
+                className="scale-[0.6] sm:scale-[0.7] md:scale-100 max-md:translate-x-0 max-md:translate-y-0"
+              />
+              <BadgeCard
+                city="boeblingen"
+                className="scale-[0.6] sm:scale-[0.7] md:scale-100 max-md:translate-x-[90px] max-md:translate-y-[-18px]"
+              />
             </div>
           </div>
 
@@ -84,7 +93,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
                   .filter(Boolean)
                   .join(" ")}
               >
-                {renderBadge(it.key)}
+                {renderDesktopBadge(it.key)}
               </div>
             ))}
           </div>
@@ -95,15 +104,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 pt-4 flex justify-center">
-      <div
-        className="
-          rounded-lg border border-blooddiamond-primary/40 bg-blooddiamond-background/55 px-2.5 py-3
-          shadow-lg shadow-black/30 backdrop-blur-sm
-          md:rounded-2xl md:bg-blooddiamond-background/80 md:px-6 md:py-6 md:shadow-xl
-        "
-      >
-        <GoogleRating city={cityLabels[variant]} />
-      </div>
+      <BadgeCard city={variant} />
     </div>
   );
 }
