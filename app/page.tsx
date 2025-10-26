@@ -48,10 +48,6 @@ export default function HomePage() {
       <LocationsTeaser />
       <StylesGrid />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-2xl font-semibold text-blooddiamond-text">Galerie</h2>
-        <p className="mt-3 max-w-2xl text-blooddiamond-text/70">
-          Einblicke in aktuelle Projekte und Heal Pieces aus unseren Studios.
-        </p>
         <Gallery />
       </section>
       <FAQAccordion items={faqItems} />
