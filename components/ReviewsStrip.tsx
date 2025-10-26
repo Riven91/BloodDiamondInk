@@ -17,7 +17,7 @@ function BadgeCard({
   className?: string;
 }) {
   const baseClassName =
-    "z-10 pointer-events-auto rounded-lg border border-blooddiamond-primary/40 px-3 py-2 shadow-lg shadow-black/30 backdrop-blur-sm md:rounded-xl md:px-4 md:py-3 md:shadow-xl";
+    "z-10 pointer-events-auto";
 
   return (
     <div

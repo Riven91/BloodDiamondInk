@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import ReviewsStrip from "@/components/ReviewsStrip";
 
 let safeAreaProbe: HTMLDivElement | null = null;
 
@@ -77,7 +79,7 @@ export function Hero({
   ctaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
-  city = "home",
+  city,
 }: HeroProps) {
   const heroRef = useRef<HTMLElement | null>(null);
 
@@ -112,19 +114,17 @@ export function Hero({
     };
   }, [city]);
 
+  if (!city) {
+    console.warn("Hero city prop missing – rendering disabled");
+    return null;
+  }
+
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
 
   const secondaryCtaClassName = isWhatsAppCta
     ? "inline-flex items-center gap-2 rounded-2xl bg-brand px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-brand-hover focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
-    
-  const desktopStyle = {
-    backgroundColor: 'rgba(0,0,0,0.55)',
-    padding: '0.5rem 0.75rem',
-    borderRadius: '6px',
-    color: '#FFFFFF'
-  };
 
   const kickerDesktopStyle = {
     backgroundColor: 'rgba(0,0,0,0.55)',
@@ -220,14 +220,14 @@ export function Hero({
       ref={heroRef}
       className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
     >
-      <picture className="absolute inset-0 md:hidden pointer-events-none" aria-hidden="true">
+      <picture className="absolute inset-0 md:hidden pointer-events-none">
         <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
-        <img
+        <Image
           src="/herobackground3.webp?v=pfz"
           alt=""
-          className="h-full w-full object-contain md:object-cover object-center"
-          decoding="async"
-          loading="eager"
+          fill
+          className="object-contain md:object-cover object-center"
+          priority
         />
       </picture>
 
@@ -247,7 +247,7 @@ export function Hero({
           
           {/* Title */}
           <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
-          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl" style={desktopStyle}>{title}</h1>
+          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
 
           {hasPrimaryCta || hasSecondaryCta ? (
             <>
@@ -269,13 +269,13 @@ export function Hero({
           ) : null}
 
           {/* Desktop description (styled) */}
-          <p className="hidden md:block mx-auto max-w-2xl" style={desktopStyle}>{description}</p>
+          <p className="hidden md:block mx-auto max-w-2xl">{description}</p>
 
           {/* MOBILE: Fließtext fest über dem Diamanten */}
           <p
             className="
               md:hidden
-              absolute left-1/2 top-[52%]
+              absolute left-1/2 top-[52%] 
               -translate-x-1/2 -translate-y-1/2
               z-10 w-[88%] max-w-md
               text-center text-white leading-snug
@@ -287,23 +287,38 @@ export function Hero({
 
       </div>
 
-      {/* Google Trust Badge – transparente Variante */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 text-white text-center drop-shadow-md">
-        <div className="flex flex-col items-center gap-1">
-          <img
-            src="/Google__G__logo.svg.png"
-            alt="Google Logo"
-            className="w-6 h-6 opacity-90"
-          />
-          <div className="text-xs font-semibold tracking-wide">
-            Blood Diamond Tattoo Ink. Studios
+      {/* === CONDITIONAL GOOGLE BADGE AREA === */}
+      {city === "home" ? (
+        <>
+          {/* === BEGIN BLOOD DIAMOND GOOGLE TRUST BADGE (HOME) === */}
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-50 text-white text-center drop-shadow-md pointer-events-auto">
+            <div className="flex flex-col items-center gap-1">
+              <Image
+                src="/Google__G__logo.svg.png"
+                alt="Google Logo"
+                width={24}
+                height={24}
+                className="opacity-90"
+              />
+              <div className="text-xs font-semibold tracking-wide">
+                Blood Diamond Tattoo Ink. Studios
+              </div>
+              <div className="text-[11px] opacity-90">
+                in Pforzheim, Heilbronn & Böblingen
+              </div>
+              <div className="text-yellow-400 text-sm mt-1" aria-label="5 von 5 Sternen">
+                ★★★★★
+              </div>
+            </div>
           </div>
-          <div className="text-[11px] opacity-90">
-            in Pforzheim, Heilbronn & Böblingen
-          </div>
-          <div className="text-yellow-400 text-sm mt-1">★★★★★</div>
+          {/* === END BLOOD DIAMOND GOOGLE TRUST BADGE (HOME) === */}
+        </>
+      ) : (
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center justify-center space-x-4 md:space-x-8">
+          <ReviewsStrip variant={city} />
         </div>
-      </div>
+      )}
+      {/* === END CONDITIONAL GOOGLE BADGE AREA === */}
     </section>
   );
 }
