@@ -1,5 +1,6 @@
 {
   "apphosting": {
+    "backend": "diamond3",
     "source": ".",
     "ignore": [
       "firebase.json",
