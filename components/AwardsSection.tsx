@@ -33,9 +33,20 @@ export function AwardsSection() {
         </div>
       </div>
 
-      <p className="text-center text-gray-300 text-sm sm:text-base mt-6 leading-relaxed max-w-3xl mx-auto px-4">
-        Gemeinsam stark: Das Team von Blood Diamond Tattoo Ink wurde mehrfach auf nationalen Conventions ausgezeichnet – darunter „Best of Show“, „Best of Color“ und „Best of Blackwork“. Diese Auszeichnungen spiegeln unsere Leidenschaft, Präzision und Hingabe zur Tattoo-Kunst wider.
-      </p>
+      <section className="text-center max-w-2xl mx-auto mt-6 text-gray-200">
+        <h3 className="text-lg font-semibold mb-3">Gemeinsam stark.</h3>
+        <p className="text-sm leading-relaxed">
+          Das Team von <strong>Blood Diamond Tattoo Ink Studios</strong> wurde auf Tattoo-Conventions in
+          <strong> Stuttgart</strong> und <strong> Rastatt</strong> ausgezeichnet, darunter in den Kategorien
+          <em> „Best of Show“</em>, <em>„Best of Color“</em> und <em>„Best of Blackwork“</em>.
+        </p>
+        <p className="text-sm leading-relaxed mt-2">
+          <strong>Diese Erfolge stehen für das, was uns antreibt: Leidenschaft, Präzision und Hingabe zu Tattoo Art.</strong>
+        </p>
+        <p className="text-sm leading-relaxed mt-2">
+          Unsere Künstler bringen diese Erfahrung in jedes Studio ein, in <strong>Pforzheim</strong>, <strong>Heilbronn</strong> und <strong>Böblingen</strong>.
+        </p>
+      </section>
     </section>
   );
 }
