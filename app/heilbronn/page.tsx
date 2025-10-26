@@ -62,6 +62,18 @@ const faqJsonLd = {
   })),
 };
 
+const ST_WRAP =
+  "relative overflow-hidden rounded-xl bg-black/30 " +
+  "h-60 sm:h-64 md:h-72 lg:h-80 w-full flex items-center justify-center";
+
+const ST_IMG = "object-contain";
+
+const studios = [
+  { src: "/Studio1.jpeg", alt: "Unser Studio – Bild 1", pos: "object-center" },
+  { src: "/Studio2.jpeg", alt: "Unser Studio – Bild 2", pos: "object-top" },
+  { src: "/Studio3.jpeg", alt: "Unser Studio – Bild 3", pos: "object-center" },
+];
+
 export const metadata: Metadata = {
   title: "Tattoo Studio Heilbronn | Blood Diamond Tattoo Ink.",
   description: "Fineline, Realistic & Cover-Up Tattoos in Heilbronn – Beratung, individuelles Design & höchste Hygiene.",
@@ -186,26 +198,18 @@ export default function HeilbronnPage() {
       <section className="bg-blooddiamond-muted/20 py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Studio</h2>
-          <div className="mt-8 grid gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {[
-              {
-                src: "/Studio1.jpeg",
-                alt: "Empfangsbereich von Blood Diamond Tattoo Ink. in Heilbronn",
-              },
-              {
-                src: "/Studio2.jpeg",
-                alt: "Tattoo-Arbeitsplatz bei Blood Diamond Tattoo Ink. in Heilbronn",
-              },
-              {
-                src: "/Studio3.jpeg",
-                alt: "Detailansicht des Studios von Blood Diamond Tattoo Ink. in Heilbronn",
-              },
-            ].map((image) => (
-              <div
-                key={image.src}
-                className="relative h-72 overflow-hidden rounded-2xl border border-blooddiamond-primary/40"
-              >
-                <Image src={image.src} alt={image.alt} fill className="object-cover" />
+          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+            {studios.map((it, i) => (
+              <div key={i} className={ST_WRAP}>
+                {/* fill + object-contain, damit das Bild in der Box bleibt */}
+                <Image
+                  src={it.src}
+                  alt={it.alt}
+                  fill
+                  priority={false}
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 33vw, 33vw"
+                  className={`${ST_IMG} ${it.pos}`}
+                />
               </div>
             ))}
           </div>
