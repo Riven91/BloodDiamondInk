@@ -3,9 +3,51 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 
 type Item = { src: string; alt: string };
 
+// --- Hilfsfunktionen, um immer die Original-/public-URL zu ermitteln ---
+function decodeNextImageUrl(src: string): string {
+  try {
+    if (!src) return src;
+    // Next.js Optimizer: /_next/image?url=<ENCODED>&w=...&q=...
+    const u = new URL(src, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
+    if (u.pathname.startsWith('/_next/image')) {
+      const raw = u.searchParams.get('url');
+      if (raw) {
+        // decodeURIComponent 2x, falls doppelt encodiert wurde
+        try {
+          return decodeURIComponent(decodeURIComponent(raw));
+        } catch {
+          return decodeURIComponent(raw);
+        }
+      }
+    }
+    return src;
+  } catch {
+    return src;
+  }
+}
+
+function resolveSrcFromElement(el: HTMLElement): string {
+  // 1) Explizit gesetzte Originalquelle
+  const explicit = el.getAttribute('data-lightbox-src') || el.getAttribute('data-original') || '';
+  if (explicit) return decodeNextImageUrl(explicit);
+  // 2) IMG-Quelle
+  if (el instanceof HTMLImageElement) {
+    const raw = el.currentSrc || el.src || el.getAttribute('src') || '';
+    return decodeNextImageUrl(raw);
+  }
+  // 3) In Vorfahren nach data-lightbox-src suchen
+  const host = el.closest<HTMLElement>('[data-lightbox-src]');
+  if (host) {
+    const raw = host.getAttribute('data-lightbox-src') || '';
+    return decodeNextImageUrl(raw);
+  }
+  return '';
+}
+
 export default function LightboxGlobal({
   scopeSelector = 'main',
-  excludeSelector = '#hero, #team-gallery, [data-no-lightbox]',
+  // Exkludiere Hero, Team-Galerien und die Home-Gallery (id/class/data-* Varianten)
+  excludeSelector = '#hero, #team-gallery, #gallery, .gallery, [data-gallery], [data-gallery-root], [data-no-lightbox]',
 }: { scopeSelector?: string; excludeSelector?: string }) {
   const [items, setItems] = useState<Item[]>([]);
   const [open, setOpen] = useState(false);
@@ -24,7 +66,7 @@ export default function LightboxGlobal({
       const out: Item[] = [];
       for (const i of imgs) {
         if (isExcluded(i)) continue;
-        const src = i.currentSrc || i.src || i.getAttribute('src') || '';
+        const src = resolveSrcFromElement(i as unknown as HTMLElement);
         if (!src) continue;
         out.push({ src, alt: i.alt || i.getAttribute('alt') || '' });
       }
@@ -35,14 +77,18 @@ export default function LightboxGlobal({
     update();
 
     const mo = new MutationObserver(update);
-    mo.observe(scope, { childList: true, subtree: true, attributes: true, attributeFilter: ['src','srcset'] });
+    mo.observe(scope, { childList: true, subtree: true, attributes: true, attributeFilter: ['src', 'srcset'] });
 
     const onClick = (e: Event) => {
       const t = e.target as HTMLElement | null;
       if (!t || isExcluded(t)) return;
-      const img = t.closest('img');
-      if (!img) return;
-      const src = (img as HTMLImageElement).currentSrc || (img as HTMLImageElement).src || img.getAttribute('src') || '';
+      // Erlaube Klick auf <img> oder Wrapper mit data-lightbox-src
+      let el: HTMLElement | null = t;
+      while (el && el !== scope && !(el instanceof HTMLImageElement) && !el.hasAttribute('data-lightbox-src')) {
+        el = el.parentElement;
+      }
+      if (!el || el === scope) return;
+      const src = resolveSrcFromElement(el);
       if (!src) return;
       const list = collect();
       setItems(list);
