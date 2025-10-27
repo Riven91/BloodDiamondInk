@@ -43,15 +43,17 @@ type Item = {
 };
 
 type LightboxAutoProps = {
-  containerSelector: string;
+  containerSelector?: string;
+  gallerySelector?: string;
 };
 
-export default function LightboxAuto({ containerSelector }: LightboxAutoProps) {
+export default function LightboxAuto({ containerSelector, gallerySelector }: LightboxAutoProps) {
   const [items, setItems] = useState<Item[]>([]);
   const [isOpen, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
   const overlayRef = useRef<HTMLDivElement | null>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
+  const selector = gallerySelector ?? containerSelector ?? null;
 
   const currentItem = useMemo(() => {
     if (!items.length) return null;
@@ -60,8 +62,8 @@ export default function LightboxAuto({ containerSelector }: LightboxAutoProps) {
   }, [idx, items]);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-    const root = document.querySelector(containerSelector) as HTMLElement | null;
+    if (typeof window === "undefined" || !selector) return;
+    const root = document.querySelector(selector) as HTMLElement | null;
     if (!root) return;
 
     const collect = (): Item[] => {
@@ -136,7 +138,7 @@ export default function LightboxAuto({ containerSelector }: LightboxAutoProps) {
       root.removeEventListener("click", clickHandler);
       mo.disconnect();
     };
-  }, [containerSelector]);
+  }, [selector]);
 
   useEffect(() => {
     if (!isOpen || !items.length) return;
@@ -187,7 +189,7 @@ export default function LightboxAuto({ containerSelector }: LightboxAutoProps) {
     };
   }, [isOpen]);
 
-  if (!items.length) {
+  if (!selector || !items.length) {
     return null;
   }
 
