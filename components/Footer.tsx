@@ -5,10 +5,17 @@ import { usePathname } from 'next/navigation';
 
 export function Footer() {
   const pathname = usePathname();
+  const isHeilbronn = pathname?.toLowerCase().includes('/heilbronn');
+  if (isHeilbronn) {
+    return null;
+  }
   const isBoeblingen = pathname?.toLowerCase().includes('/boeblingen');
   const impressumHref = isBoeblingen ? '/impressum/boeblingen' : '/impressum';
   const datenschutzHref = isBoeblingen ? '/datenschutz/boeblingen' : '/datenschutz';
   const agbHref = isBoeblingen ? '/agb/boeblingen' : '/agb';
+  const contactHref = isBoeblingen
+    ? 'https://kontakt.blooddiamond-tattoo.de/boeblingen/'
+    : 'https://kontakt.blooddiamond-tattoo.de/pforzheim/';
 
   return (
     <footer id="footer" className="border-t border-blooddiamond-primary/30 bg-blooddiamond-muted/80">
@@ -75,38 +82,50 @@ export function Footer() {
                 <span className="text-xs uppercase tracking-wider">YouTube</span>
               </a>
             </div>
-          </div>
-          <div className="flex flex-col gap-3 text-xs uppercase tracking-wide text-blooddiamond-text/70 md:text-right">
-            <span className="font-display text-sm text-blooddiamond-text">Rechtliches</span>
-            <Link href={impressumHref} className="hover:text-blooddiamond-accent">
-              Impressum
-            </Link>
-            <Link href={datenschutzHref} className="hover:text-blooddiamond-accent">
-              Datenschutz
-            </Link>
-            <Link href={agbHref} className="hover:text-blooddiamond-accent">
-              AGB
-            </Link>
-            <a
-              href="#"
-              onClick={(event) => {
-                event.preventDefault();
-                if (typeof window !== 'undefined') {
-                  const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
-                  if (klaro && typeof klaro.show === 'function') {
-                    klaro.show();
-                  }
+        </div>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm my-4">
+          <a href="/#faq" className="text-neutral-400 hover:text-white transition">
+            FAQ
+          </a>
+          <a
+            href={contactHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-400 hover:text-white transition"
+          >
+            Kontakt
+          </a>
+        </div>
+        <div className="flex flex-col gap-3 text-xs uppercase tracking-wide text-blooddiamond-text/70 md:text-right">
+          <span className="font-display text-sm text-blooddiamond-text">Rechtliches</span>
+          <Link href={impressumHref} className="hover:text-blooddiamond-accent">
+            Impressum
+          </Link>
+          <Link href={datenschutzHref} className="hover:text-blooddiamond-accent">
+            Datenschutz
+          </Link>
+          <Link href={agbHref} className="hover:text-blooddiamond-accent">
+            AGB
+          </Link>
+          <a
+            href="#"
+            onClick={(event) => {
+              event.preventDefault();
+              if (typeof window !== 'undefined') {
+                const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
+                if (klaro && typeof klaro.show === 'function') {
+                  klaro.show();
                 }
-              }}
-              className="hover:text-blooddiamond-accent"
-            >
-              Cookie-Einstellungen
-            </a>
-          </div>
+              }
+            }}
+            className="hover:text-blooddiamond-accent"
+          >
+            Cookie-Einstellungen
+          </a>
         </div>
-        <div className="mt-8 border-t border-blooddiamond-primary/30 pt-4 text-center text-xs text-blooddiamond-accent">
-          © 2025 Blood Diamond Ink – Alle Rechte vorbehalten.
-        </div>
+      </div>
+      <div className="mt-8 border-t border-blooddiamond-primary/30 pt-4 text-center text-xs text-blooddiamond-accent">
+        © 2025 Blood Diamond Ink – Alle Rechte vorbehalten.
       </div>
     </footer>
   );

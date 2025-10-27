@@ -67,7 +67,7 @@ const faqJsonLd = {
 
 const studioCaptions = [
   "Einblick in eines unserer Studios in Böblingen, Heilbronn und Pforzheim – klare Struktur, präzise Abläufe und ruhige, professionelle Arbeitsumgebung.",
-  "Echte Handwerkskunst – jede Linie entsteht mit Ruhe, Technik und jahrelanger Erfahrung im internationalen Tattoo-Business.",
+  "Tattoo-Arbeit mit klarer Struktur – präzise Ausführung, aufgeräumte Arbeitsfläche und Fokus auf jedes Detail.",
   "Willkommen bei Blood Diamond Tattoo Ink. – stilvoller Empfangsbereich mit markantem Neon-Logo und entspannter Atmosphäre.",
 ] as const;
 
@@ -140,7 +140,7 @@ export default function BoeblingenPage() {
           href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-2 rounded-md bg-emerald-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+          className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
           aria-label="Gutschein sichern"
         >
           {/* Geschenk-Icon (weiß, inline-SVG) */}
