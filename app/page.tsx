@@ -64,6 +64,7 @@ export default function HomePage() {
     <>
       <Hero
         city="home"
+        title="Tattoo Studios in Baden-Württemberg – Exklusive Tattoo-Kunst auf Weltklasse-Niveau"
         ctaLabel="Termin buchen"
         ctaHref="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
         secondaryCtaLabel="WhatsApp"
