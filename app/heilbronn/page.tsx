@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import { studioImages } from "@/app/_content/studioImages";
 
@@ -65,9 +66,9 @@ const faqJsonLd = {
 };
 
 const studioCaptions = [
-  "Unsere Studios stehen für kreative Energie und saubere Abläufe. Moderne Arbeitsplätze, klare Struktur.",
-  "Tattoo-Session mit Fokus und Ruhe. Präzision bei Linien und Schattierungen.",
-  "Empfangs- und Wartebereich. Beratung, Planung und Nachsorge an einem Ort.",
+  "Einblick in eines unserer Studios in Heilbronn, Pforzheim und Böblingen – moderne Ausstattung, sterile Umgebung und konzentrierte Arbeitsatmosphäre.",
+  "Echte Handwerkskunst – jede Linie entsteht mit Ruhe, Technik und jahrelanger Erfahrung im internationalen Tattoo-Business.",
+  "Willkommen bei Blood Diamond Tattoo Ink. – stilvoller Empfangsbereich mit markantem Neon-Logo und entspannter Atmosphäre.",
 ] as const;
 
 if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioImages.length) {
@@ -220,6 +221,8 @@ export default function HeilbronnPage() {
           </div>
         </div>
       </section>
+
+      <OtherLocations current="heilbronn" />
 
       <section className="bg-blooddiamond-muted/20 py-16">
         <div className="mx-auto max-w-5xl px-6">
