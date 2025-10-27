@@ -15,6 +15,11 @@ export function Footer() {
     : isHeilbronn
       ? 'https://kontakt.blooddiamond-tattoo.de/heilbronn/'
       : 'https://kontakt.blooddiamond-tattoo.de/pforzheim/';
+  const instagramHref = isBoeblingen
+    ? 'https://www.instagram.com/blood_diamond_ink_boeblingen/'
+    : isHeilbronn
+      ? 'https://www.instagram.com/blood_diamond_ink_heilbronn/'
+      : 'https://www.instagram.com/blood_diamond_tattoo_ink/';
   const handleCookieSettings = () => {
     if (typeof window !== 'undefined') {
       const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
@@ -34,7 +39,7 @@ export function Footer() {
             </span>
             <div className="flex flex-wrap items-center gap-5">
               <a
-                href="https://www.instagram.com/blood_diamond_tattoo_ink/"
+                href={instagramHref}
                 aria-label="Instagram"
                 title="Instagram"
                 target="_blank"
