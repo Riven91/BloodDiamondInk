@@ -91,18 +91,28 @@ window.klaroConfig = {
 
 // Reapply Maps consent when navigating client-side (Next.js)
 if (typeof window !== "undefined") {
+  const consentGranted = () => {
+    try {
+      // Prüfen, ob Klaro eine eigene getConsent-Funktion bereitstellt
+      if (typeof window.klaro?.getConsent === "function") {
+        return !!window.klaro.getConsent("google-maps");
+      }
+      // Fallback: direkter Zugriff auf Klaro-State (Standard bei Open-Source-Version)
+      return !!window.klaro?.state?.["google-maps"];
+    } catch {
+      return false;
+    }
+  };
+
   const applyMapsConsent = () => {
     try {
-      if (window.klaro && window.klaro.getManager) {
-        const manager = window.klaro.getManager();
-        if (manager && manager.getConsent && manager.getConsent("google-maps")) {
-          const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
-          iframes.forEach(f => {
-            if (!f.src) f.src = f.getAttribute("data-src");
-            f.removeAttribute("title");
-            f.removeAttribute("aria-hidden");
-          });
-        }
+      if (consentGranted()) {
+        const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
+        iframes.forEach(f => {
+          if (!f.src) f.src = f.getAttribute("data-src");
+          f.removeAttribute("title");
+          f.removeAttribute("aria-hidden");
+        });
       }
     } catch {}
   };
