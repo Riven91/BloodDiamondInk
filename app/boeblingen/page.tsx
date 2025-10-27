@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
+import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
 
 const faqItems = [
@@ -243,7 +244,7 @@ export default function BoeblingenPage() {
       <section className="bg-blooddiamond-background py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div id="team-gallery" className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="relative w-full aspect-[4/3] rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30 p-2">
               <Image
                 src="/Team1.jpeg"
@@ -263,6 +264,7 @@ export default function BoeblingenPage() {
               />
             </div>
           </div>
+          <LightboxAuto containerSelector="#team-gallery" />
           <section className="text-center max-w-2xl mx-auto mt-6 text-gray-200">
             <h3 className="text-lg font-semibold mb-3">Gemeinsam stark.</h3>
             <p className="text-sm leading-relaxed">
