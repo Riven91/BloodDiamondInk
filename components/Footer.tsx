@@ -87,6 +87,21 @@ export function Footer() {
             <Link href={agbHref} className="hover:text-blooddiamond-accent">
               AGB
             </Link>
+            <a
+              href="#"
+              onClick={(event) => {
+                event.preventDefault();
+                if (typeof window !== 'undefined') {
+                  const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
+                  if (klaro && typeof klaro.show === 'function') {
+                    klaro.show();
+                  }
+                }
+              }}
+              className="hover:text-blooddiamond-accent"
+            >
+              Cookie-Einstellungen
+            </a>
           </div>
         </div>
         <div className="mt-8 border-t border-blooddiamond-primary/30 pt-4 text-center text-xs text-blooddiamond-accent">
