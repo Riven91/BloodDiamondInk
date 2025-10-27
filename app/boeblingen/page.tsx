@@ -1,70 +1,11 @@
 import Image from "next/image";
+import Script from "next/script";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-
-const faqItems = [
-  {
-    question: "Welche Tattoo-Stile bietet Blood Diamond Tattoo Ink. in Böblingen?",
-    answer:
-      "Unser Fokus liegt auf Fineline, Realistic und individuellen Cover-Up Tattoos mit maßgeschneiderter Beratung und Design-Entwicklung in Böblingen.",
-  },
-  {
-    question: "Wie läuft die Terminvereinbarung ab?",
-    answer:
-      "Sie senden Ihre Anfrage über das Formular. Wir melden uns innerhalb von 48 Stunden mit Terminvorschlägen und einem individuellen Projektplan für Böblingen.",
-  },
-  {
-    question: "Welche Hygienestandards erwarten mich?",
-    answer:
-      "Blood Diamond Tattoo Ink. arbeitet mit Einwegmaterialien, UV-Desinfektion und medizinisch geprüften Aftercare-Produkten für maximale Sicherheit in Böblingen.",
-  },
-  {
-    question: "Kann ich ein bestehendes Tattoo covern lassen?",
-    answer:
-      "Ja, wir entwickeln mehrstufige Cover-Up-Konzepte und planen gegebenenfalls Vorbereitungssitzungen für optimale Ergebnisse in Böblingen.",
-  },
-];
-
-const businessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "TattooParlor",
-  name: "Blood Diamond Tattoo Ink. Böblingen",
-  description:
-    "Fineline, Realistic & Cover-Up Tattoos in Böblingen – Beratung, individuelles Design & höchste Hygiene.",
-  image: "/og/og-boeblingen.jpg",
-  telephone: "+49 162 4204789",
-  url: "https://blooddiamondink.example/boeblingen",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Stuttgarter Str. 21",
-    addressLocality: "Herrenberg",
-    postalCode: "71083",
-    addressCountry: "DE",
-  },
-  openingHours: "Mo-Sa 10:00-18:00",
-  areaServed: "Böblingen",
-  sameAs: [
-    "https://www.instagram.com",
-    "https://www.facebook.com",
-  ],
-};
-
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqItems.map((item) => ({
-    "@type": "Question",
-    name: item.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: item.answer,
-    },
-  })),
-};
 
 const studioCaptions = [
   "Einblick in eines unserer Studios in Böblingen, Heilbronn und Pforzheim – klare Struktur, präzise Abläufe und ruhige, professionelle Arbeitsumgebung.",
@@ -77,18 +18,22 @@ if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioIma
 }
 
 export const metadata: Metadata = {
-  title: "Tattoo Studio Böblingen | Blood Diamond Tattoo Ink.",
-  description: "Fineline, Realistic & Cover-Up Tattoos in Böblingen – Beratung, individuelles Design & höchste Hygiene.",
-  openGraph: {
-    images: [
-      {
-        url: "/og/og-boeblingen.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo Ink. Studio in Böblingen",
-      },
-    ],
+  title: "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink. | Kunst, Präzision und Sicherheit",
+  description:
+    "Blood Diamond Tattoo Ink. Böblingen – Tattoo-Kunst zwischen Stuttgart und Herrenberg. Internationale Artists, präzise Linienführung und ausgezeichnete Hygienestandards mit der „Goldenen Nadel“. Termin vereinbaren & Qualität erleben.",
+  alternates: {
+    canonical: "https://blooddiamond-tattoo.de/boeblingen",
   },
+  openGraph: {
+    title: "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink.",
+    description:
+      "Tattoo-Kunst auf höchstem Niveau in Böblingen / Herrenberg – Realistic, Fineline & Black-&-Grey, ausgeführt von international ausgezeichneten Artists.",
+    url: "https://blooddiamond-tattoo.de/boeblingen",
+    images: ["https://blooddiamond-tattoo.de/static/boeblingen-cover.jpg"],
+    locale: "de_DE",
+    siteName: "Blood Diamond Tattoo Ink.",
+  },
+  robots: { index: true, follow: true },
 };
 
 function ContactNotice() {
@@ -116,12 +61,9 @@ function ContactNotice() {
 export default function BoeblingenPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
-
       <Hero
         title="Tattoo Studio Böblingen — Blood Diamond Tattoo Ink."
-        description="Von Böblingen inspiriert, in der Welt vernetzt – unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet – bei Blood Diamond Tattoo Ink Böblingen."
+        description={`Von Böblingen inspiriert, in der Welt vernetzt: Unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet und bringen diese Erfahrung mit zu Blood Diamond Tattoo Ink. Böblingen.`}
         ctaLabel="Termin buchen"
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
@@ -210,7 +152,7 @@ export default function BoeblingenPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
-            Der Standort von Blood Diamond Tattoo Ink. in Böblingen liegt verkehrsgünstig zwischen Stuttgart und dem Schwarzwald. Nutzen Sie die Karte, um Ihre Route zu planen.
+            Der Standort von Blood Diamond Tattoo Ink. in Böblingen / Herrenberg ist zentral gelegen und über die A81 und B14 optimal erreichbar. Nutzen Sie die Karte, um Ihre Route zu planen.
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <div className="flex justify-center">
@@ -335,6 +277,49 @@ export default function BoeblingenPage() {
       </section>
 
       <ContactNotice />
+
+      <Script id="website-searchaction-bb" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          url: "https://blooddiamond-tattoo.de/",
+          name: "Blood Diamond Tattoo Ink.",
+          potentialAction: {
+            "@type": "SearchAction",
+            target:
+              "https://www.google.com/search?q=site:blooddiamond-tattoo.de+{search_term_string}",
+            "query-input": "required name=search_term_string",
+          },
+        })}
+      </Script>
+      <Script id="localbusiness-boeblingen" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TattooParlor",
+          name: "Blood Diamond Tattoo Ink. Böblingen",
+          image: "https://blooddiamond-tattoo.de/static/boeblingen-cover.jpg",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Stuttgarter Str. 21",
+            postalCode: "71083",
+            addressLocality: "Herrenberg",
+            addressRegion: "Baden-Württemberg",
+            addressCountry: "DE",
+          },
+          telephone: "+49 162 4204789",
+          email: "boeblingen@blooddiamond-tattoo.de",
+          url: "https://blooddiamond-tattoo.de/boeblingen",
+          openingHours: "Mo-Sa 10:00-18:00",
+          priceRange: "$$",
+          founder: "Kevin Kaiser",
+          areaServed: [
+            "Böblingen",
+            "Herrenberg",
+            "Sindelfingen",
+            "Region Stuttgart",
+          ],
+        })}
+      </Script>
     </>
   );
 }
