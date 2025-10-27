@@ -121,11 +121,9 @@ export default function StudioGallery({ captions }: Props) {
             className="max-h-[90vh] max-w-[90vw]"
             onClick={(event) => event.stopPropagation()}
           >
-            <Image
+            <img
               src={studioImages[activeIndex].src}
               alt={studioImages[activeIndex].alt}
-              width={1600}
-              height={1200}
               className="h-auto w-auto max-h-[90vh] max-w-full rounded-xl object-contain"
             />
           </div>
