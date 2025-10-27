@@ -1,3 +1,5 @@
+'use client';
+
 export default function FooterHeilbronn() {
   return (
     <footer className="mt-12 border-t border-neutral-800 pt-8 pb-6 text-center text-sm text-neutral-400">
@@ -22,12 +24,13 @@ export default function FooterHeilbronn() {
         <a href="/agb" className="text-neutral-400 hover:text-white transition">
           AGB
         </a>
-        <a
+        <button
+          type="button"
           onClick={() => (window as any).klaro?.show()}
-          className="text-neutral-400 hover:text-white transition cursor-pointer"
+          className="text-neutral-400 hover:text-white transition cursor-pointer bg-transparent border-none"
         >
           Cookie-Einstellungen
-        </a>
+        </button>
       </div>
       <p className="text-neutral-500 mt-2">© 2025 Blood Diamond Tattoo Ink.</p>
     </footer>

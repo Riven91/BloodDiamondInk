@@ -82,6 +82,7 @@ export function Footer() {
                 <span className="text-xs uppercase tracking-wider">YouTube</span>
               </a>
             </div>
+          </div>
         </div>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm my-4">
           <a href="/#faq" className="text-neutral-400 hover:text-white transition">
