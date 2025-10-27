@@ -94,7 +94,7 @@ export function Footer() {
             FAQ
           </a>
           <a
-            href={contactHref}
+            href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
             target="_blank"
             rel="noopener noreferrer"
             className="transition hover:text-white"
