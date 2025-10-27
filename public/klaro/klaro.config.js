@@ -88,3 +88,30 @@ window.klaroConfig = {
     }
   ]
 };
+
+// Reapply Maps consent when navigating client-side (Next.js)
+if (typeof window !== "undefined") {
+  document.addEventListener("DOMContentLoaded", () => {
+    // Wenn Klaro schon geladen ist
+    const applyMapsConsent = () => {
+      if (window.klaro && window.klaro.getManager) {
+        const manager = window.klaro.getManager();
+        if (manager && manager.getConsent("google-maps")) {
+          // Einwilligung liegt vor → Iframes aktivieren
+          const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
+          iframes.forEach(f => {
+            if (!f.src) f.src = f.getAttribute("data-src");
+            f.removeAttribute("title");
+            f.removeAttribute("aria-hidden");
+          });
+        }
+      }
+    };
+    // Bei jeder Navigation (Next.js event-basiert)
+    window.addEventListener("popstate", applyMapsConsent);
+    window.addEventListener("pushState", applyMapsConsent);
+    window.addEventListener("replaceState", applyMapsConsent);
+    // Bei erstmaligem Laden
+    applyMapsConsent();
+  });
+}
