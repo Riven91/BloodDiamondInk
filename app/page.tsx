@@ -3,6 +3,7 @@ import { StylesGrid } from "@/components/StylesGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
+import LightboxAuto from "@/components/LightboxAuto";
 import { Metadata } from "next";
 import { LocationsTeaser } from "./components/LocationsTeaser";
 
@@ -92,8 +93,14 @@ export default function HomePage() {
         </a>
       </div>
       <LocationsTeaser />
-      <StylesGrid />
-      <AwardsSection />
+      <section id="signature-styles-gallery">
+        <StylesGrid />
+      </section>
+      <LightboxAuto gallerySelector="#signature-styles-gallery" />
+      <section id="erfolge-teamgeist-gallery">
+        <AwardsSection />
+      </section>
+      <LightboxAuto gallerySelector="#erfolge-teamgeist-gallery" />
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
         <Gallery />
       </section>
