@@ -91,13 +91,11 @@ window.klaroConfig = {
 
 // Reapply Maps consent when navigating client-side (Next.js)
 if (typeof window !== "undefined") {
-  document.addEventListener("DOMContentLoaded", () => {
-    // Wenn Klaro schon geladen ist
-    const applyMapsConsent = () => {
+  const applyMapsConsent = () => {
+    try {
       if (window.klaro && window.klaro.getManager) {
         const manager = window.klaro.getManager();
-        if (manager && manager.getConsent("google-maps")) {
-          // Einwilligung liegt vor → Iframes aktivieren
+        if (manager && manager.getConsent && manager.getConsent("google-maps")) {
           const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
           iframes.forEach(f => {
             if (!f.src) f.src = f.getAttribute("data-src");
@@ -106,12 +104,48 @@ if (typeof window !== "undefined") {
           });
         }
       }
-    };
-    // Bei jeder Navigation (Next.js event-basiert)
+    } catch {}
+  };
+
+  const installNavHooks = () => {
+    // 1) Erstes Laden und Zurück/Vorwärts
+    window.addEventListener("load", applyMapsConsent);
     window.addEventListener("popstate", applyMapsConsent);
-    window.addEventListener("pushState", applyMapsConsent);
-    window.addEventListener("replaceState", applyMapsConsent);
-    // Bei erstmaligem Laden
+
+    // 2) Monkey-Patch für forward navigation (Next.js Links)
+    const H = window.history;
+    if (!H.__patchedByKlaro) {
+      const origPush = H.pushState;
+      const origReplace = H.replaceState;
+
+      H.pushState = function () {
+        const ret = origPush.apply(this, arguments);
+        // optional: eigenes Event – und direkt anwenden
+        window.dispatchEvent(new Event("statechange"));
+        applyMapsConsent();
+        return ret;
+      };
+
+      H.replaceState = function () {
+        const ret = origReplace.apply(this, arguments);
+        window.dispatchEvent(new Event("statechange"));
+        applyMapsConsent();
+        return ret;
+      };
+
+      H.__patchedByKlaro = true;
+    }
+
+    // 3) Falls andere Libs auf "statechange" hören
+    window.addEventListener("statechange", applyMapsConsent);
+
+    // 4) Sofort einmal beim Init
     applyMapsConsent();
-  });
+  };
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", installNavHooks);
+  } else {
+    installNavHooks();
+  }
 }
