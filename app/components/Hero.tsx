@@ -23,7 +23,7 @@ export function Hero() {
             Tattoo Studio in Baden-Württemberg – Blood Diamond Ink
           </h1>
           <p className="mt-2 text-sm uppercase tracking-widest text-gray-600">
-            Realistic, Fineline, Cover-Up & Black-and-Grey in Ötisheim/Pforzheim, Heilbronn (Neckarsulm) & Böblingen (Herrenberg).
+            Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey) in Ötisheim/Pforzheim, Heilbronn (Neckarsulm) & Böblingen (Herrenberg).
           </p>
           <p className="mt-3 max-w-2xl text-gray-700">
             Preisgekrönte Artists, saubere Beratung – vom ersten Scribble bis zur perfekten Heilung.

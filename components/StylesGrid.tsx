@@ -13,7 +13,7 @@ const stylesData: StyleItem[] = [
     title: "Black & Grey",
     src: "/blackgrey1.jpeg",
     desc:
-      "Kontraststarke Black-&-Grey-Tattoos mit weichen Übergängen und tiefer Dreidimensionalität – ideal für Porträts, Realismus und große Kompositionen.",
+      "Kontraststarke Black & Grey (Black and Grey) Tattoos mit weichen Übergängen und tiefer Dreidimensionalität – ideal für Porträts, Realismus und große Kompositionen.",
   },
   {
     title: "Cover-Up",

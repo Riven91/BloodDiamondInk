@@ -1,65 +1,10 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ReviewsStrip from "@/components/ReviewsStrip";
-
-let safeAreaProbe: HTMLDivElement | null = null;
-
-function readSafeAreaInsetBottom(): number {
-  if (typeof window === "undefined" || typeof document === "undefined") {
-    return 0;
-  }
-
-  const docStyle = getComputedStyle(document.documentElement);
-  const rawEnv = docStyle.getPropertyValue("env(safe-area-inset-bottom)").trim();
-  if (rawEnv && rawEnv.endsWith("px")) {
-    const parsed = Number(rawEnv.slice(0, -2));
-    if (Number.isFinite(parsed)) {
-      return parsed;
-    }
-  }
-
-  if (!safeAreaProbe) {
-    safeAreaProbe = document.createElement("div");
-    safeAreaProbe.style.cssText =
-      "position:fixed; bottom:0; left:0; width:0; height:env(safe-area-inset-bottom); height:constant(safe-area-inset-bottom); pointer-events:none; opacity:0; z-index:-1;";
-    document.body.appendChild(safeAreaProbe);
-  }
-
-  const computed = window.getComputedStyle(safeAreaProbe);
-  const raw = computed.height.trim();
-  const parsed = Number(raw.replace("px", ""));
-  return Number.isFinite(parsed) ? parsed : 0;
-}
-
-function computeCtaBottom(): string {
-  const vh = typeof window !== "undefined" ? Math.max(window.innerHeight, 1) : 1;
-  const vw = typeof window !== "undefined" ? Math.max(window.innerWidth, 1) : 1;
-  const ar = vw / vh;
-
-  const safe = readSafeAreaInsetBottom();
-
-  let percent: number;
-  if (ar < 0.55) {
-    percent = 16;
-  } else if (ar < 0.7) {
-    percent = 14;
-  } else if (ar < 0.85) {
-    percent = 12;
-  } else {
-    percent = 10;
-  }
-
-  if (vh < 640) percent += 2;
-
-  percent = Math.max(8, Math.min(percent, 18));
-
-  const pxExtra = Math.min(16, safe || 8);
-
-  return `calc(${percent}vh + ${pxExtra}px)`;
-}
+import { StickyMobileCta } from "@/components/StickyMobileCta";
 
 interface HeroProps {
   title?: ReactNode;
@@ -74,45 +19,13 @@ interface HeroProps {
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description =
-    "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black-and-grey. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
+    "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey). Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
   ctaLabel,
   ctaHref,
   secondaryCtaLabel,
   secondaryCtaHref,
   city,
 }: HeroProps) {
-  const heroRef = useRef<HTMLElement | null>(null);
-
-  useEffect(() => {
-    const el = heroRef.current ?? document.documentElement;
-
-    if (city === "home") {
-      el?.style.removeProperty("--cta-bottom");
-      return;
-    }
-
-    if (!el || typeof window === "undefined") {
-      return;
-    }
-
-    const apply = () => {
-      el.style.setProperty("--cta-bottom", computeCtaBottom());
-    };
-
-    apply();
-    window.addEventListener("resize", apply, { passive: true });
-    window.addEventListener("orientationchange", apply);
-
-    return () => {
-      window.removeEventListener("resize", apply);
-      window.removeEventListener("orientationchange", apply);
-      el.style.removeProperty("--cta-bottom");
-      if (safeAreaProbe && safeAreaProbe.parentNode) {
-        safeAreaProbe.parentNode.removeChild(safeAreaProbe);
-        safeAreaProbe = null;
-      }
-    };
-  }, [city]);
 
   if (!city) {
     console.warn("Hero city prop missing – rendering disabled");
@@ -171,7 +84,6 @@ export function Hero({
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
-      ref={heroRef}
       className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
     >
       <picture className="absolute inset-0 md:hidden pointer-events-none">
@@ -208,34 +120,18 @@ export function Hero({
           <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
 
           {hasPrimaryCta || hasSecondaryCta ? (
-            <>
-              <div
-                className={
-                  [
-                    "mt-4 md:mt-6 hidden md:flex flex-wrap justify-center gap-3",
-                    city !== "home" ? "order-[40]" : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")
-                }
-              >
-                {renderButtons()}
-              </div>
-              <MobileCta city={city} className="md:hidden">
-                <div
-                  className={
-                    [
-                      "mt-4 flex flex-wrap justify-center gap-3",
-                      city !== "home" ? "order-[40]" : "",
-                    ]
-                      .filter(Boolean)
-                      .join(" ")
-                  }
-                >
-                  {renderButtons()}
-                </div>
-              </MobileCta>
-            </>
+            <div
+              className={
+                [
+                  "mt-4 md:mt-6 hidden md:flex flex-wrap justify-center gap-3",
+                  city !== "home" ? "order-[40]" : "",
+                ]
+                  .filter(Boolean)
+                  .join(" ")
+              }
+            >
+              {renderButtons()}
+            </div>
           ) : null}
 
           {/* Desktop description (styled) */}
@@ -298,47 +194,21 @@ export function Hero({
         </div>
       )}
       {/* === END CONDITIONAL GOOGLE BADGE AREA === */}
+
+      {/* === GLOBAL MOBILE STICKY CTA (Home & Standorte) === */}
+      {hasPrimaryCta || hasSecondaryCta ? (
+        <StickyMobileCta
+          bookingHref={hasPrimaryCta ? ctaHref : undefined}
+          bookingLabel={hasPrimaryCta ? ctaLabel : undefined}
+          bookingAriaLabel={hasPrimaryCta ? "Termin buchen" : undefined}
+          bookingClassName="btn-primary"
+          whatsappHref={hasSecondaryCta ? secondaryCtaHref : undefined}
+          whatsappLabel={hasSecondaryCta ? secondaryCtaLabel : undefined}
+          whatsappAriaLabel={isWhatsAppCta ? "WhatsApp chat öffnen" : undefined}
+          whatsappClassName={hasSecondaryCta ? secondaryCtaClassName : undefined}
+        />
+      ) : null}
     </section>
   );
 }
 
-interface MobileCtaProps {
-  city: NonNullable<HeroProps["city"]>;
-  className?: string;
-  children: ReactNode;
-}
-
-function MobileCta({ city, className = "", children }: MobileCtaProps) {
-  if (!children) {
-    return null;
-  }
-
-  const classes = [
-    "z-20 flex justify-center",
-    "w-[90%] max-w-sm",
-    "[&_a,button]:px-3 [&_a,button]:py-2 [&_a,button]:text-sm",
-  ];
-
-  if (city === "home") {
-    classes.push("absolute inset-x-0 bottom-[max(1rem,env(safe-area-inset-bottom))] mx-auto");
-  } else {
-    classes.push("fixed left-1/2 -translate-x-1/2");
-  }
-
-  if (className) {
-    classes.push(className);
-  }
-
-  return (
-    <div
-      className={classes.join(" ")}
-      style={
-        city === "home"
-          ? undefined
-          : { bottom: "var(--cta-bottom, calc(env(safe-area-inset-bottom) + 14px))" }
-      }
-    >
-      <div className="flex w-full flex-col gap-3 text-center">{children}</div>
-    </div>
-  );
-}

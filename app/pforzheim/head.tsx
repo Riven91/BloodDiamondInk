@@ -29,7 +29,7 @@ const localBusinessJsonLd = {
   },
   priceRange: "$$",
   description:
-    "Internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey und Cover-Ups auf Weltklasse-Niveau.",
+    "Internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
 };
 
 export default function Head() {
