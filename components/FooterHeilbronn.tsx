@@ -22,7 +22,10 @@ export default function FooterHeilbronn() {
         <a href="/agb" className="text-neutral-400 hover:text-white transition">
           AGB
         </a>
-        <a href="/cookies" className="text-neutral-400 hover:text-white transition">
+        <a
+          onClick={() => (window as any).klaro?.show()}
+          className="text-neutral-400 hover:text-white transition cursor-pointer"
+        >
           Cookie-Einstellungen
         </a>
       </div>
