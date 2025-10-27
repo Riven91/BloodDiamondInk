@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
-import FooterHeilbronn from "@/components/FooterHeilbronn";
 import { studioImages } from "@/app/_content/studioImages";
 
 const faqItems = [
@@ -327,7 +326,6 @@ export default function HeilbronnPage() {
       </section>
 
       <ContactSection />
-      <FooterHeilbronn />
     </>
   );
 }
