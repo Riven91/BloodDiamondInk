@@ -6,16 +6,15 @@ import { usePathname } from 'next/navigation';
 export function Footer() {
   const pathname = usePathname();
   const isHeilbronn = pathname?.toLowerCase().includes('/heilbronn');
-  if (isHeilbronn) {
-    return null;
-  }
   const isBoeblingen = pathname?.toLowerCase().includes('/boeblingen');
   const impressumHref = isBoeblingen ? '/impressum/boeblingen' : '/impressum';
   const datenschutzHref = isBoeblingen ? '/datenschutz/boeblingen' : '/datenschutz';
   const agbHref = isBoeblingen ? '/agb/boeblingen' : '/agb';
   const contactHref = isBoeblingen
     ? 'https://kontakt.blooddiamond-tattoo.de/boeblingen/'
-    : 'https://kontakt.blooddiamond-tattoo.de/pforzheim/';
+    : isHeilbronn
+      ? 'https://kontakt.blooddiamond-tattoo.de/heilbronn/'
+      : 'https://kontakt.blooddiamond-tattoo.de/pforzheim/';
   const handleCookieSettings = () => {
     if (typeof window !== 'undefined') {
       const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
