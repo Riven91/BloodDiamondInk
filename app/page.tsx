@@ -61,7 +61,13 @@ const faqItems = [
 export default function HomePage() {
   return (
     <>
-      <Hero city="home" />
+      <Hero
+        city="home"
+        ctaLabel="Termin buchen"
+        ctaHref="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
+        secondaryCtaLabel="WhatsApp"
+        secondaryCtaHref="https://wa.me/4915123426609"
+      />
       <div className="flex flex-col items-center justify-center text-center text-white px-4 py-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
           Wir verschenken 100 € Tattoo-Gutscheine!

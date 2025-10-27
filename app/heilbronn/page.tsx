@@ -244,7 +244,7 @@ export default function HeilbronnPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
-            Der Standort von Blood Diamond Tattoo Ink. in Heilbronn liegt verkehrsgünstig in Neckarsulm. Nutzen Sie die Karte, um Ihre Route zu planen.
+            Der Standort von Blood Diamond Tattoo Ink. in Heilbronn / Neckarsulm liegt gut erreichbar nahe der A6 – in ruhiger Umgebung, ideal für konzentrierte Tattoo-Sessions ohne Großstadttrubel.
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <div className="flex justify-center">
