@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
+import FooterHeilbronn from "@/components/FooterHeilbronn";
 import { studioImages } from "@/app/_content/studioImages";
 
 const faqItems = [
@@ -326,21 +327,7 @@ export default function HeilbronnPage() {
       </section>
 
       <ContactSection />
-      <section className="mt-12 border-t border-neutral-800 pt-8 pb-6 text-center">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
-          <a href="/#faq" className="text-neutral-400 hover:text-white transition">
-            FAQ
-          </a>
-          <a
-            href="https://kontakt.blooddiamond-tattoo.de/heilbronn/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-neutral-400 hover:text-white transition"
-          >
-            Kontakt
-          </a>
-        </div>
-      </section>
+      <FooterHeilbronn />
     </>
   );
 }

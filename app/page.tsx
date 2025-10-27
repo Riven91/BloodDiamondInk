@@ -14,7 +14,23 @@ export const metadata: Metadata = {
 const faqItems = [
   {
     question: "Wie buche ich einen Termin?",
-    answer: "Trage dich in wenigen Minuten über unser Formular ein. Wir melden uns für eine Erstberatung und finden gemeinsam einen Termin."
+    answer: (
+      <>
+        <p>
+          Trage dich in wenigen Minuten über unser Formular ein. Wir melden uns für eine Erstberatung und finden gemeinsam
+          einen Termin.
+        </p>
+        <a
+          href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
+          aria-label="Kontaktseite öffnen"
+        >
+          Kontaktseite öffnen
+        </a>
+      </>
+    )
   },
   {
     question: "Wie bereite ich mich auf meinen Termin vor?",
@@ -75,22 +91,7 @@ export default function HomePage() {
       <section id="gallery" className="mx-auto max-w-6xl px-4 py-16">
         <Gallery />
       </section>
-      <FAQAccordion items={faqItems} />
-      <section className="mt-12 border-t border-neutral-800 pt-8 pb-6 text-center">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
-          <a href="/#faq" className="text-neutral-400 hover:text-white transition">
-            FAQ
-          </a>
-          <a
-            href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-neutral-400 hover:text-white transition"
-          >
-            Kontakt
-          </a>
-        </div>
-      </section>
+      <FAQAccordion id="faq" items={faqItems} />
     </>
   );
 }
