@@ -1,21 +1,44 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
+import clsx from "clsx";
 
-import { studioImages } from "@/app/_content/studioImages";
+type Fit = "cover" | "contain";
+type Pos = "top" | "center" | "bottom";
 
-type Props = { captions: string[] };
+type TeamImage = {
+  src: string;
+  alt: string;
+  caption: string;
+  fit: Fit;
+  pos: Pos;
+};
 
-export default function StudioGallery({ captions }: Props) {
+const teamImages: readonly TeamImage[] = [
+  {
+    src: "/Team1.jpeg",
+    alt: "Team von Blood Diamond Tattoo Ink. – Gruppenfoto der Artists mit Auszeichnungen.",
+    caption:
+      "Unser Team – ausgezeichnet auf Conventions, vereint Erfahrung und Präzision.",
+    fit: "contain",
+    pos: "center",
+  },
+  {
+    src: "/pokale.jpeg",
+    alt: "Auszeichnungen und Pokale von Blood Diamond Tattoo Ink. – Best of Show, Best of Color, Best of Blackwork.",
+    caption:
+      "Awards & Pokale – Best of Show, Best of Color, Best of Blackwork.",
+    fit: "cover",
+    pos: "center",
+  },
+];
+
+export default function TeamGallery() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const totalImages = studioImages.length;
-
-  if (process.env.NODE_ENV !== "production" && captions.length !== totalImages) {
-    console.warn("StudioGallery: captions length does not match studio images count.");
-  }
+  const totalImages = teamImages.length;
 
   const openLightbox = useCallback((index: number) => {
     setActiveIndex(index);
@@ -65,24 +88,31 @@ export default function StudioGallery({ captions }: Props) {
 
   return (
     <>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {studioImages.map((img, i) => (
+      <div className="grid gap-6 sm:grid-cols-2">
+        {teamImages.map((img, index) => (
           <figure key={img.src} className="w-full">
             <div
-              onClick={() => openLightbox(i)}
-              className="relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-xl"
+              onClick={() => openLightbox(index)}
+              className="relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-xl bg-neutral-900"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover object-center"
+                sizes="(max-width: 640px) 100vw, 50vw"
+                className={clsx(
+                  img.fit === "contain" ? "object-contain p-2" : "object-cover",
+                  img.pos === "top"
+                    ? "object-top"
+                    : img.pos === "bottom"
+                      ? "object-bottom"
+                      : "object-center",
+                )}
               />
             </div>
 
             <figcaption className="mt-3 rounded-xl border border-neutral-700 bg-black/30 p-4 text-sm leading-relaxed text-neutral-300">
-              {captions[i]}
+              {img.caption}
             </figcaption>
           </figure>
         ))}
@@ -122,10 +152,10 @@ export default function StudioGallery({ captions }: Props) {
             onClick={(event) => event.stopPropagation()}
           >
             <Image
-              src={studioImages[activeIndex].src}
-              alt={studioImages[activeIndex].alt}
+              src={teamImages[activeIndex].src}
+              alt={teamImages[activeIndex].alt}
               width={1600}
-              height={1200}
+              height={1066}
               className="h-auto w-auto max-h-[90vh] max-w-full rounded-xl object-contain"
             />
           </div>

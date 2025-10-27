@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import { studioImages } from "@/app/_content/studioImages";
 
@@ -41,9 +42,9 @@ const faqJsonLd = {
 };
 
 const studioCaptions = [
-  "Tattoo-Arbeitsplatz mit moderner Ausstattung. Sterile Vorbereitung, ruhige Umgebung.",
-  "Tattoo-Session mit unserem Artist. Präzise Linien, volle Konzentration.",
-  "Empfang und Lounge im Studio Pforzheim. Neonlogo, bequemer Wartebereich.",
+  "Einblick in eines unserer Studios in Pforzheim, Heilbronn und Böblingen – präzise Handwerkskunst, moderne Ausstattung und sterile Arbeitsbedingungen.",
+  "Echte Handwerkskunst – jede Linie entsteht mit Ruhe, Technik und jahrelanger Erfahrung im internationalen Tattoo-Business.",
+  "Willkommen bei Blood Diamond Tattoo Ink. – stilvoller Empfangsbereich mit markantem Neon-Logo und entspannter Atmosphäre.",
 ] as const;
 
 if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioImages.length) {
@@ -202,6 +203,8 @@ export default function PforzheimPage() {
           </div>
         </div>
       </section>
+
+      <OtherLocations current="pforzheim" />
 
       <section className="bg-blooddiamond-muted/20 py-16">
         <div className="mx-auto max-w-5xl px-6">
