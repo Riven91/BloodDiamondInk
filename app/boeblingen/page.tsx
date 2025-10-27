@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink.",
     description:
-      "Tattoo-Kunst auf höchstem Niveau in Böblingen / Herrenberg – Realistic, Fineline & Black-&-Grey, ausgeführt von international ausgezeichneten Artists.",
+      "Tattoo-Kunst auf höchstem Niveau in Böblingen / Herrenberg – Realistic, Fineline & Black & Grey (Black and Grey), ausgeführt von international ausgezeichneten Artists.",
     url: "https://blooddiamond-tattoo.de/boeblingen",
     images: ["https://blooddiamond-tattoo.de/static/boeblingen-cover.jpg"],
     locale: "de_DE",
@@ -104,8 +104,8 @@ export default function BoeblingenPage() {
               in denen du und dein Motiv im Mittelpunkt stehen.
             </p>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
-              Wir entwickeln maßgeschneiderte Tattoos, abgestimmt auf deinen Stil und deine Persönlichkeit. 
-              Ob <strong>Fineline</strong>, <strong>Realismus</strong> oder <strong>Black & Grey</strong> – jedes Motiv entsteht mit echter Hingabe und höchster Sorgfalt. 
+              Wir entwickeln maßgeschneiderte Tattoos, abgestimmt auf deinen Stil und deine Persönlichkeit.
+              Ob <strong>Fineline</strong>, <strong>Realismus</strong> oder <strong>Black &amp; Grey (Black and Grey)</strong> – jedes Motiv entsteht mit echter Hingabe und höchster Sorgfalt.
               Keine Eile, kein Massenbetrieb. Qualität, Hygiene und Atmosphäre haben Vorrang.
             </p>
             <p className="mt-4 text-sm text-blooddiamond-text/80">

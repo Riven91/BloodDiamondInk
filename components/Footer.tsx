@@ -133,7 +133,7 @@ export function Footer() {
         </div>
       </div>
       <div className="mt-8 border-t border-blooddiamond-primary/30 pt-4 text-center text-xs text-blooddiamond-accent">
-        © 2025 Blood Diamond Ink – Alle Rechte vorbehalten.
+        © 2025 Blood Diamond Tattoo Ink. – Alle Rechte vorbehalten.
       </div>
     </footer>
   );

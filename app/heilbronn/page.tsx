@@ -190,15 +190,8 @@ export default function HeilbronnPage() {
         <p className="mt-2 text-neutral-200">
           Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
         </p>
-        <Button
-          href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
-          className="mt-4 inline-flex items-center justify-center gap-2 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
-          aria-label="Gutschein sichern"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
-            <path d="M20 7h-2.18A3.001 3.001 0 0 0 15 4c-1.66 0-3 1.34-3 3 0-1.66-1.34-3-3-3a3.001 3.001 0 0 0-2.82 3H4c-1.1 0-2 .9-2 2v2c0 .55.45 1 1 1h1v7c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h1c.55 0 1-.45 1-1V9c0-1.1-.9-2-2-2Zm-5-1c.55 0 1 .45 1 1s-.45 1-1 1h-2V7c0-.55.45-1 1-1Zm-6 0c.55 0 1 .45 1 1v1H8c-.55 0-1-.45-1-1s.45-1 1-1Zm-3 6h5v7H6v-7Zm7 7v-7h5v7h-5Zm7-9H4V9h16v1Z" />
-          </svg>
-          <span>Gutschein sichern</span>
+        <Button href="https://kontakt.blooddiamond-tattoo.de/gutschein/" className="mt-4 bg-brand hover:bg-brand-hover">
+          Gutschein sichern
         </Button>
       </section>
 
@@ -210,7 +203,7 @@ export default function HeilbronnPage() {
               <strong>Blood Diamond Tattoo Ink.</strong> steht für exklusive Tattoo-Kunst im Raum <strong>Heilbronn</strong> und <strong>Neckarsulm</strong>. Unser Studio verbindet moderne Atmosphäre, präzises Handwerk und ruhige Private Rooms. Hier steht dein Tattoo im Mittelpunkt – mit voller Konzentration auf jedes Detail.
             </p>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
-              Wir entwickeln maßgeschneiderte Designs in enger Abstimmung. <strong>Fineline</strong>-, <strong>Realismus</strong>- und <strong>Black-&-Grey-Tattoos</strong> gehören zu unseren Stärken. Jedes Detail wird sorgfältig geplant und sauber umgesetzt. Keine Hektik, keine Massenabfertigung – Qualität hat Vorrang.
+              Wir entwickeln maßgeschneiderte Designs in enger Abstimmung. <strong>Fineline</strong>-, <strong>Realismus</strong>- und <strong>Black &amp; Grey (Black and Grey) Tattoos</strong> gehören zu unseren Stärken. Jedes Detail wird sorgfältig geplant und sauber umgesetzt. Keine Hektik, keine Massenabfertigung – Qualität hat Vorrang.
             </p>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
               Kundinnen und Kunden aus <strong>Heilbronn</strong>, <strong>Neckarsulm</strong>, <strong>Bad Friedrichshall</strong> und <strong>Weinsberg</strong> schätzen die diskrete Umgebung, die individuelle Beratung und die Konzentration auf das Wesentliche. Dein Tattoo soll heute überzeugen – und in vielen Jahren genauso stark wirken.
