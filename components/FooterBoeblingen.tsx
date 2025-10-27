@@ -5,7 +5,7 @@ import Link from 'next/link';
 export function FooterBoeblingen() {
   return (
     <footer className="border-t border-blooddiamond-primary/30 bg-blooddiamond-muted/80">
-      <div className="mx-auto max-w-6xl px-6 pb-4 pt-10">
+      <div className="mx-auto max-w-6xl px-6 pt-8 pb-6">
         <div className="flex flex-col gap-8 text-sm text-blooddiamond-text/60 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm space-y-4">
             <span className="block font-display text-2xl uppercase text-blooddiamond-text">Blood Diamond Tattoo Ink.</span>
