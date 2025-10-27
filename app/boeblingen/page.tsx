@@ -62,7 +62,7 @@ export default function BoeblingenPage() {
   return (
     <>
       <Hero
-        title="Tattoo Studio Böblingen — Blood Diamond Tattoo Ink."
+        title="Tattoo-Studio Böblingen — Präzision, Design und Atmosphäre"
         description={`Von Böblingen inspiriert, in der Welt vernetzt: Unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet und bringen diese Erfahrung mit zu Blood Diamond Tattoo Ink. Böblingen.`}
         ctaLabel="Termin buchen"
         ctaHref="#kontaktformular"
@@ -76,7 +76,7 @@ export default function BoeblingenPage() {
         </h2>
 
         <p className="mt-2 text-sm sm:text-base opacity-90 max-w-2xl">
-          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink – die perfekte Geschenkidee für Tattoo-Fans.
+          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
         </p>
 
         <a
