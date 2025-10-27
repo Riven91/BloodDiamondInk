@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
+import FooterHeilbronn from "@/components/FooterHeilbronn";
 import { studioImages } from "@/app/_content/studioImages";
 
 const faqItems = [
@@ -67,7 +68,7 @@ const faqJsonLd = {
 
 const studioCaptions = [
   "Einblick in eines unserer Studios in Heilbronn, Pforzheim und Böblingen – moderne Ausstattung, sterile Umgebung und konzentrierte Arbeitsatmosphäre.",
-  "Echte Handwerkskunst – jede Linie entsteht mit Ruhe, Technik und jahrelanger Erfahrung im internationalen Tattoo-Business.",
+  "Tattoo-Session mit kreativer Energie – klare Linien, präzise Technik und ruhige Konzentration am Werk.",
   "Willkommen bei Blood Diamond Tattoo Ink. – stilvoller Empfangsbereich mit markantem Neon-Logo und entspannter Atmosphäre.",
 ] as const;
 
@@ -140,7 +141,7 @@ export default function HeilbronnPage() {
           href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-2 rounded-md bg-emerald-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+          className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
           aria-label="Gutschein sichern"
         >
           {/* Geschenk-Icon (weiß, inline-SVG) */}
@@ -326,6 +327,7 @@ export default function HeilbronnPage() {
       </section>
 
       <ContactSection />
+      <FooterHeilbronn />
     </>
   );
 }
