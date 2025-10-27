@@ -111,7 +111,7 @@ export default function PforzheimPage() {
         </h2>
 
         <p className="mt-2 text-sm sm:text-base opacity-90 max-w-2xl">
-          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink – die perfekte Geschenkidee für Tattoo-Fans.
+          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
         </p>
 
         <a
