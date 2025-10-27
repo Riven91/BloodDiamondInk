@@ -210,7 +210,7 @@ export default function HeilbronnPage() {
               <strong>Blood Diamond Tattoo Ink.</strong> steht für exklusive Tattoo-Kunst im Raum <strong>Heilbronn</strong> und <strong>Neckarsulm</strong>. Unser Studio verbindet moderne Atmosphäre, präzises Handwerk und ruhige Private Rooms. Hier steht dein Tattoo im Mittelpunkt – mit voller Konzentration auf jedes Detail.
             </p>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
-              Wir entwickeln maßgeschneiderte Designs in enger Abstimmung. <strong>Fineline</strong>-, <strong>Realismus</strong>- und <strong>Black-&-Grey-Tattoos</strong> gehören zu unseren Stärken. Jedes Detail wird sorgfältig geplant und sauber umgesetzt. Keine Hektik, keine Massenabfertigung – Qualität hat Vorrang.
+              Wir entwickeln maßgeschneiderte Designs in enger Abstimmung. <strong>Fineline</strong>-, <strong>Realismus</strong>- und <strong>Black &amp; Grey (Black and Grey) Tattoos</strong> gehören zu unseren Stärken. Jedes Detail wird sorgfältig geplant und sauber umgesetzt. Keine Hektik, keine Massenabfertigung – Qualität hat Vorrang.
             </p>
             <p className="mt-4 text-sm text-blooddiamond-text/80">
               Kundinnen und Kunden aus <strong>Heilbronn</strong>, <strong>Neckarsulm</strong>, <strong>Bad Friedrichshall</strong> und <strong>Weinsberg</strong> schätzen die diskrete Umgebung, die individuelle Beratung und die Konzentration auf das Wesentliche. Dein Tattoo soll heute überzeugen – und in vielen Jahren genauso stark wirken.

@@ -46,27 +46,27 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/realistic2.jpeg",
-    alt: "Realistik 2",
+    alt: "Realistic 2",
   },
   {
     src: "/realistic3.jpeg",
-    alt: "Realistik 3",
+    alt: "Realistic 3",
   },
   {
     src: "/realistic4.jpeg",
-    alt: "Realistik 4",
+    alt: "Realistic 4",
   },
   {
     src: "/realistic5.jpeg",
-    alt: "Realistik 5",
+    alt: "Realistic 5",
   },
   {
     src: "/realistic6.jpeg",
-    alt: "Realistik 6",
+    alt: "Realistic 6",
   },
   {
     src: "/realistic7.jpeg",
-    alt: "Realistik 7",
+    alt: "Realistic 7",
   },
 ];
 
@@ -126,14 +126,14 @@ export function Gallery() {
           Einblicke in aktuelle Projekte und Heal Pieces aus unseren Studios.
         </p>
         <p className="mt-2 text-sm md:text-base text-gray-300">
-          Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen Realistic, Geometric, Letterworking, New School und
+          Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen Realistic, Geometric, Lettering (Letterworking), New School und
           Mandala. Alle Motive werden individuell entworfen, von filigranen Linien bis zu großflächigen Projekten.
         </p>
         <ul className="mt-4 list-disc list-inside text-gray-300 space-y-1">
           <li>Authentische Tattoo-Artworks aus Pforzheim, Heilbronn und Böblingen</li>
-          <li>Realistic &amp; Black-and-Grey Tattoos mit höchster Präzision</li>
+          <li>Realistic &amp; Black &amp; Grey (Black and Grey) Tattoos mit höchster Präzision</li>
           <li>Geometric und Mandala Designs mit Feinlinienkunst</li>
-          <li>Letterworking &amp; New School Styles mit individueller Kreativität</li>
+          <li>Lettering (Letterworking) &amp; New School Styles mit individueller Kreativität</li>
         </ul>
         <p className="mt-6 text-center text-sm leading-relaxed text-gray-300 md:text-base">
           Entdecke noch mehr außergewöhnliche Kunstwerke unserer internationalen Tattoo-Artists aus unseren Tattoo-Studios in
