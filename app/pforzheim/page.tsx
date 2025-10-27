@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import { Hero } from "@/components/Hero";
+import StudioGallery from "@/components/StudioGallery";
+import { studioImages } from "@/app/_content/studioImages";
 
 const faqItems = [
   {
@@ -38,17 +40,15 @@ const faqJsonLd = {
   })),
 };
 
-const ST_WRAP =
-  "relative overflow-hidden rounded-xl bg-black/30 " +
-  "h-60 sm:h-64 md:h-72 lg:h-80 w-full flex items-center justify-center";
+const studioCaptions = [
+  "Tattoo-Arbeitsplatz mit moderner Ausstattung. Sterile Vorbereitung, ruhige Umgebung.",
+  "Tattoo-Session mit unserem Artist. Präzise Linien, volle Konzentration.",
+  "Empfang und Lounge im Studio Pforzheim. Neonlogo, bequemer Wartebereich.",
+] as const;
 
-const ST_IMG = "object-contain";
-
-const studios = [
-  { src: "/Studio1.jpeg", alt: "Unser Studio – Bild 1", pos: "object-center" },
-  { src: "/Studio2.jpeg", alt: "Unser Studio – Bild 2", pos: "object-top" },
-  { src: "/Studio3.jpeg", alt: "Unser Studio – Bild 3", pos: "object-center" },
-];
+if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioImages.length) {
+  console.warn("PforzheimPage: studio captions length does not match studio images count.");
+}
 
 export const metadata: Metadata = {
   title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
@@ -206,20 +206,8 @@ export default function PforzheimPage() {
       <section className="bg-blooddiamond-muted/20 py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Studio</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            {studios.map((it, i) => (
-              <div key={i} className={ST_WRAP}>
-                {/* fill + object-contain, damit das Bild in der Box bleibt */}
-                <Image
-                  src={it.src}
-                  alt={it.alt}
-                  fill
-                  priority={false}
-                  sizes="(max-width:640px) 100vw, (max-width:1024px) 33vw, 33vw"
-                  className={`${ST_IMG} ${it.pos}`}
-                />
-              </div>
-            ))}
+          <div className="mt-8">
+            <StudioGallery captions={[...studioCaptions]} />
           </div>
         </div>
       </section>
