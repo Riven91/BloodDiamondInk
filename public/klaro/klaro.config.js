@@ -54,6 +54,88 @@ const __klaroApplyAllMaps = () => {
   }
 };
 
+/** Deferred-Anwendung nach Render, entprellt */
+const __klaroApplyAllMapsDeferred = (() => {
+  let pending = false;
+  return () => {
+    if (pending) return;
+    pending = true;
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        pending = false;
+        try {
+          __klaroPrepareAllMaps?.();
+        } catch {}
+        try {
+          __klaroApplyAllMaps?.();
+        } catch {}
+      }, 100);
+    });
+  };
+})();
+
+/** MutationObserver: reagiert nur auf hinzugefügte Knoten */
+const __klaroStartObserver = () => {
+  try {
+    if (window.__klaroMOStarted) return;
+    window.__klaroMOStarted = true;
+
+    const mo = new MutationObserver((recs) => {
+      // Nur wenn Consent bereits vorliegt
+      try {
+        if (!__klaroConsentGM?.()) return;
+      } catch {
+        return;
+      }
+      let hit = false;
+      for (const r of recs) {
+        r.addedNodes?.forEach((n) => {
+          if (n.nodeType !== 1) return;
+          if (n.tagName === 'IFRAME' && n.matches?.('iframe[data-klaro-maps="1"]')) hit = true;
+          n.querySelectorAll?.('iframe[data-klaro-maps="1"]').forEach(() => {
+            hit = true;
+          });
+        });
+      }
+      if (hit) __klaroApplyAllMapsDeferred();
+    });
+
+    mo.observe(document.body, { childList: true, subtree: true });
+  } catch {}
+};
+
+/** Navigation-Hooks für Next.js SPA: nach push/replace & popstate anwenden */
+const __klaroInstallNavHooks = () => {
+  try {
+    if (window.__klaroNavPatched) return;
+    window.__klaroNavPatched = true;
+
+    // Back/Forward
+    window.addEventListener('popstate', __klaroApplyAllMapsDeferred);
+
+    // Forward-Navigation via history.* (Next.js Links)
+    const H = window.history;
+    const p = H.pushState.bind(H);
+    const r = H.replaceState.bind(H);
+    H.pushState = function () {
+      const ret = p(...arguments);
+      __klaroApplyAllMapsDeferred();
+      return ret;
+    };
+    H.replaceState = function () {
+      const ret = r(...arguments);
+      __klaroApplyAllMapsDeferred();
+      return ret;
+    };
+
+    // Optional: Pages Router Events, falls vorhanden
+    try {
+      const ev = window?.next?.router?.events;
+      ev?.on?.('routeChangeComplete', __klaroApplyAllMapsDeferred);
+    } catch {}
+  } catch {}
+};
+
 window.klaroConfig = {
   version: 1,
   elementID: 'klaro',
@@ -125,21 +207,28 @@ window.klaroConfig = {
         __klaroPrepareAllMaps();
 
         // Aktivierung/Deaktivierung leicht verzögert, damit DOM nach Consent-Modal stabil ist
-        const run = () => __klaroApplyAllMaps();
-        requestAnimationFrame(() => setTimeout(run, 120));
+        requestAnimationFrame(() => setTimeout(__klaroApplyAllMaps, 120));
       }
     }
   ]
 };
 
 if (typeof window !== 'undefined') {
-  const __klaroInitMaps = () => {
-    __klaroPrepareAllMaps();
-    requestAnimationFrame(() => setTimeout(__klaroApplyAllMaps, 120));
+  const __klaroBootstrapMaps = () => {
+    // Initial einmal vorbereiten & anwenden
+    try {
+      __klaroPrepareAllMaps?.();
+    } catch {}
+    __klaroApplyAllMapsDeferred();
+
+    // Observer + NavHooks starten
+    __klaroStartObserver();
+    __klaroInstallNavHooks();
   };
+
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', __klaroInitMaps, { once: true });
+    document.addEventListener('DOMContentLoaded', __klaroBootstrapMaps, { once: true });
   } else {
-    __klaroInitMaps();
+    __klaroBootstrapMaps();
   }
 }
