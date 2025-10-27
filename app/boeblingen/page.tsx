@@ -213,7 +213,10 @@ export default function BoeblingenPage() {
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <div className="flex justify-center">
               <iframe
-                src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
+                data-klaro-maps="1"
+                data-src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
+                title="Karte blockiert – Cookie-Einwilligung erforderlich"
+                aria-hidden="true"
                 width="100%"
                 height="400"
                 style={{ borderRadius: '0.5rem', border: '1px solid #404040' }}
