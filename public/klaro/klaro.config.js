@@ -1,3 +1,59 @@
+const __klaroConsentGM = () => {
+  try {
+    if (typeof window.klaro?.getConsent === 'function') return !!window.klaro.getConsent('google-maps');
+    return !!window.klaro?.state?.['google-maps'];
+  } catch {
+    return false;
+  }
+};
+
+const __klaroActivateMapIframe = (f) => {
+  if (!f || f.tagName !== 'IFRAME') return;
+  if (!f.matches('iframe[data-klaro-maps="1"]')) return;
+  const src = f.getAttribute('data-src');
+  if (src && !f.src) {
+    if (!f.hasAttribute('loading')) f.setAttribute('loading', 'lazy');
+    if (!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+    f.src = src;
+    f.removeAttribute('title');
+    f.removeAttribute('aria-hidden');
+  }
+};
+
+const __klaroDeactivateMapIframe = (f) => {
+  if (!f || f.tagName !== 'IFRAME') return;
+  if (!f.matches('iframe[data-klaro-maps="1"]')) return;
+  const keep = f.getAttribute('data-src') || f.src;
+  if (keep) {
+    f.setAttribute('data-src', keep);
+    f.removeAttribute('src');
+    f.setAttribute('title', 'Karte blockiert – Cookie-Einwilligung erforderlich');
+    f.setAttribute('aria-hidden', 'true');
+  }
+};
+
+const __klaroPrepareAllMaps = () => {
+  document.querySelectorAll('iframe').forEach((f) => {
+    if (!f || f.tagName !== 'IFRAME') return;
+    const candidate = f.src || f.getAttribute('data-src') || '';
+    if (/google\.(com|.[a-z]+)\/maps/i.test(candidate)) {
+      if (!f.hasAttribute('data-klaro-maps')) f.setAttribute('data-klaro-maps', '1');
+      if (!f.getAttribute('data-src') && f.src) {
+        f.setAttribute('data-src', f.src);
+        f.removeAttribute('src');
+      }
+    }
+  });
+};
+
+const __klaroApplyAllMaps = () => {
+  if (__klaroConsentGM()) {
+    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach(__klaroActivateMapIframe);
+  } else {
+    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach(__klaroDeactivateMapIframe);
+  }
+};
+
 window.klaroConfig = {
   version: 1,
   elementID: 'klaro',
@@ -10,12 +66,12 @@ window.klaroConfig = {
   translations: {
     de: {
       consentNotice: {
-        description: 'Wir verwenden Dienste wie Google Fonts (Schriften) und Google Maps (Karten), die erst nach deiner Einwilligung geladen werden.',
-        learnMore: 'Einstellungen'
+        description: 'Wir verwenden Cookies und ähnliche Technologien für Komfortfunktionen (z. B. Google Maps, Google Fonts). Du entscheidest, was geladen werden darf.',
+        learnMore: 'Cookie-Einstellungen öffnen'
       },
       consentModal: {
-        title: 'Datenschutz-Einstellungen',
-        description: 'Wähle aus, welche optionalen Dienste du erlauben möchtest. Du kannst deine Auswahl jederzeit über „Cookie-Einstellungen“ im Footer ändern.'
+        title: 'Cookie-Einstellungen',
+        description: 'Wähle aus, welche Cookies und optionalen Dienste (z. B. Google Maps, Google Fonts) wir verwenden dürfen. Du kannst deine Auswahl jederzeit hier ändern.'
       },
       ok: 'Alle akzeptieren',
       acceptSelected: 'Auswahl speichern',
@@ -43,8 +99,8 @@ window.klaroConfig = {
           // vorhandene Linktags zu Google Fonts evtl. reaktivieren oder neu anlegen
           const existing = Array.from(document.querySelectorAll('link[data-klaro-fonts="1"]'));
           if (existing.length) {
-            existing.forEach(l => { 
-              if (!l.href) l.href = l.getAttribute('data-href'); 
+            existing.forEach((l) => {
+              if (!l.href) l.href = l.getAttribute('data-href');
             });
           } else {
             // Falls Codex keine vorher markierten Tags findet, einmalig standardmäßig laden:
@@ -65,97 +121,25 @@ window.klaroConfig = {
       default: false,
       cookies: [],
       callback: (consent) => {
-        // Maps nur bei Einwilligung laden/aktivieren
-        const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
-        if (consent) {
-          iframes.forEach(f => {
-            if (!f.src) f.src = f.getAttribute('data-src');
-            f.removeAttribute('title');
-            f.removeAttribute('aria-hidden');
-          });
-        } else {
-          // Bei Widerruf Platzhalter-Status sicherstellen
-          iframes.forEach(f => {
-            if (f.src) {
-              f.setAttribute('data-src', f.src);
-              f.removeAttribute('src');
-            }
-            f.setAttribute('title','Karte blockiert – Cookie-Einwilligung erforderlich');
-            f.setAttribute('aria-hidden','true');
-          });
-        }
+        // Bereits vorhandene Iframes auf der aktuellen Seite in den Klaro-Flow überführen
+        __klaroPrepareAllMaps();
+
+        // Aktivierung/Deaktivierung leicht verzögert, damit DOM nach Consent-Modal stabil ist
+        const run = () => __klaroApplyAllMaps();
+        requestAnimationFrame(() => setTimeout(run, 120));
       }
     }
   ]
 };
 
-// Reapply Maps consent when navigating client-side (Next.js)
-if (typeof window !== "undefined") {
-  const consentGranted = () => {
-    try {
-      // Prüfen, ob Klaro eine eigene getConsent-Funktion bereitstellt
-      if (typeof window.klaro?.getConsent === "function") {
-        return !!window.klaro.getConsent("google-maps");
-      }
-      // Fallback: direkter Zugriff auf Klaro-State (Standard bei Open-Source-Version)
-      return !!window.klaro?.state?.["google-maps"];
-    } catch {
-      return false;
-    }
+if (typeof window !== 'undefined') {
+  const __klaroInitMaps = () => {
+    __klaroPrepareAllMaps();
+    requestAnimationFrame(() => setTimeout(__klaroApplyAllMaps, 120));
   };
-
-  const applyMapsConsent = () => {
-    try {
-      if (consentGranted()) {
-        const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
-        iframes.forEach(f => {
-          if (!f.src) f.src = f.getAttribute("data-src");
-          f.removeAttribute("title");
-          f.removeAttribute("aria-hidden");
-        });
-      }
-    } catch {}
-  };
-
-  const installNavHooks = () => {
-    // 1) Erstes Laden und Zurück/Vorwärts
-    window.addEventListener("load", applyMapsConsent);
-    window.addEventListener("popstate", applyMapsConsent);
-
-    // 2) Monkey-Patch für forward navigation (Next.js Links)
-    const H = window.history;
-    if (!H.__patchedByKlaro) {
-      const origPush = H.pushState;
-      const origReplace = H.replaceState;
-
-      H.pushState = function () {
-        const ret = origPush.apply(this, arguments);
-        // optional: eigenes Event – und direkt anwenden
-        window.dispatchEvent(new Event("statechange"));
-        applyMapsConsent();
-        return ret;
-      };
-
-      H.replaceState = function () {
-        const ret = origReplace.apply(this, arguments);
-        window.dispatchEvent(new Event("statechange"));
-        applyMapsConsent();
-        return ret;
-      };
-
-      H.__patchedByKlaro = true;
-    }
-
-    // 3) Falls andere Libs auf "statechange" hören
-    window.addEventListener("statechange", applyMapsConsent);
-
-    // 4) Sofort einmal beim Init
-    applyMapsConsent();
-  };
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", installNavHooks);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', __klaroInitMaps, { once: true });
   } else {
-    installNavHooks();
+    __klaroInitMaps();
   }
 }
