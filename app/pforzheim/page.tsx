@@ -25,29 +25,6 @@ const faqItems = [
   },
 ];
 
-const businessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "TattooParlor",
-  name: "Blood Diamond Tattoo Ink.",
-  description:
-    "Fineline, Realistic & Cover-Up Tattoos in Pforzheim – Beratung, individuelles Design & höchste Hygiene.",
-  image: "/og/og-pforzheim.jpg",
-  telephone: "+49 1512 3426609",
-  url: "https://blooddiamondink.example/pforzheim",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Maulbronner Str. 38",
-    addressLocality: "Ötisheim",
-    postalCode: "75443",
-    addressCountry: "DE",
-  },
-  openingHours: "Mo-Sa 10:00-18:00",
-  sameAs: [
-    "https://www.instagram.com",
-    "https://www.facebook.com",
-  ],
-};
-
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -74,8 +51,9 @@ const studios = [
 ];
 
 export const metadata: Metadata = {
-  title: "Tattoo Studio Pforzheim | Blood Diamond Tattoo Ink.",
-  description: "Fineline, Realistic & Cover-Up Tattoos in Pforzheim – Beratung, individuelles Design & höchste Hygiene.",
+  title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
+  description:
+    "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey und Cover-Ups auf Weltklasse-Niveau.",
   openGraph: {
     images: [
       {
@@ -114,11 +92,10 @@ function ContactForm() {
 export default function PforzheimPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
 
       <Hero
-        title="Pforzheim Tattoo Studio — Blood Diamond Tattoo Ink."
+        title="Tattoo Studio Pforzheim – Kunst, Stil & Präzision"
         description="Internationale Tattoo-Artists, preisgekrönte Designs und höchste Präzision – Blood Diamond Tattoo Ink. Pforzheim vereint Kunst, Stil und Handwerk auf Weltklasse-Niveau. Artisten ausgezeichnet mit der „Goldenen Nadel“ und bekannt für kompromisslose Hygiene."
         ctaLabel="Termin buchen"
         ctaHref="#kontaktformular"
