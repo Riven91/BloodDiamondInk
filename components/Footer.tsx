@@ -6,26 +6,40 @@ import { usePathname } from 'next/navigation';
 export function Footer() {
   const pathname = usePathname();
   const isHeilbronn = pathname?.toLowerCase().includes('/heilbronn');
-  if (isHeilbronn) {
-    return null;
-  }
   const isBoeblingen = pathname?.toLowerCase().includes('/boeblingen');
   const impressumHref = isBoeblingen ? '/impressum/boeblingen' : '/impressum';
   const datenschutzHref = isBoeblingen ? '/datenschutz/boeblingen' : '/datenschutz';
   const agbHref = isBoeblingen ? '/agb/boeblingen' : '/agb';
   const contactHref = isBoeblingen
     ? 'https://kontakt.blooddiamond-tattoo.de/boeblingen/'
-    : 'https://kontakt.blooddiamond-tattoo.de/pforzheim/';
+    : isHeilbronn
+      ? 'https://kontakt.blooddiamond-tattoo.de/heilbronn/'
+      : 'https://kontakt.blooddiamond-tattoo.de/pforzheim/';
+  const instagramHref = isBoeblingen
+    ? 'https://www.instagram.com/blood_diamond_ink_boeblingen/'
+    : isHeilbronn
+      ? 'https://www.instagram.com/blood_diamond_ink_heilbronn/'
+      : 'https://www.instagram.com/blood_diamond_tattoo_ink/';
+  const handleCookieSettings = () => {
+    if (typeof window !== 'undefined') {
+      const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
+      if (klaro && typeof klaro.show === 'function') {
+        klaro.show();
+      }
+    }
+  };
 
   return (
     <footer id="footer" className="border-t border-blooddiamond-primary/30 bg-blooddiamond-muted/80">
       <div className="mx-auto max-w-6xl px-6 pb-4 pt-10">
         <div className="flex flex-col gap-8 text-sm text-blooddiamond-text/60 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm space-y-4">
-            <span className="block font-display text-2xl uppercase text-blooddiamond-text">Blood Diamond Tattoo Ink.</span>
+            <span className="block font-display text-2xl uppercase text-blooddiamond-text">
+              Blood Diamond Tattoo Ink.
+            </span>
             <div className="flex flex-wrap items-center gap-5">
               <a
-                href="https://www.instagram.com/blood_diamond_tattoo_ink/"
+                href={instagramHref}
                 aria-label="Instagram"
                 title="Instagram"
                 target="_blank"
@@ -83,46 +97,39 @@ export function Footer() {
               </a>
             </div>
           </div>
-        </div>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm my-4">
-          <a href="/#faq" className="text-neutral-400 hover:text-white transition">
-            FAQ
-          </a>
-          <a
-            href={contactHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-neutral-400 hover:text-white transition"
-          >
-            Kontakt
-          </a>
-        </div>
-        <div className="flex flex-col gap-3 text-xs uppercase tracking-wide text-blooddiamond-text/70 md:text-right">
-          <span className="font-display text-sm text-blooddiamond-text">Rechtliches</span>
-          <Link href={impressumHref} className="hover:text-blooddiamond-accent">
-            Impressum
-          </Link>
-          <Link href={datenschutzHref} className="hover:text-blooddiamond-accent">
-            Datenschutz
-          </Link>
-          <Link href={agbHref} className="hover:text-blooddiamond-accent">
-            AGB
-          </Link>
-          <a
-            href="#"
-            onClick={(event) => {
-              event.preventDefault();
-              if (typeof window !== 'undefined') {
-                const klaro = (window as typeof window & { klaro?: { show: () => void } }).klaro;
-                if (klaro && typeof klaro.show === 'function') {
-                  klaro.show();
-                }
-              }
-            }}
-            className="hover:text-blooddiamond-accent"
-          >
-            Cookie-Einstellungen
-          </a>
+          <div className="flex flex-1 flex-col items-center md:items-center justify-start self-start md:self-start gap-3 text-center">
+            <a href="/#faq" className="text-neutral-300 transition hover:text-white">
+              FAQ
+            </a>
+            <a
+              href={contactHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-300 transition hover:text-white"
+            >
+              Kontakt
+            </a>
+          </div>
+
+          <div className="flex flex-col items-center md:items-end text-center md:text-right justify-start self-start md:self-start gap-3">
+            <span className="font-display text-base uppercase text-blooddiamond-text">Rechtliches</span>
+            <Link href={impressumHref} className="transition hover:text-white">
+              Impressum
+            </Link>
+            <Link href={datenschutzHref} className="transition hover:text-white">
+              Datenschutz
+            </Link>
+            <Link href={agbHref} className="transition hover:text-white">
+              AGB
+            </Link>
+            <button
+              type="button"
+              onClick={handleCookieSettings}
+              className="cursor-pointer border-none bg-transparent text-neutral-300 transition hover:text-white"
+            >
+              Cookie-Einstellungen
+            </button>
+          </div>
         </div>
       </div>
       <div className="mt-8 border-t border-blooddiamond-primary/30 pt-4 text-center text-xs text-blooddiamond-accent">
