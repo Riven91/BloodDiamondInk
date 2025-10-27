@@ -89,63 +89,96 @@ window.klaroConfig = {
   ]
 };
 
-// Reapply Maps consent when navigating client-side (Next.js)
+// Reapply Maps consent AFTER SPA navigation renders new DOM (Next.js)
 if (typeof window !== "undefined") {
-  const applyMapsConsent = () => {
+  const consentGranted = () => {
     try {
-      if (window.klaro && window.klaro.getManager) {
-        const manager = window.klaro.getManager();
-        if (manager && manager.getConsent && manager.getConsent("google-maps")) {
-          const iframes = Array.from(document.querySelectorAll('iframe[data-klaro-maps="1"]'));
-          iframes.forEach(f => {
-            if (!f.src) f.src = f.getAttribute("data-src");
-            f.removeAttribute("title");
-            f.removeAttribute("aria-hidden");
-          });
-        }
-      }
-    } catch {}
+      const m = window.klaro?.getManager?.();
+      return !!m?.getConsent?.("google-maps");
+    } catch {
+      return false;
+    }
   };
 
-  const installNavHooks = () => {
-    // 1) Erstes Laden und Zurück/Vorwärts
-    window.addEventListener("load", applyMapsConsent);
-    window.addEventListener("popstate", applyMapsConsent);
+  const activateIframe = (f) => {
+    if (!f || f.tagName !== "IFRAME") return;
+    if (!f.matches('iframe[data-klaro-maps="1"]')) return;
+    if (!consentGranted()) return;
+    const src = f.getAttribute("data-src");
+    if (src && !f.src) {
+      f.src = src;
+      f.removeAttribute("title");
+      f.removeAttribute("aria-hidden");
+    }
+  };
 
-    // 2) Monkey-Patch für forward navigation (Next.js Links)
+  const applyMapsConsent = () => {
+    if (!consentGranted()) return;
+    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach(activateIframe);
+  };
+
+  // 1) MutationObserver: reagiert auf neu gerenderte Iframes
+  const observer = new MutationObserver((recs) => {
+    if (!consentGranted()) return;
+    for (const rec of recs) {
+      rec.addedNodes?.forEach((node) => {
+        if (node.nodeType !== 1) return; // ELEMENT_NODE
+        if (node.tagName === "IFRAME") activateIframe(node);
+        // Falls Container eingefügt wurde, darunter suchen
+        node.querySelectorAll?.('iframe[data-klaro-maps="1"]').forEach(activateIframe);
+      });
+    }
+  });
+
+  const start = () => {
+    try {
+      observer.observe(document.body, { childList: true, subtree: true });
+    } catch {}
+    // Erstes Anwenden nach initialem Render
+    requestAnimationFrame(() => {
+      applyMapsConsent();
+      setTimeout(applyMapsConsent, 120);
+    });
+
+    const scheduleApply = () => {
+      requestAnimationFrame(() => {
+        applyMapsConsent();
+        setTimeout(applyMapsConsent, 120);
+      });
+    };
+
+    // 2) Browser-Zurück/Vorwärts
+    window.addEventListener("popstate", scheduleApply);
+
+    // 3) Monkey-Patch: forward navigation (Next.js Links)
     const H = window.history;
     if (!H.__patchedByKlaro) {
       const origPush = H.pushState;
       const origReplace = H.replaceState;
-
+      const afterNav = () => scheduleApply();
       H.pushState = function () {
-        const ret = origPush.apply(this, arguments);
-        // optional: eigenes Event – und direkt anwenden
-        window.dispatchEvent(new Event("statechange"));
-        applyMapsConsent();
-        return ret;
+        const r = origPush.apply(this, arguments);
+        afterNav();
+        return r;
       };
-
       H.replaceState = function () {
-        const ret = origReplace.apply(this, arguments);
-        window.dispatchEvent(new Event("statechange"));
-        applyMapsConsent();
-        return ret;
+        const r = origReplace.apply(this, arguments);
+        afterNav();
+        return r;
       };
-
       H.__patchedByKlaro = true;
     }
 
-    // 3) Falls andere Libs auf "statechange" hören
-    window.addEventListener("statechange", applyMapsConsent);
-
-    // 4) Sofort einmal beim Init
-    applyMapsConsent();
+    // 4) Optional: Pages Router Events (schadet nicht, wenn nicht vorhanden)
+    try {
+      const ev = window?.next?.router?.events;
+      ev?.on?.("routeChangeComplete", scheduleApply);
+    } catch {}
   };
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", installNavHooks);
+    document.addEventListener("DOMContentLoaded", start);
   } else {
-    installNavHooks();
+    start();
   }
 }
