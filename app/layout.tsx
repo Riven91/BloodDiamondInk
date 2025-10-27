@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import type { ReactNode } from "react";
 import "./globals.css";
 import { Header } from "@/components/Header";
@@ -52,6 +53,23 @@ export default function RootLayout({
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
         <Footer />
+
+        {/* Consent-Defaults: keine optionalen Dienste ohne Opt-in */}
+        <Script id="consent-defaults" strategy="beforeInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        // Wir nutzen keine Analytics/Ads – Defaults auf denied.
+        gtag('consent','default', {
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          ad_storage: 'denied',
+          analytics_storage: 'denied'
+        });`}
+        </Script>
+
+        {/* Klaro laden */}
+        <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
+        <Script src="/klaro/klaro.config.js" strategy="afterInteractive" />
       </body>
     </html>
   );
