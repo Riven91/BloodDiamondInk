@@ -119,7 +119,7 @@ export function Gallery() {
   };
 
   return (
-    <div className="mt-8 space-y-8">
+    <div data-no-lightbox className="mt-8 space-y-8">
       <div>
         <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Galerie</h2>
         <p className="text-sm md:text-base text-gray-300 mt-2">

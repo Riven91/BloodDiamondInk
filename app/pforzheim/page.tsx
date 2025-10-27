@@ -185,7 +185,7 @@ export default function PforzheimPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
-            Der Standort von Blood Diamond Tattoo Ink. in Pforzheim / Ötisheim liegt ruhig im Enzkreis, nahe Mühlacker – zwischen Stuttgart und Karlsruhe. Hier verbinden sich handwerkliche Präzision und entspannte Atmosphäre abseits des Großstadttrubels.
+            Der Standort von Blood Diamond Tattoo Ink. in Pforzheim / Ötisheim befindet sich im Enzkreis, nahe Mühlacker – zwischen Stuttgart und Karlsruhe. Hier verbinden sich handwerkliche Präzision und entspannte Atmosphäre abseits des Großstadttrubels.
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <div className="flex justify-center">

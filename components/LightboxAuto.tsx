@@ -2,6 +2,41 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 
+function decodeNextImageUrl(src: string): string {
+  try {
+    if (!src) return src;
+    const u = new URL(src, typeof window !== 'undefined' ? window.location.origin : 'http://localhost');
+    if (u.pathname.startsWith('/_next/image')) {
+      const raw = u.searchParams.get('url');
+      if (raw) {
+        try {
+          return decodeURIComponent(decodeURIComponent(raw));
+        } catch {
+          return decodeURIComponent(raw);
+        }
+      }
+    }
+    return src;
+  } catch {
+    return src;
+  }
+}
+
+function resolveSrcFromElement(el: HTMLElement): string {
+  const explicit = el.getAttribute('data-lightbox-src') || el.getAttribute('data-original') || '';
+  if (explicit) return decodeNextImageUrl(explicit);
+  if (el instanceof HTMLImageElement) {
+    const raw = el.currentSrc || el.src || el.getAttribute('src') || '';
+    return decodeNextImageUrl(raw);
+  }
+  const host = el.closest<HTMLElement>('[data-lightbox-src]');
+  if (host) {
+    const raw = host.getAttribute('data-lightbox-src') || '';
+    return decodeNextImageUrl(raw);
+  }
+  return '';
+}
+
 type Item = {
   src: string;
   alt: string;
@@ -30,23 +65,25 @@ export default function LightboxAuto({ containerSelector }: LightboxAutoProps) {
     if (!root) return;
 
     const collect = (): Item[] => {
-      const imgs = Array.from(root.querySelectorAll<HTMLImageElement>("img"));
-      const customEls = Array.from(root.querySelectorAll<HTMLElement>("[data-lightbox-src]"));
+      const imgs = Array.from(root.querySelectorAll<HTMLImageElement>('img'));
+      const customEls = Array.from(root.querySelectorAll<HTMLElement>('[data-lightbox-src]'));
 
-      const imgItems = imgs.map((img) => {
-        const src = img.currentSrc || img.src || img.getAttribute("src") || "";
-        const alt = img.alt || img.getAttribute("alt") || "";
-        return { src, alt };
-      });
+      const imgItems = imgs
+        .map((img) => {
+          const src = resolveSrcFromElement(img as unknown as HTMLElement);
+          const alt = img.alt || img.getAttribute('alt') || '';
+          return { src, alt };
+        })
+        .filter((item) => item.src);
 
       const customItems = customEls
         .map((el) => ({
-          src: el.getAttribute("data-lightbox-src") || "",
+          src: resolveSrcFromElement(el),
           alt:
-            el.getAttribute("data-lightbox-alt") ||
-            el.getAttribute("aria-label") ||
-            el.getAttribute("title") ||
-            "",
+            el.getAttribute('data-lightbox-alt') ||
+            el.getAttribute('aria-label') ||
+            el.getAttribute('title') ||
+            '',
         }))
         .filter((item) => item.src);
 
@@ -73,16 +110,13 @@ export default function LightboxAuto({ containerSelector }: LightboxAutoProps) {
       if (!target) return;
       let el: HTMLElement | null = target;
 
-      while (el && el !== root && !el.matches("img,[data-lightbox-src]")) {
+      while (el && el !== root && !el.matches('img,[data-lightbox-src]')) {
         el = el.parentElement;
       }
 
       if (!el || el === root) return;
 
-      const src =
-        el instanceof HTMLImageElement
-          ? el.currentSrc || el.src || el.getAttribute("src") || ""
-          : el.getAttribute("data-lightbox-src") || "";
+      const src = resolveSrcFromElement(el);
 
       if (!src) return;
 
