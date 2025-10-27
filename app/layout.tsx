@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
+import LightboxGlobal from "@/components/LightboxGlobal";
 
 export const metadata: Metadata = {
   title: "Blood Diamond Ink",
@@ -52,6 +53,8 @@ export default function RootLayout({
         <LayoutWrapper>
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
+        {/* Globale Lightbox für alle Bilder außerhalb HERO & Team-Galerien */}
+        <LightboxGlobal scopeSelector="main" excludeSelector="#hero, #team-gallery, [data-no-lightbox]" />
         <Footer />
 
         {/* Consent-Defaults: keine optionalen Dienste ohne Opt-in */}

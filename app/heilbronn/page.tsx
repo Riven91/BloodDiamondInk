@@ -1,9 +1,10 @@
 import Image from "next/image";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
-import FooterHeilbronn from "@/components/FooterHeilbronn";
+import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
 
 const faqItems = [
@@ -29,30 +30,6 @@ const faqItems = [
   },
 ];
 
-const businessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "TattooParlor",
-  name: "Blood Diamond Tattoo Ink. Heilbronn",
-  description:
-    "Fineline, Realistic & Cover-Up Tattoos in Heilbronn – Beratung, individuelles Design & höchste Hygiene.",
-  image: "/og/og-heilbronn.jpg",
-  telephone: "+49 176 30573128",
-  url: "https://blooddiamondink.example/heilbronn",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Lautenbacher Str. 6",
-    addressLocality: "Neckarsulm",
-    postalCode: "74172",
-    addressCountry: "DE",
-  },
-  areaServed: "Heilbronn",
-  openingHours: "Mo-Sa 10:00-18:00",
-  sameAs: [
-    "https://www.instagram.com",
-    "https://www.facebook.com",
-  ],
-};
-
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -66,6 +43,43 @@ const faqJsonLd = {
   })),
 };
 
+const searchActionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Blood Diamond Tattoo Ink. Heilbronn",
+  url: "https://blooddiamondink.de/heilbronn",
+  potentialAction: {
+    "@type": "SearchAction",
+    target:
+      "https://www.google.com/search?q=site:https://blooddiamondink.de/heilbronn+{search_term_string}",
+    "query-input": "required name=search_term_string",
+  },
+};
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TattooParlor",
+  name: "Blood Diamond Tattoo Ink. Heilbronn",
+  description:
+    "Fineline, Realistic & Cover-Up Tattoos in Heilbronn – Beratung, individuelles Design & höchste Hygiene.",
+  image: "https://blooddiamondink.de/og/og-heilbronn.jpg",
+  telephone: "+49 176 30573128",
+  url: "https://blooddiamondink.de/heilbronn",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Lautenbacher Str. 6",
+    addressLocality: "Neckarsulm",
+    postalCode: "74172",
+    addressCountry: "DE",
+  },
+  areaServed: "Heilbronn",
+  openingHours: "Mo-Sa 10:00-18:00",
+  sameAs: [
+    "https://www.instagram.com/blooddiamondtattooink",
+    "https://www.facebook.com/blooddiamondtattooink",
+  ],
+};
+
 const studioCaptions = [
   "Einblick in eines unserer Studios in Heilbronn, Pforzheim und Böblingen – moderne Ausstattung, sterile Umgebung und konzentrierte Arbeitsatmosphäre.",
   "Tattoo-Session mit kreativer Energie – klare Linien, präzise Technik und ruhige Konzentration am Werk.",
@@ -77,12 +91,23 @@ if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioIma
 }
 
 export const metadata: Metadata = {
-  title: "Tattoo Studio Heilbronn | Blood Diamond Tattoo Ink.",
-  description: "Fineline, Realistic & Cover-Up Tattoos in Heilbronn – Beratung, individuelles Design & höchste Hygiene.",
+  title: "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision",
+  description:
+    "Blood Diamond Tattoo Ink. Heilbronn steht für handverlesene Tattoo-Artists, Ruhe im Private Room und präzise Fineline-, Realistic- sowie Cover-Up-Designs für Neckarsulm und den Raum Heilbronn.",
+  alternates: {
+    canonical: "https://blooddiamondink.de/heilbronn",
+  },
   openGraph: {
+    type: "website",
+    url: "https://blooddiamondink.de/heilbronn",
+    title: "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision",
+    description:
+      "Erlebe Ruhe, Präzision und preisgekrönte Tattoo-Kunst bei Blood Diamond Tattoo Ink. Heilbronn – individuelle Beratung für Fineline-, Realistic- und Cover-Up-Projekte.",
+    siteName: "Blood Diamond Tattoo Ink.",
+    locale: "de_DE",
     images: [
       {
-        url: "/og/og-heilbronn.jpg",
+        url: "https://blooddiamondink.de/og/og-heilbronn.jpg",
         width: 1200,
         height: 630,
         alt: "Blood Diamond Tattoo Ink. Studio in Heilbronn",
@@ -116,12 +141,28 @@ function ContactSection() {
 export default function HeilbronnPage() {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <Script
+        id="heilbronn-search-action"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(searchActionJsonLd) }}
+      />
+      <Script
+        id="heilbronn-local-business"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
+      <Script
+        id="heilbronn-faq"
+        type="application/ld+json"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
 
       <Hero
         title="Tattoo Studio Heilbronn — Blood Diamond Tattoo Ink."
-        description="Erleben Sie Tattoo-Kunst mit internationalem Anspruch – handverlesene Artists aus aller Welt, mehrfach ausgezeichnet mit der „Goldenen Nadel“. Realistic, Fineline und Cover-Up in Perfektion – exklusiv bei Blood Diamond Tattoo Ink. Heilbronn."
+        description="Internationale Tattoo-Kunst trifft auf präzises Handwerk – Blood Diamond Tattoo Ink. Heilbronn steht für Realistic, Fineline und Cover-Up auf Weltklasse-Niveau. Unsere Artists sind mehrfach mit der „Goldenen Nadel“ ausgezeichnet und arbeiten in einer sterilen, ruhigen Umgebung für dein perfektes Tattoo."
         ctaLabel="Termin buchen"
         ctaHref="#kontaktformular"
         secondaryCtaLabel="WhatsApp"
@@ -130,7 +171,7 @@ export default function HeilbronnPage() {
       />
       <div className="flex flex-col items-center justify-center text-center text-white px-4 py-8">
         <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
-          Wir verschenken 100 € Tattoo-Gutscheine!
+          Handwerk, Ruhe und Präzision
         </h2>
 
         <p className="mt-2 text-sm sm:text-base opacity-90 max-w-2xl">
@@ -203,7 +244,7 @@ export default function HeilbronnPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
-            Der Standort von Blood Diamond Tattoo Ink. in Heilbronn liegt verkehrsgünstig in Neckarsulm. Nutzen Sie die Karte, um Ihre Route zu planen.
+            Der Standort von Blood Diamond Tattoo Ink. in Heilbronn / Neckarsulm liegt gut erreichbar nahe der A6 – in ruhiger Umgebung, ideal für konzentrierte Tattoo-Sessions ohne Großstadttrubel.
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <div className="flex justify-center">
@@ -237,7 +278,7 @@ export default function HeilbronnPage() {
       <section className="bg-blooddiamond-background py-16">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
-          <div className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+          <div id="team-gallery" className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div className="relative w-full aspect-[4/3] rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-muted/30 p-2">
               <Image
                 src="/Team1.jpeg"
@@ -257,6 +298,7 @@ export default function HeilbronnPage() {
               />
             </div>
           </div>
+          <LightboxAuto containerSelector="#team-gallery" />
           <section className="text-center max-w-2xl mx-auto mt-6 text-gray-200">
             <h3 className="text-lg font-semibold mb-3">Gemeinsam stark.</h3>
             <p className="text-sm leading-relaxed">
@@ -327,7 +369,6 @@ export default function HeilbronnPage() {
       </section>
 
       <ContactSection />
-      <FooterHeilbronn />
     </>
   );
 }
