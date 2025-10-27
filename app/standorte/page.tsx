@@ -92,6 +92,22 @@ export default function StandortePage() {
           className="opacity-30 brightness-110 [filter:drop-shadow(0_0_10px_rgba(16,185,129,0.75))_drop-shadow(0_0_16px_rgba(16,185,129,0.45))]"
         />
       </div>
+
+      <section className="mt-12 border-t border-neutral-800 pt-8 pb-6 text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
+          <a href="/#faq" className="text-neutral-400 hover:text-white transition">
+            FAQ
+          </a>
+          <a
+            href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-400 hover:text-white transition"
+          >
+            Kontakt
+          </a>
+        </div>
+      </section>
     </main>
   );
 }

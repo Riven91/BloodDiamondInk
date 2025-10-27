@@ -117,7 +117,7 @@ export default function PforzheimPage() {
           href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-flex items-center gap-2 rounded-md bg-emerald-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300"
+          className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
           aria-label="Gutschein sichern"
         >
           {/* Geschenk-Icon (weiß, inline-SVG) */}
@@ -308,6 +308,21 @@ export default function PforzheimPage() {
       </section>
 
       <ContactForm />
+      <section className="mt-12 border-t border-neutral-800 pt-8 pb-6 text-center">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
+          <a href="/#faq" className="text-neutral-400 hover:text-white transition">
+            FAQ
+          </a>
+          <a
+            href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-neutral-400 hover:text-white transition"
+          >
+            Kontakt
+          </a>
+        </div>
+      </section>
     </>
   );
 }
