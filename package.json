@@ -5,6 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "cf:build": "npx @cloudflare/next-on-pages@1 build",
+    "cf:preview": "wrangler pages dev .vercel/output/static --compatibility-date=2024-11-11 --local true",
     "start": "next start",
     "lint": "next lint",
     "diagnose-build": "npm run build && ls -l .next/static/css/"
@@ -32,6 +34,6 @@
     "typescript": "^5"
   },
   "engines": {
-    "node": "20"
+    "node": ">=20"
   }
 }

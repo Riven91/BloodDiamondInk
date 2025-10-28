@@ -1,0 +1,18 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+# Statische Next-Assets
+/_next/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Branding Assets
+/logo-blooddiamond.svg
+  Cache-Control: public, max-age=604800
+
+# Social Preview
+/social_media_pre_cropped.png
+  Cache-Control: public, max-age=3600
