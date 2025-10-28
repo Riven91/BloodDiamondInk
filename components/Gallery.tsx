@@ -114,7 +114,7 @@ function GalleryComponent() {
                   <button
                     type="button"
                     onClick={close}
-                    className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
+                    className="absolute right-3 top-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
                     aria-label="Lightbox schließen"
                   >
                     ✕
@@ -127,7 +127,7 @@ function GalleryComponent() {
                       prev();
                     }}
                     aria-label="Vorheriges Bild"
-                    className="absolute left-0 top-0 h-full w-1/2 cursor-[w-resize] bg-transparent"
+                    className="absolute left-0 top-0 z-10 h-full w-1/2 cursor-[w-resize] bg-transparent"
                   />
                   <button
                     type="button"
@@ -136,7 +136,7 @@ function GalleryComponent() {
                       next();
                     }}
                     aria-label="Nächstes Bild"
-                    className="absolute right-0 top-0 h-full w-1/2 cursor-[e-resize] bg-transparent"
+                    className="absolute right-0 top-0 z-10 h-full w-1/2 cursor-[e-resize] bg-transparent"
                   />
                 </div>
               </div>
