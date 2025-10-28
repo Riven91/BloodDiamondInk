@@ -284,25 +284,35 @@ export default function PforzheimPage() {
             <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
               <h3 className="text-lg font-semibold text-white">Individuelles Design</h3>
               <p className="mt-3 text-sm text-blooddiamond-text/70">
-                Persönliche Design-Workshops und maßgeschneiderte Motive für einzigartige Fineline, Realistic und Cover-Up Tattoos in der Region Pforzheim.
+                In persönlichen Design-Sessions entstehen maßgeschneiderte Motive von
+                Fineline über Realistic bis Cover-Up, präzise abgestimmt auf deine
+                Ideen und den Stil von Blood Diamond Tattoo Ink. Pforzheim.
               </p>
             </div>
             <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
               <h3 className="text-lg font-semibold text-white">Premium Hygiene</h3>
               <p className="mt-3 text-sm text-blooddiamond-text/70">
-                Sterile Arbeitsplätze, UV-Desinfektion und medizinische Aftercare-Produkte garantieren höchste Sicherheitsstandards bei Blood Diamond Tattoo Ink.
+                Sterile Arbeitsplätze, UV-Desinfektion und medizinische
+                Aftercare-Produkte sichern höchste Hygiene- und
+                Sicherheitsstandards im Tattoo-Studio Pforzheim.
               </p>
             </div>
             <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
               <h3 className="text-lg font-semibold text-white">Ganzheitliche Betreuung</h3>
               <p className="mt-3 text-sm text-blooddiamond-text/70">
-                Intensive Vor- und Nachsorge, digitale Check-ins sowie transparente Projektplanung für langfristig perfekte Ergebnisse.
+                Von der individuellen Beratung bis zur Nachsorge begleiten wir jeden
+                Tattoo-Prozess mit digitalem Check-in, klarer Planung und präziser
+                Nachpflege für dauerhaft brillante Ergebnisse.
               </p>
             </div>
             <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
               <h3 className="text-lg font-semibold text-white">Regionale Verankerung</h3>
               <p className="mt-3 text-sm text-blooddiamond-text/70">
-                Blood Diamond Tattoo Ink. Pforzheim vernetzt lokale Kunstschaffende und veranstaltet regelmäßige Walk-In Days für spontane Tattoo-Projekte.
+                Blood Diamond Tattoo Ink. ist im Südwesten Deutschlands fest
+                verwurzelt. Die Studios in Pforzheim, Böblingen und Heilbronn
+                stehen für Weltklassequalität, Verlässlichkeit und die gemeinsame
+                Leidenschaft für moderne Tattoo-Kunst. Alle Tattoos entstehen nach
+                fester Terminvereinbarung.
               </p>
             </div>
           </div>
