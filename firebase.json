@@ -29,6 +29,30 @@
     "frameworksBackend": {
       "id": "my-web-app",
       "region": "europe-west4"
-    }
+    },
+    "redirects": [
+      { "source": "/favicon", "destination": "/favicon.ico", "type": 301 },
+
+      { "source": "/favicon grundlage.png", "destination": "/favicon-16x16.png", "type": 301 },
+      { "source": "/favicon%20grundlage.png", "destination": "/favicon-16x16.png", "type": 301 },
+
+      { "source": "/favicon grundlage (1).png", "destination": "/favicon-32x32.png", "type": 301 },
+      { "source": "/favicon%20grundlage%20(1).png", "destination": "/favicon-32x32.png", "type": 301 },
+
+      { "source": "/favicon grundlage (2).png", "destination": "/favicon-48x48.png", "type": 301 },
+      { "source": "/favicon%20grundlage%20(2).png", "destination": "/favicon-48x48.png", "type": 301 },
+
+      { "source": "/favicon grundlage (3).png", "destination": "/apple-touch-icon.png", "type": 301 },
+      { "source": "/favicon%20grundlage%20(3).png", "destination": "/apple-touch-icon.png", "type": 301 },
+
+      { "source": "/favicon grundlage (4).png", "destination": "/favicon-96x96.png", "type": 301 },
+      { "source": "/favicon%20grundlage%20(4).png", "destination": "/favicon-96x96.png", "type": 301 },
+
+      { "source": "/favicon grundlage (5).png", "destination": "/favicon-128x128.png", "type": 301 },
+      { "source": "/favicon%20grundlage%20(5).png", "destination": "/favicon-128x128.png", "type": 301 },
+
+      { "source": "/favicon grundlage2.png", "destination": "/og-image.png", "type": 301 },
+      { "source": "/favicon%20grundlage2.png", "destination": "/og-image.png", "type": 301 }
+    ]
   }
 }
