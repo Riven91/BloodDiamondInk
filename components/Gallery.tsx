@@ -43,7 +43,7 @@ function GalleryComponent() {
       >
         {items.map((item, i) => (
           <figure
-            key={item.file}
+            key={`${item.file}-${i}`}
             className="group flex flex-col overflow-hidden rounded-2xl bg-black/20 shadow-sm ring-1 ring-white/5"
           >
             <button

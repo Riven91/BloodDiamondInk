@@ -153,9 +153,23 @@ export const galleryBatch2: GalleryItem[] = [
 ];
 
 import { galleryData } from "./galleryData.base";
-// Reihenfolge = Basisliste, dann Batch1, dann Batch2 (keine Duplikate)
-export const galleryDataAll: GalleryItem[] = [
-  ...galleryData,
-  ...galleryBatch1,
-  ...galleryBatch2,
-];
+
+// Dedup + Override-Strategie:
+// 1) Basisdaten
+// 2) Batch1 überschreibt Basis
+// 3) Batch2 überschreibt Batch1/Basis
+function mergeUniqueByFile(...lists: GalleryItem[][]): GalleryItem[] {
+  const map = new Map<string, GalleryItem>();
+  for (const list of lists) {
+    for (const item of list) {
+      map.set(item.file, item); // spätere Einträge überschreiben frühere
+    }
+  }
+  return Array.from(map.values());
+}
+
+export const galleryDataAll: GalleryItem[] = mergeUniqueByFile(
+  galleryData,
+  galleryBatch1,
+  galleryBatch2
+);
