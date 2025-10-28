@@ -15,7 +15,7 @@ export const metadata = {
       "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [
       {
-        url: "/social_media_pre_cropped.png",
+        url: "/android-chrome-512x512.png",
         width: 1200,
         height: 630,
         alt: "Blood Diamond Tattoo Ink – Social Preview",
@@ -27,7 +27,7 @@ export const metadata = {
     title: "Blood Diamond Tattoo Ink – Kunst, Stil & Präzision",
     description:
       "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: ["/social_media_pre_cropped.png"],
+    images: ["/android-chrome-512x512.png"],
   },
 };
 
