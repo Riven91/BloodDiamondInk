@@ -97,18 +97,21 @@ export function Footer() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col items-start gap-3 text-left md:items-center md:text-center">
-            <a href="/#faq" className="text-neutral-300 transition hover:text-white">
-              FAQ
-            </a>
-            <a
-              href={contactHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-neutral-300 transition hover:text-white"
-            >
-              Kontakt
-            </a>
+          {/* Mobile-Feinanpassung: F.A.Q. & Kontakt leicht nach oben verschieben */}
+          <div className="flex flex-1 flex-row items-center justify-center gap-6 self-center text-center md:flex-col md:gap-3 relative md:static">
+            <div className="absolute -top-2 left-1/2 -translate-x-1/2 flex gap-6 md:static md:translate-x-0 md:top-0">
+              <a href="/#faq" className="text-neutral-300 transition hover:text-white">
+                FAQ
+              </a>
+              <a
+                href={contactHref}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-neutral-300 transition hover:text-white"
+              >
+                Kontakt
+              </a>
+            </div>
           </div>
 
           <div className="flex flex-col items-start gap-3 text-left md:items-end md:text-right">
