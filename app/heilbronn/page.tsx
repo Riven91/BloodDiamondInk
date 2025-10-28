@@ -81,21 +81,6 @@ const localBusinessJsonLd = {
   ],
 };
 
-type ButtonProps = ComponentPropsWithoutRef<"a"> & { href: string };
-
-function Button({ href, target, rel, children, ...props }: ButtonProps) {
-  return (
-    <a
-      href={href}
-      target={target ?? "_blank"}
-      rel={rel ?? "noopener noreferrer"}
-      {...props}
-    >
-      {children}
-    </a>
-  );
-}
-
 const studioCaptions = [
   "Einblick in eines unserer Studios in Heilbronn, Pforzheim und Böblingen – moderne Ausstattung, sterile Umgebung und konzentrierte Arbeitsatmosphäre.",
   "Tattoo-Session mit kreativer Energie – klare Linien, präzise Technik und volle Konzentration auf das Werk.",
@@ -186,14 +171,22 @@ export default function HeilbronnPage() {
         city="heilbronn"
       />
       <section className="mt-12 rounded-2xl bg-blooddiamond-background/80 border border-blooddiamond-primary/40 p-6 text-center">
-        <h3 className="text-xl font-semibold text-white">Wir verschenken 100 € Tattoo-Gutscheine!</h3>
-        <p className="mt-2 text-neutral-200">
-          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
-        </p>
-        <Button href="https://kontakt.blooddiamond-tattoo.de/gutschein/" className="mt-4 bg-brand hover:bg-brand-hover">
+  <h3 className="text-xl font-semibold text-white">
+    Wir verschenken 100 € Tattoo-Gutscheine!
+  </h3>
+  <p className="mt-2 text-neutral-200">
+    Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein
+    von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
+  </p>
+  <a
+          href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 bg-brand hover:bg-brand-hover"
+        >
           Gutschein sichern
-        </Button>
-      </section>
+        </a>
+</section>
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
