@@ -97,24 +97,21 @@ export function Footer() {
               </a>
             </div>
           </div>
-          {/* Mobile-Feinanpassung: F.A.Q. & Kontakt leicht nach oben verschieben */}
-          <div className="flex flex-1 flex-row items-center justify-center gap-6 self-center text-center md:flex-col md:gap-3 relative md:static">
-            <div className="absolute -top-2 left-1/2 -translate-x-1/2 flex gap-6 md:static md:translate-x-0 md:top-0">
-              <a href="/#faq" className="text-neutral-300 transition hover:text-white">
-                FAQ
-              </a>
-              <a
-                href={contactHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-300 transition hover:text-white"
-              >
-                Kontakt
-              </a>
-            </div>
+          <div className="flex flex-1 flex-col items-start justify-start self-start gap-2 text-left mt-0 md:items-center md:text-center md:gap-3 md:mt-0">
+            <a href="/#faq" className="text-neutral-300 transition hover:text-white">
+              FAQ
+            </a>
+            <a
+              href={contactHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-300 transition hover:text-white"
+            >
+              Kontakt
+            </a>
           </div>
 
-          <div className="flex flex-col items-start gap-3 text-left md:items-end md:text-right">
+          <div className="flex flex-col items-start text-left justify-start self-start gap-3 md:items-end md:text-right md:self-start">
             <span className="font-display text-base uppercase text-blooddiamond-text">Rechtliches</span>
             <Link href={impressumHref} className="transition hover:text-white">
               Impressum
@@ -128,7 +125,7 @@ export function Footer() {
             <button
               type="button"
               onClick={handleCookieSettings}
-              className="cursor-pointer border-none bg-transparent text-neutral-300 transition hover:text-white"
+              className="cursor-pointer border-none bg-transparent text-neutral-300 transition hover:text-white text-left md:text-right"
             >
               Cookie-Einstellungen
             </button>

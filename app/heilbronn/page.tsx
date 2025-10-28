@@ -1,7 +1,6 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import Script from "next/script";
-import type { ComponentPropsWithoutRef } from "react";
 import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
@@ -91,22 +90,6 @@ if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioIma
   console.warn("HeilbronnPage: studio captions length does not match studio images count.");
 }
 
-type ButtonProps = ComponentPropsWithoutRef<"a">;
-
-function Button({ className, children, ...props }: ButtonProps) {
-  const baseClassName =
-    "inline-flex items-center justify-center rounded-md px-5 py-2 text-sm font-semibold text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring";
-
-  return (
-    <a
-      {...props}
-      className={[baseClassName, className].filter(Boolean).join(" ")}
-    >
-      {children}
-    </a>
-  );
-}
-
 export const metadata: Metadata = {
   title: "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision",
   description:
@@ -186,23 +169,30 @@ export default function HeilbronnPage() {
         secondaryCtaHref="https://wa.me/4917630573128"
         city="heilbronn"
       />
-      <section className="mt-12 rounded-2xl bg-blooddiamond-background/80 border border-blooddiamond-primary/40 p-6 text-center">
-        <h3 className="text-xl font-semibold text-white">
+      {/* Gutscheinblock – exakte Pforzheim-Struktur (kein Card-Wrapper) */}
+      <div className="flex flex-col items-center justify-center text-center text-white px-4 py-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight">
           Wir verschenken 100 € Tattoo-Gutscheine!
-        </h3>
-        <p className="mt-2 text-neutral-200">
-          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein
-          von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
+        </h2>
+
+        <p className="mt-2 text-sm sm:text-base opacity-90 max-w-2xl">
+          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
         </p>
-        <Button
+
+        <a
           href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 bg-brand hover:bg-brand-hover"
+          className="mt-5 inline-flex items-center gap-2 rounded-md bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-ring focus-visible:ring-offset-2 focus-visible:ring-offset-blooddiamond-background"
+          aria-label="Gutschein sichern"
         >
-          Gutschein sichern
-        </Button>
-      </section>
+          {/* Geschenk-Icon (weiß, inline-SVG) */}
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
+            <path d="M20 7h-2.18A3.001 3.001 0 0 0 15 4c-1.66 0-3 1.34-3 3 0-1.66-1.34-3-3-3a3.001 3.001 0 0 0-2.82 3H4c-1.1 0-2 .9-2 2v2c0 .55.45 1 1 1h1v7c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-7h1c.55 0 1-.45 1-1V9c0-1.1-.9-2-2-2Zm-5-1c.55 0 1 .45 1 1s-.45 1-1 1h-2V7c0-.55.45-1 1-1Zm-6 0c.55 0 1 .45 1 1v1H8c-.55 0-1-.45-1-1s.45-1 1-1Zm-3 6h5v7H6v-7Zm7 7v-7h5v7h-5Zm7-9H4V9h16v1Z" />
+          </svg>
+          <span>Gutschein sichern</span>
+        </a>
+      </div>
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
