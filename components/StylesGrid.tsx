@@ -6,43 +6,74 @@ const IMG = "absolute inset-0 w-full h-full object-cover";
 const TITLE_CLS = "mt-3 text-blooddiamond-accent font-semibold text-base sm:text-lg";
 const DESC_CLS = "mt-1 text-gray-300 text-sm sm:text-base leading-relaxed";
 
-type StyleItem = { title: string; src: string; desc: string };
+type StyleItem = {
+  title: string;
+  src: string;
+  alt: string;
+  desc: string;
+  keywords: readonly string[];
+};
 
 const stylesData: StyleItem[] = [
   {
     title: "Black & Grey",
     src: "/blackgrey1.jpeg",
+    alt: "Black & Grey Tattoo – realistische Schädel-Komposition – Blood Diamond Tattoo Ink.",
     desc: "Kontraststarke Black & Grey (Black and Grey) Tattoos mit weichen Übergängen und tiefer Dreidimensionalität – ideal für Porträts, Realismus und große Kompositionen.",
+    keywords: ["tattoo", "black & grey", "realistisch", "schädel", "schattierung", "blood diamond tattoo ink"],
   },
   {
     title: "Cover-Up",
     src: "/coverup1.jpeg",
-    desc:
-      "Alte Motive professionell überarbeiten: durchdachte Tonwerte, Linienführung und Fluss – das neue Design integriert die Vergangenheit nahtlos.",
+    alt: "Realistic Tattoo – Porträt mit Dornenkrone – Blood Diamond Tattoo Ink.",
+    desc: "Alte Motive professionell überarbeiten: durchdachte Tonwerte, Linienführung und Fluss – das neue Design integriert die Vergangenheit nahtlos.",
+    keywords: ["tattoo", "realistic", "portrait", "dornenkrone", "realismus", "black & grey", "blood diamond tattoo ink"],
   },
   {
     title: "Fineline",
     src: "/fineline1.jpeg",
+    alt: "Fineline Tattoo – Schrift entlang der Wirbelsäule – Blood Diamond Tattoo Ink.",
     desc:
       "Filigrane Linien und dezente Schattierungen für elegante, minimalistische Tattoos – präzise gestochen für klare, langlebige Ergebnisse.",
+    keywords: ["tattoo", "fineline", "linework", "schriftzug", "minimalistisch", "zarte linien", "blood diamond tattoo ink"],
+  },
+  {
+    title: "Geometric",
+    src: "/geometric.jpeg",
+    alt: "Geometric Tattoo – Symbolik und Linienkunst – Blood Diamond Tattoo Ink.",
+    desc: "Präzise geometrische Formen mit spiritueller Symbolik und feiner Linienbalance.",
+    keywords: ["tattoo", "geometric", "linework", "symbolism", "moderne geometrie", "spiritual tattoo", "blood diamond tattoo ink"],
+  },
+  {
+    title: "Lettering",
+    src: "/letterworking.jpeg",
+    alt: "Lettering Tattoo – Blackletter-Style – Blood Diamond Tattoo Ink.",
+    desc: "Prägnantes Lettering Tattoo in markanter Schriftgestaltung, klarer Kontrast und saubere Linienführung.",
+    keywords: ["tattoo", "lettering", "blackletter", "schrift", "bold style", "gothic tattoo", "blood diamond tattoo ink"],
   },
   {
     title: "Mandala",
     src: "/mandala1 (1).jpeg",
+    alt: "Mandala Tattoo – ornamentale Dotwork-Komposition – Blood Diamond Tattoo Ink.",
     desc:
       "Geometrische Präzision und Dotwork-Details: symmetrische Mandalas mit klaren Linien, perfekter Ausrichtung und ruhiger Balance auf der Haut.",
+    keywords: ["tattoo", "mandala", "dotwork", "ornament", "symmetry", "geometrisch", "blood diamond tattoo ink"],
   },
   {
     title: "New School",
     src: "/newschool.jpeg",
+    alt: "New School Tattoo – bunte Comic-Komposition – Blood Diamond Tattoo Ink.",
     desc:
       "Kräftige Farben, dynamische Formen und illustrative Tiefe – New-School-Designs mit Comic-Einflüssen, 3D-Effekten und maximalem Bildwitz.",
+    keywords: ["tattoo", "new school", "comic", "farbintensiv", "colorful tattoo", "blood diamond tattoo ink"],
   },
   {
     title: "Realistic",
     src: "/realistic1.jpeg",
+    alt: "Realistic Tattoo – fotorealistisches Porträt mit fein abgestuften Schattierungen – Blood Diamond Tattoo Ink.",
     desc:
       "Fotorealistische Tattoos mit präzisem Licht-/Schatten-Spiel, feinster Textur und natürlicher Hautintegration – von Detail bis Full Backpiece.",
+    keywords: ["tattoo", "realistic", "portrait", "black & grey", "realismus", "blood diamond tattoo ink"],
   },
 ];
 
@@ -67,7 +98,7 @@ export function StylesGrid() {
             <div className={CARD_IMG}>
               <Image
                 src={it.src}
-                alt={`Signature Style – ${it.title}`}
+                alt={it.alt}
                 fill
                 className={IMG}
                 sizes="(max-width:640px) 100vw, (max-width:1024px) 33vw, 33vw"

@@ -169,6 +169,36 @@ window.klaroConfig = {
   },
   services: [
     {
+      name: 'google-analytics',
+      title: 'Google Analytics',
+      purposes: ['analytics'],
+      required: false,
+      cookies: [/^_ga/, /^_gid/, /^_gat/],
+      callback: function (consent, app) {
+        if (typeof window !== 'undefined') {
+          window.dataLayer = window.dataLayer || [];
+          window.gtag =
+            window.gtag ||
+            function () {
+              window.dataLayer.push(arguments);
+            };
+
+          window.gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+
+          window.gtag('consent', 'update', {
+            analytics_storage: consent ? 'granted' : 'denied'
+          });
+
+          window.dispatchEvent(new CustomEvent('consent:ga', { detail: !!consent }));
+        }
+      }
+    },
+    {
       name: 'google-fonts',
       title: 'Google Fonts',
       purposes: ['comfort'],
