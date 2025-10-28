@@ -5,8 +5,8 @@ export type GalleryItem = {
   keywords: string[];
 };
 
-// Bereinigter Batch 1 (ohne coverup1.jpeg / Cover-Up gehört nicht in diese Galerie)
-export const galleryBatch1: GalleryItem[] = [
+// Zusätzliche Motive für die Galerie (bereinigt, ohne Cover-Up-Motive)
+export const additionalGalleryItems: GalleryItem[] = [
   {
     file: "blackgrey2.jpeg",
     alt: "Black & Grey Tattoo – Porträt eines älteren Mannes mit feiner Faltenstruktur und Handdetail – Blood Diamond Tattoo Ink.",
@@ -155,9 +155,7 @@ export const galleryBatch2: GalleryItem[] = [
 import { galleryData } from "./galleryData.base";
 
 // Dedup + Override-Strategie:
-// 1) Basisdaten
-// 2) Batch1 überschreibt Basis
-// 3) Batch2 überschreibt Batch1/Basis
+// Basisdaten zuerst, zusätzliche Motive überschreiben bei Bedarf
 function mergeUniqueByFile(...lists: GalleryItem[][]): GalleryItem[] {
   const map = new Map<string, GalleryItem>();
   for (const list of lists) {
@@ -170,6 +168,5 @@ function mergeUniqueByFile(...lists: GalleryItem[][]): GalleryItem[] {
 
 export const galleryDataAll: GalleryItem[] = mergeUniqueByFile(
   galleryData,
-  galleryBatch1,
-  galleryBatch2
+  additionalGalleryItems,
 );
