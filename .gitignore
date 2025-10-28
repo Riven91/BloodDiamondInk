@@ -48,3 +48,7 @@ functions/.runtimeconfig.json
 .vercel/
 .netlify/
 .turbo/
+
+# --- Untracked Icon Variants
+public/favicon-*.png
+public/favicon.ico
