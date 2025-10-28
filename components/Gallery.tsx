@@ -1,229 +1,97 @@
 "use client";
 
-import { type TouchEventHandler, useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
-const GAL_CARD = "relative overflow-hidden rounded-xl bg-black/30 aspect-[4/5]";
-const GAL_IMG = "absolute inset-0 w-full h-full object-cover";
+import type { GalleryItem } from "@/data/galleryData";
+import { galleryDataAll } from "@/data/galleryData";
 
-interface GalleryItem {
-  src: string;
-  alt: string;
-}
-
-const galleryItems: GalleryItem[] = [
-  {
-    src: "/blackgrey2.jpeg",
-    alt: "BlackRay 2",
-  },
-  {
-    src: "/blackgrey3.jpeg",
-    alt: "BlackRay 3",
-  },
-  {
-    src: "/blackgrey4.jpeg",
-    alt: "BlackRay 4",
-  },
-  {
-    src: "/blackgrey5.jpeg",
-    alt: "BlackRay 5",
-  },
-  {
-    src: "/blackgrey6.jpeg",
-    alt: "BlackRay 6",
-  },
-  {
-    src: "/dark1.jpeg",
-    alt: "Dark 1",
-  },
-  {
-    src: "/fineline2.jpeg",
-    alt: "Fineline 2",
-  },
-  {
-    src: "/fineline3.jpeg",
-    alt: "Fineline 3",
-  },
-  {
-    src: "/realistic2.jpeg",
-    alt: "Realistic 2",
-  },
-  {
-    src: "/realistic3.jpeg",
-    alt: "Realistic 3",
-  },
-  {
-    src: "/realistic4.jpeg",
-    alt: "Realistic 4",
-  },
-  {
-    src: "/realistic5.jpeg",
-    alt: "Realistic 5",
-  },
-  {
-    src: "/realistic6.jpeg",
-    alt: "Realistic 6",
-  },
-  {
-    src: "/realistic7.jpeg",
-    alt: "Realistic 7",
-  },
-];
-
-export function Gallery() {
-  const [open, setOpen] = useState(false);
-  const [idx, setIdx] = useState(0);
-  const startX = useRef<number | null>(null);
-
-  const openAt = (i: number) => {
-    setIdx(i);
-    setOpen(true);
-  };
-  const close = () => setOpen(false);
-  const prev = () => setIdx((i) => (i - 1 + galleryItems.length) % galleryItems.length);
-  const next = () => setIdx((i) => (i + 1) % galleryItems.length);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-      if (event.key === "ArrowLeft") prev();
-      if (event.key === "ArrowRight") next();
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, [open]);
-
-  const onTouchStart: TouchEventHandler<HTMLDivElement> = (event) => {
-    startX.current = event.touches[0].clientX;
-  };
-  const onTouchEnd: TouchEventHandler<HTMLDivElement> = (event) => {
-    if (startX.current == null) return;
-    const deltaX = event.changedTouches[0].clientX - startX.current;
-    startX.current = null;
-    if (Math.abs(deltaX) < 30) return;
-    if (deltaX > 0) {
-      prev();
-    } else {
-      next();
-    }
-  };
+function GalleryComponent() {
+  const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
 
   return (
-    <div data-no-lightbox className="mt-8 space-y-8">
-      <div>
-        <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Galerie</h2>
-        <p className="text-sm md:text-base text-gray-300 mt-2">
-          Einblicke in aktuelle Projekte und Heal Pieces aus unseren Studios.
-        </p>
-        <p className="mt-2 text-sm md:text-base text-gray-300">
-          Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen Realistic, Geometric, Lettering (Letterworking), New School und
-          Mandala. Alle Motive werden individuell entworfen, von filigranen Linien bis zu großflächigen Projekten.
-        </p>
-        <ul className="mt-4 list-disc list-inside text-gray-300 space-y-1">
-          <li>Authentische Tattoo-Artworks aus Pforzheim, Heilbronn und Böblingen</li>
-          <li>Realistic &amp; Black &amp; Grey (Black and Grey) Tattoos mit höchster Präzision</li>
-          <li>Geometric und Mandala Designs mit Feinlinienkunst</li>
-          <li>Lettering (Letterworking) &amp; New School Styles mit individueller Kreativität</li>
-        </ul>
-        <p className="mt-6 text-center text-sm leading-relaxed text-gray-300 md:text-base">
-          Entdecke noch mehr außergewöhnliche Kunstwerke unserer internationalen Tattoo-Artists aus unseren Tattoo-Studios in
-          Pforzheim, Heilbronn und Böblingen. Folge{" "}
-          <a
-            href="#footer"
-            className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400"
+    <section className="mx-auto max-w-6xl px-4 md:px-6">
+      <div
+        className="
+          grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3
+          [--capmin:64px]
+        "
+      >
+        {galleryDataAll.map((item) => (
+          <figure
+            key={item.file}
+            className="group flex flex-col overflow-hidden rounded-2xl bg-black/20 shadow-sm ring-1 ring-white/5"
           >
-            Blood Diamond Tattoo Ink
-          </a>
-          . {" "}
-          auf unseren Social-Media-Kanälen für weitere Einblicke in Realistic, Fineline, Black & Grey, Cover-Up und Mandala
-          Tattoos.
-        </p>
-      </div>
-      <div className="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-        {galleryItems.map((item, i) => (
-          <button
-            key={item.src}
-            type="button"
-            onClick={() => openAt(i)}
-            aria-label={`Bild ${i + 1} öffnen`}
-            className={GAL_CARD}
-          >
-            <Image
-              src={item.src}
-              alt={item.alt}
-              fill
-              className={GAL_IMG}
-              sizes="(max-width:640px) 50vw, (max-width:1024px) 25vw, 300px"
-              loading="lazy"
-            />
-          </button>
+            <button
+              type="button"
+              onClick={() => setLightbox(item)}
+              className="relative aspect-[4/5] w-full overflow-hidden"
+              aria-label="Bild in großer Ansicht öffnen"
+            >
+              <Image
+                src={`/${item.file}`}
+                alt={item.alt}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition duration-300 group-hover:scale-[1.02]"
+                priority={false}
+              />
+            </button>
+
+            <figcaption
+              className="
+                min-h-[var(--capmin)] bg-blooddiamond-muted/50 p-3 text-sm leading-relaxed text-neutral-200 md:p-4
+              "
+            >
+              {item.caption}
+            </figcaption>
+          </figure>
         ))}
       </div>
 
-      {open && (
+      {lightbox && (
         <div
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-[2px] flex items-center justify-center p-4"
-          onClick={close}
-          onTouchStart={onTouchStart}
-          onTouchEnd={onTouchEnd}
+          role="dialog"
+          aria-modal="true"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+          onClick={() => setLightbox(null)}
         >
-          <div
-            className="relative flex items-center justify-center"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <Image
-              src={galleryItems[idx].src}
-              alt={galleryItems[idx].alt}
-              unoptimized
-              width={0}
-              height={0}
-              style={{
-                width: "auto",
-                height: "auto",
-                maxWidth: "90vw",
-                maxHeight: "85vh",
-              }}
-              className="rounded-lg shadow-lg"
-              priority
-            />
+          <div className="relative w-full max-w-4xl" onClick={(event) => event.stopPropagation()}>
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+              <Image
+                src={`/${lightbox.file}`}
+                alt={lightbox.alt}
+                fill
+                sizes="100vw"
+                className="bg-black object-contain"
+                priority
+              />
 
-            <button
-              type="button"
-              onClick={close}
-              className="absolute top-3 right-3 text-white text-2xl bg-white/10 hover:bg-white/20 rounded-full px-3 py-1"
-              aria-label="Schließen"
-            >
-              ✕
-            </button>
-            <button
-              type="button"
-              onClick={prev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-3xl bg-white/10 hover:bg-white/20 rounded-full px-3 py-1"
-              aria-label="Zurück"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              onClick={next}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-white text-3xl bg-white/10 hover:bg-white/20 rounded-full px-3 py-1"
-              aria-label="Weiter"
-            >
-              ›
-            </button>
+              <div className="pointer-events-none absolute inset-x-0 bottom-0">
+                <div className="h-24 bg-gradient-to-t from-black/70 to-transparent" />
+                <div className="pointer-events-auto absolute inset-x-0 bottom-0 p-4">
+                  <p className="text-sm text-neutral-100 md:text-base">{lightbox.caption}</p>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => setLightbox(null)}
+                className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80"
+                aria-label="Lightbox schließen"
+              >
+                ✕
+              </button>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </section>
   );
 }
+
+export function Gallery() {
+  return <GalleryComponent />;
+}
+
+export default GalleryComponent;
