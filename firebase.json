@@ -8,11 +8,17 @@
     ],
     "headers": [
       {
-        "source": "/logo-blooddiamond.svg",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
+        "source": "**/*.png",
+        "headers": [
+          { "key": "Content-Type", "value": "image/png" },
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
       },
       {
-        "source": "/social_media_pre_cropped.png",
+        "source": "/logo-blooddiamond.svg",
         "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
       },
       {
