@@ -105,14 +105,6 @@ export const metadata: Metadata = {
       "Erlebe Ruhe, Präzision und preisgekrönte Tattoo-Kunst bei Blood Diamond Tattoo Ink. Heilbronn – individuelle Beratung für Fineline-, Realistic- und Cover-Up-Projekte.",
     siteName: "Blood Diamond Tattoo Ink.",
     locale: "de_DE",
-    images: [
-      {
-        url: "https://blooddiamondink.de/og/og-heilbronn.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo Ink. Studio in Heilbronn",
-      },
-    ],
   },
 };
 

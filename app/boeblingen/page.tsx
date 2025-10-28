@@ -29,7 +29,6 @@ export const metadata: Metadata = {
     description:
       "Tattoo-Kunst auf höchstem Niveau in Böblingen / Herrenberg – Realistic, Fineline & Black & Grey (Black and Grey), ausgeführt von international ausgezeichneten Artists.",
     url: "https://blooddiamond-tattoo.de/boeblingen",
-    images: ["https://blooddiamond-tattoo.de/static/boeblingen-cover.jpg"],
     locale: "de_DE",
     siteName: "Blood Diamond Tattoo Ink.",
   },

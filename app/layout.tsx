@@ -10,26 +10,24 @@ export const metadata = {
   openGraph: {
     type: "website",
     url: "https://blooddiamond-tattoo.de/",
-    title: "Blood Diamond Tattoo Ink – Kunst, Stil & Präzision",
-    description:
-      "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
+    title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
+    description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [
       {
-        url: "/android-chrome-512x512.png",
+        url: "/social_media_pre_cropped.png",
         width: 1200,
         height: 630,
-        alt: "Blood Diamond Tattoo Ink – Social Preview",
+        alt: "Blood Diamond Tattoo – Social Preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blood Diamond Tattoo Ink – Kunst, Stil & Präzision",
-    description:
-      "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: ["/android-chrome-512x512.png"],
+    title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
+    description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
+    images: ["/social_media_pre_cropped.png"],
   },
-};
+} satisfies import("next").Metadata;
 
 export default function RootLayout({
   children

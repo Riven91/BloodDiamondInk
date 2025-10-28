@@ -56,16 +56,6 @@ export const metadata: Metadata = {
   title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
   description:
     "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
-  openGraph: {
-    images: [
-      {
-        url: "/og/og-pforzheim.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo Ink. Studio in Pforzheim",
-      },
-    ],
-  },
 };
 
 function ContactForm() {
