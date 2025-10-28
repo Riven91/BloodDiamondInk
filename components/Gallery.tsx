@@ -8,6 +8,7 @@ import { galleryDataAll } from "@/data/galleryData";
 
 function GalleryComponent() {
   const [idx, setIdx] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const items: GalleryItem[] = galleryDataAll;
   const open = (i: number) => setIdx(i);
   const close = () => setIdx(null);
@@ -90,11 +91,45 @@ function GalleryComponent() {
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
               onClick={close}
             >
-              <div
-                className="relative w-full max-w-4xl"
-                onClick={(event) => event.stopPropagation()}
-              >
-                <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                <div
+                  className="relative w-full max-w-4xl"
+                  onClick={(event) => event.stopPropagation()}
+                  onTouchStart={(event) => {
+                    const touch = event.touches.item(0);
+                    setTouchStartX(touch ? touch.clientX : null);
+                    event.stopPropagation();
+                  }}
+                  onTouchEnd={(event) => {
+                    if (touchStartX === null) {
+                      event.stopPropagation();
+                      return;
+                    }
+                    const changedTouch = event.changedTouches.item(0);
+                    let handled = false;
+                    if (changedTouch) {
+                      const touchEndX = changedTouch.clientX;
+                      const deltaX = touchEndX - touchStartX;
+                      if (Math.abs(deltaX) > 40) {
+                        handled = true;
+                        if (deltaX > 0) {
+                          prev();
+                        } else {
+                          next();
+                        }
+                      }
+                    }
+                    setTouchStartX(null);
+                    if (handled) {
+                      event.preventDefault();
+                    }
+                    event.stopPropagation();
+                  }}
+                  onTouchCancel={(event) => {
+                    setTouchStartX(null);
+                    event.stopPropagation();
+                  }}
+                >
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
                   <Image
                     src={`/${item.file}`}
                     alt={item.alt}
@@ -114,30 +149,67 @@ function GalleryComponent() {
                   <button
                     type="button"
                     onClick={close}
-                    className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
+                    className="absolute right-3 top-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
                     aria-label="Lightbox schließen"
                   >
                     ✕
                   </button>
 
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      prev();
-                    }}
-                    aria-label="Vorheriges Bild"
-                    className="absolute left-0 top-0 h-full w-1/2 cursor-[w-resize] bg-transparent"
-                  />
-                  <button
-                    type="button"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      next();
-                    }}
-                    aria-label="Nächstes Bild"
-                    className="absolute right-0 top-0 h-full w-1/2 cursor-[e-resize] bg-transparent"
-                  />
+                    <div
+                      className="absolute inset-y-0 left-0 z-10 h-full w-1/2 cursor-pointer"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        prev();
+                      }}
+                    />
+                    <div
+                      className="absolute inset-y-0 right-0 z-10 h-full w-1/2 cursor-pointer"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        next();
+                      }}
+                    />
+
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        prev();
+                      }}
+                      aria-label="Vorheriges Bild"
+                      className="absolute left-3 top-1/2 z-20 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/40 active:scale-95"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="20"
+                        height="20"
+                        aria-hidden="true"
+                        fill="currentColor"
+                      >
+                        <path d="M15.41 7.41 14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                      </svg>
+                      <span className="sr-only">Zurück</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        next();
+                      }}
+                      aria-label="Nächstes Bild"
+                      className="absolute right-3 top-1/2 z-20 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/40 active:scale-95"
+                    >
+                      <svg
+                        viewBox="0 0 24 24"
+                        width="20"
+                        height="20"
+                        aria-hidden="true"
+                        fill="currentColor"
+                      >
+                        <path d="M8.59 16.59 13.17 12 8.59 7.41 10 6l6 6-6 6z" />
+                      </svg>
+                      <span className="sr-only">Weiter</span>
+                    </button>
                 </div>
               </div>
             </div>
