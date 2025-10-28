@@ -3,37 +3,78 @@ import type { GalleryItem } from "./galleryData";
 export const galleryData: GalleryItem[] = [
   {
     file: "realistic3.jpeg",
-    alt: "Realistic Tattoo – Löwenporträt mit intensiven Lichtreflexen – Blood Diamond Tattoo Ink.",
+    alt: "Realistic Tattoo – Dornenkrone-Porträt in Black & Grey – Blood Diamond Tattoo Ink.",
     caption:
-      "Realistic-Tattoo mit markantem Raubtiermotiv: kontrastreiche Fellstruktur, tiefes Schwarz und präzise Highlights.",
-    keywords: ["tattoo", "realistic", "lion", "animal", "blood diamond tattoo ink"],
+      "Realistic-Tattoo mit fein modulierten Graustufen, plastischer Haarstruktur und ruhiger Lichtführung.",
+    keywords: [
+      "tattoo",
+      "realistic",
+      "black & grey",
+      "portrait",
+      "dornenkrone",
+      "feine schattierung",
+      "blood diamond tattoo ink",
+    ],
   },
   {
     file: "realistic4.jpeg",
-    alt: "Realistic Tattoo – Kriegerporträt mit heiligem Glorienschein – Blood Diamond Tattoo Ink.",
+    alt: "Color Realism Tattoo – Porträt mit ethnografischen Ornamenten – Blood Diamond Tattoo Ink.",
     caption:
-      "Realistic-Schultertattoo mit spiritueller Symbolik, fein schattierten Ornamentelementen und lebendigem Blick.",
-    keywords: ["tattoo", "realistic", "portrait", "spiritual", "blood diamond tattoo ink"],
+      "Color-Realism-Tattoo mit kräftigen Farbübergängen, dekorativen Mustern und illustrativer Tiefe.",
+    keywords: [
+      "tattoo",
+      "color realism",
+      "portrait",
+      "ornamente",
+      "farbverlauf",
+      "illustrativ",
+      "blood diamond tattoo ink",
+    ],
   },
   {
     file: "realistic5.jpeg",
-    alt: "Realistic Tattoo – Nahaufnahme eines Tigers mit dynamischem Blick – Blood Diamond Tattoo Ink.",
+    alt: "Black & Grey Tattoo – großflächiges Rückenmotiv mit Mönchsporträt und Kirchensilhouetten – Blood Diamond Tattoo Ink.",
     caption:
-      "Realistic-Tierportrait mit detaillierter Felltextur, satten Schwarztönen und ausdrucksstarken Augen.",
-    keywords: ["tattoo", "realistic", "tiger", "animal portrait", "blood diamond tattoo ink"],
+      "Monumentales Back-Piece im Realismus: dramatische Kontraste, weiche Übergänge und architektonische Details.",
+    keywords: [
+      "tattoo",
+      "black & grey",
+      "back piece",
+      "portrait",
+      "architektur",
+      "realismus",
+      "kontrast",
+      "blood diamond tattoo ink",
+    ],
   },
   {
     file: "realistic6.jpeg",
-    alt: "Realistic Tattoo – Frauengesicht mit floralen Ornamenten – Blood Diamond Tattoo Ink.",
+    alt: "Dark Realism Tattoo – ägyptisches Schädelmotiv mit grafischen Elementen – Blood Diamond Tattoo Ink.",
     caption:
-      "Realistic-Tattoo-Komposition mit weichen Übergängen, filigranen Blüten und eleganter Linienführung.",
-    keywords: ["tattoo", "realistic", "portrait", "floral", "blood diamond tattoo ink"],
+      "Dark-Realism-Tattoo mit texturierten Flächen, markanten Highlights und symbolischer Bildsprache.",
+    keywords: [
+      "tattoo",
+      "dark realism",
+      "skull",
+      "ägyptisch",
+      "high contrast",
+      "textur",
+      "blood diamond tattoo ink",
+    ],
   },
   {
     file: "realistic7.jpeg",
-    alt: "Realistic Tattoo – Pantherporträt mit leuchtenden Augen – Blood Diamond Tattoo Ink.",
+    alt: "Color Realism Tattoo – sakrales Porträt mit modernen Collage-Elementen – Blood Diamond Tattoo Ink.",
     caption:
-      "Realistic-Tattoo mit dramatischem Licht, satten Tiefen und fokussiertem Ausdruck des Raubtiers.",
-    keywords: ["tattoo", "realistic", "panther", "animal", "blood diamond tattoo ink"],
+      "Color-Realism mit goldenen Akzenten, moderner Typografie und plastischer Stoffdarstellung.",
+    keywords: [
+      "tattoo",
+      "color realism",
+      "sakral",
+      "collage",
+      "goldakzente",
+      "realistisch",
+      "blood diamond tattoo ink",
+    ],
   },
 ];

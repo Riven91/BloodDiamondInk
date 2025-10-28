@@ -5,7 +5,8 @@ export type GalleryItem = {
   keywords: string[];
 };
 
-export const galleryBatch1: GalleryItem[] = [
+// Zusätzliche Motive für die Galerie (bereinigt, ohne Cover-Up-Motive)
+export const additionalGalleryItems: GalleryItem[] = [
   {
     file: "blackgrey2.jpeg",
     alt: "Black & Grey Tattoo – Porträt eines älteren Mannes mit feiner Faltenstruktur und Handdetail – Blood Diamond Tattoo Ink.",
@@ -42,13 +43,6 @@ export const galleryBatch1: GalleryItem[] = [
     keywords: ["tattoo", "black & grey", "portrait", "nwa", "collage", "realistisch", "blood diamond tattoo ink"],
   },
   {
-    file: "coverup1.jpeg",
-    alt: "Realistic Tattoo – Porträt mit Dornenkrone – Blood Diamond Tattoo Ink.",
-    caption:
-      "Realistic-Tattoo mit fein moduliertem Licht, plastischer Struktur und emotionaler Intensität.",
-    keywords: ["tattoo", "realistic", "portrait", "dornenkrone", "black & grey", "detailarbeit", "blood diamond tattoo ink"],
-  },
-  {
     file: "dark1.jpeg",
     alt: "Dark Art Tattoo – großflächiger Rücken mit Vogel- und Schlangenmotiv – Blood Diamond Tattoo Ink.",
     caption:
@@ -80,4 +74,19 @@ export const galleryBatch1: GalleryItem[] = [
 
 import { galleryData } from "./galleryData.base";
 
-export const galleryDataAll: GalleryItem[] = [...galleryData, ...galleryBatch1];
+// Dedup + Override-Strategie:
+// Basisdaten zuerst, zusätzliche Motive überschreiben bei Bedarf
+function mergeUniqueByFile(...lists: GalleryItem[][]): GalleryItem[] {
+  const map = new Map<string, GalleryItem>();
+  for (const list of lists) {
+    for (const item of list) {
+      map.set(item.file, item); // spätere Einträge überschreiben frühere
+    }
+  }
+  return Array.from(map.values());
+}
+
+export const galleryDataAll: GalleryItem[] = mergeUniqueByFile(
+  galleryData,
+  additionalGalleryItems,
+);
