@@ -1,13 +1,37 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 import type { GalleryItem } from "@/data/galleryData";
 import { galleryDataAll } from "@/data/galleryData";
 
 function GalleryComponent() {
-  const [lightbox, setLightbox] = useState<GalleryItem | null>(null);
+  // Index statt Objekt – stabilere Navigation und 1:1-Order
+  const [idx, setIdx] = useState<number | null>(null);
+  const items: GalleryItem[] = galleryDataAll;
+  const open = useCallback((i: number) => setIdx(i), []);
+  const close = useCallback(() => setIdx(null), []);
+  const prev = useCallback(
+    () => setIdx((i) => (i === null ? i : (i + items.length - 1) % items.length)),
+    [items.length],
+  );
+  const next = useCallback(
+    () => setIdx((i) => (i === null ? i : (i + 1) % items.length)),
+    [items.length],
+  );
+
+  // Keyboard: ESC, ←, →
+  useEffect(() => {
+    if (idx === null) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") close();
+      if (event.key === "ArrowLeft") prev();
+      if (event.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [idx, close, prev, next]);
 
   return (
     <section className="mx-auto max-w-6xl px-4 md:px-6">
@@ -17,14 +41,14 @@ function GalleryComponent() {
           [--capmin:64px]
         "
       >
-        {galleryDataAll.map((item) => (
+        {items.map((item, i) => (
           <figure
             key={item.file}
             className="group flex flex-col overflow-hidden rounded-2xl bg-black/20 shadow-sm ring-1 ring-white/5"
           >
             <button
               type="button"
-              onClick={() => setLightbox(item)}
+              onClick={() => open(i)}
               className="relative aspect-[4/5] w-full overflow-hidden"
               aria-label="Bild in großer Ansicht öffnen"
             >
@@ -49,43 +73,61 @@ function GalleryComponent() {
         ))}
       </div>
 
-      {lightbox && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
-          onClick={() => setLightbox(null)}
-        >
-          <div className="relative w-full max-w-4xl" onClick={(event) => event.stopPropagation()}>
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
-              <Image
-                src={`/${lightbox.file}`}
-                alt={lightbox.alt}
-                fill
-                sizes="100vw"
-                className="bg-black object-contain"
-                priority
-              />
+      {idx !== null && (() => {
+        const item = items[idx];
+        return (
+          <div
+            role="dialog"
+            aria-modal="true"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            onClick={close}
+          >
+            <div className="relative w-full max-w-4xl" onClick={(event) => event.stopPropagation()}>
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl">
+                <Image
+                  src={`/${item.file}`}
+                  alt={item.alt}
+                  fill
+                  sizes="100vw"
+                  className="bg-black object-contain"
+                  priority
+                />
 
-              <div className="pointer-events-none absolute inset-x-0 bottom-0">
-                <div className="h-24 bg-gradient-to-t from-black/70 to-transparent" />
-                <div className="pointer-events-auto absolute inset-x-0 bottom-0 p-4">
-                  <p className="text-sm text-neutral-100 md:text-base">{lightbox.caption}</p>
+                <div className="pointer-events-none absolute inset-x-0 bottom-0">
+                  <div className="h-24 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="pointer-events-auto absolute inset-x-0 bottom-0 p-4">
+                    <p className="text-sm text-neutral-100 md:text-base">{item.caption}</p>
+                  </div>
                 </div>
-              </div>
 
-              <button
-                type="button"
-                onClick={() => setLightbox(null)}
-                className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80"
-                aria-label="Lightbox schließen"
-              >
-                ✕
-              </button>
+                <button
+                  type="button"
+                  onClick={close}
+                  className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80"
+                  aria-label="Lightbox schließen"
+                >
+                  ✕
+                </button>
+                {/* Klick-Zonen für Vor/Zurück */}
+                <button
+                  type="button"
+                  onClick={prev}
+                  aria-label="Vorheriges Bild"
+                  className="absolute left-0 top-0 h-full w-1/2 bg-transparent hover:bg-white/0"
+                  style={{ cursor: "w-resize" }}
+                />
+                <button
+                  type="button"
+                  onClick={next}
+                  aria-label="Nächstes Bild"
+                  className="absolute right-0 top-0 h-full w-1/2 bg-transparent hover:bg-white/0"
+                  style={{ cursor: "e-resize" }}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
     </section>
   );
 }
