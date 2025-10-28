@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Script from "next/script";
 import type { ReactNode } from "react";
 import "./globals.css";
@@ -5,11 +6,18 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 
-export const metadata = {
-  metadataBase: new URL("https://blooddiamond-tattoo.de"),
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://blooddiamondink-79184164-7f1b7.web.app";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  title: "Tattoo Studios in Baden-Württemberg",
+  description:
+    "Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
   openGraph: {
     type: "website",
-    url: "https://blooddiamond-tattoo.de/",
+    url: "/",
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [
@@ -20,6 +28,7 @@ export const metadata = {
         alt: "Blood Diamond Tattoo – Social Preview",
       },
     ],
+    siteName: "Blood Diamond Tattoo Ink.",
   },
   twitter: {
     card: "summary_large_image",
@@ -27,7 +36,7 @@ export const metadata = {
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: ["/social_media_pre_cropped.png"],
   },
-} satisfies import("next").Metadata;
+};
 
 export default function RootLayout({
   children
