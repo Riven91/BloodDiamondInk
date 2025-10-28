@@ -91,6 +91,22 @@ if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioIma
   console.warn("HeilbronnPage: studio captions length does not match studio images count.");
 }
 
+type ButtonProps = ComponentPropsWithoutRef<"a">;
+
+function Button({ className, children, ...props }: ButtonProps) {
+  const baseClassName =
+    "inline-flex items-center justify-center rounded-md px-5 py-2 text-sm font-semibold text-white transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring";
+
+  return (
+    <a
+      {...props}
+      className={[baseClassName, className].filter(Boolean).join(" ")}
+    >
+      {children}
+    </a>
+  );
+}
+
 export const metadata: Metadata = {
   title: "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision",
   description:
@@ -171,22 +187,22 @@ export default function HeilbronnPage() {
         city="heilbronn"
       />
       <section className="mt-12 rounded-2xl bg-blooddiamond-background/80 border border-blooddiamond-primary/40 p-6 text-center">
-  <h3 className="text-xl font-semibold text-white">
-    Wir verschenken 100 € Tattoo-Gutscheine!
-  </h3>
-  <p className="mt-2 text-neutral-200">
-    Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein
-    von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
-  </p>
-  <a
+        <h3 className="text-xl font-semibold text-white">
+          Wir verschenken 100 € Tattoo-Gutscheine!
+        </h3>
+        <p className="mt-2 text-neutral-200">
+          Beschenke dich selbst oder deine Liebsten mit einem Tattoo-Gutschein
+          von Blood Diamond Tattoo Ink. – die perfekte Geschenkidee für Tattoo-Fans.
+        </p>
+        <Button
           href="https://kontakt.blooddiamond-tattoo.de/gutschein/"
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 bg-brand hover:bg-brand-hover"
         >
           Gutschein sichern
-        </a>
-</section>
+        </Button>
+      </section>
 
       <section className="bg-blooddiamond-muted/30 py-16">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
