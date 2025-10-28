@@ -6,9 +6,37 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 export const metadata: Metadata = {
-  title: "Blood Diamond Ink",
+  metadataBase: new URL("https://blooddiamondink.de"),
+  title: {
+    default: "Blood Diamond Tattoo Ink.",
+    template: "%s | Blood Diamond Tattoo Ink."
+  },
   description:
-    "Tattoo Studios für Realistic, Fineline und Cover-Up Artworks in Pforzheim, Heilbronn und Böblingen."
+    "Tattoo Kunst in Baden-Württemberg – Fineline, Realistic & Cover-Up auf Weltklasse-Niveau. Nur mit Termin.",
+  openGraph: {
+    title: "Blood Diamond Tattoo Ink.",
+    description:
+      "Tattoo Kunst in Baden-Württemberg – Fineline, Realistic & Cover-Up auf Weltklasse-Niveau. Nur mit Termin.",
+    url: "https://blooddiamondink.de",
+    siteName: "Blood Diamond Tattoo Ink.",
+    images: [
+      {
+        url: "/social_media_pre_cropped.png",
+        width: 1200,
+        height: 630,
+        alt: "Blood Diamond Tattoo Ink. – Social Preview"
+      }
+    ],
+    locale: "de_DE",
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blood Diamond Tattoo Ink.",
+    description:
+      "Tattoo Kunst auf höchstem Niveau – Pforzheim • Böblingen • Heilbronn",
+    images: ["/social_media_pre_cropped.png"]
+  }
 };
 
 export default function RootLayout({
