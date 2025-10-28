@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/gen-icons.mjs || true",
     "dev": "next dev",
     "build": "next build",
     "cf:build": "npx @cloudflare/next-on-pages@1 build",
     "cf:preview": "wrangler pages dev .vercel/output/static --compatibility-date=2024-11-11 --local true",
+    "postbuild": "node scripts/gen-icons.mjs",
     "start": "next start",
     "lint": "next lint",
     "diagnose-build": "npm run build && ls -l .next/static/css/"
@@ -19,7 +21,6 @@
     "next": "^14.2.33",
     "react": "^18",
     "react-dom": "^18",
-    "sharp": "^0.33.4",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
@@ -30,6 +31,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
+    "sharp": "^0.33.4",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   },
