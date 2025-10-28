@@ -97,7 +97,7 @@ export function Footer() {
               </a>
             </div>
           </div>
-          <div className="flex flex-col items-start gap-3 text-left md:items-center md:text-center">
+          <div className="flex flex-1 flex-col sm:flex-row items-center justify-center gap-4 text-center">
             <a href="/#faq" className="text-neutral-300 transition hover:text-white">
               FAQ
             </a>

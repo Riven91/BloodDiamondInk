@@ -44,7 +44,7 @@ export function StickyMobileCta({
     <div
       className={[
         // fixiert am unteren Bildschirmrand, nur Mobile
-        "fixed inset-x-0 bottom-[max(env(safe-area-inset-bottom),8px)] z-50 md:hidden",
+        "fixed inset-x-0 bottom-[max(env(safe-area-inset-bottom),8px)] z-[9999] md:hidden",
         // klicks nur im inneren container
         "pointer-events-none px-3",
         className ?? "",
@@ -82,4 +82,3 @@ export function StickyMobileCta({
     </div>
   );
 }
-
