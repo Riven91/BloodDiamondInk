@@ -66,6 +66,27 @@ export default function RootLayout({
         });`}
         </Script>
 
+        {/* Google Analytics 4 */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-11CKJZCNPL"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            // Analytics startet erst nach Klaro-Opt-in
+            let __gaConfigured = false;
+            window.addEventListener('consent:ga', (e) => {
+              if (e?.detail && !__gaConfigured) {
+                gtag('config', 'G-11CKJZCNPL', { anonymize_ip: true });
+                __gaConfigured = true;
+              }
+            });
+          `}
+        </Script>
+
         {/* Klaro laden */}
         <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
         <Script src="/klaro/klaro.config.js" strategy="afterInteractive" />
