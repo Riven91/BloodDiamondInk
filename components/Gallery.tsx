@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from "next/image";
@@ -69,7 +70,7 @@ function GalleryComponent() {
           <p className="mt-6 text-center text-sm leading-relaxed text-gray-300 md:text-base">
             Entdecke noch mehr außergewöhnliche Kunstwerke unserer internationalen
             Tattoo-Artists aus unseren Tattoo-Studios in Pforzheim, Heilbronn und
-            Böblingen. Folge{" "}
+            Böblingen. Folge uns auf {" "}
             <a
               href="#footer"
               className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400"
