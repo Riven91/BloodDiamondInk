@@ -7,25 +7,8 @@
       "**/node_modules/**"
     ],
     "frameworksBackend": {
-      "region": "us-central1"
+      "id": "my-web-app",
+      "region": "europe-west4"
     }
-  },
-  "apphosting": {
-    "backendId": "my-web-app",
-    "rootDir": "/",
-    "ignore": [
-      "node_modules",
-      ".git",
-      "firebase-debug.log",
-      "firebase-debug.*.log",
-      "functions"
-    ],
-    "alwaysDeployFromSource": true
-  },
-  "functions": [
-    {
-      "source": ".firebase/blooddiamondink-79184164-7f1b7/functions",
-      "codebase": "firebase-frameworks-blooddiamondink-79184164-7f1b7"
-    }
-  ]
+  }
 }
