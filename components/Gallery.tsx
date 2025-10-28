@@ -43,6 +43,43 @@ function GalleryComponent() {
 
   return (
     <section className="mx-auto max-w-6xl px-4 md:px-6">
+      <div data-no-lightbox className="mt-8 space-y-8">
+        <div>
+          <h2
+            id="galerie"
+            className="font-display text-3xl uppercase text-blooddiamond-accent"
+          >
+            Galerie
+          </h2>
+          <p className="text-sm md:text-base text-gray-300 mt-2">
+            Einblicke in aktuelle Projekte und Heal Pieces aus unseren Studios.
+          </p>
+          <p className="mt-2 text-sm md:text-base text-gray-300">
+            Unsere Tattoo-Galerie zeigt aktuelle Kunstwerke aus den Bereichen
+            Realistic, Geometric, Lettering (Letterworking), New School und
+            Mandala. Alle Motive werden individuell entworfen, von filigranen
+            Linien bis zu großflächigen Projekten.
+          </p>
+          <ul className="mt-4 list-disc list-inside text-gray-300 space-y-1">
+            <li>Authentische Tattoo-Artworks aus Pforzheim, Heilbronn und Böblingen</li>
+            <li>Realistic &amp; Black &amp; Grey (Black and Grey) Tattoos mit höchster Präzision</li>
+            <li>Geometric und Mandala Designs mit Feinlinienkunst</li>
+            <li>Lettering (Letterworking) &amp; New School Styles mit individueller Kreativität</li>
+          </ul>
+          <p className="mt-6 text-center text-sm leading-relaxed text-gray-300 md:text-base">
+            Entdecke noch mehr außergewöhnliche Kunstwerke unserer internationalen
+            Tattoo-Artists aus unseren Tattoo-Studios in Pforzheim, Heilbronn und
+            Böblingen. Folge{" "}
+            <a
+              href="#footer"
+              className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400"
+            >
+              Social Media
+            </a>
+            {" "}für tägliche Einblicke und aktuelle Projekte.
+          </p>
+        </div>
+      </div>
       <div
         className="
           grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3
