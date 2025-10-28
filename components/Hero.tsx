@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ReviewsStrip from "@/components/ReviewsStrip";
@@ -18,8 +18,7 @@ interface HeroProps {
 
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
-  description =
-    "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey). Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
+  description = "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey). Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
   ctaLabel,
   ctaHref,
   secondaryCtaLabel,
@@ -121,14 +120,12 @@ export function Hero({
 
           {hasPrimaryCta || hasSecondaryCta ? (
             <div
-              className={
-                [
-                  "mt-4 md:mt-6 hidden md:flex flex-wrap justify-center gap-3",
-                  city !== "home" ? "order-[40]" : "",
-                ]
-                  .filter(Boolean)
-                  .join(" ")
-              }
+              className={[
+                "mt-4 md:mt-6 hidden md:flex flex-wrap justify-center gap-3",
+                city !== "home" ? "order-[40]" : "",
+              ]
+                .filter(Boolean)
+                .join(" ")}
             >
               {renderButtons()}
             </div>
@@ -212,3 +209,4 @@ export function Hero({
   );
 }
 
+/* Entfernt: alte, inline definierte MobileCta – jetzt vollständig durch StickyMobileCta ersetzt */
