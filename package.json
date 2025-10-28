@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "predev": "node scripts/gen-icons.mjs || true",
     "dev": "next dev",
     "build": "next build",
-    "cf:build": "npx @cloudflare/next-on-pages@1 build",
+    "cf:build": "node scripts/gen-icons.mjs && npx @cloudflare/next-on-pages@1 build",
     "cf:preview": "wrangler pages dev .vercel/output/static --compatibility-date=2024-11-11 --local true",
+    "postbuild": "node scripts/gen-icons.mjs",
     "start": "next start",
     "lint": "next lint",
     "diagnose-build": "npm run build && ls -l .next/static/css/"
