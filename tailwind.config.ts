@@ -2,9 +2,21 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./app/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./lib/**/*.{ts,tsx}"
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./lib/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{js,ts,jsx,tsx}",
+    "./content/**/*.{md,mdx}"
+  ],
+  safelist: [
+    "bg-[url('/herobackground3.webp')]",
+    "bg-[position:50%_12%]",
+    "bg-[position:50%_88%]",
+    "bg-cover",
+    "bg-center",
+    "min-h-[100svh]",
+    "md:min-h-[100vh]"
   ],
   theme: {
     extend: {

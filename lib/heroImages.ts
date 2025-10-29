@@ -1,2 +1,3 @@
-export const heroDesktop = "/herofinal.png";
-export const heroMobile = "/herobackground3.webp?v=pfz";
+export const heroDesktop = "/Herobackground2.png";
+export const heroMobile = "/Herobackground2.png";
+// Falls du andere finale Assets nutzen willst, hier zentral ändern.

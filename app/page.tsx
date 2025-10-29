@@ -1,4 +1,4 @@
-import { Hero } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import { StylesGrid } from "@/components/StylesGrid";
 import { FAQAccordion } from "@/components/FAQAccordion";
 import { AwardsSection } from "@/components/AwardsSection";
