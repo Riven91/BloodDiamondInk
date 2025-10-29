@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { heroDesktop, heroMobile } from "@/lib/heroImages";
@@ -15,6 +15,10 @@ interface HeroProps {
   secondaryCtaLabel?: string;
   secondaryCtaHref?: string;
   city?: "home" | "pforzheim" | "heilbronn" | "boeblingen";
+  imageSrc?: string;
+  imageSrcDesktop?: string;
+  imageSrcMobile?: string;
+  objectPosition?: string;
 }
 
 export function Hero({
@@ -25,7 +29,13 @@ export function Hero({
   secondaryCtaLabel,
   secondaryCtaHref,
   city,
+  imageSrc,
+  imageSrcDesktop,
+  imageSrcMobile,
+  objectPosition = "center",
 }: HeroProps) {
+  const mobileSrc = imageSrcMobile ?? imageSrc ?? heroMobile;
+  const desktopSrc = imageSrcDesktop ?? imageSrc ?? heroDesktop;
 
   if (!city) {
     console.warn("Hero city prop missing – rendering disabled");
@@ -84,61 +94,63 @@ export function Hero({
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
-      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh] md:bg-none"
+      className="hero-section relative isolation-isolate flex min-h-[clamp(420px,60vh,900px)] items-center justify-center overflow-hidden text-white xl:bg-none"
     >
-      <div className="pointer-events-none absolute left-0 right-0 top-0 md:hidden">
-        <div className="relative h-[75svh] w-full">
+      <div className="pointer-events-none absolute left-0 right-0 top-0 xl:hidden">
+        <div className="relative h-[clamp(420px,60vh,900px)] w-full">
           <Image
-            src={heroMobile}
+            src={mobileSrc}
             alt=""
             fill
             loading="lazy"
             decoding="async"
             sizes="100vw"
             className="object-cover"
+            style={{ objectPosition }}
           />
         </div>
       </div>
-      <div className="pointer-events-none absolute left-0 right-0 top-0 hidden md:block">
-        <div className="relative h-[80svh] w-full">
+      <div className="pointer-events-none absolute left-0 right-0 top-0 hidden xl:block">
+        <div className="relative h-[clamp(420px,60vh,900px)] w-full">
           <Image
-            src={heroDesktop}
+            src={desktopSrc}
             alt=""
             fill
             loading="lazy"
             decoding="async"
             sizes="100vw"
             className="object-cover"
+            style={{ objectPosition }}
           />
         </div>
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[75svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[clamp(420px,60vh,900px)] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center xl:min-h-0 xl:justify-center xl:py-32">
         <div className="space-y-3">
           {/* Kicker */}
           {/* protected: keep black background on brand badge */}
           <p
-            className="hero-brand-badge inline-block md:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
+            className="hero-brand-badge inline-block xl:hidden text-sm uppercase tracking-widest text-blooddiamond-accent px-2 py-1 rounded-md order-[30]"
             style={{ backgroundColor: "rgba(0,0,0,0.65)" }}
           >
             Blood Diamond Tattoo Ink.
           </p>
           <p
-            className="hero-brand-badge hidden md:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent order-[30]"
+            className="hero-brand-badge hidden xl:inline-block text-sm uppercase tracking-widest text-blooddiamond-accent order-[30]"
             style={kickerDesktopStyle}
           >
             Blood Diamond Tattoo Ink.
           </p>
-          
+
           {/* Title */}
-          <h1 className="block md:hidden text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
-          <h1 className="hidden md:inline-block text-3xl font-extrabold tracking-tight md:text-5xl">{title}</h1>
+          <h1 className="block xl:hidden text-3xl font-extrabold tracking-tight xl:text-5xl">{title}</h1>
+          <h1 className="hidden xl:inline-block text-3xl font-extrabold tracking-tight xl:text-5xl">{title}</h1>
 
           {hasPrimaryCta || hasSecondaryCta ? (
             <div
               className={[
-                "mt-4 md:mt-6 hidden md:flex flex-wrap justify-center gap-3",
+                "mt-4 xl:mt-6 hidden xl:flex flex-wrap justify-center gap-3",
                 city !== "home" ? "order-[40]" : "",
               ]
                 .filter(Boolean)
@@ -149,13 +161,13 @@ export function Hero({
           ) : null}
 
           {/* Desktop description (styled) */}
-          <p className="hidden md:block mx-auto max-w-2xl">{description}</p>
+          <p className="hidden xl:block mx-auto max-w-2xl">{description}</p>
 
           {/* MOBILE: Fließtext fest über dem Diamanten */}
           <p
             className="
-              md:hidden
-              absolute left-1/2 top-[52%] 
+              xl:hidden
+              absolute left-1/2 top-[52%]
               -translate-x-1/2 -translate-y-1/2
               z-10 w-[88%] max-w-md
               text-center text-white leading-snug
