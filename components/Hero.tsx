@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { HERO_IMAGE_DESKTOP, HERO_IMAGE_MOBILE } from "@/app/_content/heroImages";
+import { heroDesktop, heroMobile } from "@/app/_content/heroImages";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 
@@ -89,12 +89,12 @@ export function Hero({
       <div className="pointer-events-none absolute left-0 right-0 top-0 md:hidden">
         <div className="relative h-[75svh] w-full">
           <Image
-            src={HERO_IMAGE_MOBILE}
+            src={heroMobile}
             alt=""
             fill
-            priority
-            fetchPriority="high"
-            sizes="(max-width:768px) 100vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            sizes="100vw"
             className="object-cover"
           />
         </div>
@@ -102,12 +102,12 @@ export function Hero({
       <div className="pointer-events-none absolute left-0 right-0 top-0 hidden md:block">
         <div className="relative h-[80svh] w-full">
           <Image
-            src={HERO_IMAGE_DESKTOP}
+            src={heroDesktop}
             alt=""
             fill
-            priority
-            fetchPriority="high"
-            sizes="(max-width:768px) 100vw, 100vw"
+            loading="lazy"
+            decoding="async"
+            sizes="100vw"
             className="object-cover"
           />
         </div>
