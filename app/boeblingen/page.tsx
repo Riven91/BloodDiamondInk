@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Script from "next/script";
 import type { Metadata } from "next";
-import { Hero } from "@/components/Hero";
+import Hero from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";

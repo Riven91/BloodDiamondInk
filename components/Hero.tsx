@@ -17,7 +17,7 @@ interface HeroProps {
   city?: "home" | "pforzheim" | "heilbronn" | "boeblingen";
 }
 
-export function Hero({
+export default function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description = "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey). Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
   ctaLabel,

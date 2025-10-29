@@ -4,7 +4,7 @@ export * from './Footer';
 export * from './FooterBoeblingen';
 export * from './Gallery';
 export * from './Header';
-export * from './Hero';
+export { default as Hero } from './Hero';
 export * from './LayoutWrapper';
 export * from './LegalDocument';
 export * from './LocationCard';
