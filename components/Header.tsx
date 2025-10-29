@@ -85,11 +85,17 @@ export function Header() {
       ref={headerRef}
       className="sticky top-0 z-50 border-b border-blooddiamond-primary/40 bg-blooddiamond-background/95 backdrop-blur"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <div
+        className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3 max-[360px]:gap-2 max-[360px]:px-2 max-[360px]:py-2 md:px-6 md:py-4"
+        style={{
+          paddingLeft: "max(env(safe-area-inset-left), 0.5rem)",
+          paddingRight: "max(env(safe-area-inset-right), 0.5rem)",
+        }}
+      >
         <Link
           href="/"
           aria-label="Blood Diamond Ink Startseite"
-          className="flex items-center gap-3"
+          className="flex min-w-0 items-center gap-3 max-[360px]:gap-2"
         >
           <Image
             src="/brand/bdi-logo-transparent.webp"
@@ -98,8 +104,11 @@ export function Header() {
             height={80}
             priority
           />
-          <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent">
-            Blood Diamond Tattoo Ink.
+          <span className="min-w-0">
+            <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent max-[360px]:text-base">
+              <span className="max-[360px]:hidden">Blood Diamond Tattoo Ink.</span>
+              <span className="hidden max-[360px]:inline">BD Tattoo</span>
+            </span>
           </span>
         </Link>
         <nav aria-label="Hauptnavigation" className="hidden md:block">
@@ -129,10 +138,8 @@ export function Header() {
           aria-label={isMenuOpen ? "Menü schließen" : "Menü öffnen"}
           aria-expanded={isMenuOpen}
           onClick={toggleMenu}
-          className="relative flex items-center justify-center md:hidden"
+          className="relative ml-2 inline-flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl border border-white/10 bg-white/5 focus:outline-none focus:ring-2 focus:ring-white/30 max-[360px]:h-9 max-[360px]:w-9 md:hidden"
           style={{
-            width: "44px",
-            height: "44px",
             zIndex: 60,
           }}
         >
