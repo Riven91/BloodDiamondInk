@@ -1,20 +1,26 @@
 /** @type {import('next-sitemap').IConfig} */
+const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://blooddiamondink-79184164-7f1b7.web.app'
+).replace(/\/+$/, '');
+
 module.exports = {
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://blooddiamond-tattoo.de',
+  siteUrl,
   generateRobotsTxt: true,
-  sitemapSize: 5000,
-  changefreq: 'weekly',
-  priority: 0.8,
-  exclude: ['/404', '/500'],
+  sitemapSize: 7000,
+  exclude: ['/404', '/500', '/_error'],
+  changefreq: 'monthly',
+  priority: 0.6,
   transform: async (config, path) => {
-    // Priorität für Hauptseiten etwas höher
-    const isRoot = path === '/';
-    const isLocation = ['/pforzheim', '/heilbronn', '/boeblingen'].includes(path);
+    // Höhere Priorität für Home & Standortseiten
+    const hi = ['/', '/pforzheim', '/heilbronn', '/boeblingen'];
     return {
       loc: path,
-      changefreq: isRoot || isLocation ? 'weekly' : 'monthly',
-      priority: isRoot || isLocation ? 1.0 : 0.6,
+      changefreq: hi.includes(path) ? 'weekly' : 'monthly',
+      priority: hi.includes(path) ? 1.0 : 0.6,
       lastmod: new Date().toISOString(),
+      alternateRefs: [],
     };
   },
+  // Falls App Router genutzt wird, Pfade automatisch crawlen
+  // (next-sitemap erkennt App/Pages-Router, keine weitere Aktion nötig)
 };
