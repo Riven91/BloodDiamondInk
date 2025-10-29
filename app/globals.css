@@ -101,7 +101,7 @@ main {
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 100svh !important;
+  min-height: 80svh !important;
   overflow: hidden;
   z-index: 0;
   isolation: isolate;
@@ -110,30 +110,13 @@ main {
 /* Mobile hero background */
 @media (max-width: 767px) {
   .hero-section {
-    /* Mobile: kein CSS-Background – wir rendern über <picture> im TSX */
+    /* Mobile: kein CSS-Background – wir rendern über <Image> im TSX */
     background: none !important;
     background-image: none !important;
     background-color: transparent !important;
     background-blend-mode: normal !important;
     background-size: auto !important;
     background-position: initial !important;
-    background-repeat: no-repeat !important;
-    background-attachment: scroll !important;
-  }
-
-  .hero-section::before,
-  .hero-section::after {
-    content: none !important;
-    display: none !important;
-  }
-}
-
-/* Desktop hero background */
-@media (min-width: 768px) {
-  .hero-section {
-    background-image: url("/herofinal.png") !important;
-    background-position: center 30% !important;
-    background-size: cover !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
   }

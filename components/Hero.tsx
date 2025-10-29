@@ -3,6 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { HERO_IMAGE_DESKTOP, HERO_IMAGE_MOBILE } from "@/app/_content/heroImages";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 
@@ -83,21 +84,37 @@ export function Hero({
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
-      className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
+      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh] md:bg-none"
     >
-      <picture className="absolute inset-0 md:hidden pointer-events-none">
-        <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
-        <Image
-          src="/herobackground3.webp?v=pfz"
-          alt=""
-          fill
-          className="object-contain md:object-cover object-center"
-          priority
-        />
-      </picture>
+      <div className="pointer-events-none absolute left-0 right-0 top-0 md:hidden">
+        <div className="relative h-[75svh] w-full">
+          <Image
+            src={HERO_IMAGE_MOBILE}
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="(max-width:768px) 100vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
+      <div className="pointer-events-none absolute left-0 right-0 top-0 hidden md:block">
+        <div className="relative h-[80svh] w-full">
+          <Image
+            src={HERO_IMAGE_DESKTOP}
+            alt=""
+            fill
+            priority
+            fetchPriority="high"
+            sizes="(max-width:768px) 100vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[75svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
         <div className="space-y-3">
           {/* Kicker */}
           {/* protected: keep black background on brand badge */}
