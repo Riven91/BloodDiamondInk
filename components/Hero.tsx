@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { heroDesktop, heroMobile } from "@/app/_content/heroImages";
+import { heroDesktop, heroMobile } from "@/lib/heroImages";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 

@@ -5,7 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
-import { heroDesktop, heroMobile } from "./_content/heroImages";
+import { heroDesktop, heroMobile } from "@/lib/heroImages";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
