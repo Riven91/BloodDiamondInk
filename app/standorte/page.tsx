@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { FormEvent, useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function StandortePage() {
@@ -17,6 +17,26 @@ export default function StandortePage() {
   const handleConsent = () => {
     localStorage.setItem('mapConsent', 'true');
     setConsent(true);
+  };
+
+  const handleContactSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const email = formData.get('EMAIL');
+
+    if (typeof email === 'string' && email.trim()) {
+      const trimmedEmail = email.trim();
+      if (typeof window !== 'undefined') {
+        const mailto = `mailto:info@blooddiamond-tattoo.de?subject=${encodeURIComponent(
+          'Anfrage zu den Blood Diamond Tattoo Standorten',
+        )}&body=${encodeURIComponent(
+          `Hallo Blood Diamond Tattoo Team,%0D%0A%0D%0AIch interessiere mich für eure Standorte. Bitte kontaktiert mich unter: ${trimmedEmail}.`,
+        )}`;
+        window.location.href = mailto;
+      }
+
+      event.currentTarget.reset();
+    }
   };
 
   return (
@@ -82,6 +102,30 @@ export default function StandortePage() {
           </div>
         </div>
       )}
+
+      <section className="mt-12 rounded-2xl border p-6">
+        <h2 className="text-lg font-semibold">Kontakt aufnehmen</h2>
+        <p className="mt-1 text-sm text-gray-600">
+          Hinterlasse uns deine E-Mail-Adresse und wir melden uns mit weiteren Informationen zu unseren Studios.
+        </p>
+        <form onSubmit={handleContactSubmit} className="mt-4 space-y-3">
+          <label htmlFor="EMAIL" className="block text-sm font-medium text-gray-700">
+            E-Mail
+          </label>
+          <input
+            type="email"
+            id="EMAIL"
+            name="EMAIL"
+            required
+            className="w-full rounded-lg border border-gray-300 px-4 py-2 text-sm shadow-sm focus:border-blooddiamond-primary focus:outline-none focus:ring-2 focus:ring-blooddiamond-primary"
+            placeholder="dein.name@example.de"
+            autoComplete="email"
+          />
+          <button type="submit" className="btn-primary">
+            Anfrage senden
+          </button>
+        </form>
+      </section>
 
       <div className="mt-12 flex justify-center">
         <Image

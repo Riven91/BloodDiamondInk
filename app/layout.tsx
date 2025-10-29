@@ -66,10 +66,11 @@ export default function RootLayout({
         />
       </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
-        {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
+        {/* Dev-only Nuke, in Production deaktiviert */}
+        {process.env.NODE_ENV !== "production" && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
       (function(){
         try{
           if('serviceWorker' in navigator){
@@ -81,8 +82,9 @@ export default function RootLayout({
         }catch(e){}
       })();
     `,
-          }}
-        />
+            }}
+          />
+        )}
         <div
           className="fixed inset-0 z-[-1] opacity-5"
           style={{
