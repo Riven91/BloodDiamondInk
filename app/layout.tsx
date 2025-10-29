@@ -88,7 +88,7 @@ export default function RootLayout({
         <div
           className="fixed inset-0 z-[-1] opacity-5"
           style={{
-            backgroundImage: "url('/Herobackground2_v5.png')",
+            backgroundImage: `url('${heroDesktop}')`,
             backgroundSize: '40%',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
