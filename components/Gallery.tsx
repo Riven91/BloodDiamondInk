@@ -11,6 +11,9 @@ function GalleryComponent() {
   const [idx, setIdx] = useState<number | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
   const items: GalleryItem[] = galleryDataAll;
+  const [visibleCount, setVisibleCount] = useState(() =>
+    Math.min(3, items.length),
+  );
   const open = (i: number) => setIdx(i);
   const close = () => setIdx(null);
   const prev = () =>
@@ -87,7 +90,7 @@ function GalleryComponent() {
           [--capmin:64px]
         "
       >
-        {items.map((item, i) => (
+        {items.slice(0, visibleCount).map((item, i) => (
           <figure
             key={`${item.file}-${i}`}
             className="group flex flex-col overflow-hidden rounded-2xl bg-black/20 shadow-sm ring-1 ring-white/5"
@@ -117,6 +120,37 @@ function GalleryComponent() {
             </figcaption>
           </figure>
         ))}
+      </div>
+
+      <div className="mt-6 flex justify-center">
+        {visibleCount < items.length && (
+          <button
+            type="button"
+            onClick={() =>
+              setVisibleCount((current) =>
+                Math.min(current + 3, items.length),
+              )
+            }
+            className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+            aria-label={`Mehr Bilder laden (noch ${items.length - visibleCount})`}
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="h-5 w-5"
+              aria-hidden="true"
+            >
+              <path
+                d="M6 9l6 6 6-6"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+            Mehr anzeigen ({items.length - visibleCount})
+          </button>
+        )}
       </div>
 
       {idx !== null && (
