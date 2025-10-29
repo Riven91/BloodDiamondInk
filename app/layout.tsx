@@ -53,16 +53,16 @@ export default function RootLayout({
           as="image"
           href={heroDesktop}
           media="(min-width: 768px)"
-          fetchpriority="high"
-          imagesizes="100vw"
+          fetchPriority="high"
+          imageSizes="100vw"
         />
         <link
           rel="preload"
           as="image"
           href={heroMobile}
           media="(max-width: 767px)"
-          fetchpriority="high"
-          imagesizes="100vw"
+          fetchPriority="high"
+          imageSizes="100vw"
         />
       </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
