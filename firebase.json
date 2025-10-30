@@ -30,26 +30,35 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "private, no-cache, no-store, must-revalidate"
+            "value": "public, max-age=600, must-revalidate"
           }
         ]
       },
       {
         "source": "/pforzheim/index.html",
         "headers": [
-          { "key": "Cache-Control", "value": "private, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=600, must-revalidate"
+          }
         ]
       },
       {
         "source": "/heilbronn/index.html",
         "headers": [
-          { "key": "Cache-Control", "value": "private, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=600, must-revalidate"
+          }
         ]
       },
       {
         "source": "/boeblingen/index.html",
         "headers": [
-          { "key": "Cache-Control", "value": "private, max-age=0, must-revalidate" }
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=600, must-revalidate"
+          }
         ]
       }
     ],

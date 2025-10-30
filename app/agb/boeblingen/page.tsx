@@ -1,9 +1,20 @@
 
 import { Metadata } from "next";
 
+const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+
 export const metadata: Metadata = {
   title: "AGB – Blood Diamond Tattoo Ink. Böblingen",
   description: "Allgemeine Geschäftsbedingungen für den Standort Böblingen.",
+  openGraph: {
+    url: `${ORIGIN}/agb/boeblingen`,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AGB – Blood Diamond Tattoo Ink. Böblingen",
+    description: "Allgemeine Geschäftsbedingungen für den Standort Böblingen.",
+    site: "@BloodDiamondInk",
+  },
 };
 
 export default function AgbBoeblingenPage() {

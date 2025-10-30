@@ -110,6 +110,12 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    site: "@BloodDiamondInk",
+  },
 };
 
 function ContactSection() {
