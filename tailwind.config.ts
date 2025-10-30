@@ -15,6 +15,9 @@ const config: Config = {
     "bg-[position:50%_88%]",
     "bg-cover",
     "bg-center",
+    "object-cover",
+    "object-center",
+    "object-[50%_35%]",
     "min-h-[100svh]",
     "md:min-h-[100vh]"
   ],
