@@ -15,7 +15,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Impressum – Blood Diamond Tattoo",
     description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
-    url: `${ORIGIN}/impressum`,
     site: "@BloodDiamondInk",
   },
 };

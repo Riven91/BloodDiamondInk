@@ -23,7 +23,6 @@ export const metadata: Metadata = {
     title: "Tattoo Studios in Baden-Württemberg",
     description:
       "Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
-    url: `${ORIGIN}/`,
     site: "@BloodDiamondInk",
   },
 };

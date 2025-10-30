@@ -114,7 +114,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    url: `${ORIGIN}/heilbronn`,
     site: "@BloodDiamondInk",
   },
 };

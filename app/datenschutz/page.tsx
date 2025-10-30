@@ -15,7 +15,6 @@ export const metadata = {
     title: 'Datenschutzerklärung | Blood Diamond Tattoo Ink.',
     description:
       'Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.',
-    url: `${ORIGIN}/datenschutz`,
     site: '@BloodDiamondInk',
   },
 };

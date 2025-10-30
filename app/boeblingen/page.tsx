@@ -40,7 +40,6 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    url: `${ORIGIN}/boeblingen`,
     site: "@BloodDiamondInk",
   },
   robots: { index: true, follow: true },

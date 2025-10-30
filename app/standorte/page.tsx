@@ -21,7 +21,6 @@ export const metadata = {
     title: 'Tattoo-Studios in Baden-Württemberg – Standorte | Blood Diamond Tattoo Ink.',
     description:
       'Drei Standorte: Pforzheim, Heilbronn & Böblingen. Adresse, Öffnungszeiten und Kontakt – jetzt Termin vereinbaren.',
-    url: `${ORIGIN}/standorte`,
     site: '@BloodDiamondInk',
   },
 };
