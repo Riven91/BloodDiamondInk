@@ -1,0 +1,17 @@
+<!doctype html><meta charset="utf-8">
+<title>Hero Desktop Offset Debug</title>
+<style>
+  body{font:14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; padding:20px}
+  .badge{display:inline-block;background:#111;color:#fff;padding:.4rem .6rem;border-radius:.4rem;margin-bottom:1rem}
+  .probe{height:160px;outline:1px dashed #999;display:grid;place-items:center}
+  @media (min-width:1024px){
+    .probe{padding-top:5rem;}
+  }
+</style>
+<div class="badge">Desktop-Probe ≥1024px</div>
+<div class="probe">Padding-Top sollte auf Desktop sichtbar sein (≈80px)</div>
+<script>
+  const isDesktop = window.matchMedia("(min-width:1024px)").matches;
+  document.body.insertAdjacentHTML("beforeend",
+    `<p>Viewport: ${innerWidth}×${innerHeight} – isDesktop=${isDesktop}</p>`);
+</script>

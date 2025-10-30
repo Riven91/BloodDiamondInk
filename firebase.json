@@ -10,7 +10,10 @@
       {
         "source": "**/*.png",
         "headers": [
-          { "key": "Content-Type", "value": "image/png" },
+          {
+            "key": "Content-Type",
+            "value": "image/png"
+          },
           {
             "key": "Cache-Control",
             "value": "public, max-age=31536000, immutable"
@@ -19,11 +22,21 @@
       },
       {
         "source": "/logo-blooddiamond.svg",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=300"
+          }
+        ]
       },
       {
         "source": "/_next/static/**",
-        "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+        "headers": [
+          {
+            "key": "Cache-Control",
+            "value": "public, max-age=31536000, immutable"
+          }
+        ]
       },
       {
         "source": "/index.html",
@@ -67,28 +80,99 @@
       "region": "europe-west4"
     },
     "redirects": [
-      { "source": "/favicon", "destination": "/favicon.ico", "type": 301 },
-
-      { "source": "/favicon grundlage.png", "destination": "/favicon-16x16.png", "type": 301 },
-      { "source": "/favicon%20grundlage.png", "destination": "/favicon-16x16.png", "type": 301 },
-
-      { "source": "/favicon grundlage (1).png", "destination": "/favicon-32x32.png", "type": 301 },
-      { "source": "/favicon%20grundlage%20(1).png", "destination": "/favicon-32x32.png", "type": 301 },
-
-      { "source": "/favicon grundlage (2).png", "destination": "/favicon-48x48.png", "type": 301 },
-      { "source": "/favicon%20grundlage%20(2).png", "destination": "/favicon-48x48.png", "type": 301 },
-
-      { "source": "/favicon grundlage (3).png", "destination": "/apple-touch-icon.png", "type": 301 },
-      { "source": "/favicon%20grundlage%20(3).png", "destination": "/apple-touch-icon.png", "type": 301 },
-
-      { "source": "/favicon grundlage (4).png", "destination": "/favicon-96x96.png", "type": 301 },
-      { "source": "/favicon%20grundlage%20(4).png", "destination": "/favicon-96x96.png", "type": 301 },
-
-      { "source": "/favicon grundlage (5).png", "destination": "/favicon-128x128.png", "type": 301 },
-      { "source": "/favicon%20grundlage%20(5).png", "destination": "/favicon-128x128.png", "type": 301 },
-
-      { "source": "/favicon grundlage2.png", "destination": "/og-image.png", "type": 301 },
-      { "source": "/favicon%20grundlage2.png", "destination": "/og-image.png", "type": 301 }
+      {
+        "source": "/favicon",
+        "destination": "/favicon.ico",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage.png",
+        "destination": "/favicon-16x16.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage.png",
+        "destination": "/favicon-16x16.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage (1).png",
+        "destination": "/favicon-32x32.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage%20(1).png",
+        "destination": "/favicon-32x32.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage (2).png",
+        "destination": "/favicon-48x48.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage%20(2).png",
+        "destination": "/favicon-48x48.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage (3).png",
+        "destination": "/apple-touch-icon.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage%20(3).png",
+        "destination": "/apple-touch-icon.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage (4).png",
+        "destination": "/favicon-96x96.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage%20(4).png",
+        "destination": "/favicon-96x96.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage (5).png",
+        "destination": "/favicon-128x128.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage%20(5).png",
+        "destination": "/favicon-128x128.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon grundlage2.png",
+        "destination": "/og-image.png",
+        "type": 301
+      },
+      {
+        "source": "/favicon%20grundlage2.png",
+        "destination": "/og-image.png",
+        "type": 301
+      }
     ]
-  }
+  },
+  "apphosting": {
+    "backendId": "my-web-app",
+    "rootDir": "/",
+    "ignore": [
+      "node_modules",
+      ".git",
+      "firebase-debug.log",
+      "firebase-debug.*.log",
+      "functions"
+    ],
+    "alwaysDeployFromSource": true
+  },
+  "functions": [
+    {
+      "source": ".firebase/blooddiamondink-79184164-7f1b7/functions",
+      "codebase": "firebase-frameworks-blooddiamondink-79184164-7f1b7"
+    }
+  ]
 }

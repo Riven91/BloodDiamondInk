@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blooddiamondink-79184164-7f1b7.web.app
+
+# Sitemaps
+Sitemap: https://blooddiamondink-79184164-7f1b7.web.app/sitemap.xml
