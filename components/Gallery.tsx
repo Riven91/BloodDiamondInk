@@ -105,9 +105,9 @@ function GalleryComponent() {
                 src={`/${item.file}`}
                 alt={item.alt}
                 fill
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                sizes="(max-width:768px) 50vw, (max-width:1200px) 33vw, 25vw"
                 className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                priority={false}
+                decoding="async"
               />
             </button>
 
@@ -208,7 +208,7 @@ function GalleryComponent() {
                     fill
                     sizes="100vw"
                     className="bg-black object-contain"
-                    priority
+                    decoding="async"
                   />
 
                   <div className="pointer-events-none absolute inset-x-0 bottom-0">

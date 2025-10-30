@@ -128,6 +128,7 @@ main {
   }
 }
 
+/* Hinweis: CSS background-image lädt nicht lazy. Für echtes Lazy ggf. später auf <Image fill> migrieren. */
 /* Desktop hero background */
 @media (min-width: 768px) {
   .hero-section {

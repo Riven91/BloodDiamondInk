@@ -15,7 +15,8 @@ export function Hero() {
             alt="Blood Diamond Tattoo Ink – Logo"
             fill
             className="object-contain logo-safe"
-            priority
+            sizes="100vw"
+            decoding="async"
           />
         </div>
         <div>
