@@ -25,7 +25,7 @@ export default function Header() {
               draggable={false}
               loading="lazy"
               decoding="async"
-              fetchpriority="low"
+              fetchPriority="low"
             />
           </Link>
 

@@ -127,7 +127,7 @@ export default function StudioGallery({ captions }: Props) {
               className="h-auto w-auto max-h-[90vh] max-w-full rounded-xl object-contain"
               loading="lazy"
               decoding="async"
-              fetchpriority="low"
+              fetchPriority="low"
             />
           </div>
 
