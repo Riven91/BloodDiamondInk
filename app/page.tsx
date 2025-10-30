@@ -7,9 +7,17 @@ import LightboxAuto from "@/components/LightboxAuto";
 import { Metadata } from "next";
 import { LocationsTeaser } from "./components/LocationsTeaser";
 
+const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+
 export const metadata: Metadata = {
   title: "Tattoo Studios in Baden-Württemberg",
   description: "Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+  openGraph: {
+    title: "Tattoo Studios in Baden-Württemberg",
+    description:
+      "Blood Diamond Ink vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+    url: `${ORIGIN}/`,
+  },
 };
 
 const faqItems = [
