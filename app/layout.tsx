@@ -5,6 +5,7 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
+import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -38,12 +39,13 @@ export const metadata: Metadata = {
   },
 };
 
+const isGtmEnabled = process.env.NEXT_PUBLIC_ENABLE_GTM === "true";
+
 export default function RootLayout({
-  children
+  children,
 }: {
   children: ReactNode;
 }) {
-
   return (
     <html lang="de">
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
@@ -85,25 +87,27 @@ export default function RootLayout({
         </Script>
 
         {/* Google Analytics 4 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-11CKJZCNPL"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
+        {isGtmEnabled && (
+          <>
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
             // Analytics startet erst nach Klaro-Opt-in
             let __gaConfigured = false;
             window.addEventListener('consent:ga', (e) => {
               if (e?.detail && !__gaConfigured) {
+                window.dispatchEvent(new Event('consent:granted'));
                 gtag('config', 'G-11CKJZCNPL', { anonymize_ip: true });
                 __gaConfigured = true;
               }
             });
           `}
-        </Script>
+            </Script>
+            {/* GTM lädt nur nach Consent + Idle. Für schnelle Tests kann via NEXT_PUBLIC_ENABLE_GTM=false global deaktiviert werden. */}
+            <GtmConsentLoader />
+          </>
+        )}
 
         {/* Klaro laden */}
         <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
