@@ -85,16 +85,18 @@ export function Hero({
     <section
       className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
     >
-      <picture className="absolute inset-0 md:hidden pointer-events-none">
-        <source srcSet="/herobackground3.webp?v=pfz" type="image/webp" />
-        <Image
-          src="/herobackground3.webp?v=pfz"
-          alt=""
-          fill
-          className="object-contain md:object-cover object-center"
-          priority
-        />
-      </picture>
+      {/* Mobile Hero (unter 768px): einziges Bild */}
+      <div className="pointer-events-none absolute inset-0 md:hidden">
+        <div className="relative h-[100svh] w-full">
+          <Image
+            src="/herobackground3.webp?v=pfz"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-[50%_35%]"
+          />
+        </div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
