@@ -1,3 +1,11 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://blooddiamond-tattoo.de/datenschutz/boeblingen",
+  },
+};
+
 export default function DatenschutzBoeblingen() {
   return (
     <main className="w-full px-4 py-10 text-center">

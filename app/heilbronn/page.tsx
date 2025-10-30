@@ -6,8 +6,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-
-const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+import { ORIGIN } from "../config/site";
 
 const TITLE = "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision";
 const DESCRIPTION =
@@ -100,7 +99,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://blooddiamondink.de/heilbronn",
+    canonical: "https://blooddiamond-tattoo.de/heilbronn",
   },
   openGraph: {
     type: "website",

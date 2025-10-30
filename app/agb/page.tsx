@@ -1,11 +1,13 @@
 
 import { Metadata } from "next";
-
-const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+import { ORIGIN } from "../config/site";
 
 export const metadata: Metadata = {
   title: "AGB – Blood Diamond Tattoo",
   description: "Allgemeine Geschäftsbedingungen von Blood Diamond Tattoo.",
+  alternates: {
+    canonical: "https://blooddiamond-tattoo.de/agb",
+  },
   openGraph: {
     url: `${ORIGIN}/agb`,
   },

@@ -6,8 +6,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-
-const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+import { ORIGIN } from "../config/site";
 
 const TITLE = "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink. | Kunst, Präzision und Sicherheit";
 const DESCRIPTION =
