@@ -84,10 +84,10 @@ export default function Hero({
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
-      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh] md:bg-none"
+      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh]"
     >
       <div className="pointer-events-none absolute left-0 right-0 top-0 md:hidden">
-        <div className="relative h-[75svh] w-full">
+        <div className="relative h-[100svh] w-full">
           <Image
             src={heroMobile}
             alt=""
@@ -95,7 +95,7 @@ export default function Hero({
             loading="lazy"
             decoding="async"
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-[50%_35%]"
           />
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function Hero({
             loading="lazy"
             decoding="async"
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
           />
         </div>
       </div>
