@@ -3,7 +3,7 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { heroDesktop, heroMobile } from "@/lib/heroImages";
+import { heroMobile } from "@/lib/heroImages";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
 
@@ -84,34 +84,23 @@ export default function Hero({
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
-      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh]"
+      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh] md:bg-none"
     >
+      {/* MOBILE HERO ONLY (unter 768px) */}
       <div className="pointer-events-none absolute left-0 right-0 top-0 md:hidden">
         <div className="relative h-[100svh] w-full">
           <Image
             src={heroMobile}
             alt=""
             fill
-            loading="lazy"
+            priority
             decoding="async"
             sizes="100vw"
             className="object-cover object-[50%_35%]"
           />
         </div>
       </div>
-      <div className="pointer-events-none absolute left-0 right-0 top-0 hidden md:block">
-        <div className="relative h-[80svh] w-full">
-          <Image
-            src={heroDesktop}
-            alt=""
-            fill
-            loading="lazy"
-            decoding="async"
-            sizes="100vw"
-            className="object-cover object-center"
-          />
-        </div>
-      </div>
+      {/* DESKTOP: kein <Image>; Hintergrund kommt aus globals.css ab 768px */}
 
       {/* Content */}
       <div className="relative z-10 mx-auto flex min-h-[75svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
