@@ -20,7 +20,7 @@ export default function Header() {
             <img src="/logo-blooddiamond.svg" alt="Blood Diamond Ink" className="h-8 w-auto" draggable={false} />
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6">
             <Link href="/pforzheim" className="hover:opacity-80">Pforzheim</Link>
             <Link href="/boeblingen" className="hover:opacity-80">Böblingen</Link>
             <Link href="/heilbronn" className="hover:opacity-80">Heilbronn</Link>
@@ -29,7 +29,7 @@ export default function Header() {
           <button
             aria-label="Menü öffnen"
             onClick={() => setOpen(v => !v)}
-            className="md:hidden inline-flex items-center justify-center size-10 rounded-lg"
+            className="lg:hidden inline-flex items-center justify-center size-10 rounded-lg"
           >
             <span className="sr-only">Menü</span>
             <div className="relative w-5 h-3.5">
@@ -41,7 +41,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className={`md:hidden origin-top overflow-hidden transition-transform duration-300 ${open ? "max-h-screen" : "max-h-0"}`}>
+      <div className={`lg:hidden origin-top overflow-hidden transition-transform duration-300 ${open ? "max-h-screen" : "max-h-0"}`}>
         <nav className="px-4 pb-4 pt-2 flex flex-col items-center space-y-4">
           <Link href="/" onClick={closeMenu} className="block py-3 text-lg">Home</Link>
           <Link href="/standorte" onClick={closeMenu} className="block py-3 text-lg">Standorte</Link>
