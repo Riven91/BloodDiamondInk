@@ -1,5 +1,6 @@
 "use client";
 
+// Hinweis: CSS background-image lädt nicht lazy. Für echtes Lazy ggf. später auf <Image fill> migrieren.
 type Props = {
   src: string;
   opacity?: number;   // Empfehlung: 0.03–0.08

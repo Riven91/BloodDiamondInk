@@ -96,7 +96,6 @@ export function Header() {
             alt="Blood Diamond Ink Logo"
             width={80}
             height={80}
-            priority
           />
           <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent">
             Blood Diamond Tattoo Ink.

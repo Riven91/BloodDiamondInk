@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
+// Hinweis: CSS background-image lädt nicht lazy. Für echtes Lazy ggf. später auf <Image fill> migrieren.
 export default function Header() {
   const [open, setOpen] = useState(false);
 
@@ -17,7 +18,15 @@ export default function Header() {
       <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
         <div className="h-16 flex items-center justify-between">
           <Link href="/" onClick={closeMenu} className="shrink-0 inline-flex items-center gap-2">
-            <img src="/logo-blooddiamond.svg" alt="Blood Diamond Ink" className="h-8 w-auto" draggable={false} />
+            <img
+              src="/logo-blooddiamond.svg"
+              alt="Blood Diamond Ink"
+              className="h-8 w-auto"
+              draggable={false}
+              loading="lazy"
+              decoding="async"
+              fetchpriority="low"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">

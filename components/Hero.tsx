@@ -93,6 +93,8 @@ export function Hero({
             alt=""
             fill
             sizes="100vw"
+            priority
+            decoding="async"
             className="object-cover object-[50%_35%]"
           />
         </div>
