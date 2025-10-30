@@ -5,7 +5,6 @@ import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
-import { heroDesktop, heroMobile } from "@/lib/heroImages";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -47,24 +46,6 @@ export default function RootLayout({
 
   return (
     <html lang="de">
-      <head>
-        <link
-          rel="preload"
-          as="image"
-          href={heroDesktop}
-          media="(min-width: 768px)"
-          fetchPriority="high"
-          imageSizes="100vw"
-        />
-        <link
-          rel="preload"
-          as="image"
-          href={heroMobile}
-          media="(max-width: 767px)"
-          fetchPriority="high"
-          imageSizes="100vw"
-        />
-      </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
         {/* Dev-only Nuke, in Production deaktiviert */}
         {process.env.NODE_ENV !== "production" && (
