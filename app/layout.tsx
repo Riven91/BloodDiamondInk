@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
+import { loadGA4, whenIdle } from "../src/lib/ga4";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
@@ -40,6 +41,36 @@ export const metadata: Metadata = {
 };
 
 const isGtmEnabled = process.env.NEXT_PUBLIC_ENABLE_GTM === "true";
+const isGa4Enabled = process.env.NEXT_PUBLIC_ENABLE_GA4 === "true";
+const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
+
+const ga4InitScript =
+  isGa4Enabled && ga4Id
+    ? `${loadGA4.toString()}
+${whenIdle.toString()}
+(function () {
+  var ga4Id = ${JSON.stringify(ga4Id)};
+
+  try {
+    if (window.localStorage && window.localStorage.getItem('consent') === 'granted') {
+      whenIdle(function () { loadGA4(ga4Id); });
+    }
+  } catch (error) {
+    // Access to localStorage can fail in some environments
+  }
+
+  window.addEventListener('consent:granted', function () {
+    whenIdle(function () { loadGA4(ga4Id); });
+  }, { once: true });
+
+  window.addEventListener('consent:ga', function (event) {
+    if (event && event.detail) {
+      window.dispatchEvent(new Event('consent:granted'));
+    }
+  });
+})();
+`
+    : null;
 
 export default function RootLayout({
   children,
@@ -86,28 +117,15 @@ export default function RootLayout({
         });`}
         </Script>
 
-        {/* Google Analytics 4 */}
-        {isGtmEnabled && (
-          <>
-            <Script id="google-analytics" strategy="afterInteractive">
-              {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            // Analytics startet erst nach Klaro-Opt-in
-            let __gaConfigured = false;
-            window.addEventListener('consent:ga', (e) => {
-              if (e?.detail && !__gaConfigured) {
-                window.dispatchEvent(new Event('consent:granted'));
-                gtag('config', 'G-11CKJZCNPL', { anonymize_ip: true });
-                __gaConfigured = true;
-              }
-            });
-          `}
-            </Script>
-            {/* GTM lädt nur nach Consent + Idle. Für schnelle Tests kann via NEXT_PUBLIC_ENABLE_GTM=false global deaktiviert werden. */}
-            <GtmConsentLoader />
-          </>
+        {/* Google Analytics 4 - lazy & consent-gated */}
+        {ga4InitScript && (
+          <Script id="ga4-consent-loader" strategy="afterInteractive">
+            {ga4InitScript}
+          </Script>
         )}
+
+        {/* GTM lädt nur nach Consent + Idle. Für schnelle Tests kann via NEXT_PUBLIC_ENABLE_GTM=false global deaktiviert werden. */}
+        {isGtmEnabled && <GtmConsentLoader />}
 
         {/* Klaro laden */}
         <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
