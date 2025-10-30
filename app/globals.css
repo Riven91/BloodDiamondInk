@@ -124,6 +124,16 @@ main {
   }
 }
 
+/* Desktop Hero background (Variante B) */
+@media (min-width: 768px) {
+  .hero-section {
+    background-image: url('/herofinal.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 100svh;
+  }
+}
+
 @media (max-width: 767px) {
   .badges-container {
     display: flex !important;
