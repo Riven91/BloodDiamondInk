@@ -84,7 +84,7 @@ export default function Hero({
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
   return (
     <section
-      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh] md:bg-none"
+      className="hero-section relative isolation-isolate flex min-h-[75svh] items-center justify-center overflow-hidden text-white md:min-h-[80svh]"
     >
       <div className="pointer-events-none absolute left-0 right-0 top-0 md:hidden">
         <div className="relative h-[75svh] w-full">

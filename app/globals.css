@@ -92,7 +92,6 @@ main {
 [id^="hero"],
 .hero,
 .hero-section {
-  background: none !important;
   background-image: none !important;
 }
 
@@ -100,7 +99,6 @@ main {
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 80svh !important;
   overflow: hidden;
   z-index: 0;
   isolation: isolate;
@@ -110,7 +108,6 @@ main {
 @media (max-width: 767px) {
   .hero-section {
     /* Mobile: kein CSS-Background – wir rendern über <Image> im TSX */
-    background: none !important;
     background-image: none !important;
     background-color: transparent !important;
     background-blend-mode: normal !important;
