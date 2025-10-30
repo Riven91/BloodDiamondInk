@@ -7,6 +7,12 @@ import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
 
+const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+
+const TITLE = "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision";
+const DESCRIPTION =
+  "Blood Diamond Tattoo Ink. Heilbronn steht für handverlesene Tattoo-Artists, Ruhe im Private Room und präzise Fineline-, Realistic- sowie Cover-Up-Designs für Neckarsulm und den Raum Heilbronn.";
+
 const faqItems = [
   {
     question: "Welche Tattoo-Stile bietet Blood Diamond Tattoo Ink. in Heilbronn?",
@@ -91,20 +97,18 @@ if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioIma
 }
 
 export const metadata: Metadata = {
-  title: "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision",
-  description:
-    "Blood Diamond Tattoo Ink. Heilbronn steht für handverlesene Tattoo-Artists, Ruhe im Private Room und präzise Fineline-, Realistic- sowie Cover-Up-Designs für Neckarsulm und den Raum Heilbronn.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: "https://blooddiamondink.de/heilbronn",
   },
   openGraph: {
     type: "website",
-    url: "https://blooddiamondink.de/heilbronn",
-    title: "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision",
-    description:
-      "Erlebe Ruhe, Präzision und preisgekrönte Tattoo-Kunst bei Blood Diamond Tattoo Ink. Heilbronn – individuelle Beratung für Fineline-, Realistic- und Cover-Up-Projekte.",
     siteName: "Blood Diamond Tattoo Ink.",
     locale: "de_DE",
+    url: `${ORIGIN}/heilbronn`,
+    title: TITLE,
+    description: DESCRIPTION,
   },
 };
 

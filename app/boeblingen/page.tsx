@@ -7,6 +7,12 @@ import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
 
+const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+
+const TITLE = "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink. | Kunst, Präzision und Sicherheit";
+const DESCRIPTION =
+  "Blood Diamond Tattoo Ink. Böblingen – Tattoo-Kunst zwischen Stuttgart und Herrenberg. Internationale Artists, präzise Linienführung und ausgezeichnete Hygienestandards mit der „Goldenen Nadel“. Termin vereinbaren & Qualität erleben.";
+
 const studioCaptions = [
   "Einblick in eines unserer Studios in Böblingen, Heilbronn und Pforzheim – klare Struktur, präzise Abläufe und ruhige, professionelle Arbeitsumgebung.",
   "Tattoo-Arbeit mit klarer Struktur – präzise Ausführung, aufgeräumte Arbeitsfläche und Fokus auf jedes Detail.",
@@ -18,17 +24,15 @@ if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioIma
 }
 
 export const metadata: Metadata = {
-  title: "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink. | Kunst, Präzision und Sicherheit",
-  description:
-    "Blood Diamond Tattoo Ink. Böblingen – Tattoo-Kunst zwischen Stuttgart und Herrenberg. Internationale Artists, präzise Linienführung und ausgezeichnete Hygienestandards mit der „Goldenen Nadel“. Termin vereinbaren & Qualität erleben.",
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: {
     canonical: "https://blooddiamond-tattoo.de/boeblingen",
   },
   openGraph: {
-    title: "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink.",
-    description:
-      "Tattoo-Kunst auf höchstem Niveau in Böblingen / Herrenberg – Realistic, Fineline & Black & Grey (Black and Grey), ausgeführt von international ausgezeichneten Artists.",
-    url: "https://blooddiamond-tattoo.de/boeblingen",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${ORIGIN}/boeblingen`,
     locale: "de_DE",
     siteName: "Blood Diamond Tattoo Ink.",
   },
