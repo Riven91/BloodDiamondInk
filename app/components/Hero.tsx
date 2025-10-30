@@ -12,7 +12,7 @@ export function Hero() {
         <div className="relative h-20 w-48 sm:h-24 sm:w-60">
           <Image
             src="/brand/logo-diamond-transparent.webp"
-            alt="Blood Diamond Tattoo Ink – Logo"
+            alt="Blood Diamond Tattoo Ink. – Logo"
             fill
             className="object-contain logo-safe"
             sizes="100vw"
@@ -21,7 +21,7 @@ export function Hero() {
         </div>
         <div>
           <h1 className="text-3xl font-extrabold tracking-tight sm:text-5xl">
-            Tattoo Studio in Baden-Württemberg – Blood Diamond Ink
+            Tattoo Studio in Baden-Württemberg – Blood Diamond Ink.
           </h1>
           <p className="mt-2 text-sm uppercase tracking-widest text-gray-600">
             Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey) in Ötisheim/Pforzheim, Heilbronn (Neckarsulm) & Böblingen (Herrenberg).

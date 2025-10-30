@@ -34,14 +34,14 @@ export default function Datenschutz() {
           <li>
             <p>
               <strong className="text-green-600">1. Einleitung</strong><br />
-              Blood Diamond Tattoo Ink verarbeitet personenbezogene Daten ausschließlich zur Terminorganisation, Beratung und Nachbetreuung von Tattoo-Dienstleistungen. Diese Erklärung informiert dich über Art, Umfang und Zweck der Verarbeitung sowie über deine Rechte nach der DSGVO.
+              Blood Diamond Tattoo Ink. verarbeitet personenbezogene Daten ausschließlich zur Terminorganisation, Beratung und Nachbetreuung von Tattoo-Dienstleistungen. Diese Erklärung informiert dich über Art, Umfang und Zweck der Verarbeitung sowie über deine Rechte nach der DSGVO.
             </p>
           </li>
 
           <li>
             <p>
               <strong className="text-green-600">2. Verantwortliche Stelle</strong><br />
-              Blood Diamond Tattoo Ink<br />
+              Blood Diamond Tattoo Ink.<br />
               Inhaber: Kasper Nowicki<br />
               Maulbronner Str. 38, 75443 Ötisheim<br />
               E-Mail: <a className="underline" href="mailto:pforzheim@blooddiamond-tattoo.de">pforzheim@blooddiamond-tattoo.de</a><br />
@@ -176,7 +176,7 @@ export default function Datenschutz() {
           </li>
         </ol>
 
-        <p className="text-xs opacity-70">© 2025 Blood Diamond Tattoo Ink – Alle Rechte vorbehalten.</p>
+        <p className="text-xs opacity-70">© 2025 Blood Diamond Tattoo Ink. – Alle Rechte vorbehalten.</p>
       </div>
     </main>
   );

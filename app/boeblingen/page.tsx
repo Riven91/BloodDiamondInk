@@ -218,7 +218,7 @@ export default function BoeblingenPage() {
           <section className="text-center max-w-2xl mx-auto mt-6 text-gray-200">
             <h3 className="text-lg font-semibold mb-3">Gemeinsam stark.</h3>
             <p className="text-sm leading-relaxed">
-              Das Team von <strong>Blood Diamond Tattoo Ink Studios</strong> wurde auf Tattoo-Conventions in
+              Das Team von <strong>Blood Diamond Tattoo Ink. Studios</strong> wurde auf Tattoo-Conventions in
               <strong> Stuttgart</strong> und <strong> Rastatt</strong> ausgezeichnet, darunter in den Kategorien
               <em> „Best of Show“</em>, <em>„Best of Color“</em> und <em>„Best of Blackwork“</em>.
             </p>

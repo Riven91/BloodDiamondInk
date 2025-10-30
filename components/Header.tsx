@@ -88,12 +88,12 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link
           href="/"
-          aria-label="Blood Diamond Ink Startseite"
+          aria-label="Blood Diamond Ink. Startseite"
           className="flex items-center gap-3"
         >
           <Image
             src="/brand/bdi-logo-transparent.webp"
-            alt="Blood Diamond Ink Logo"
+            alt="Blood Diamond Ink. Logo"
             width={80}
             height={80}
           />
