@@ -1,3 +1,17 @@
+const ORIGIN = 'https://blooddiamondink-79184164-7f1b7.web.app';
+
+export const metadata = {
+  title: 'Datenschutzerklärung | Blood Diamond Tattoo Ink.',
+  description:
+    'Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.',
+  openGraph: {
+    title: 'Datenschutzerklärung | Blood Diamond Tattoo Ink.',
+    description:
+      'Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.',
+    url: `${ORIGIN}/datenschutz`,
+  },
+};
+
 export default function Datenschutz() {
   return (
     <main className="w-full px-4 py-10 text-center">

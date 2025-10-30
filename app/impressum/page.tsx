@@ -1,9 +1,16 @@
 
 import { Metadata } from "next";
 
+const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+
 export const metadata: Metadata = {
   title: "Impressum – Blood Diamond Tattoo",
   description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
+  openGraph: {
+    title: "Impressum – Blood Diamond Tattoo",
+    description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
+    url: `${ORIGIN}/impressum`,
+  },
 };
 
 export default function ImpressumPage() {
