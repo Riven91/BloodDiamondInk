@@ -11,6 +11,13 @@ export const metadata: Metadata = {
     description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
     url: `${ORIGIN}/impressum`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Impressum – Blood Diamond Tattoo",
+    description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
+    url: `${ORIGIN}/impressum`,
+    site: "@BloodDiamondInk",
+  },
 };
 
 export default function ImpressumPage() {

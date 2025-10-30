@@ -36,6 +36,13 @@ export const metadata: Metadata = {
     locale: "de_DE",
     siteName: "Blood Diamond Tattoo Ink.",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    url: `${ORIGIN}/boeblingen`,
+    site: "@BloodDiamondInk",
+  },
   robots: { index: true, follow: true },
 };
 
