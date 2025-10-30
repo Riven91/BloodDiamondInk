@@ -85,16 +85,19 @@ export default function RootLayout({
             }}
           />
         )}
-        <div
-          className="fixed inset-0 z-[-1] opacity-5"
-          style={{
-            backgroundImage: `url('${heroDesktop}')`,
-            backgroundSize: '40%',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat',
-            backgroundAttachment: 'fixed',
-          }}
-        />
+        {/* Removed global fixed background image — causes hero conflicts */}
+        {/* Keeping placeholder div for potential dev watermark only */}
+        {process.env.NODE_ENV !== "production" && (
+          <div
+            className="fixed inset-0 z-[-1] opacity-[0.03]"
+            style={{
+              backgroundSize: '40%',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundAttachment: 'fixed',
+            }}
+          />
+        )}
         <Header />
         <LayoutWrapper>
           <main className="bg-transparent">{children}</main>
