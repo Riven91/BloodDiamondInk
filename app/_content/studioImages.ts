@@ -1,11 +1,11 @@
 export const studioImages = [
   {
     src: "/Studio1.jpeg",
-    alt: "Tattoo-Arbeitsplatz im Blood Diamond Tattoo Ink. – professionelle Ausstattung mit Beleuchtung, Instrumenten und laufender Tattoo-Session.",
+    alt: "Tattoo-Arbeitsplatz – professionelle Ausstattung, Beleuchtung und laufende Tattoo-Kunst im Studio.",
   },
   {
     src: "/Studio2.jpeg",
-    alt: "Tätowierer im Blood Diamond Tattoo Ink. bei der Arbeit – konzentrierte Handwerkskunst mit Fokus auf Linienführung und Details.",
+    alt: "Tätowierer bei der Arbeit – konzentrierte Handwerkskunst mit präziser Linienführung und feinen Details.",
   },
   {
     src: "/Studio3.jpeg",

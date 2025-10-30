@@ -9,7 +9,7 @@ export default function GoogleRating({ city }: { city: string }) {
       <div className="flex items-center gap-1">
         <Image
           src="/Google__G__logo.svg.png"
-          alt="Google Logo"
+          alt="Google-Logo"
           width={28}
           height={28}
           className="object-contain w-7 h-7 md:w-8 md:h-8"

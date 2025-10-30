@@ -10,7 +10,7 @@ interface LocationCardProps {
   openingHours: string;
   funnelUrl: string;
   mapImage: string;
-  mapAlt: string;
+  mapAlt?: string;
 }
 
 export function LocationCard({
@@ -24,6 +24,7 @@ export function LocationCard({
   mapImage,
   mapAlt,
 }: LocationCardProps) {
+  const altText = mapAlt ?? "Karte – Standort Blood Diamond Tattoo Ink.";
   return (
     <section id={id} className="mx-auto grid max-w-6xl gap-12 px-6 py-16 md:grid-cols-[1.2fr_1fr]">
       <div className="space-y-6">
@@ -48,7 +49,13 @@ export function LocationCard({
       </div>
       <div className="overflow-hidden rounded-xl border border-blooddiamond-primary/30 bg-blooddiamond-muted/60">
         <div className="relative h-80 w-full">
-          <Image src={mapImage} alt={mapAlt} fill className="object-cover object-center opacity-80" sizes="(min-width: 768px) 40vw, 100vw" />
+          <Image
+            src={mapImage}
+            alt={altText}
+            fill
+            className="object-cover object-center opacity-80"
+            sizes="(min-width: 768px) 40vw, 100vw"
+          />
         </div>
       </div>
     </section>

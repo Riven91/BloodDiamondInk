@@ -91,6 +91,7 @@ export function Hero({
           <Image
             src="/herobackground3.webp?v=pfz"
             alt=""
+            aria-hidden="true"
             fill
             sizes="100vw"
             priority
@@ -175,7 +176,7 @@ export function Hero({
               <div className="flex items-center justify-center" style={{ gap: '8px' }}>
                 <Image
                   src="/Google__G__logo.svg.png"
-                  alt="Google Logo"
+                  alt="Google-Logo"
                   width={32}
                   height={32}
                   className="w-7 h-7 md:w-8 md:h-8"
