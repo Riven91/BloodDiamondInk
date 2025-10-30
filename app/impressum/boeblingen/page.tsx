@@ -1,9 +1,18 @@
 
 import { Metadata } from "next";
 
+const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+
 export const metadata: Metadata = {
   title: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
   description: "Impressum und Anbieterkennzeichnung für den Standort Böblingen.",
+  twitter: {
+    card: "summary_large_image",
+    title: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
+    description: "Impressum und Anbieterkennzeichnung für den Standort Böblingen.",
+    url: `${ORIGIN}/impressum/boeblingen`,
+    site: "@BloodDiamondInk",
+  },
 };
 
 export default function ImpressumBoeblingenPage() {

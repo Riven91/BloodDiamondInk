@@ -64,6 +64,14 @@ export const metadata: Metadata = {
       "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
     url: `${ORIGIN}/pforzheim`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
+    description:
+      "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
+    url: `${ORIGIN}/pforzheim`,
+    site: "@BloodDiamondInk",
+  },
 };
 
 function ContactForm() {
