@@ -1,21 +1,25 @@
-const ORIGIN = 'https://blooddiamondink-79184164-7f1b7.web.app';
+import type { Metadata } from "next";
+import { ORIGIN } from "../config/site";
 
-export const metadata = {
-  title: 'Datenschutzerklärung | Blood Diamond Tattoo Ink.',
+export const metadata: Metadata = {
+  title: "Datenschutzerklärung | Blood Diamond Tattoo Ink.",
   description:
-    'Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.',
+    "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
+  alternates: {
+    canonical: "https://blooddiamond-tattoo.de/datenschutz",
+  },
   openGraph: {
-    title: 'Datenschutzerklärung | Blood Diamond Tattoo Ink.',
+    title: "Datenschutzerklärung | Blood Diamond Tattoo Ink.",
     description:
-      'Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.',
+      "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
     url: `${ORIGIN}/datenschutz`,
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Datenschutzerklärung | Blood Diamond Tattoo Ink.',
+    card: "summary_large_image",
+    title: "Datenschutzerklärung | Blood Diamond Tattoo Ink.",
     description:
-      'Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.',
-    site: '@BloodDiamondInk',
+      "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
+    site: "@BloodDiamondInk",
   },
 };
 

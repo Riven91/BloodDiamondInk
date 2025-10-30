@@ -5,8 +5,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-
-const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+import { ORIGIN } from "../config/site";
 
 const faqItems = [
   {
@@ -58,6 +57,9 @@ export const metadata: Metadata = {
   title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
   description:
     "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
+  alternates: {
+    canonical: "https://blooddiamond-tattoo.de/pforzheim",
+  },
   openGraph: {
     title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
     description:
