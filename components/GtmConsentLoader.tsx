@@ -227,10 +227,25 @@ export function GtmConsentLoader() {
     const handleKlaroConsent = () => {
       try {
         const manager = win.klaro?.getManager?.();
-        const granted = !!manager?.getConsent?.("google-tag-manager") || !!manager?.getConsent?.("analytics");
+
+        if (!manager) {
+          console.warn("[Klaro] Kein Consent-Manager verfügbar");
+          return;
+        }
+
+        const gtmConsent = !!manager.getConsent?.("google-tag-manager");
+        const gaConsent = !!manager.getConsent?.("google-analytics");
+
+        const granted = gtmConsent || gaConsent;
         applyConsent(granted);
+
+        console.debug("[Klaro] Consent-Update angewendet:", {
+          gtmConsent,
+          gaConsent,
+          granted,
+        });
       } catch (error) {
-        // ignore manager access issues
+        console.error("[Klaro] Fehler beim Aktualisieren des Consents:", error);
       }
     };
 

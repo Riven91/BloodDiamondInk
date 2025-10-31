@@ -15,6 +15,9 @@ export function MapWithConsent({
   placeholderClassName,
   className,
   loading,
+  src,
+  title,
+  allowFullScreen,
   ...iframeProps
 }: MapWithConsentProps) {
   const [mapsAllowed, setMapsAllowed] = useState(false);
@@ -110,16 +113,28 @@ export function MapWithConsent({
     return `${placeholderClassName} flex items-center justify-center bg-blooddiamond-background/80`;
   }, [placeholderClassName]);
 
-  if (!mapsAllowed) {
-    return <div className={placeholderClasses}>{placeholderContent}</div>;
-  }
+  const wrapperClassName = className ? `${className} relative` : "relative";
+  const iframeTitle = title ?? "Google Maps";
+  const blockedTitle = "Karte blockiert – Cookie-Einwilligung erforderlich";
+  const effectiveTitle = mapsAllowed ? iframeTitle : blockedTitle;
+  const iframeLoading = loading ?? "lazy";
 
   return (
-    <iframe
-      {...iframeProps}
-      className={className}
-      loading={loading ?? "lazy"}
-      allowFullScreen={iframeProps.allowFullScreen}
-    />
+    <div className={wrapperClassName}>
+      <iframe
+        {...iframeProps}
+        className={className}
+        data-klaro-maps="1"
+        data-src={src}
+        src={mapsAllowed ? src : undefined}
+        loading={iframeLoading}
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen={allowFullScreen}
+        title={effectiveTitle}
+        aria-hidden={mapsAllowed ? undefined : true}
+        hidden={!mapsAllowed}
+      />
+      {!mapsAllowed ? <div className={placeholderClasses}>{placeholderContent}</div> : null}
+    </div>
   );
 }

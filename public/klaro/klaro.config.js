@@ -1,8 +1,11 @@
 window.klaroConfig = {
-  version: 1,
+  // Versionsbump erzwingt erneute Einwilligung (Banner erscheint wieder)
+  version: 2,
   elementID: 'klaro',
   styling: { theme: ['light', 'bottom'] },
   lang: 'de',
+  // Hinweis-Banner aktivieren und Einwilligung erzwingen
+  noticeEnabled: true,
   // Consent Mode v2: wir initialisieren GTM/GA erst nach Zustimmung
   translations: {
     de: {
@@ -22,9 +25,9 @@ window.klaroConfig = {
       decline: 'Alle ablehnen',
     },
   },
-  // Standard: alles abwählen (DE-üblich)
+  // Defaults: alles aus, Buttons vollständig anzeigen
   default: false,
-  mustConsent: false,
+  mustConsent: true,
   acceptAll: true,
   hideDeclineAll: false,
 
