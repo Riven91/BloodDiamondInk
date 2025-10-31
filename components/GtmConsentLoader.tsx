@@ -211,7 +211,7 @@ export function GtmConsentLoader() {
         pageViewTimerRef.current = null;
       }
     };
-  }, [pathname, searchParams]);
+  }, [pathname, searchParams, schedulePageView]);
 
   if (!isGtmEnabled || !gtmId) {
     return null;
