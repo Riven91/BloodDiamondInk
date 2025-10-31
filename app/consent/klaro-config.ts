@@ -1,7 +1,19 @@
+export const klaroConfigScript = String.raw`
 window.klaroConfig = {
-  // Versionsbump erzwingt erneute Einwilligung (Banner erscheint wieder)
+  // Version 2: einmalig neu gefragt, danach 180 Tage Ruhe
   version: 2,
   elementID: 'klaro',
+  cookieName: 'klaro',
+  htmlTexts: true,
+  default: false, // standardmäßig alles aus
+  mustConsent: true, // Banner MUSS erscheinen bevor etwas geladen wird
+  storageMethod: 'cookie',
+  // Domain/Path: host-spezifisch, überall gültig
+  cookieDomain: undefined,
+  cookiePath: '/',
+  cookieExpiresAfterDays: 180,
+  // Link zur Datenschutzerklärung im Modal/Kopf
+  privacyPolicy: '/datenschutz',
   styling: { theme: ['light', 'bottom'] },
   lang: 'de',
   // Hinweis-Banner aktivieren und Einwilligung erzwingen
@@ -9,10 +21,15 @@ window.klaroConfig = {
   // Consent Mode v2: wir initialisieren GTM/GA erst nach Zustimmung
   translations: {
     de: {
+      consentNotice: {
+        description:
+          'Wir verwenden Cookies und ähnliche Technologien für Komfortfunktionen (z. B. Google Maps, Google Fonts). Du entscheidest, was geladen werden darf.',
+        learnMore: 'Cookie-Einstellungen öffnen',
+      },
       consentModal: {
         title: 'Datenschutzeinstellungen',
         description:
-          'Wir nutzen Dienste zur Kartenanzeige und zur Reichweitenmessung. Du kannst deine Auswahl jederzeit ändern.',
+          'Wähle aus, welche Cookies und optionalen Dienste (z. B. Google Maps, Google Fonts) wir verwenden dürfen. Du kannst deine Auswahl jederzeit in der Datenschutzerklärung anpassen.',
       },
       purposes: {
         analytics: 'Reichweitenmessung (Analytics)',
@@ -25,12 +42,8 @@ window.klaroConfig = {
       decline: 'Alle ablehnen',
     },
   },
-  // Defaults: alles aus, Buttons vollständig anzeigen
-  default: false,
-  mustConsent: true,
   acceptAll: true,
   hideDeclineAll: false,
-
   services: [
     // --- Analytics / Marketing ---
     {
@@ -111,3 +124,4 @@ window.klaroConfig = {
     // },
   ],
 };
+`;
