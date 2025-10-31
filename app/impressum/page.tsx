@@ -85,7 +85,7 @@ export default function ImpressumPage() {
               href="https://consumer-redress.ec.europa.eu/dispute-resolution-bodies/germany-aussergerichtliche-streitbeilegungsstelle-fur-verbraucher-und-unternehmer-e-v_en?prefLang=de"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blooddiamond-accent hover:underline"
+              className="text-blooddiamond-accent hover:underline focus-visible:underline"
             >
               https://consumer-redress.ec.europa.eu/dispute-resolution-bodies/germany-aussergerichtliche-streitbeilegungsstelle-fur-verbraucher-und-unternehmer-e-v_en?prefLang=de
             </a>

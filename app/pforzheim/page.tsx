@@ -90,7 +90,7 @@ function ContactForm() {
         href="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-brand hover:bg-brand-hover text-white py-3 px-6 rounded-md uppercase tracking-wide"
+        className="inline-block bg-brand hover:bg-brand-hover text-white py-3 px-6 rounded-md uppercase tracking-wide focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
       >
         Kontaktseite öffnen
       </a>
@@ -172,8 +172,8 @@ export default function PforzheimPage() {
             <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
               <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Kontakt</h3>
               <p className="mt-2">
-                Telefon: <a href="tel:+4915123426609" className="hover:text-blooddiamond-accent">01512 3426609</a>
-                <br />E-Mail: <a href="mailto:pforzheim@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent">pforzheim@blooddiamond-tattoo.de</a>
+                Telefon: <a href="tel:+4915123426609" className="hover:text-blooddiamond-accent focus-visible:underline">01512 3426609</a>
+                <br />E-Mail: <a href="mailto:pforzheim@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent focus-visible:underline">pforzheim@blooddiamond-tattoo.de</a>
               </p>
             </div>
             <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">

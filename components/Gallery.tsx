@@ -76,7 +76,7 @@ function GalleryComponent() {
             Böblingen. Folge uns auf {" "}
             <a
               href="#footer"
-              className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400"
+              className="font-semibold text-emerald-500 transition-colors hover:text-emerald-400 focus-visible:underline"
             >
               Social Media
             </a>
@@ -131,7 +131,7 @@ function GalleryComponent() {
                 Math.min(current + 3, items.length),
               )
             }
-            className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90 transition hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-5 py-2.5 text-sm font-medium text-white/90 transition hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
             aria-label={`Mehr Bilder laden (noch ${items.length - visibleCount})`}
           >
             <svg
@@ -221,7 +221,7 @@ function GalleryComponent() {
                   <button
                     type="button"
                     onClick={close}
-                    className="absolute right-3 top-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80"
+                    className="absolute right-3 top-3 z-20 inline-flex h-9 w-9 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
                     aria-label="Lightbox schließen"
                   >
                     ✕
@@ -249,7 +249,7 @@ function GalleryComponent() {
                         prev();
                       }}
                       aria-label="Vorheriges Bild"
-                      className="absolute left-3 top-1/2 z-20 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/40 active:scale-95"
+                      className="absolute left-3 top-1/2 z-20 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring active:scale-95"
                     >
                       <svg
                         viewBox="0 0 24 24"
@@ -269,7 +269,7 @@ function GalleryComponent() {
                         next();
                       }}
                       aria-label="Nächstes Bild"
-                      className="absolute right-3 top-1/2 z-20 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus:outline-none focus:ring-2 focus:ring-white/40 active:scale-95"
+                      className="absolute right-3 top-1/2 z-20 inline-flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring active:scale-95"
                     >
                       <svg
                         viewBox="0 0 24 24"

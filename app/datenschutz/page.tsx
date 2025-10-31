@@ -44,7 +44,7 @@ export default function Datenschutz() {
               Blood Diamond Tattoo Ink.<br />
               Inhaber: Kasper Nowicki<br />
               Maulbronner Str. 38, 75443 Ötisheim<br />
-              E-Mail: <a className="underline" href="mailto:pforzheim@blooddiamond-tattoo.de">pforzheim@blooddiamond-tattoo.de</a><br />
+              E-Mail: <a className="underline focus-visible:underline" href="mailto:pforzheim@blooddiamond-tattoo.de">pforzheim@blooddiamond-tattoo.de</a><br />
               Telefon: 01512&nbsp;3426609
             </p>
           </li>
@@ -76,7 +76,7 @@ export default function Datenschutz() {
             <p>
               <strong className="text-green-600">6. Kontaktformulare / Perspective Software GmbH</strong><br />
               Unsere Online-Formulare werden über die Server der Perspective Software GmbH betrieben. Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b bzw. lit.&nbsp;f DSGVO. Infos:{" "}
-              <a href="https://perspective.co/de/datenschutz/" target="_blank" rel="noreferrer" className="underline">https://perspective.co/de/datenschutz/</a>
+              <a href="https://perspective.co/de/datenschutz/" target="_blank" rel="noreferrer" className="underline focus-visible:underline">https://perspective.co/de/datenschutz/</a>
             </p>
           </li>
 
@@ -84,7 +84,7 @@ export default function Datenschutz() {
             <p>
               <strong className="text-green-600">7. Kommunikation über WhatsApp</strong><br />
               Kontakt über WhatsApp (Anbieter: WhatsApp Ireland Limited). Nachrichten sind Ende-zu-Ende-verschlüsselt. Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;b DSGVO. Infos:{" "}
-              <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noreferrer" className="underline">https://www.whatsapp.com/legal/privacy-policy-eea</a>
+              <a href="https://www.whatsapp.com/legal/privacy-policy-eea" target="_blank" rel="noreferrer" className="underline focus-visible:underline">https://www.whatsapp.com/legal/privacy-policy-eea</a>
             </p>
           </li>
 
@@ -106,7 +106,7 @@ export default function Datenschutz() {
             <p>
               <strong className="text-green-600">10. Server-Logfiles / Cloudflare</strong><br />
               Automatische Erfassung technischer Zugriffsdaten zur Stabilität/Sicherheit (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO). Infos:{" "}
-              <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noreferrer" className="underline">https://www.cloudflare.com/de-de/privacypolicy/</a>
+              <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noreferrer" className="underline focus-visible:underline">https://www.cloudflare.com/de-de/privacypolicy/</a>
             </p>
           </li>
 
@@ -121,7 +121,7 @@ export default function Datenschutz() {
             <p>
               <strong className="text-green-600">12. Google Fonts</strong><br />
               Schriftarten („Google Fonts“) der Google Ireland Limited werden erst nach Einwilligung geladen; dabei wird die IP-Adresse an Google übermittelt. Rechtsgrundlage: Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO. Widerruf jederzeit über die Cookie-Einstellungen. Infos:{" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="underline">https://policies.google.com/privacy</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="underline focus-visible:underline">https://policies.google.com/privacy</a>
             </p>
           </li>
 
@@ -129,7 +129,7 @@ export default function Datenschutz() {
             <p>
               <strong className="text-green-600">13. Google Maps</strong><br />
               Einbindung von Google Maps (Google Ireland Limited). Beim Laden werden technische Informationen an Google übertragen. Nutzung nur nach Einwilligung (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;a DSGVO). Infos:{" "}
-              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="underline">https://policies.google.com/privacy</a>
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer" className="underline focus-visible:underline">https://policies.google.com/privacy</a>
             </p>
           </li>
 
@@ -171,7 +171,7 @@ export default function Datenschutz() {
           <li>
             <p>
               <strong className="text-green-600">19. Datenschutzkontakt</strong><br />
-              <a className="underline" href="mailto:pforzheim@blooddiamond-tattoo.de">pforzheim@blooddiamond-tattoo.de</a> – Antwort i.&nbsp;d.&nbsp;R. innerhalb von 14 Tagen.
+              <a className="underline focus-visible:underline" href="mailto:pforzheim@blooddiamond-tattoo.de">pforzheim@blooddiamond-tattoo.de</a> – Antwort i.&nbsp;d.&nbsp;R. innerhalb von 14 Tagen.
             </p>
           </li>
         </ol>
