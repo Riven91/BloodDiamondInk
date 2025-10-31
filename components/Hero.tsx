@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
+import { heroDesktop, heroMobile } from "@/lib/heroImages";
 
 interface HeroProps {
   title?: ReactNode;
@@ -85,16 +86,32 @@ export function Hero({
     <section
       className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
     >
+      {/* Desktop Hero (ab 768px): hochaufgelöstes WebP via Next/Image */}
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
+        <div className="relative h-full w-full">
+          <Image
+            src={heroDesktop}
+            alt="Blood Diamond Tattoo Ink – Hero"
+            fill
+            sizes="100vw"
+            priority
+            fetchPriority="high"
+            decoding="async"
+            className="object-cover object-[50%_30%]"
+          />
+        </div>
+      </div>
+
       {/* Mobile Hero (unter 768px): einziges Bild */}
       <div className="pointer-events-none absolute inset-0 md:hidden">
         <div className="relative h-[100svh] w-full">
           <Image
-            src="/herobackground3.webp?v=pfz"
-            alt=""
-            aria-hidden="true"
+            src={heroMobile}
+            alt="Blood Diamond Tattoo Ink – Hero (mobil)"
             fill
             sizes="100vw"
             priority
+            fetchPriority="high"
             decoding="async"
             className="object-cover object-[50%_35%]"
           />
