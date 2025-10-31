@@ -68,6 +68,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
+        <div id="klaro"></div>
         {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
         <script
           dangerouslySetInnerHTML={{
