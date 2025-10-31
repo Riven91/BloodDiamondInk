@@ -7,7 +7,7 @@ export default function NotFound() {
         Seite nicht gefunden
       </h1>
       <p className="mx-auto mb-10 max-w-xl text-white/70">
-        Diese Seite existiert nicht – vielleicht vertippt oder verschoben.
+        Diese Seite ist im Dunkel der Tinte verschwunden. Vielleicht wurde sie überstochen oder sie hat nie existiert.
       </p>
 
       <div className="mt-2 flex justify-center">
