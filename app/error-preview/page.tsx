@@ -1,7 +1,8 @@
 "use client";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function ErrorPreview() {
+function ErrorPreviewContent() {
   const sp = useSearchParams();
   const token = sp.get("token");
   const required = process.env.NEXT_PUBLIC_ERROR_PREVIEW_TOKEN;
@@ -16,4 +17,12 @@ export default function ErrorPreview() {
 
   // Token korrekt → absichtlich Fehler werfen → app/error.tsx greift
   throw new Error("Error-Preview: Simulierter Fehler zum Testen der 500-Seite");
+}
+
+export default function ErrorPreview() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ErrorPreviewContent />
+    </Suspense>
+  );
 }
