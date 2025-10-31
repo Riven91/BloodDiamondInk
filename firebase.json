@@ -60,7 +60,7 @@
         "source": "/heilbronn/index.html",
         "headers": [
           {
-            "key": "Cache-Control",
+            "key": "Cache-control",
             "value": "public, max-age=600, must-revalidate"
           }
         ]
