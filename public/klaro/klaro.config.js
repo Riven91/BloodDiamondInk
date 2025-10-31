@@ -43,74 +43,108 @@ const __klaroPersistFlag = (key, value) => {
   } catch {}
 };
 
+// --- Google Maps Controller (stabil, einmalig) ---
 const __klaroMaps = (() => {
-  const selector = 'iframe[data-klaro-maps="1"]';
-  const blockedTitle = 'Karte blockiert – Cookie-Einwilligung erforderlich';
-  let initialized = false;
+  let observing = false;
+  let mo = null;
+  let scheduled = false;
 
   const readConsent = () => {
     try {
       if (typeof window.klaro?.getConsent === 'function') {
         return !!window.klaro.getConsent('google-maps');
       }
+      // Fallback für ältere Klaro-Builds
       return !!window.klaro?.state?.['google-maps'];
     } catch {
       return false;
     }
   };
 
-  const forEachIframe = (handler) => {
-    if (typeof document === 'undefined') return;
-    try {
-      document.querySelectorAll(selector).forEach((iframe) => {
-        if (!iframe || iframe.tagName !== 'IFRAME') return;
-        try {
-          handler(iframe);
-        } catch {}
-      });
-    } catch {}
-  };
-
-  const activateIframe = (iframe) => {
-    try {
-      const stored = iframe.getAttribute('data-src');
-      if (stored && iframe.getAttribute('src') !== stored) {
-        iframe.setAttribute('src', stored);
+  const applyTo = (f, consent) => {
+    if (!f || f.tagName !== 'IFRAME' || !f.matches('iframe[data-klaro-maps="1"]')) return;
+    if (consent) {
+      const src = f.getAttribute('data-src');
+      if (src && !f.src) {
+        if (!f.hasAttribute('loading')) f.setAttribute('loading', 'lazy');
+        if (!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+        f.src = src;
+        f.removeAttribute('title');
+        f.removeAttribute('aria-hidden');
       }
-      iframe.removeAttribute('title');
-      iframe.removeAttribute('aria-hidden');
-    } catch {}
-  };
-
-  const deactivateIframe = (iframe) => {
-    try {
-      const current = iframe.getAttribute('src');
-      if (current) {
-        iframe.setAttribute('data-src', current);
+    } else {
+      const keep = f.getAttribute('data-src') || f.src;
+      if (keep) {
+        f.setAttribute('data-src', keep);
       }
-      iframe.removeAttribute('src');
-      iframe.setAttribute('title', blockedTitle);
-      iframe.setAttribute('aria-hidden', 'true');
-    } catch {}
+      if (f.src) f.removeAttribute('src');
+      f.setAttribute('title', 'Karte blockiert – bitte Google Maps erlauben.');
+      f.setAttribute('aria-hidden', 'true');
+    }
   };
 
-  const applyConsent = (consent) => {
-    forEachIframe(consent ? activateIframe : deactivateIframe);
+  const scan = () => {
+    scheduled = false;
+    const consent = readConsent();
+    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach((f) => applyTo(f, consent));
+  };
+
+  const scheduleScan = () => {
+    if (scheduled) return;
+    scheduled = true;
+    // Mikro-Task statt Timer: bündelt viele DOM-Änderungen in einen Lauf
+    queueMicrotask(scan);
   };
 
   const handle = (consent) => {
-    try {
-      applyConsent(!!consent);
-    } catch {}
+    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach((f) => applyTo(f, consent));
   };
 
   const init = () => {
-    if (initialized) return;
-    initialized = true;
-    handle(readConsent());
+    if (observing) return; // Singleton
+    observing = true;
+
+    // 1) Initialzustand anwenden
+    try {
+      handle(readConsent());
+    } catch {}
+
+    // 2) DOM-Änderungen beobachten (nur hinzugefügte Knoten)
+    try {
+      mo = new MutationObserver((mutations) => {
+        for (const m of mutations) {
+          for (const n of m.addedNodes || []) {
+            if (n.nodeType !== 1) continue; // kein Element
+            // direktes Iframe?
+            if (n.matches?.('iframe[data-klaro-maps="1"]')) {
+              scheduleScan();
+              continue;
+            }
+            // oder enthalten in neuem Container?
+            if (n.querySelector?.('iframe[data-klaro-maps="1"]')) {
+              scheduleScan();
+              continue;
+            }
+          }
+        }
+      });
+      mo.observe(document.documentElement, { childList: true, subtree: true });
+    } catch {}
+
+    // 3) Aufräumen beim Seitenwechsel
+    window.addEventListener(
+      'pagehide',
+      () => {
+        try {
+          mo?.disconnect();
+        } catch {}
+        observing = false;
+      },
+      { once: true }
+    );
   };
 
-  return { handle, init };
+  return { init, handle, readConsent };
 })();
 
 window.klaroConfig = {
@@ -270,26 +304,8 @@ window.klaroConfig = {
       cookies: [],
       callback: (consent) => {
         try {
-          __klaroMaps.handle(consent);
+          __klaroMaps.handle(!!consent);
         } catch {}
-      }
-    },
-    {
-      name: 'google-recaptcha',
-      title: 'Google reCAPTCHA',
-      purposes: ['security'],
-      required: false,
-      default: false,
-      cookies: [/^_grecaptcha$/, /^rc::a$/, /^rc::b$/, /^rc::c$/],
-      callback: (consent) => {
-        if (consent) {
-          __klaroToggleNodeAttribute('script[data-klaro-recaptcha="1"]', 'src', 'data-src', true);
-          __klaroToggleNodeAttribute('iframe[data-klaro-recaptcha="1"]', 'src', 'data-src', true);
-        } else {
-          __klaroToggleNodeAttribute('script[data-klaro-recaptcha="1"]', 'src', 'data-src', false);
-          __klaroToggleNodeAttribute('iframe[data-klaro-recaptcha="1"]', 'src', 'data-src', false);
-        }
-        __klaroDispatchConsentEvent('consent:recaptcha', !!consent);
       }
     },
     {
