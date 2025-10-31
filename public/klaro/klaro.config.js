@@ -1,113 +1,138 @@
-window.klaroConfig = {
-  // Versionsbump erzwingt erneute Einwilligung (Banner erscheint wieder)
-  version: 2,
-  elementID: 'klaro',
-  styling: { theme: ['light', 'bottom'] },
-  lang: 'de',
-  // Hinweis-Banner aktivieren und Einwilligung erzwingen
-  noticeEnabled: true,
-  // Consent Mode v2: wir initialisieren GTM/GA erst nach Zustimmung
-  translations: {
-    de: {
-      consentModal: {
-        title: 'Datenschutzeinstellungen',
-        description:
-          'Wir nutzen Dienste zur Kartenanzeige und zur Reichweitenmessung. Du kannst deine Auswahl jederzeit ändern.',
+// Klaro Config – stabile Basis (eine Runtime, eine Config)
+// Shows once (mustConsent), stores 180 days, links Datenschutz.
+// Services minimal & mit try/catch, damit kein Callback das Modal "blockiert".
+(function(){
+  window.klaroConfig = {
+    version: 2,
+    elementID: 'klaro',
+    cookieName: 'klaro',
+    storageMethod: 'cookie',
+    cookiePath: '/',
+    cookieDomain: undefined, // automatisch aktuelle Domain
+    cookieExpiresAfterDays: 180,
+    default: false,
+    mustConsent: true,
+    acceptAll: true,
+    hideDeclineAll: false,
+    htmlTexts: true,
+    privacyPolicy: '/datenschutz',
+    translations: {
+      de: {
+        consentNotice: {
+          description:
+            'Wir nutzen Cookies/ähnliche Technologien für Komfortfunktionen (z. B. Google Maps). Du entscheidest, was geladen werden darf.',
+          learnMore: 'Cookie-Einstellungen öffnen',
+        },
+        consentModal: {
+          title: 'Cookie-Einstellungen',
+          description:
+            'Wähle aus, welche optionalen Dienste (z. B. Google Maps) wir verwenden dürfen. Details siehe Datenschutzerklärung.',
+        },
+        ok: 'Alle akzeptieren',
+        acceptSelected: 'Auswahl speichern',
+        acceptAll: 'Alle akzeptieren',
+        decline: 'Alle ablehnen',
+        purposes: {
+          comfort: 'Komfort-Funktionen',
+          analytics: 'Reichweitenmessung',
+        },
       },
-      purposes: {
-        analytics: 'Reichweitenmessung (Analytics)',
-        maps: 'Kartenanzeige (Google Maps)',
-        functional: 'Funktional & Infrastruktur',
-      },
-      ok: 'Alle akzeptieren',
-      acceptAll: 'Alle akzeptieren',
-      acceptSelected: 'Auswahl speichern',
-      decline: 'Alle ablehnen',
     },
-  },
-  // Defaults: alles aus, Buttons vollständig anzeigen
-  default: false,
-  mustConsent: true,
-  acceptAll: true,
-  hideDeclineAll: false,
-
-  services: [
-    // --- Analytics / Marketing ---
-    {
-      name: 'google-tag-manager',
-      title: 'Google Tag Manager',
-      purposes: ['analytics'],
-      required: false,
-      cookies: [
-        // GTM/GA4 setzen idR nur bei aktiven Tags/Features Cookies – Liste bleibt schlank
-        /^_ga(_.*)?/,
-        /^_gid$/,
-        /^_gcl_au$/,
-      ],
-      callback: function (consent, service) {
-        // GTM & GA nur nach Zustimmung initialisieren
-        if (consent) {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({ event: 'klaro_consent_granted' });
-        } else {
-          // Consent Mode v2 – alles auf denied
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push({
-            event: 'klaro_consent_denied',
-            analytics_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied',
-            ad_storage: 'denied',
-          });
+    services: [
+      {
+        name: 'google-maps',
+        title: 'Google Maps',
+        purposes: ['comfort'],
+        default: false,
+        required: false,
+        cookies: [],
+        callback: function(consent){
+          try {
+            // Iframes mit data-klaro-maps="1" aktivieren/deaktivieren
+            var iframes = document.querySelectorAll('iframe[data-klaro-maps="1"]');
+            if (consent) {
+              iframes.forEach(function(f){
+                var src = f.getAttribute('data-src');
+                if (src && !f.src) {
+                  if (!f.hasAttribute('loading')) f.setAttribute('loading','lazy');
+                  if (!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+                  f.src = src;
+                  f.removeAttribute('title'); f.removeAttribute('aria-hidden');
+                }
+              });
+            } else {
+              iframes.forEach(function(f){
+                var keep = f.getAttribute('data-src') || f.src;
+                if (keep) {
+                  f.setAttribute('data-src', keep);
+                  f.removeAttribute('src');
+                  f.setAttribute('title','Karte blockiert – Cookie-Einwilligung erforderlich');
+                  f.setAttribute('aria-hidden','true');
+                }
+              });
+            }
+          } catch(e) {}
         }
       },
-    },
-    {
-      name: 'google-analytics',
-      title: 'Google Analytics 4',
-      purposes: ['analytics'],
-      required: false,
-      // Lädt effektiv über GTM – wir deklarieren es nur sichtbar
-      contextualConsentOnly: true,
-    },
-
-    // --- Maps / Externe Medien ---
-    {
-      name: 'google-maps',
-      title: 'Google Maps',
-      purposes: ['maps'],
-      required: false,
-      callback: function (consent, service) {
-        // App-seitig: nur wenn consent === true, Maps-iframe einblenden
-        // (z.B. über data-Attribute/Observer oder CSS-Klasse 'maps-allowed')
-        document.documentElement.classList.toggle('maps-allowed', !!consent);
+      {
+        name: 'google-analytics',
+        title: 'Google Analytics',
+        purposes: ['analytics'],
+        default: false,
+        required: false,
+        cookies: [/^_ga/, /^_gid/, /^_gat/],
+        callback: function(consent){
+          try{
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+            window.gtag('consent','default',{
+              analytics_storage:'denied',
+              ad_storage:'denied',
+              ad_user_data:'denied',
+              ad_personalization:'denied'
+            });
+            window.gtag('consent','update',{ analytics_storage: consent ? 'granted' : 'denied' });
+          }catch(e){}
+        }
       },
-    },
+      {
+        name: 'google-fonts',
+        title: 'Google Fonts',
+        purposes: ['comfort'],
+        default: false,
+        required: false,
+        cookies: [],
+        callback: function(consent){
+          try{
+            // Nur reaktivieren, wenn Markierungen vorhanden sind – sonst no-op.
+            var tags = document.querySelectorAll('link[data-klaro-fonts="1"]');
+            if (consent) {
+              tags.forEach(function(l){ if(!l.href) l.href = l.getAttribute('data-href'); });
+            } else {
+              tags.forEach(function(l){ if(l.href){ l.setAttribute('data-href', l.href); l.removeAttribute('href'); } });
+            }
+          }catch(e){}
+        }
+      }
+    ]
+  };
 
-    // --- Funktional / Infrastruktur (ohne Block) ---
-    {
-      name: 'google-fonts',
-      title: 'Google Fonts (lokal / funktional)',
-      purposes: ['functional'],
-      required: true, // funktional → kein Opt-In, nur Transparenz
-      optOut: false,
-      onlyOnce: true,
-    },
-    {
-      name: 'cloudflare-hosting',
-      title: 'Cloudflare (Hosting/CDN)',
-      purposes: ['functional'],
-      required: true,
-      optOut: false,
-      onlyOnce: true,
-    },
-
-    // Optional später:
-    // {
-    //   name: 'recaptcha',
-    //   title: 'reCAPTCHA (Spam-Schutz)',
-    //   purposes: ['functional'],
-    //   required: false,
-    // },
-  ],
-};
+  // Optional: Beim ersten DOM-Ready vorhandene Google-Maps-Iframes in den Klaro-Flow überführen
+  function prepareMaps(){
+    try{
+      document.querySelectorAll('iframe').forEach(function(f){
+        if (!f || f.tagName !== 'IFRAME') return;
+        var cand = f.src || f.getAttribute('data-src') || '';
+        if (/google\.(com|.[a-z]+)\/maps/i.test(cand)) {
+          if (!f.hasAttribute('data-klaro-maps')) f.setAttribute('data-klaro-maps','1');
+          if (!f.getAttribute('data-src') && f.src) { f.setAttribute('data-src', f.src); f.removeAttribute('src'); }
+        }
+      });
+    }catch(e){}
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', prepareMaps, {once:true});
+  } else {
+    prepareMaps();
+  }
+})();

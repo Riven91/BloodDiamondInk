@@ -96,9 +96,17 @@ export default function RootLayout({
         {/* GTM lädt nur nach Consent + Idle. Für schnelle Tests kann via NEXT_PUBLIC_ENABLE_GTM=false global deaktiviert werden. */}
         {shouldRenderConsentLoader && <GtmConsentLoader />}
 
-        {/* Klaro laden */}
-        <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
-        <Script src="/klaro/klaro.config.js" strategy="afterInteractive" />
+        {/* ✅ Klaro: genau 1 Runtime + 1 Config, beide beforeInteractive */}
+        <Script
+          id="klaro-runtime"
+          src="https://cdn.kiprotect.com/klaro/v0.7.18/klaro.min.js"
+          strategy="beforeInteractive"
+        />
+        <Script
+          id="klaro-config"
+          src="/klaro/klaro.config.js"
+          strategy="beforeInteractive"
+        />
       </body>
     </html>
   );
