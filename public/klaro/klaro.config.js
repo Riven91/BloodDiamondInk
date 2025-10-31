@@ -50,7 +50,10 @@
           try {
             // Iframes mit data-klaro-maps="1" aktivieren/deaktivieren
             var iframes = document.querySelectorAll('iframe[data-klaro-maps="1"]');
+            var root = document.documentElement;
             if (consent) {
+              // Root-Klasse für React-Komponenten setzen
+              if (root && !root.classList.contains('maps-allowed')) root.classList.add('maps-allowed');
               iframes.forEach(function(f){
                 var src = f.getAttribute('data-src');
                 if (src && !f.src) {
@@ -58,9 +61,13 @@
                   if (!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
                   f.src = src;
                   f.removeAttribute('title'); f.removeAttribute('aria-hidden');
+                  // Map sichtbar machen
+                  if (f.hasAttribute('hidden')) f.removeAttribute('hidden');
                 }
               });
             } else {
+              // Root-Klasse entfernen, damit MapWithConsent wieder placeholder zeigt
+              if (root && root.classList.contains('maps-allowed')) root.classList.remove('maps-allowed');
               iframes.forEach(function(f){
                 var keep = f.getAttribute('data-src') || f.src;
                 if (keep) {
@@ -68,9 +75,13 @@
                   f.removeAttribute('src');
                   f.setAttribute('title','Karte blockiert – Cookie-Einwilligung erforderlich');
                   f.setAttribute('aria-hidden','true');
+                  // Map verstecken
+                  if (!f.hasAttribute('hidden')) f.setAttribute('hidden','');
                 }
               });
             }
+            // Optional: Event für React, falls benötigt
+            try { window.dispatchEvent(new CustomEvent('maps-consent-changed', { detail: { allowed: !!consent } })); } catch(e){}
           } catch(e) {}
         }
       },
