@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <g fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Flasche -->
+    <path d="M22 10h20" />
+    <path d="M26 10v6a4 4 0 0 1-1.3 3L22 22v4h20v-4l-2.7-3a4 4 0 0 1-1.3-3v-6" />
+    <!-- Körper -->
+    <rect x="16" y="26" width="32" height="24" rx="4" ry="4"/>
+    <!-- Label (leer) -->
+    <rect x="22" y="34" width="20" height="8" rx="2" ry="2"/>
+    <!-- Deckel angedeutet -->
+    <path d="M24 10v-2h16v2" />
+  </g>
+</svg>
