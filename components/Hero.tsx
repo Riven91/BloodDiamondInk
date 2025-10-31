@@ -175,11 +175,12 @@ export function Hero({
               {/* Logo + Stars Row */}
               <div className="flex items-center justify-center" style={{ gap: '8px' }}>
                 <Image
-                  src="/Google__G__logo.svg.png"
+                  src="/Google__G__logo.png"
                   alt="Google-Logo"
                   width={32}
                   height={32}
                   className="w-7 h-7 md:w-8 md:h-8"
+                  fetchPriority="low"
                 />
                 <div style={{ color: '#FFD700', fontSize: '18px', letterSpacing: '3px' }} aria-label="5 von 5 Sternen">
                   ★★★★★
