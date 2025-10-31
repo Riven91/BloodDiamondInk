@@ -159,10 +159,23 @@ const __klaroAutoMaps = (() => {
     if (!(iframe instanceof Element)) return;
     if (!iframe.matches(selectors.legacy)) return;
 
+    const attrSrc = iframe.getAttribute('src');
+    const dataSrc = iframe.getAttribute('data-src');
+    const propSrc = (() => {
+      try {
+        return iframe.src;
+      } catch {
+        return '';
+      }
+    })();
+    const effectiveSrc = attrSrc && attrSrc.trim() ? attrSrc : propSrc;
+    const hasEffectiveSrc = !!(effectiveSrc && effectiveSrc !== 'about:blank');
+
     if (consent) {
-      const stored = iframe.getAttribute('data-src');
-      if (!iframe.src && stored) {
-        iframe.src = stored;
+      if (!attrSrc || !attrSrc.trim()) {
+        if (dataSrc && dataSrc !== iframe.getAttribute('src')) {
+          iframe.setAttribute('src', dataSrc);
+        }
       }
       if (!iframe.hasAttribute('loading')) iframe.setAttribute('loading', 'lazy');
       if (!iframe.hasAttribute('referrerpolicy')) {
@@ -173,15 +186,14 @@ const __klaroAutoMaps = (() => {
       return;
     }
 
-    const currentSrc = iframe.getAttribute('src');
-    if (currentSrc) {
-      if (!iframe.hasAttribute('data-src')) {
-        iframe.setAttribute('data-src', currentSrc);
-      }
-      try {
-        iframe.removeAttribute('src');
-      } catch {}
+    if (hasEffectiveSrc && (!dataSrc || !dataSrc.trim())) {
+      iframe.setAttribute('data-src', effectiveSrc);
     }
+
+    try {
+      iframe.removeAttribute('src');
+    } catch {}
+
     iframe.setAttribute('title', 'Karte blockiert – bitte Google Maps erlauben.');
     iframe.setAttribute('aria-hidden', 'true');
   };
