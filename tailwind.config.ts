@@ -17,9 +17,9 @@ const config: Config = {
           muted: "#1A1A1A"
         },
         brand: {
-          DEFAULT: "#16A34A", // Grün
-          hover: "#15803D", // Dunkelgrün
-          ring: "#4ADE80" // Hellgrün
+          DEFAULT: "#16A34A", // Marken-Grün (kräftig)
+          hover: "#15803D", // Dunkler Hover
+          ring: "#16A34A" // Fokus-Ring = Marken-Grün (nicht pastell)
         }
       },
       fontFamily: {
