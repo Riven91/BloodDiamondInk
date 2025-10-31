@@ -56,7 +56,7 @@ const __klaroAutoMaps = (() => {
   const selectors = {
     triggers: '[data-map-activate]',
     slots: '.gmaps-slot',
-    legacy: 'iframe[data-klaro-maps="1"][data-src]'
+    legacy: 'iframe[data-klaro-maps="1"]'
   };
 
   const queue = (fn) => {
@@ -160,9 +160,9 @@ const __klaroAutoMaps = (() => {
     if (!iframe.matches(selectors.legacy)) return;
 
     if (consent) {
-      const src = iframe.getAttribute('data-src');
-      if (src && iframe.src !== src) {
-        iframe.src = src;
+      const stored = iframe.getAttribute('data-src');
+      if (!iframe.src && stored) {
+        iframe.src = stored;
       }
       if (!iframe.hasAttribute('loading')) iframe.setAttribute('loading', 'lazy');
       if (!iframe.hasAttribute('referrerpolicy')) {
@@ -173,9 +173,11 @@ const __klaroAutoMaps = (() => {
       return;
     }
 
-    const keep = iframe.getAttribute('data-src');
-    if (keep) iframe.setAttribute('data-src', keep);
-    if (iframe.src) {
+    const currentSrc = iframe.getAttribute('src');
+    if (currentSrc) {
+      if (!iframe.hasAttribute('data-src')) {
+        iframe.setAttribute('data-src', currentSrc);
+      }
       try {
         iframe.removeAttribute('src');
       } catch {}
