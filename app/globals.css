@@ -128,11 +128,11 @@ main {
   }
 }
 
-/* Hinweis: CSS background-image lädt nicht lazy. Für echtes Lazy ggf. später auf <Image fill> migrieren. */
-/* Desktop hero background */
+/* Desktop hero background: deaktiviert (Rendering via <Image> in Hero.tsx) */
 @media (min-width: 768px) {
   .hero-section {
-    background-image: url("/herofinal.png") !important;
+    background: none !important;
+    background-image: none !important;
     background-position: center 30% !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
