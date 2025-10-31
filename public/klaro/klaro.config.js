@@ -43,108 +43,261 @@ const __klaroPersistFlag = (key, value) => {
   } catch {}
 };
 
-// --- Google Maps Controller (stabil, einmalig) ---
-const __klaroMaps = (() => {
-  let observing = false;
-  let mo = null;
-  let scheduled = false;
+// --- Google Maps Auto Activation ---
+const __klaroAutoMaps = (() => {
+  if (typeof window === 'undefined' || typeof document === 'undefined') {
+    return { init() {}, onConsent() {} };
+  }
+
+  if (window.__klaroAutoMaps && typeof window.__klaroAutoMaps.onConsent === 'function') {
+    return window.__klaroAutoMaps;
+  }
+
+  const selectors = {
+    triggers: '[data-map-activate]',
+    slots: '.gmaps-slot',
+    legacy: 'iframe[data-klaro-maps="1"][data-src]'
+  };
+
+  const queue = (fn) => {
+    try {
+      if (typeof queueMicrotask === 'function') {
+        queueMicrotask(fn);
+      } else {
+        Promise.resolve().then(fn);
+      }
+    } catch {}
+  };
 
   const readConsent = () => {
     try {
       if (typeof window.klaro?.getConsent === 'function') {
         return !!window.klaro.getConsent('google-maps');
       }
-      // Fallback für ältere Klaro-Builds
       return !!window.klaro?.state?.['google-maps'];
     } catch {
       return false;
     }
   };
 
-  const applyTo = (f, consent) => {
-    if (!f || f.tagName !== 'IFRAME' || !f.matches('iframe[data-klaro-maps="1"]')) return;
-    if (consent) {
-      const src = f.getAttribute('data-src');
-      if (src && !f.src) {
-        if (!f.hasAttribute('loading')) f.setAttribute('loading', 'lazy');
-        if (!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-        f.src = src;
-        f.removeAttribute('title');
-        f.removeAttribute('aria-hidden');
-      }
-    } else {
-      const keep = f.getAttribute('data-src') || f.src;
-      if (keep) {
-        f.setAttribute('data-src', keep);
-      }
-      if (f.src) f.removeAttribute('src');
-      f.setAttribute('title', 'Karte blockiert – bitte Google Maps erlauben.');
-      f.setAttribute('aria-hidden', 'true');
-    }
-  };
+  let initialized = false;
+  let observer = null;
+  let scheduled = false;
+  let consentState = null;
+  let triggerSet = new WeakSet();
+  const slotConfigCache = new WeakMap();
 
-  const scan = () => {
-    scheduled = false;
-    const consent = readConsent();
-    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach((f) => applyTo(f, consent));
-  };
+  const getSlotConfig = (slot) => {
+    if (!(slot instanceof Element)) return null;
+    if (slotConfigCache.has(slot)) return slotConfigCache.get(slot);
 
-  const scheduleScan = () => {
-    if (scheduled) return;
-    scheduled = true;
-    // Mikro-Task statt Timer: bündelt viele DOM-Änderungen in einen Lauf
-    queueMicrotask(scan);
-  };
-
-  const handle = (consent) => {
-    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach((f) => applyTo(f, consent));
-  };
-
-  const init = () => {
-    if (observing) return; // Singleton
-    observing = true;
-
-    // 1) Initialzustand anwenden
+    let config = null;
     try {
-      handle(readConsent());
+      const script = slot.querySelector('script.gmaps-config[type="application/json"]') ||
+        slot.querySelector('script.gmaps-config');
+      if (script) {
+        const text = script.textContent || script.innerText || '';
+        if (text && text.trim()) {
+          const parsed = JSON.parse(text);
+          if (parsed && typeof parsed === 'object') {
+            config = parsed;
+          }
+        }
+      }
     } catch {}
 
-    // 2) DOM-Änderungen beobachten (nur hinzugefügte Knoten)
+    slotConfigCache.set(slot, config);
+    return config;
+  };
+
+  const ensureSlot = (slot, consent) => {
+    if (!(slot instanceof Element)) return;
+    const existing = slot.querySelector('iframe[data-klaro-slot="1"]');
+    if (!consent) {
+      if (existing) {
+        try {
+          existing.remove();
+        } catch {}
+      }
+      return;
+    }
+
+    const config = getSlotConfig(slot);
+    if (!config || !config.url) return;
+
+    if (existing) {
+      if (!existing.src) {
+        existing.src = config.url;
+      }
+      return;
+    }
+
     try {
-      mo = new MutationObserver((mutations) => {
+      const iframe = document.createElement('iframe');
+      iframe.setAttribute('data-klaro-slot', '1');
+      iframe.src = config.url;
+      iframe.setAttribute('loading', config.loading || 'lazy');
+      iframe.setAttribute('allowfullscreen', '');
+      iframe.setAttribute('referrerpolicy', config.referrerpolicy || 'strict-origin-when-cross-origin');
+      iframe.setAttribute('title', config.title || 'Google Maps');
+
+      if (config.attributes && typeof config.attributes === 'object') {
+        Object.keys(config.attributes).forEach((key) => {
+          const value = config.attributes[key];
+          if (value === null || value === undefined) return;
+          try {
+            iframe.setAttribute(key, String(value));
+          } catch {}
+        });
+      }
+
+      slot.appendChild(iframe);
+    } catch {}
+  };
+
+  const ensureLegacyIframe = (iframe, consent) => {
+    if (!(iframe instanceof Element)) return;
+    if (!iframe.matches(selectors.legacy)) return;
+
+    if (consent) {
+      const src = iframe.getAttribute('data-src');
+      if (src && iframe.src !== src) {
+        iframe.src = src;
+      }
+      if (!iframe.hasAttribute('loading')) iframe.setAttribute('loading', 'lazy');
+      if (!iframe.hasAttribute('referrerpolicy')) {
+        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      }
+      iframe.removeAttribute('title');
+      iframe.removeAttribute('aria-hidden');
+      return;
+    }
+
+    const keep = iframe.getAttribute('data-src');
+    if (keep) iframe.setAttribute('data-src', keep);
+    if (iframe.src) {
+      try {
+        iframe.removeAttribute('src');
+      } catch {}
+    }
+    iframe.setAttribute('title', 'Karte blockiert – bitte Google Maps erlauben.');
+    iframe.setAttribute('aria-hidden', 'true');
+  };
+
+  const activateTriggers = () => {
+    if (!consentState) return;
+    try {
+      document.querySelectorAll(selectors.triggers).forEach((el) => {
+        if (!(el instanceof Element)) return;
+        if (triggerSet.has(el)) return;
+        triggerSet.add(el);
+        queue(() => {
+          try {
+            el.click();
+          } catch {}
+        });
+      });
+    } catch {}
+  };
+
+  const applyToAll = (consent) => {
+    try {
+      if (consent) {
+        activateTriggers();
+      }
+      document.querySelectorAll(selectors.slots).forEach((slot) => ensureSlot(slot, consent));
+      document.querySelectorAll(selectors.legacy).forEach((iframe) => ensureLegacyIframe(iframe, consent));
+    } catch {}
+  };
+
+  const runScheduled = () => {
+    scheduled = false;
+    const consent = typeof consentState === 'boolean' ? consentState : readConsent();
+    if (typeof consentState !== 'boolean') {
+      consentState = consent;
+    }
+    applyToAll(consent);
+  };
+
+  const schedule = () => {
+    if (scheduled) return;
+    scheduled = true;
+    queue(runScheduled);
+  };
+
+  const watch = () => {
+    if (observer) return;
+    try {
+      observer = new MutationObserver((mutations) => {
+        let relevant = false;
         for (const m of mutations) {
-          for (const n of m.addedNodes || []) {
-            if (n.nodeType !== 1) continue; // kein Element
-            // direktes Iframe?
-            if (n.matches?.('iframe[data-klaro-maps="1"]')) {
-              scheduleScan();
-              continue;
+          if (relevant) break;
+          for (const node of m.addedNodes || []) {
+            if (!node || node.nodeType !== 1) continue;
+            const el = node;
+            if (el.matches?.(selectors.triggers) || el.matches?.(selectors.slots) || el.matches?.(selectors.legacy)) {
+              relevant = true;
+              break;
             }
-            // oder enthalten in neuem Container?
-            if (n.querySelector?.('iframe[data-klaro-maps="1"]')) {
-              scheduleScan();
-              continue;
+            if (el.querySelector?.(`${selectors.triggers},${selectors.slots},${selectors.legacy}`)) {
+              relevant = true;
+              break;
             }
           }
         }
+        if (relevant) schedule();
       });
-      mo.observe(document.documentElement, { childList: true, subtree: true });
+      observer.observe(document.documentElement, { childList: true, subtree: true });
     } catch {}
+  };
 
-    // 3) Aufräumen beim Seitenwechsel
+  const init = () => {
+    if (initialized) return;
+    initialized = true;
+    consentState = readConsent();
+    applyToAll(consentState);
+    watch();
+
     window.addEventListener(
       'pagehide',
       () => {
         try {
-          mo?.disconnect();
+          observer?.disconnect();
         } catch {}
-        observing = false;
+        observer = null;
+        scheduled = false;
+        initialized = false;
+        triggerSet = new WeakSet();
       },
       { once: true }
     );
   };
 
-  return { init, handle, readConsent };
+  const setConsent = (value) => {
+    const next = !!value;
+    consentState = next;
+    if (!next) {
+      triggerSet = new WeakSet();
+    }
+    applyToAll(next);
+  };
+
+  const api = {
+    init: () => {
+      try {
+        init();
+      } catch {}
+    },
+    onConsent: (value) => {
+      try {
+        init();
+        setConsent(value);
+      } catch {}
+    }
+  };
+
+  window.__klaroAutoMaps = api;
+  return api;
 })();
 
 window.klaroConfig = {
@@ -304,7 +457,7 @@ window.klaroConfig = {
       cookies: [],
       callback: (consent) => {
         try {
-          __klaroMaps.handle(!!consent);
+          __klaroAutoMaps.onConsent(!!consent);
         } catch {}
       }
     },
@@ -347,7 +500,7 @@ window.klaroConfig = {
 if (typeof window !== 'undefined') {
   const __klaroInitMaps = () => {
     try {
-      __klaroMaps.init();
+      __klaroAutoMaps.init();
     } catch {}
   };
 
