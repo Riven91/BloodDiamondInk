@@ -14,6 +14,16 @@ export const metadata: Metadata = {
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    shortcut: ["/favicon.ico"],
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     url: "/",
@@ -76,6 +86,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Hard Fallbacks – stellen Favicons unabhängig von Metadata sicher */}
+        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+      </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
         {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
         <script
