@@ -1,24 +1,9 @@
-'use client';
+import Link from "next/link";
+import Image from "next/image";
 
-import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import { MapWithConsent } from "@/components/MapWithConsent";
 
 export default function StandorteClientPage() {
-  const [consent, setConsent] = useState(false);
-
-  useEffect(() => {
-    const storedConsent = localStorage.getItem('mapConsent');
-    if (storedConsent === 'true') {
-      setConsent(true);
-    }
-  }, []);
-
-  const handleConsent = () => {
-    localStorage.setItem('mapConsent', 'true');
-    setConsent(true);
-  };
-
   return (
     <main className="mx-auto max-w-6xl px-4 py-12">
       <h1 className="text-3xl font-bold">Standorte</h1>
@@ -52,35 +37,18 @@ export default function StandorteClientPage() {
         </div>
       </div>
 
-      {!consent ? (
-        <div className="mt-12 rounded-2xl border p-6">
-          <p>
-            Mit Klick lädst du Inhalte von Google Maps. Es können personenbezogene Daten an Google übertragen werden. Details in unserer{' '}
-            <Link href="/datenschutz" className="underline">
-              Datenschutzerklärung
-            </Link>
-            .
-          </p>
-          <button onClick={handleConsent} className="btn-primary mt-3">
-            Karte laden
-          </button>
+      <div className="mt-12 overflow-hidden rounded-2xl border">
+        <div className="flex justify-center">
+          <MapWithConsent
+            src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
+            title="Google Maps – Blood Diamond Tattoo Ink. Standorte"
+            height="400"
+            className="h-[400px] w-full"
+            placeholderClassName="h-[400px] w-full"
+            allowFullScreen
+          />
         </div>
-      ) : (
-        <div className="mt-6 overflow-hidden rounded-2xl border">
-          <div className="flex justify-center">
-            <iframe
-              data-klaro-maps="1"
-              src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
-              title="Karte blockiert – Cookie-Einwilligung erforderlich"
-              width="100%"
-              height="400"
-              style={{ borderRadius: '0.5rem', border: '1px solid #404040' }}
-              allowFullScreen
-              loading="lazy"
-            ></iframe>
-          </div>
-        </div>
-      )}
+      </div>
 
       <div className="mt-12 flex justify-center">
         <Image
@@ -91,7 +59,6 @@ export default function StandorteClientPage() {
           className="opacity-30 brightness-110 [filter:drop-shadow(0_0_10px_rgba(16,185,129,0.75))_drop-shadow(0_0_16px_rgba(16,185,129,0.45))]"
         />
       </div>
-
     </main>
   );
 }

@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import Script from "next/script";
 import { Hero } from "@/components/Hero";
+import { MapWithConsent } from "@/components/MapWithConsent";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
@@ -250,17 +251,14 @@ export default function HeilbronnPage() {
           </p>
           <div className="mt-8 overflow-hidden rounded-2xl border border-blooddiamond-primary/40">
             <div className="flex justify-center">
-              <iframe
-                data-klaro-maps="1"
-                data-src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
-                title="Karte blockiert – Cookie-Einwilligung erforderlich"
-                aria-hidden="true"
-                width="100%"
+              <MapWithConsent
+                src="https://www.google.com/maps/d/u/0/embed?mid=1_kecyb5qxEgIkCvVZX0YKWE_GIozRyQ&ehbc=2E312F&noprof=1"
+                title="Google Maps – Blood Diamond Tattoo Ink. Heilbronn"
                 height="400"
-                style={{ borderRadius: '0.5rem', border: '1px solid #404040' }}
+                className="h-[400px] w-full"
+                placeholderClassName="h-[400px] w-full"
                 allowFullScreen
-                loading="lazy"
-              ></iframe>
+              />
             </div>
           </div>
         </div>
