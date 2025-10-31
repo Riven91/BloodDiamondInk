@@ -68,6 +68,43 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
+        {/* Klaro Autoshow Fallback: Erzwingt Banner beim Erstaufruf, falls kein Consent-Cookie existiert */}
+        <script
+          id="klaro-autoshow"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                try {
+                  var cfg = window.klaroConfig || {};
+                  var cname = cfg.cookieName || 'klaro';
+                  var hasConsent = document.cookie
+                    .split('; ')
+                    .some(function (s) {
+                      return s.indexOf(cname + '=') === 0;
+                    });
+                  if (!hasConsent) {
+                    // Warten bis Klaro initialisiert ist, dann Modal zeigen
+                    window.addEventListener(
+                      'klaroInitialized',
+                      function () {
+                        try {
+                          window.klaro && window.klaro.show();
+                        } catch (e) {}
+                      },
+                      { once: true },
+                    );
+                    // Fallback, falls Event ausbleibt
+                    setTimeout(function () {
+                      try {
+                        window.klaro && window.klaro.show();
+                      } catch (e) {}
+                    }, 800);
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <div id="klaro"></div>
         {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
         <script
