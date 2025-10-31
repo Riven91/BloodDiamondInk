@@ -58,7 +58,7 @@ function ContactNotice() {
         href="https://kontakt.blooddiamond-tattoo.de/boeblingen/"
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-block bg-brand hover:bg-brand-hover text-white py-3 px-6 rounded-md uppercase tracking-wide"
+        className="inline-block bg-brand hover:bg-brand-hover text-white py-3 px-6 rounded-md uppercase tracking-wide focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
       >
         Kontaktseite öffnen
       </a>
@@ -140,8 +140,8 @@ export default function BoeblingenPage() {
             <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
               <h3 className="font-semibold uppercase tracking-wide text-blooddiamond-accent">Kontakt</h3>
               <p className="mt-2">
-                Telefon: <a href="tel:+491624204789" className="hover:text-blooddiamond-accent">0162 4204789</a>
-                <br />E-Mail: <a href="mailto:boeblingen@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent">boeblingen@blooddiamond-tattoo.de</a>
+                Telefon: <a href="tel:+491624204789" className="hover:text-blooddiamond-accent focus-visible:underline">0162 4204789</a>
+                <br />E-Mail: <a href="mailto:boeblingen@blooddiamond-tattoo.de" className="hover:text-blooddiamond-accent focus-visible:underline">boeblingen@blooddiamond-tattoo.de</a>
               </p>
             </div>
             <div className="rounded-xl border border-blooddiamond-primary/40 bg-blooddiamond-background/70 p-4">
