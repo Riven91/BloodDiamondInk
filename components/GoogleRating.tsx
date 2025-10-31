@@ -8,11 +8,12 @@ export default function GoogleRating({ city }: { city: string }) {
       </span>
       <div className="flex items-center gap-1">
         <Image
-          src="/Google__G__logo.svg.png"
+          src="/Google__G__logo.png"
           alt="Google-Logo"
           width={28}
           height={28}
           className="object-contain w-7 h-7 md:w-8 md:h-8"
+          fetchPriority="low"
         />
         <div className="flex text-yellow-400">
           {[...Array(5)].map((_, i) => (
