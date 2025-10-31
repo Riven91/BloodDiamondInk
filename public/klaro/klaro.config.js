@@ -1,59 +1,3 @@
-const __klaroConsentGM = () => {
-  try {
-    if (typeof window.klaro?.getConsent === 'function') return !!window.klaro.getConsent('google-maps');
-    return !!window.klaro?.state?.['google-maps'];
-  } catch {
-    return false;
-  }
-};
-
-const __klaroActivateMapIframe = (f) => {
-  if (!f || f.tagName !== 'IFRAME') return;
-  if (!f.matches('iframe[data-klaro-maps="1"]')) return;
-  const src = f.getAttribute('data-src');
-  if (src && !f.src) {
-    if (!f.hasAttribute('loading')) f.setAttribute('loading', 'lazy');
-    if (!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
-    f.src = src;
-    f.removeAttribute('title');
-    f.removeAttribute('aria-hidden');
-  }
-};
-
-const __klaroDeactivateMapIframe = (f) => {
-  if (!f || f.tagName !== 'IFRAME') return;
-  if (!f.matches('iframe[data-klaro-maps="1"]')) return;
-  const keep = f.getAttribute('data-src') || f.src;
-  if (keep) {
-    f.setAttribute('data-src', keep);
-    f.removeAttribute('src');
-    f.setAttribute('title', 'Karte blockiert – Cookie-Einwilligung erforderlich');
-    f.setAttribute('aria-hidden', 'true');
-  }
-};
-
-const __klaroPrepareAllMaps = () => {
-  document.querySelectorAll('iframe').forEach((f) => {
-    if (!f || f.tagName !== 'IFRAME') return;
-    const candidate = f.src || f.getAttribute('data-src') || '';
-    if (/google\.(com|.[a-z]+)\/maps/i.test(candidate)) {
-      if (!f.hasAttribute('data-klaro-maps')) f.setAttribute('data-klaro-maps', '1');
-      if (!f.getAttribute('data-src') && f.src) {
-        f.setAttribute('data-src', f.src);
-        f.removeAttribute('src');
-      }
-    }
-  });
-};
-
-const __klaroApplyAllMaps = () => {
-  if (__klaroConsentGM()) {
-    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach(__klaroActivateMapIframe);
-  } else {
-    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach(__klaroDeactivateMapIframe);
-  }
-};
-
 const __klaroForEach = (selector, handler) => {
   try {
     document.querySelectorAll(selector).forEach((el) => {
@@ -99,87 +43,75 @@ const __klaroPersistFlag = (key, value) => {
   } catch {}
 };
 
-/** Deferred-Anwendung nach Render, entprellt */
-const __klaroApplyAllMapsDeferred = (() => {
-  let pending = false;
-  return () => {
-    if (pending) return;
-    pending = true;
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        pending = false;
-        try {
-          __klaroPrepareAllMaps?.();
-        } catch {}
-        try {
-          __klaroApplyAllMaps?.();
-        } catch {}
-      }, 100);
-    });
-  };
-})();
+const __klaroMaps = (() => {
+  const selector = 'iframe[data-klaro-maps="1"]';
+  const blockedTitle = 'Karte blockiert – Cookie-Einwilligung erforderlich';
+  let initialized = false;
 
-/** MutationObserver: reagiert nur auf hinzugefügte Knoten */
-const __klaroStartObserver = () => {
-  try {
-    if (window.__klaroMOStarted) return;
-    window.__klaroMOStarted = true;
-
-    const mo = new MutationObserver((recs) => {
-      // Nur wenn Consent bereits vorliegt
-      try {
-        if (!__klaroConsentGM?.()) return;
-      } catch {
-        return;
-      }
-      let hit = false;
-      for (const r of recs) {
-        r.addedNodes?.forEach((n) => {
-          if (n.nodeType !== 1) return;
-          if (n.tagName === 'IFRAME' && n.matches?.('iframe[data-klaro-maps="1"]')) hit = true;
-          n.querySelectorAll?.('iframe[data-klaro-maps="1"]').forEach(() => {
-            hit = true;
-          });
-        });
-      }
-      if (hit) __klaroApplyAllMapsDeferred();
-    });
-
-    mo.observe(document.body, { childList: true, subtree: true });
-  } catch {}
-};
-
-/** Navigation-Hooks für Next.js SPA: nach push/replace & popstate anwenden */
-const __klaroInstallNavHooks = () => {
-  try {
-    if (window.__klaroNavPatched) return;
-    window.__klaroNavPatched = true;
-
-    // Back/Forward
-    window.addEventListener('popstate', __klaroApplyAllMapsDeferred);
-
-    // Forward-Navigation via history.* (Next.js Links)
-    const H = window.history;
-    const p = H.pushState.bind(H);
-    const r = H.replaceState.bind(H);
-    H.pushState = function () {
-      const ret = p(...arguments);
-      __klaroApplyAllMapsDeferred();
-      return ret;
-    };
-    H.replaceState = function () {
-      const ret = r(...arguments);
-      __klaroApplyAllMapsDeferred();
-      return ret;
-    };
-
-    // Optional: Pages Router Events, falls vorhanden
+  const readConsent = () => {
     try {
-      const ev = window?.next?.router?.events;
-      ev?.on?.('routeChangeComplete', __klaroApplyAllMapsDeferred);
+      if (typeof window.klaro?.getConsent === 'function') {
+        return !!window.klaro.getConsent('google-maps');
+      }
+      return !!window.klaro?.state?.['google-maps'];
+    } catch {
+      return false;
+    }
+  };
+
+  const forEachIframe = (handler) => {
+    if (typeof document === 'undefined') return;
+    try {
+      document.querySelectorAll(selector).forEach((iframe) => {
+        if (!iframe || iframe.tagName !== 'IFRAME') return;
+        try {
+          handler(iframe);
+        } catch {}
+      });
     } catch {}
-  } catch {}
-};
+  };
+
+  const activateIframe = (iframe) => {
+    try {
+      const stored = iframe.getAttribute('data-src');
+      if (stored && iframe.getAttribute('src') !== stored) {
+        iframe.setAttribute('src', stored);
+      }
+      iframe.removeAttribute('title');
+      iframe.removeAttribute('aria-hidden');
+    } catch {}
+  };
+
+  const deactivateIframe = (iframe) => {
+    try {
+      const current = iframe.getAttribute('src');
+      if (current) {
+        iframe.setAttribute('data-src', current);
+      }
+      iframe.removeAttribute('src');
+      iframe.setAttribute('title', blockedTitle);
+      iframe.setAttribute('aria-hidden', 'true');
+    } catch {}
+  };
+
+  const applyConsent = (consent) => {
+    forEachIframe(consent ? activateIframe : deactivateIframe);
+  };
+
+  const handle = (consent) => {
+    try {
+      applyConsent(!!consent);
+    } catch {}
+  };
+
+  const init = () => {
+    if (initialized) return;
+    initialized = true;
+    handle(readConsent());
+  };
+
+  return { handle, init };
+})();
 
 window.klaroConfig = {
   version: 1,
@@ -337,11 +269,27 @@ window.klaroConfig = {
       default: false,
       cookies: [],
       callback: (consent) => {
-        // Bereits vorhandene Iframes auf der aktuellen Seite in den Klaro-Flow überführen
-        __klaroPrepareAllMaps();
-
-        // Aktivierung/Deaktivierung leicht verzögert, damit DOM nach Consent-Modal stabil ist
-        requestAnimationFrame(() => setTimeout(__klaroApplyAllMaps, 120));
+        try {
+          __klaroMaps.handle(consent);
+        } catch {}
+      }
+    },
+    {
+      name: 'google-recaptcha',
+      title: 'Google reCAPTCHA',
+      purposes: ['security'],
+      required: false,
+      default: false,
+      cookies: [/^_grecaptcha$/, /^rc::a$/, /^rc::b$/, /^rc::c$/],
+      callback: (consent) => {
+        if (consent) {
+          __klaroToggleNodeAttribute('script[data-klaro-recaptcha="1"]', 'src', 'data-src', true);
+          __klaroToggleNodeAttribute('iframe[data-klaro-recaptcha="1"]', 'src', 'data-src', true);
+        } else {
+          __klaroToggleNodeAttribute('script[data-klaro-recaptcha="1"]', 'src', 'data-src', false);
+          __klaroToggleNodeAttribute('iframe[data-klaro-recaptcha="1"]', 'src', 'data-src', false);
+        }
+        __klaroDispatchConsentEvent('consent:recaptcha', !!consent);
       }
     },
     {
@@ -381,21 +329,15 @@ window.klaroConfig = {
 };
 
 if (typeof window !== 'undefined') {
-  const __klaroBootstrapMaps = () => {
-    // Initial einmal vorbereiten & anwenden
+  const __klaroInitMaps = () => {
     try {
-      __klaroPrepareAllMaps?.();
+      __klaroMaps.init();
     } catch {}
-    __klaroApplyAllMapsDeferred();
-
-    // Observer + NavHooks starten
-    __klaroStartObserver();
-    __klaroInstallNavHooks();
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', __klaroBootstrapMaps, { once: true });
+    document.addEventListener('DOMContentLoaded', __klaroInitMaps, { once: true });
   } else {
-    __klaroBootstrapMaps();
+    __klaroInitMaps();
   }
 }
