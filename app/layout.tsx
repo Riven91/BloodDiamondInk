@@ -120,17 +120,106 @@ export default function RootLayout({
         </LayoutWrapper>
         <Footer />
 
-        {/* Consent-Defaults: keine optionalen Dienste ohne Opt-in */}
-        <Script id="consent-defaults" strategy="beforeInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        // Wir nutzen keine Analytics/Ads – Defaults auf denied.
-        gtag('consent','default', {
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          ad_storage: 'denied',
-          analytics_storage: 'denied'
-        });`}
+        {/* === Klaro (Cookie-Consent) – Single Source of Truth === */}
+        {/* 1) Config zuerst laden (stellt window.klaroConfig bereit) */}
+        <Script
+          id="klaro-config"
+          src="/klaro/klaro.config.js"
+          strategy="beforeInteractive"
+        />
+        {/* 2) Klaro Runtime – muss nach der Config kommen */}
+        <Script
+          id="klaro-runtime"
+          src="/klaro/klaro.js"
+          strategy="beforeInteractive"
+        />
+        {/* 3) Bootstrap: Maps-iframes nur nach Consent aktivieren; GA4/GTM strikt erst nach Zustimmung.
+              Wichtig: keine Doppel-Initialisierung. */}
+        <Script id="klaro-bootstrap" strategy="beforeInteractive">
+          {`
+(function(){
+  if (window.__bd_klaro_bootstrapped) return;
+  window.__bd_klaro_bootstrapped = true;
+
+  // Hilfen
+  const isMapsConsent = () => {
+    try{
+      if (typeof window.klaro?.getConsent === 'function') return !!window.klaro.getConsent('google-maps');
+      return !!window.klaro?.state?.['google-maps'];
+    }catch{return false;}
+  };
+  const markMapsIframes = () => {
+    document.querySelectorAll('iframe').forEach((f)=>{
+      if(!f || f.tagName!=='IFRAME') return;
+      const cand = f.getAttribute('data-src') || f.src || '';
+      if(/google\\.(com|.[a-z]+)\\/maps/i.test(cand)){
+        if(!f.hasAttribute('data-klaro-maps')) f.setAttribute('data-klaro-maps','1');
+        if(!f.getAttribute('data-src') && f.src){
+          f.setAttribute('data-src', f.src);
+          f.removeAttribute('src');
+        }
+      }
+    });
+  };
+  const applyMaps = () => {
+    const on = isMapsConsent();
+    document.querySelectorAll('iframe[data-klaro-maps="1"]').forEach((f)=>{
+      if(on){
+        const src = f.getAttribute('data-src');
+        if(src && !f.src){
+          if(!f.hasAttribute('loading')) f.setAttribute('loading','lazy');
+          if(!f.hasAttribute('referrerpolicy')) f.setAttribute('referrerpolicy','strict-origin-when-cross-origin');
+          f.src = src;
+          f.removeAttribute('title');
+          f.removeAttribute('aria-hidden');
+        }
+      }else{
+        const keep = f.getAttribute('data-src') || f.src;
+        if(keep){
+          f.setAttribute('data-src', keep);
+          f.removeAttribute('src');
+          f.setAttribute('title','Karte blockiert – Cookie-Einwilligung erforderlich');
+          f.setAttribute('aria-hidden','true');
+        }
+      }
+    });
+  };
+  const deferApply = (()=>{let p=false; return ()=>{ if(p) return; p=true; requestAnimationFrame(()=>setTimeout(()=>{p=false; try{markMapsIframes();}catch{} try{applyMaps();}catch{}},100)); };})();
+
+  // Einmal initial (nach DOM)
+  const init = ()=>{ try{markMapsIframes();}catch{} deferApply(); };
+  if (document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init, {once:true}); } else { init(); }
+
+  // Beobachte DOM-Zugänge (nur wenn bereits Consent vorhanden – sonst reicht deferApply nach Consent)
+  try{
+    const mo = new MutationObserver((recs)=>{
+      if(!isMapsConsent()) return;
+      let hit=false;
+      for(const r of recs){
+        r.addedNodes?.forEach((n)=>{
+          if(n.nodeType!==1) return;
+          if(n.tagName==='IFRAME' && n.matches?.('iframe[data-klaro-maps="1"]')) hit=true;
+          n.querySelectorAll?.('iframe[data-klaro-maps="1"]').forEach(()=>{hit=true;});
+        });
+      }
+      if(hit) deferApply();
+    });
+    mo.observe(document.body, {childList:true, subtree:true});
+  }catch{}
+
+  // SPA-Navigation (Next.js)
+  window.addEventListener('popstate', deferApply);
+  try{
+    const H = window.history;
+    const p = H.pushState.bind(H), r = H.replaceState.bind(H);
+    H.pushState = function(){ const ret = p.apply(H, arguments); deferApply(); return ret; };
+    H.replaceState= function(){ const ret = r.apply(H, arguments); deferApply(); return ret; };
+  }catch{}
+
+  // Auf Klaro-Events reagieren (Banner bestätigt / Auswahl geändert)
+  window.addEventListener('klaro:consent', ()=>{ deferApply(); });
+})();
+          `}
         </Script>
 
         {/* Google Analytics 4 - lazy & consent-gated */}
@@ -143,9 +232,6 @@ export default function RootLayout({
         {/* GTM lädt nur nach Consent + Idle. Für schnelle Tests kann via NEXT_PUBLIC_ENABLE_GTM=false global deaktiviert werden. */}
         {isGtmEnabled && <GtmConsentLoader />}
 
-        {/* Klaro laden */}
-        <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
-        <Script src="/klaro/klaro.config.js" strategy="afterInteractive" />
       </body>
     </html>
   );
