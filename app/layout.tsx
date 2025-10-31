@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
+import { klaroConfigScript } from "@/app/consent/klaro-config";
 import { metadataBase } from "./config/site";
 
 export const metadata: Metadata = {
@@ -68,6 +69,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
+        {/* Klaro-Banner wird durch mustConsent:true & fehlendes Consent automatisch gezeigt */}
         <div id="klaro"></div>
         {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
         <script
@@ -98,7 +100,11 @@ export default function RootLayout({
 
         {/* Klaro laden */}
         <Script src="/klaro/klaro.min.js" strategy="afterInteractive" />
-        <Script src="/klaro/klaro.config.js" strategy="afterInteractive" />
+        <Script
+          id="klaro-config"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{ __html: klaroConfigScript }}
+        />
       </body>
     </html>
   );
