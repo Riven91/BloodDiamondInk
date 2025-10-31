@@ -44,7 +44,7 @@ export function Footer() {
                 title="Instagram"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link instagram group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent"
+                className="social-link instagram group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent focus-visible:underline"
               >
                 <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <rect x="3" y="3" width="18" height="18" rx="5"></rect>
@@ -60,7 +60,7 @@ export function Footer() {
                 title="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link facebook group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent"
+                className="social-link facebook group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent focus-visible:underline"
               >
                 <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
                   <path d="M22 12.06C22 6.52 17.52 2 12 2S2 6.52 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.9h2.54V9.86c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.25 0-1.64.78-1.64 1.57v1.89h2.79l-.45 2.9h-2.34V22c4.78-.75 8.44-4.92 8.44-9.94z" />
@@ -74,7 +74,7 @@ export function Footer() {
                 title="TikTok"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link tiktok group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent"
+                className="social-link tiktok group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent focus-visible:underline"
               >
                 <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
                   <path d="M16.6 5.82s.51.5 0 0A4.27 4.27 0 0 0 15.2 3h-3.09v12.4a2.59 2.59 0 0 1-2.59 2.59 2.59 2.59 0 0 1-2.59-2.59 2.59 2.59 0 0 1 2.59-2.59h.12V9.35a6.08 6.08 0 0 0-6.12 6.12 6.08 6.08 0 0 0 6.12 6.12 6.08 6.08 0 0 0 6.12-6.12V9.92a8.55 8.55 0 0 1 3.48-2.19v3.47A2.59 2.59 0 0 1 16.6 5.82z"/>
@@ -88,7 +88,7 @@ export function Footer() {
                 title="YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-link youtube group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent"
+                className="social-link youtube group inline-flex items-center gap-2 text-blooddiamond-text/70 transition hover:text-blooddiamond-accent focus-visible:underline"
               >
                 <svg className="h-4 w-4 md:h-5 md:w-5" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
                   <path d="M21.58 7.19c-.23-.86-.9-1.52-1.76-1.75C18.25 5 12 5 12 5s-6.25 0-7.82.44c-.86.23-1.52.9-1.76 1.75C2 8.75 2 12 2 12s0 3.25.42 4.81c.23.86.9 1.52 1.76 1.75C5.75 19 12 19 12 19s6.25 0 7.82-.44c.86.23 1.52-.9 1.76-1.75C22 15.25 22 12 22 12s0-3.25-.42-4.81zM9.5 15.5V8.5l6.5 3.5-6.5 3.5z"/>
@@ -98,14 +98,14 @@ export function Footer() {
             </div>
           </div>
           <div className="flex flex-col items-center justify-start gap-1.5 text-center mt-0 md:items-center md:text-center md:gap-3 md:mt-0">
-            <a href="/#faq" className="text-neutral-300 transition hover:text-white">
+            <a href="/#faq" className="text-neutral-300 transition hover:text-white focus-visible:underline">
               FAQ
             </a>
             <a
               href={contactHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-neutral-300 transition hover:text-white"
+              className="text-neutral-300 transition hover:text-white focus-visible:underline"
             >
               Kontakt
             </a>
@@ -113,19 +113,19 @@ export function Footer() {
 
           <div className="flex flex-col items-start text-left justify-start self-start gap-3 md:items-end md:text-right md:self-start">
             <span className="font-display text-base uppercase text-blooddiamond-text">Rechtliches</span>
-            <Link href={impressumHref} className="transition hover:text-white">
+            <Link href={impressumHref} className="transition hover:text-white focus-visible:underline">
               Impressum
             </Link>
-            <Link href={datenschutzHref} className="transition hover:text-white">
+            <Link href={datenschutzHref} className="transition hover:text-white focus-visible:underline">
               Datenschutz
             </Link>
-            <Link href={agbHref} className="transition hover:text-white">
+            <Link href={agbHref} className="transition hover:text-white focus-visible:underline">
               AGB
             </Link>
             <button
               type="button"
               onClick={handleCookieSettings}
-              className="cursor-pointer border-none bg-transparent text-neutral-300 transition hover:text-white text-left md:text-right"
+              className="cursor-pointer border-none bg-transparent text-neutral-300 transition hover:text-white text-left md:text-right focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring"
             >
               Cookie-Einstellungen
             </button>
