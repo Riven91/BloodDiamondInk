@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+  alternates: {
+    canonical: "https://blooddiamondink-79184164-7f1b7.web.app/",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -28,7 +31,15 @@ export const metadata: Metadata = {
     url: "https://blooddiamondink-79184164-7f1b7.web.app/",
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: ["https://blooddiamondink-79184164-7f1b7.web.app/social_media_pre_cropped.png"],
+    images: [
+      {
+        url: "https://blooddiamondink-79184164-7f1b7.web.app/social_media_pre_cropped.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: "Blood Diamond Tattoo – Social Preview",
+      },
+    ],
     siteName: "Blood Diamond Tattoo Ink.",
   },
   twitter: {
