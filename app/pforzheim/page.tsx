@@ -289,7 +289,7 @@ export default function PforzheimPage() {
 
       <section className="bg-blooddiamond-muted/30 pt-4 sm:pt-5 pb-6 sm:pb-8">
         <div className="mx-auto max-w-5xl px-6">
-          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Highlights</h2>
+          <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Highlights – Tattoo Pforzheim</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
             <div className="rounded-2xl border border-blooddiamond-primary/40 bg-blooddiamond-background/80 p-6">
               <h3 className="text-lg font-semibold text-white">Individuelles Design</h3>
