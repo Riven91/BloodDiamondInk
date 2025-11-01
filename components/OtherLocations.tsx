@@ -32,7 +32,7 @@ const LABELS: Record<City, { title: string; prompt: string; links: { href: strin
 export default function OtherLocations({ current }: { current: City }) {
   const c = LABELS[current];
   return (
-    <section className="mt-10 text-center">
+    <section className="mt-6 text-center">
       <h3 className="mb-2 text-lg font-semibold text-white">{c.title}</h3>
       <p className="mb-4 text-neutral-400">{c.prompt}</p>
       <div className="flex flex-wrap items-center justify-center gap-4">
