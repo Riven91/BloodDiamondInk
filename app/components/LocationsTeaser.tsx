@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export function LocationsTeaser() {
   return (
-    <section className="mx-auto max-w-6xl px-4 pb-12">
+    <section className="mx-auto max-w-6xl px-4 pb-10">
       <h2 className="text-2xl font-semibold">Studios in Baden-Württemberg</h2>
       <div className="mt-6 grid gap-6 sm:grid-cols-3">
         <Link href="/pforzheim" className="rounded-2xl border p-5 hover:bg-gray-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-ring">
