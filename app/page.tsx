@@ -5,37 +5,26 @@ import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { Metadata } from "next";
-import { ORIGIN, socialPreviewImage } from "./config/site";
+import { ORIGIN, defaultTitle, defaultDescription } from "./config/site";
 import { LocationsTeaser } from "./components/LocationsTeaser";
 
 export const metadata: Metadata = {
-  title: "Tattoo Studios in Baden-Württemberg",
-  description: "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+  title: defaultTitle,
+  description: defaultDescription,
   alternates: {
     canonical: ORIGIN,
   },
   openGraph: {
-    title: "Tattoo Studios in Baden-Württemberg",
-    description:
-      "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
     type: "website",
     url: ORIGIN,
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
+    // KEINE images hier → überschreibt sonst das Layout
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tattoo Studios in Baden-Württemberg",
-    description:
-      "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+    title: defaultTitle,
+    description: defaultDescription,
     site: "@BloodDiamondInk",
-    images: [socialPreviewImage],
+    // KEINE images hier → Layout bleibt maßgeblich
   },
 };
 
