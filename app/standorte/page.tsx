@@ -1,7 +1,8 @@
+import type { Metadata } from 'next';
 import StandorteClientPage from './StandorteClientPage';
-import { ORIGIN } from '../config/site';
+import { ORIGIN, socialPreviewImage } from '../config/site';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Tattoo-Studios in Baden-Württemberg – Standorte | Blood Diamond Tattoo Ink.',
   description:
     'Drei Standorte: Pforzheim, Heilbronn & Böblingen. Adresse, Öffnungszeiten und Kontakt – jetzt Termin vereinbaren.',
@@ -13,6 +14,14 @@ export const metadata = {
     description:
       'Drei Standorte: Pforzheim, Heilbronn & Böblingen. Adresse, Öffnungszeiten und Kontakt – jetzt Termin vereinbaren.',
     url: `${ORIGIN}/standorte`,
+    images: [
+      {
+        url: socialPreviewImage,
+        width: 1200,
+        height: 630,
+        alt: 'Blood Diamond Tattoo – Social Preview',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
@@ -20,6 +29,7 @@ export const metadata = {
     description:
       'Drei Standorte: Pforzheim, Heilbronn & Böblingen. Adresse, Öffnungszeiten und Kontakt – jetzt Termin vereinbaren.',
     site: '@BloodDiamondInk',
+    images: [socialPreviewImage],
   },
 };
 
