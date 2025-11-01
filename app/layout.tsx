@@ -7,16 +7,17 @@ import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
-import { metadataBase } from "./config/site";
+import { metadataBase } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
+
+// Hilfsfunktion: macht aus Relativpfad eine absolute URL basierend auf metadataBase
+const abs = (path: string) => new URL(path, metadataBase).toString();
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://blooddiamondink-79184164-7f1b7.web.app"),
+  metadataBase,
+  alternates: { canonical: metadataBase },
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
-  alternates: {
-    canonical: "/",
-  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -29,15 +30,14 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
-    url: "https://blooddiamondink-79184164-7f1b7.web.app/",
+    url: metadataBase.toString(),
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [
       {
-        url: "https://blooddiamondink-79184164-7f1b7.web.app/social_media_pre_cropped.png",
+        url: abs("/social_media_pre_cropped.png"), // ABSOLUTE URL
         width: 1200,
         height: 630,
-        type: "image/png",
         alt: "Blood Diamond Tattoo – Social Preview",
       },
     ],
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: ["https://blooddiamondink-79184164-7f1b7.web.app/social_media_pre_cropped.png"],
+    images: [abs("/social_media_pre_cropped.png")],
   },
 };
 
