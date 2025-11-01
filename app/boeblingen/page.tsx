@@ -112,7 +112,7 @@ export default function BoeblingenPage() {
         </a>
       </div>
 
-      <section className="bg-blooddiamond-muted/30 py-10">
+      <section className="bg-blooddiamond-muted/30 py-8 sm:py-12">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos Böblingen / Herrenberg</h2>
@@ -166,7 +166,7 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background py-10">
+      <section className="bg-blooddiamond-background py-8 sm:py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
@@ -192,7 +192,7 @@ export default function BoeblingenPage() {
 
       <OtherLocations current="boeblingen" />
 
-      <section className="bg-blooddiamond-muted/20 py-10">
+      <section className="bg-blooddiamond-muted/20 py-8 sm:py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Studio</h2>
           <div className="mt-8">
@@ -201,7 +201,7 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background py-10">
+      <section className="bg-blooddiamond-background py-8 sm:py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
           <div id="team-gallery" className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -262,7 +262,7 @@ export default function BoeblingenPage() {
         </p>
       </section>
 
-      <section className="bg-blooddiamond-muted/30 py-10">
+      <section className="bg-blooddiamond-muted/30 py-8 sm:py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio Highlights – Tattoo Böblingen</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
