@@ -119,7 +119,7 @@ export function Hero({
       </div>
 
       {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[min(100svh,640px)] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:justify-center md:py-32">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-3xl flex-col justify-start px-6 pb-0 pt-4 text-center md:min-h-0 md:justify-center md:py-32">
         <div className="space-y-3">
           {/* Kicker */}
           {/* protected: keep black background on brand badge */}

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export function AwardsSection() {
   return (
-    <section className="py-8 sm:py-12 bg-black/20">
+    <section className="pt-8 md:pt-10 pb-8 md:pb-10 bg-black/20">
       <h2 className="text-center text-emerald-500 text-2xl sm:text-3xl font-semibold mb-8">
         Erfolge & Teamgeist
       </h2>
