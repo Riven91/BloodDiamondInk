@@ -6,12 +6,13 @@ export const metadata: Metadata = {
   description:
     "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/datenschutz",
+    canonical: `${ORIGIN}/datenschutz`,
   },
   openGraph: {
     title: "Datenschutzerklärung | Blood Diamond Tattoo Ink.",
     description:
       "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
+    type: "website",
     url: `${ORIGIN}/datenschutz`,
     images: [
       {

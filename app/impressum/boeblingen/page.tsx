@@ -6,9 +6,10 @@ export const metadata: Metadata = {
   title: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
   description: "Impressum und Anbieterkennzeichnung für den Standort Böblingen.",
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/impressum/boeblingen",
+    canonical: `${ORIGIN}/impressum/boeblingen`,
   },
   openGraph: {
+    type: "website",
     url: `${ORIGIN}/impressum/boeblingen`,
     images: [
       {
