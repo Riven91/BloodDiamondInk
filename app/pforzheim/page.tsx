@@ -58,12 +58,13 @@ export const metadata: Metadata = {
   description:
     "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/pforzheim",
+    canonical: `${ORIGIN}/pforzheim`,
   },
   openGraph: {
     title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
     description:
       "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
+    type: "website",
     url: `${ORIGIN}/pforzheim`,
     images: [
       {

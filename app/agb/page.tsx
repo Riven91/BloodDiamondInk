@@ -6,9 +6,10 @@ export const metadata: Metadata = {
   title: "AGB – Blood Diamond Tattoo",
   description: "Allgemeine Geschäftsbedingungen von Blood Diamond Tattoo.",
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/agb",
+    canonical: `${ORIGIN}/agb`,
   },
   openGraph: {
+    type: "website",
     url: `${ORIGIN}/agb`,
     images: [
       {

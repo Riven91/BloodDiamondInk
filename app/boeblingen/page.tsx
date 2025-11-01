@@ -26,11 +26,12 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/boeblingen",
+    canonical: `${ORIGIN}/boeblingen`,
   },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
+    type: "website",
     url: `${ORIGIN}/boeblingen`,
     locale: "de_DE",
     siteName: "Blood Diamond Tattoo Ink.",

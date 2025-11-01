@@ -99,7 +99,7 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/heilbronn",
+    canonical: `${ORIGIN}/heilbronn`,
   },
   openGraph: {
     type: "website",

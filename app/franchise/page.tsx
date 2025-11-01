@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+import { ORIGIN } from "../config/site";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/franchise",
+    canonical: `${ORIGIN}/franchise`,
   },
 };
 

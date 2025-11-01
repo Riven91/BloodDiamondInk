@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
+import { ORIGIN } from "../../config/site";
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/datenschutz/boeblingen",
+    canonical: `${ORIGIN}/datenschutz/boeblingen`,
   },
 };
 

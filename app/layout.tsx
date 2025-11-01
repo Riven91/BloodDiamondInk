@@ -7,11 +7,11 @@ import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
-import { ORIGIN, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
+import { ORIGIN, metadataBase, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
 
 export const metadata: Metadata = {
-  metadataBase: new URL(ORIGIN),
-  alternates: { canonical: new URL(ORIGIN) },
+  metadataBase,
+  alternates: { canonical: ORIGIN },
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",

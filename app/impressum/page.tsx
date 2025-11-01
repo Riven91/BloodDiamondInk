@@ -6,11 +6,12 @@ export const metadata: Metadata = {
   title: "Impressum – Blood Diamond Tattoo",
   description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
   alternates: {
-    canonical: "https://blooddiamond-tattoo.de/impressum",
+    canonical: `${ORIGIN}/impressum`,
   },
   openGraph: {
     title: "Impressum – Blood Diamond Tattoo",
     description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
+    type: "website",
     url: `${ORIGIN}/impressum`,
     images: [
       {
