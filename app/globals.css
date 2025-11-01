@@ -147,7 +147,8 @@ main {
 .hero-section {
   position: relative;
   width: 100%;
-  min-height: 100svh !important;
+  height: 100vh;
+  max-height: 1000px;
   overflow: hidden;
   z-index: 0;
   isolation: isolate;
