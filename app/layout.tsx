@@ -7,19 +7,17 @@ import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
-import { metadataBase } from "./config/site"; // gemeinsame ORIGIN/Canonical-Quelle
+import { metadataBase } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
 
 // Hilfsfunktion: macht aus Relativpfad eine absolute URL basierend auf metadataBase
 const abs = (path: string) => new URL(path, metadataBase).toString();
 
 export const metadata: Metadata = {
   metadataBase,
+  alternates: { canonical: metadataBase },
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
-  alternates: {
-    canonical: metadataBase, // hält Canonical konsistent über alle Routen ohne lokale Overrides
-  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
