@@ -65,7 +65,7 @@ export default function ReviewsStrip({ variant = "home" }: { variant?: Variant }
       <div className="mx-auto w-full max-w-5xl px-6 pt-6">
         <div
           className={
-            "relative pointer-events-none isolation-isolate z-20 flex min-h-[160px] items-end justify-center md:min-h-0 md:flex-nowrap md:items-end md:gap-4"
+            "relative pointer-events-none isolation-isolate z-20 flex min-h-40 items-end justify-center md:min-h-0 md:flex-nowrap md:items-end md:gap-4"
           }
         >
           {/* Mobile layout */}

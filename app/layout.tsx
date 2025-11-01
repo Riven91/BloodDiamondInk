@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
-import { ORIGIN, metadataBase, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
+import { ORIGIN, metadataBase, socialPreviewImage } from "./config/site";
 
 export const metadata: Metadata = {
   metadataBase,
@@ -45,9 +45,6 @@ export const metadata: Metadata = {
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [socialPreviewImage],
-  },
-  other: {
-    "fb:app_id": "743928489653716",
   },
 };
 
