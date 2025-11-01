@@ -475,24 +475,6 @@ window.klaroConfig = {
         } catch {}
       }
     },
-    {
-      name: 'google-recaptcha',
-      title: 'Google reCAPTCHA',
-      purposes: ['security'],
-      required: false,
-      default: false,
-      cookies: [/^_grecaptcha$/, /^rc::a$/, /^rc::b$/, /^rc::c$/],
-      callback: (consent) => {
-        if (consent) {
-          __klaroToggleNodeAttribute('script[data-klaro-recaptcha="1"]', 'src', 'data-src', true);
-          __klaroToggleNodeAttribute('iframe[data-klaro-recaptcha="1"]', 'src', 'data-src', true);
-        } else {
-          __klaroToggleNodeAttribute('script[data-klaro-recaptcha="1"]', 'src', 'data-src', false);
-          __klaroToggleNodeAttribute('iframe[data-klaro-recaptcha="1"]', 'src', 'data-src', false);
-        }
-        __klaroDispatchConsentEvent('consent:recaptcha', !!consent);
-      }
-    }
     // {
     //   name: 'cloudflare-web-analytics',
     //   title: 'Cloudflare Web Analytics',
