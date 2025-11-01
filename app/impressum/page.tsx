@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import { ORIGIN, socialPreviewImage } from "../config/site";
+import { ORIGIN } from "../config/site";
 
 export const metadata: Metadata = {
   title: "Impressum – Blood Diamond Tattoo",
@@ -13,21 +13,12 @@ export const metadata: Metadata = {
     description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
     type: "website",
     url: `${ORIGIN}/impressum`,
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Impressum – Blood Diamond Tattoo",
     description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
     site: "@BloodDiamondInk",
-    images: [socialPreviewImage],
   },
 };
 

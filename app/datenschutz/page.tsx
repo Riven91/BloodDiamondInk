@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ORIGIN, socialPreviewImage } from "../config/site";
+import { ORIGIN } from "../config/site";
 
 export const metadata: Metadata = {
   title: "Datenschutzerklärung | Blood Diamond Tattoo Ink.",
@@ -14,14 +14,6 @@ export const metadata: Metadata = {
       "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
     type: "website",
     url: `${ORIGIN}/datenschutz`,
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -29,7 +21,6 @@ export const metadata: Metadata = {
     description:
       "Transparente Infos zur Datenverarbeitung: Zwecke, Rechtsgrundlagen, Speicherdauer, DSGVO-Rechte und Kontakt der Verantwortlichen.",
     site: "@BloodDiamondInk",
-    images: [socialPreviewImage],
   },
 };
 
