@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import { ORIGIN, socialPreviewImage } from "../../config/site";
+import { ORIGIN } from "../../config/site";
 
 export const metadata: Metadata = {
   title: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
@@ -9,23 +9,13 @@ export const metadata: Metadata = {
     canonical: `${ORIGIN}/impressum/boeblingen`,
   },
   openGraph: {
-    type: "website",
-    url: `${ORIGIN}/impressum/boeblingen`,
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
     title: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
     description: "Impressum und Anbieterkennzeichnung für den Standort Böblingen.",
-    site: "@BloodDiamondInk",
-    images: [socialPreviewImage],
+    url: `${ORIGIN}/impressum/boeblingen`,
+  },
+  twitter: {
+    title: "Impressum – Blood Diamond Tattoo Ink. Böblingen",
+    description: "Impressum und Anbieterkennzeichnung für den Standort Böblingen.",
   },
 };
 

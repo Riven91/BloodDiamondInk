@@ -6,7 +6,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-import { ORIGIN, socialPreviewImage } from "../config/site";
+import { ORIGIN } from "../config/site";
 
 const TITLE = "Tattoo Studio Böblingen – Blood Diamond Tattoo Ink. | Kunst, Präzision und Sicherheit";
 const DESCRIPTION =
@@ -31,25 +31,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    type: "website",
     url: `${ORIGIN}/boeblingen`,
-    locale: "de_DE",
-    siteName: "Blood Diamond Tattoo Ink.",
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
   },
   twitter: {
-    card: "summary_large_image",
     title: TITLE,
     description: DESCRIPTION,
-    site: "@BloodDiamondInk",
-    images: [socialPreviewImage],
   },
   robots: { index: true, follow: true },
 };

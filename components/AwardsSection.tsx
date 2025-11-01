@@ -8,8 +8,8 @@ export function AwardsSection() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto px-4">
-        {/* Teamfoto */}
-        <div className="relative h-[420px] sm:h-[480px] overflow-hidden rounded-xl bg-black/30 shadow-lg shadow-black/40 flex items-center justify-center">
+        {/* Teamfoto – fluid: aspect + min-height statt fixer px-Höhe */}
+        <div className="relative overflow-hidden rounded-xl bg-black/30 shadow-lg shadow-black/40 flex items-center justify-center aspect-[16/9] min-h-[clamp(14rem,36vw,28rem)]">
           <Image
             src="/Team1.jpeg"
             alt="Blood Diamond Ink. – Teamfoto"
@@ -20,8 +20,8 @@ export function AwardsSection() {
           />
         </div>
 
-        {/* Pokale */}
-        <div className="relative h-[420px] sm:h-[480px] overflow-hidden rounded-xl bg-black/30 shadow-lg shadow-black/40 flex items-center justify-center">
+        {/* Pokale – ebenfalls fluid */}
+        <div className="relative overflow-hidden rounded-xl bg-black/30 shadow-lg shadow-black/40 flex items-center justify-center aspect-[16/9] min-h-[clamp(14rem,36vw,28rem)]">
           <Image
             src="/pokale.jpeg"
             alt="Blood Diamond Ink. – Awards und Pokale"
