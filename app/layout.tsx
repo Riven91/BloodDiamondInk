@@ -7,6 +7,7 @@ import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
+import { metadataBase } from "./config/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://blooddiamondink-79184164-7f1b7.web.app"),
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
   alternates: {
-    canonical: "https://blooddiamondink-79184164-7f1b7.web.app/",
+    canonical: "/",
   },
   icons: {
     icon: [
