@@ -6,8 +6,10 @@ export const socialPreviewImage = new URL(
   "/social_media_pre_cropped.png?v=20251101",
   metadataBase
 ).toString();
-export const fbAppId = "743928489653716";
-export const siteName = "Blood Diamond Tattoo Ink.";
+export const FB_APP_ID = "743928489653716";
+export const fbAppId = FB_APP_ID;
+export const SITE_NAME = "Blood Diamond Tattoo Ink.";
+export const siteName = SITE_NAME;
 export const defaultTitle = "Tattoo Studios in Baden-Württemberg";
 export const defaultDescription =
   "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.";
