@@ -139,7 +139,7 @@ export default function PforzheimPage() {
         </a>
       </div>
 
-      <section className="bg-blooddiamond-muted/30 pt-8 md:pt-10 pb-8 md:pb-10">
+      <section className="bg-blooddiamond-muted/30 pt-4 md:pt-6 pb-4 md:pb-6">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos Pforzheim / Ötisheim</h2>
@@ -191,7 +191,7 @@ export default function PforzheimPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background pt-8 md:pt-10 pb-8 md:pb-10">
+      <section className="bg-blooddiamond-background pt-4 md:pt-6 pb-4 md:pb-6">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
@@ -267,7 +267,7 @@ export default function PforzheimPage() {
         </div>
       </section>
 
-      <section className="py-10 sm:py-12 bg-transparent">
+      <section className="py-6 sm:py-8 bg-transparent">
         <p className="text-center text-gray-200 text-lg sm:text-xl leading-relaxed mt-4 mb-8 px-4 max-w-3xl mx-auto">
           Begeistert von unserer Tattoo-Kunst? Entdecke in unserer{" "}
           <a
@@ -287,7 +287,7 @@ export default function PforzheimPage() {
         </p>
       </section>
 
-      <section className="bg-blooddiamond-muted/30 py-8 sm:py-12">
+      <section className="bg-blooddiamond-muted/30 py-6 sm:py-8">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Highlights</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
