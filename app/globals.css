@@ -86,6 +86,48 @@ main {
   .logo-safe-on-light {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.35));
   }
+
+  /* ------------------------------------------------------------
+     BDI Spacing Baseline (global, konservativ & reversibel)
+     Ziel: Uneinheitliche, zu große vertikale Lücken (vor allem mobil)
+     werden geglättet, ohne Komponenten zu ändern.
+     Wirkung: nur Padding-Utilities – keine Auswirkungen auf Bilder.
+     ------------------------------------------------------------ */
+
+  /* Basis: py-XX → kompakter (mobil) */
+  .py-16 { padding-top: 3rem !important; padding-bottom: 3rem !important; }   /* ~48px → 48px (nur Fixierung) */
+  .py-14 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; } /* ~40px → 40px (Fixierung) */
+  .py-12 { padding-top: 2rem !important; padding-bottom: 2rem !important; }   /* ~48px → 32px (spürbar enger) */
+  .py-10 { padding-top: 1.75rem !important; padding-bottom: 1.75rem !important; } /* ~40px → 28px */
+  .py-8  { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }  /* ~32px → 24px */
+
+  /* Einzelrichtungen: pt-/pb-XX ebenfalls glätten (häufig bei Teasern/Listen) */
+  .pt-16 { padding-top: 3rem !important; }
+  .pb-16 { padding-bottom: 3rem !important; }
+  .pt-14 { padding-top: 2.5rem !important; }
+  .pb-14 { padding-bottom: 2.5rem !important; }
+  .pt-12 { padding-top: 2rem !important; }
+  .pb-12 { padding-bottom: 2rem !important; }
+  .pt-10 { padding-top: 1.75rem !important; }
+  .pb-10 { padding-bottom: 1.75rem !important; }
+  .pt-8  { padding-top: 1.5rem !important; }
+  .pb-8  { padding-bottom: 1.5rem !important; }
+
+  /* Responsive Varianten: nur ab sm: – Desktop bleibt etwas luftiger */
+  @media (min-width: 640px) {
+    .sm\:py-16 { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; } /* 56px */
+    .sm\:py-14 { padding-top: 3rem !important;   padding-bottom: 3rem !important; }   /* 48px */
+    .sm\:py-12 { padding-top: 2.5rem !important; padding-bottom: 2.5rem !important; } /* 40px */
+    .sm\:py-10 { padding-top: 2rem !important;   padding-bottom: 2rem !important; }   /* 32px */
+    .sm\:py-8  { padding-top: 1.75rem !important; padding-bottom: 1.75rem !important; } /* 28px */
+
+    .sm\:pt-12 { padding-top: 2.5rem !important; }
+    .sm\:pb-12 { padding-bottom: 2.5rem !important; }
+    .sm\:pt-10 { padding-top: 2rem !important; }
+    .sm\:pb-10 { padding-bottom: 2rem !important; }
+    .sm\:pt-8  { padding-top: 1.75rem !important; }
+    .sm\:pb-8  { padding-bottom: 1.75rem !important; }
+  }
 }
 
 :root {
