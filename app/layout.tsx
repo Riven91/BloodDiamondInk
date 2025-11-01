@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
+import OtherSectionsSpacingFix from "@/components/OtherSectionsSpacingFix";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
 import { metadataBase, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
 
@@ -117,6 +118,7 @@ export default function RootLayout({
         {/* Dev-Overlay entfernt – Desktop-Hero liegt nun via CSS-Hintergrund an. */}
         <Header />
         <LayoutWrapper>
+          <OtherSectionsSpacingFix />
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
         <Footer />
