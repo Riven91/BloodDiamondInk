@@ -119,7 +119,7 @@ export default function HomePage() {
         <AwardsSection />
       </section>
       <LightboxAuto gallerySelector="#erfolge-teamgeist-gallery" />
-      <section id="gallery" className="mx-auto max-w-6xl px-4 pt-4 pb-6 sm:pt-6 sm:pb-8">
+      <section id="gallery" className="mx-auto max-w-6xl px-4 pt-2 pb-6 sm:pt-3 sm:pb-8">
         <Gallery />
       </section>
       <FAQAccordion id="faq" items={faqItems} />
