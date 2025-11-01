@@ -166,7 +166,7 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background pt-8 md:pt-10 pb-8 md:pb-10">
+      <section className="bg-blooddiamond-background pt-2 md:pt-3 pb-4 md:pb-6">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
@@ -201,7 +201,7 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background pt-8 md:pt-10 pb-8 md:pb-10">
+      <section className="bg-blooddiamond-background pt-2 md:pt-3 pb-4 md:pb-6">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
           <div id="team-gallery" className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -242,7 +242,7 @@ export default function BoeblingenPage() {
         </div>
       </section>
 
-      <section className="py-6 sm:py-8 bg-transparent">
+      <section className="py-4 sm:py-5 bg-transparent">
         <p className="text-center text-gray-200 text-lg sm:text-xl leading-relaxed mt-4 mb-8 px-4 max-w-3xl mx-auto">
           Begeistert von unserer Tattoo-Kunst? Entdecke in unserer{" "}
           <a
@@ -262,7 +262,7 @@ export default function BoeblingenPage() {
         </p>
       </section>
 
-      <section className="bg-blooddiamond-muted/30 py-6 sm:py-8">
+      <section className="bg-blooddiamond-muted/30 pt-4 sm:pt-5 pb-6 sm:pb-8">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio Highlights – Tattoo Böblingen</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">

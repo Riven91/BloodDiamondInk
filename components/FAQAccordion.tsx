@@ -17,7 +17,7 @@ export function FAQAccordion({ items, id }: FAQAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id={id} className="mx-auto max-w-4xl px-6 pt-4 md:pt-6 pb-4 md:pb-6">
+    <section id={id} className="mx-auto max-w-4xl px-6 pt-2 md:pt-3 pb-4 md:pb-6">
       <h2 className="mb-8 font-display text-4xl uppercase text-blooddiamond-accent">FAQ</h2>
       <div className="space-y-4">
         {items.map((item, index) => {
