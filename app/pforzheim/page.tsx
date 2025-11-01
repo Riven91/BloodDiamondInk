@@ -145,7 +145,7 @@ export default function PforzheimPage() {
         </a>
       </div>
 
-      <section className="bg-blooddiamond-muted/30 py-16">
+      <section className="bg-blooddiamond-muted/30 py-12">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
             <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Studio-Infos Pforzheim / Ötisheim</h2>
@@ -197,7 +197,7 @@ export default function PforzheimPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background py-16">
+      <section className="bg-blooddiamond-background py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Hier finden Sie uns</h2>
           <p className="mt-3 text-sm text-blooddiamond-text/80">
@@ -223,7 +223,7 @@ export default function PforzheimPage() {
 
       <OtherLocations current="pforzheim" />
 
-      <section className="bg-blooddiamond-muted/20 py-16">
+      <section className="bg-blooddiamond-muted/20 py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Studio</h2>
           <div className="mt-8">
@@ -232,7 +232,7 @@ export default function PforzheimPage() {
         </div>
       </section>
 
-      <section className="bg-blooddiamond-background py-16">
+      <section className="bg-blooddiamond-background py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Unser Team</h2>
           <div id="team-gallery" className="mt-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -293,7 +293,7 @@ export default function PforzheimPage() {
         </p>
       </section>
 
-      <section className="bg-blooddiamond-muted/30 py-16">
+      <section className="bg-blooddiamond-muted/30 py-12">
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl uppercase text-blooddiamond-accent">Highlights</h2>
           <div className="mt-6 grid gap-6 md:grid-cols-2">
