@@ -84,8 +84,8 @@ function GalleryComponent() {
           </p>
         </div>
       </div>
-      <div className="mt-12">
-        {/* Abstand unterhalb des Social-Media-Absatzes, damit Galerie-Bilder nicht 'ankleben' */}
+      {/* Abstand unterhalb des Social-Media-Absatzes, damit Galerie-Bilder nicht 'ankleben' */}
+      <div>
         <div
           className="
             mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3
