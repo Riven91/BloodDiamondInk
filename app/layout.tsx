@@ -6,14 +6,17 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
-import { metadataBase } from "./config/site";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
+import { metadataBase } from "./config/site";
 
 export const metadata: Metadata = {
   metadataBase,
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
+  alternates: {
+    canonical: "/",
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -34,6 +37,7 @@ export const metadata: Metadata = {
         url: "/social_media_pre_cropped.png",
         width: 1200,
         height: 630,
+        type: "image/png",
         alt: "Blood Diamond Tattoo – Social Preview",
       },
     ],
