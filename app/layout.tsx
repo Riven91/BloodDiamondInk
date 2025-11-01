@@ -7,10 +7,7 @@ import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
-import { metadataBase } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
-
-// Hilfsfunktion: macht aus Relativpfad eine absolute URL basierend auf metadataBase
-const abs = (path: string) => new URL(path, metadataBase).toString();
+import { metadataBase, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
 
 export const metadata: Metadata = {
   metadataBase,
@@ -35,7 +32,7 @@ export const metadata: Metadata = {
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [
       {
-        url: abs("/social_media_pre_cropped.png"), // ABSOLUTE URL
+        url: socialPreviewImage,
         width: 1200,
         height: 630,
         alt: "Blood Diamond Tattoo – Social Preview",
@@ -47,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: [abs("/social_media_pre_cropped.png")],
+    images: [socialPreviewImage],
   },
 };
 

@@ -5,7 +5,7 @@ import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { Metadata } from "next";
-import { ORIGIN } from "./config/site";
+import { ORIGIN, socialPreviewImage } from "./config/site";
 import { LocationsTeaser } from "./components/LocationsTeaser";
 
 export const metadata: Metadata = {
@@ -19,6 +19,14 @@ export const metadata: Metadata = {
     description:
       "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
     url: `${ORIGIN}/`,
+    images: [
+      {
+        url: socialPreviewImage,
+        width: 1200,
+        height: 630,
+        alt: "Blood Diamond Tattoo – Social Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -26,6 +34,7 @@ export const metadata: Metadata = {
     description:
       "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
     site: "@BloodDiamondInk",
+    images: [socialPreviewImage],
   },
 };
 

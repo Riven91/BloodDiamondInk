@@ -5,7 +5,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-import { ORIGIN } from "../config/site";
+import { ORIGIN, socialPreviewImage } from "../config/site";
 
 const faqItems = [
   {
@@ -65,6 +65,14 @@ export const metadata: Metadata = {
     description:
       "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
     url: `${ORIGIN}/pforzheim`,
+    images: [
+      {
+        url: socialPreviewImage,
+        width: 1200,
+        height: 630,
+        alt: "Blood Diamond Tattoo – Social Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -72,6 +80,7 @@ export const metadata: Metadata = {
     description:
       "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
     site: "@BloodDiamondInk",
+    images: [socialPreviewImage],
   },
 };
 
