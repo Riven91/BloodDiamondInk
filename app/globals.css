@@ -73,6 +73,10 @@ main {
 }
 
 @layer utilities {
+  /* BDI Spacing-Normalisierung (global) – mt-24→16, mt-20→14, mt-16→12 */
+  .mt-24 { margin-top: 4rem !important; }
+  .mt-20 { margin-top: 3.5rem !important; }
+  .mt-16 { margin-top: 3rem !important; }
   .logo-safe {
     filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.25));
   }
