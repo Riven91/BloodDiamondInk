@@ -60,22 +60,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/pforzheim`,
   },
-  openGraph: {
-    title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
-    description:
-      "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
-    type: "website",
-    url: `${ORIGIN}/pforzheim`,
-    // KEINE images hier
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Tattoo Studio Pforzheim – Blood Diamond Tattoo Ink. | Kunst, Stil & Präzision",
-    description:
-      "Blood Diamond Tattoo Ink. Pforzheim – internationale Tattoo-Artists, preisgekrönte Designs & kompromisslose Hygiene. Realistic, Fineline, Black & Grey (Black and Grey) und Cover-Ups auf Weltklasse-Niveau.",
-    site: "@BloodDiamondInk",
-    // KEINE images hier
-  },
+  // Keine images-Felder – Bild kommt aus app/head.tsx
 };
 
 function ContactForm() {

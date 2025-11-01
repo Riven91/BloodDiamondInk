@@ -9,8 +9,6 @@ import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
 import {
   metadataBase,
-  socialPreviewImage,
-  siteName,
   defaultTitle,
   defaultDescription,
 } from "./config/site"; // <- zentrale Konfiguration inkl. aktiver ORIGIN
@@ -32,27 +30,7 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico"],
   },
   manifest: "/manifest.webmanifest",
-  openGraph: {
-    type: "website",
-    url: canonicalUrl,
-    title: defaultTitle,
-    description: defaultDescription,
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
-    siteName,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: defaultTitle,
-    description: defaultDescription,
-    images: [socialPreviewImage],
-  },
+  // Keine per-Layout Bilddefinition → Bild kommt ausschließlich aus <app/head.tsx>.
 };
 
 const isGtmEnabled = process.env.NEXT_PUBLIC_ENABLE_GTM === "true";

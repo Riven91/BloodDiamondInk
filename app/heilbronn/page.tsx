@@ -6,7 +6,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import { studioImages } from "@/app/_content/studioImages";
-import { ORIGIN, socialPreviewImage } from "../config/site";
+import { ORIGIN } from "../config/site";
 
 const TITLE = "Tattoo Studio Heilbronn – Blood Diamond Tattoo Ink. | Handwerk, Ruhe und Präzision";
 const DESCRIPTION =
@@ -101,29 +101,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/heilbronn`,
   },
-  openGraph: {
-    type: "website",
-    siteName: "Blood Diamond Tattoo Ink.",
-    locale: "de_DE",
-    url: `${ORIGIN}/heilbronn`,
-    title: TITLE,
-    description: DESCRIPTION,
-    images: [
-      {
-        url: socialPreviewImage,
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-    site: "@BloodDiamondInk",
-    images: [socialPreviewImage],
-  },
+  // images entfernt – zentrales Bild via app/head.tsx
 };
 
 function ContactSection() {

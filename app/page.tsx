@@ -14,18 +14,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: ORIGIN,
   },
-  openGraph: {
-    type: "website",
-    url: ORIGIN,
-    // KEINE images hier → überschreibt sonst das Layout
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: defaultTitle,
-    description: defaultDescription,
-    site: "@BloodDiamondInk",
-    // KEINE images hier → Layout bleibt maßgeblich
-  },
+  // openGraph/twitter ohne images; Bild wird zentral über app/head.tsx geliefert.
 };
 
 const faqItems = [
