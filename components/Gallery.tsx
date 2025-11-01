@@ -84,42 +84,45 @@ function GalleryComponent() {
           </p>
         </div>
       </div>
-      <div
-        className="
-          grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3
-          [--capmin:64px]
-        "
-      >
-        {items.slice(0, visibleCount).map((item, i) => (
-          <figure
-            key={`${item.file}-${i}`}
-            className="group flex flex-col overflow-hidden rounded-2xl bg-black/20 shadow-sm ring-1 ring-white/5"
-          >
-            <button
-              type="button"
-              onClick={() => open(i)}
-              className="relative aspect-[4/5] w-full overflow-hidden"
-              aria-label="Bild in großer Ansicht öffnen"
+      {/* Abstand zwischen Social-Media-Text und Galerie vergrößert */}
+      <div className="mt-12">
+        <div
+          className="
+            grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3
+            [--capmin:64px]
+          "
+        >
+          {items.slice(0, visibleCount).map((item, i) => (
+            <figure
+              key={`${item.file}-${i}`}
+              className="group flex flex-col overflow-hidden rounded-2xl bg-black/20 shadow-sm ring-1 ring-white/5"
             >
-              <Image
-                src={`/${item.file}`}
-                alt={item.alt}
-                fill
-                sizes="(max-width:768px) 50vw, (max-width:1200px) 33vw, 25vw"
-                className="object-cover transition duration-300 group-hover:scale-[1.02]"
-                decoding="async"
-              />
-            </button>
+              <button
+                type="button"
+                onClick={() => open(i)}
+                className="relative aspect-[4/5] w-full overflow-hidden"
+                aria-label="Bild in großer Ansicht öffnen"
+              >
+                <Image
+                  src={`/${item.file}`}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width:768px) 50vw, (max-width:1200px) 33vw, 25vw"
+                  className="object-cover transition duration-300 group-hover:scale-[1.02]"
+                  decoding="async"
+                />
+              </button>
 
-            <figcaption
-              className="
-                min-h-[var(--capmin)] bg-blooddiamond-muted/50 p-3 text-sm leading-relaxed text-neutral-200 md:p-4
-              "
-            >
-              {item.caption}
-            </figcaption>
-          </figure>
-        ))}
+              <figcaption
+                className="
+                  min-h-[var(--capmin)] bg-blooddiamond-muted/50 p-3 text-sm leading-relaxed text-neutral-200 md:p-4
+                "
+              >
+                {item.caption}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
 
       <div className="mt-6 flex justify-center">

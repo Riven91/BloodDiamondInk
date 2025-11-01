@@ -6,12 +6,13 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
+import OtherSectionsSpacingFix from "@/components/OtherSectionsSpacingFix";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
-import { metadataBase, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
+import { ORIGIN, socialPreviewImage } from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
 
 export const metadata: Metadata = {
-  metadataBase,
-  alternates: { canonical: metadataBase },
+  metadataBase: new URL(ORIGIN),
+  alternates: { canonical: new URL(ORIGIN) },
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
-    url: metadataBase.toString(),
+    url: ORIGIN,
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [
@@ -45,6 +46,9 @@ export const metadata: Metadata = {
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
     images: [socialPreviewImage],
+  },
+  other: {
+    "fb:app_id": "743928489653716",
   },
 };
 
@@ -117,6 +121,7 @@ export default function RootLayout({
         {/* Dev-Overlay entfernt – Desktop-Hero liegt nun via CSS-Hintergrund an. */}
         <Header />
         <LayoutWrapper>
+          <OtherSectionsSpacingFix />
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
         <Footer />
