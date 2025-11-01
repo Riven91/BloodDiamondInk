@@ -34,8 +34,8 @@ main {
 
   .social-link svg {
     transition: color 0.25s ease-out;
-    height: 28px;
-    width: 28px;
+    height: 1.25rem;
+    width: 1.25rem;
   }
 
   .social-link.instagram {
