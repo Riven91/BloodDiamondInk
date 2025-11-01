@@ -28,20 +28,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/boeblingen`,
   },
-  openGraph: {
-    title: TITLE,
-    description: DESCRIPTION,
-    type: "website",
-    url: `${ORIGIN}/boeblingen`,
-    locale: "de_DE",
-    siteName: "Blood Diamond Tattoo Ink.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-    site: "@BloodDiamondInk",
-  },
+  // images entfernt – zentrales Bild via app/head.tsx
   robots: { index: true, follow: true },
 };
 

@@ -101,20 +101,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/heilbronn`,
   },
-  openGraph: {
-    type: "website",
-    siteName: "Blood Diamond Tattoo Ink.",
-    locale: "de_DE",
-    url: `${ORIGIN}/heilbronn`,
-    title: TITLE,
-    description: DESCRIPTION,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: TITLE,
-    description: DESCRIPTION,
-    site: "@BloodDiamondInk",
-  },
+  // images entfernt – zentrales Bild via app/head.tsx
 };
 
 function ContactSection() {

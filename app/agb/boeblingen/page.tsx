@@ -8,16 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/agb/boeblingen`,
   },
-  openGraph: {
-    type: "website",
-    url: `${ORIGIN}/agb/boeblingen`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AGB – Blood Diamond Tattoo Ink. Böblingen",
-    description: "Allgemeine Geschäftsbedingungen für den Standort Böblingen.",
-    site: "@BloodDiamondInk",
-  },
+  // images entfernt – zentrales Bild via app/head.tsx
 };
 
 export default function AgbBoeblingenPage() {

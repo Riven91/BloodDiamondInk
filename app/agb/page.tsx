@@ -8,16 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/agb`,
   },
-  openGraph: {
-    type: "website",
-    url: `${ORIGIN}/agb`,
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AGB – Blood Diamond Tattoo",
-    description: "Allgemeine Geschäftsbedingungen von Blood Diamond Tattoo.",
-    site: "@BloodDiamondInk",
-  },
+  // images entfernt – zentrales Bild via app/head.tsx
 };
 
 export default function AgbPage() {
