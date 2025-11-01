@@ -8,11 +8,14 @@ import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
 import {
-  metadataBase,
+  socialPreviewImage,
+  SITE_NAME,
   defaultTitle,
   defaultDescription,
-} from "./config/site"; // <- zentrale Konfiguration inkl. aktiver ORIGIN
+  ORIGIN,
+} from "./config/site";
 
+const metadataBase = new URL(ORIGIN);
 const canonicalUrl = metadataBase.toString();
 
 export const metadata: Metadata = {
@@ -20,6 +23,19 @@ export const metadata: Metadata = {
   alternates: { canonical: canonicalUrl },
   title: { default: defaultTitle, template: "%s | Blood Diamond Tattoo" },
   description: defaultDescription,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [{ url: socialPreviewImage }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: [socialPreviewImage],
+  },
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -30,7 +46,7 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico"],
   },
   manifest: "/manifest.webmanifest",
-  // Keine per-Layout Bilddefinition → Bild kommt ausschließlich aus <app/head.tsx>.
+  // Keine per-Layout Bilddefinition → Open Graph/Twitter kommt zentral aus Layout + <app/head.tsx>.
 };
 
 const isGtmEnabled = process.env.NEXT_PUBLIC_ENABLE_GTM === "true";

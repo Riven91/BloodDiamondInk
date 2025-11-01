@@ -2,9 +2,9 @@
 export const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
 export const metadataBase = new URL(ORIGIN);
 // Harte Cache-Busting-Version, damit Crawler garantiert neu ziehen
-export const socialPreviewImage = new URL(
-  "/social_media_pre_cropped.png?v=20251101c",
-  metadataBase,
+export const socialPreviewImage: string = new URL(
+  "/social_media_pre_cropped.png?v=20251101d",
+  metadataBase
 ).toString();
 export const FB_APP_ID = "743928489653716";
 export const fbAppId = FB_APP_ID;
