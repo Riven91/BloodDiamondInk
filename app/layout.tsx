@@ -8,17 +8,18 @@ import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
 import {
-  ORIGIN,
   metadataBase,
   socialPreviewImage,
   siteName,
   defaultTitle,
   defaultDescription,
-} from "./config/site"; // <- dort steht die jeweils aktive ORIGIN
+} from "./config/site"; // <- zentrale Konfiguration inkl. aktiver ORIGIN
+
+const canonicalUrl = metadataBase.toString();
 
 export const metadata: Metadata = {
   metadataBase,
-  alternates: { canonical: ORIGIN },
+  alternates: { canonical: canonicalUrl },
   title: { default: defaultTitle, template: "%s | Blood Diamond Tattoo" },
   description: defaultDescription,
   icons: {
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
-    url: ORIGIN,
+    url: canonicalUrl,
     title: defaultTitle,
     description: defaultDescription,
     images: [
