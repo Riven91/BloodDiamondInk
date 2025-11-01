@@ -6,6 +6,7 @@ export default function Head() {
   return (
     <>
       {/* Open Graph – nur Bild ergänzen, Titel/Desc/URL existieren bereits */}
+      <meta property="fb:app_id" content="743928489653716" />
       <meta property="og:image" content={og} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
