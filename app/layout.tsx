@@ -11,7 +11,6 @@ import {
   ORIGIN,
   metadataBase,
   socialPreviewImage,
-  fbAppId,
   siteName,
   defaultTitle,
   defaultDescription,
@@ -52,9 +51,6 @@ export const metadata: Metadata = {
     title: defaultTitle,
     description: defaultDescription,
     images: [socialPreviewImage],
-  },
-  other: {
-    "fb:app_id": fbAppId,
   },
 };
 
