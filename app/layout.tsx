@@ -6,11 +6,10 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
-import { metadataBase } from "./config/site";
 import { loadGA4, whenIdle } from "../src/lib/ga4";
 
 export const metadata: Metadata = {
-  metadataBase,
+  metadataBase: new URL("https://blooddiamondink-79184164-7f1b7.web.app"),
   title: "Tattoo Studios in Baden-Württemberg",
   description:
     "Blood Diamond Ink. vereint Realistic, Fineline und Cover-Up Artists in Pforzheim, Heilbronn und Böblingen.",
@@ -26,24 +25,17 @@ export const metadata: Metadata = {
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
-    url: "/",
+    url: "https://blooddiamondink-79184164-7f1b7.web.app/",
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: [
-      {
-        url: "/social_media_pre_cropped.png",
-        width: 1200,
-        height: 630,
-        alt: "Blood Diamond Tattoo – Social Preview",
-      },
-    ],
+    images: ["https://blooddiamondink-79184164-7f1b7.web.app/social_media_pre_cropped.png"],
     siteName: "Blood Diamond Tattoo Ink.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Blood Diamond Tattooing – Tattoo-Kunst in Baden-Württemberg",
     description: "Internationale Artists, preisgekrönte Designs und kompromisslose Hygiene.",
-    images: ["/social_media_pre_cropped.png"],
+    images: ["https://blooddiamondink-79184164-7f1b7.web.app/social_media_pre_cropped.png"],
   },
 };
 
