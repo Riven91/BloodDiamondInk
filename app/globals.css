@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ---- Spacing-Fix: zentrale Utility, ersetzt Laufzeit-Manipulation ---- */
+@layer utilities {
+  /* Auf aktuellen, kompakteren Look kalibriert.
+     Falls minimal Feintuning nötig: nur hier anpassen. */
+  .section-spacing {
+    @apply mt-14 md:mt-16;
+  }
+}
+
 :root {
   color-scheme: dark;
 }
