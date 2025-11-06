@@ -1,15 +1,17 @@
 /** @type {import('next-sitemap').IConfig} */
-const siteUrl = 'https://blooddiamond-tattoo.de';
-
 module.exports = {
-  siteUrl,
+  siteUrl: 'https://blooddiamond-tattoo.de',
   generateRobotsTxt: true,
   sitemapBaseFileName: 'sitemap',
-  sitemapSize: 7000,
+  sitemapSize: 5000,
   robotsTxtOptions: {
     policies: [{ userAgent: '*', allow: '/' }],
     transformRobotsTxt: async () =>
-      [`User-agent: *`, `Allow: /`, `Sitemap: ${siteUrl}/sitemap.xml`].join('\n'),
+      [
+        `User-agent: *`,
+        `Allow: /`,
+        'Sitemap: https://blooddiamond-tattoo.de/sitemap.xml',
+      ].join('\n'),
   },
   exclude: ['/404', '/500', '/_error'],
   changefreq: 'monthly',
