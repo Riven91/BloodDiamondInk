@@ -52,11 +52,11 @@ const searchActionJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "Blood Diamond Tattoo Ink. Heilbronn",
-  url: "https://blooddiamondink.de/heilbronn",
+  url: "https://blooddiamond-tattoo.de/heilbronn",
   potentialAction: {
     "@type": "SearchAction",
     target:
-      "https://www.google.com/search?q=site:https://blooddiamondink.de/heilbronn+{search_term_string}",
+      "https://www.google.com/search?q=site:https://blooddiamond-tattoo.de/heilbronn+{search_term_string}",
     "query-input": "required name=search_term_string",
   },
 };
@@ -67,9 +67,9 @@ const localBusinessJsonLd = {
   name: "Blood Diamond Tattoo Ink. Heilbronn",
   description:
     "Fineline, Realistic & Cover-Up Tattoos in Heilbronn – Beratung, individuelles Design & höchste Hygiene.",
-  image: "https://blooddiamondink.de/og/og-heilbronn.jpg",
+  image: "https://blooddiamond-tattoo.de/og/og-heilbronn.jpg",
   telephone: "+49 176 30573128",
-  url: "https://blooddiamondink.de/heilbronn",
+  url: "https://blooddiamond-tattoo.de/heilbronn",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Lautenbacher Str. 6",

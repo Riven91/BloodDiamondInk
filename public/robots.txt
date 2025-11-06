@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://blooddiamondink-79184164-7f1b7.web.app
+Host: https://blooddiamond-tattoo.de
 
 # Sitemaps
-Sitemap: https://blooddiamondink-79184164-7f1b7.web.app/sitemap.xml
+Sitemap: https://blooddiamond-tattoo.de/sitemap.xml

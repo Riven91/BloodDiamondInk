@@ -1,5 +1,5 @@
 // Fester Preview-Host; beim Umzug wieder ENV-Logik reaktivieren.
-export const ORIGIN = "https://blooddiamondink-79184164-7f1b7.web.app";
+export const ORIGIN = "https://blooddiamond-tattoo.de";
 export const metadataBase = new URL(ORIGIN);
 // Harte Cache-Busting-Version, damit Crawler garantiert neu ziehen
 export const socialPreviewImage: string = new URL(
