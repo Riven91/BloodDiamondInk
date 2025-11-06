@@ -47,13 +47,68 @@ function replaceMarginTokens(code) {
 
 /** Remove imports/usages of OtherSectionsSpacingFix */
 function stripOtherSectionsFix(code) {
-  // Import-Zeilen entfernen (egal ob default oder named)
-  let out = code
-    .replace(/^[ \t]*import\s+[^;]*OtherSectionsSpacingFix[^;]*;[ \t]*$/gm, '')
-    // JSX-Tag selbstschließend
+  // Nur den einzelnen Identifier „OtherSectionsSpacingFix“ aus Importen entfernen, nicht die ganze Zeile.
+  let out = code;
+
+  const formatNamedImport = (items, inner, src, semi) => {
+    const hasNewline = /\n/.test(inner);
+    if (hasNewline) {
+      const indentMatch = inner.match(/\n([ \t]*)\S/);
+      const indent = indentMatch ? indentMatch[1] : '  ';
+      const formatted =
+        '\n' +
+        items
+          .map((item, idx) => `${indent}${item}${idx < items.length - 1 ? ',' : ''}`)
+          .join('\n') +
+        '\n';
+      return `import {${formatted}} from ${src}${semi}`;
+    }
+    return `import { ${items.join(', ')} } from ${src}${semi}`;
+  };
+
+  // Mehrzeilige oder einzeilige named imports wie:
+  // import { OtherSectionsSpacingFix, Section } from '@/components';
+  out = out.replace(
+    /import\s*\{([\s\S]*?)\}\s*from\s*(['"][^'"]+['"])((?:;[ \t]*)?)/g,
+    (m, inner, src, semi) => {
+      if (!/\bOtherSectionsSpacingFix\b/.test(inner)) {
+        return m;
+      }
+
+      const filtered = inner
+        .split(',')
+        .map(s => s.trim())
+        .filter(s => s && !/\bOtherSectionsSpacingFix\b/.test(s));
+      if (!filtered.length) return '';
+      return formatNamedImport(filtered, inner, src, semi || '');
+    }
+  );
+
+  // Mixed default + named imports, z.B.: import OtherSectionsSpacingFix, { Section } from '...';
+  out = out.replace(
+    /^[ \t]*import\s+OtherSectionsSpacingFix\s*,\s*\{([\s\S]*?)\}\s*from\s*(['"][^'"]+['"])((?:;[ \t]*)?)[ \t]*$/gm,
+    (m, inner, src, semi) => {
+      const filtered = inner
+        .split(',')
+        .map(s => s.trim())
+        .filter(s => s && !/\bOtherSectionsSpacingFix\b/.test(s));
+      if (!filtered.length) return '';
+      return formatNamedImport(filtered, inner, src, semi || '');
+    }
+  );
+
+  // Einzeilige default-Imports wie: import OtherSectionsSpacingFix from '...';
+  out = out.replace(
+    /^[ \t]*import\s+OtherSectionsSpacingFix\s+from\s+[^;]+;?[ \t]*$/gm,
+    ''
+  );
+
+  // JSX-Verwendungen löschen
+  out = out
     .replace(/<OtherSectionsSpacingFix\s*\/>/g, '')
     // JSX-Tag mit Inhalt (zur Sicherheit, falls es je so verwendet wurde)
     .replace(/<OtherSectionsSpacingFix[\s\S]*?<\/OtherSectionsSpacingFix>/g, '');
+
   return out;
 }
 
