@@ -13,10 +13,11 @@ import {
   defaultTitle,
   defaultDescription,
   ORIGIN,
+  metadataBase as siteMetadataBase,
 } from "./config/site";
 
-const metadataBase = new URL(ORIGIN);
-const canonicalUrl = metadataBase.toString();
+const metadataBase = siteMetadataBase;
+const canonicalUrl = siteMetadataBase.toString();
 
 export const metadata: Metadata = {
   metadataBase,

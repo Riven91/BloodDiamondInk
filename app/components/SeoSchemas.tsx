@@ -9,7 +9,7 @@
 import Script from "next/script";
 
 export default function SeoSchemas() {
-  const baseUrl = "https://blooddiamondink-79184164-7f1b7.web.app";
+  const baseUrl = "https://blooddiamond-tattoo.de";
 
   const socialCommon = [
     "https://www.facebook.com/profile.php?id=61557864394966",
