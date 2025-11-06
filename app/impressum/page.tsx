@@ -47,10 +47,6 @@ export default function ImpressumPage() {
         </section>
 
         <section className="text-center">
-            <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a UStG: DE321895746</p>
-        </section>
-
-        <section className="text-center">
           <h2 className="text-2xl text-blooddiamond-accent mb-2 text-center">
             Verantwortlich nach § 18 Abs. 2 MStV
           </h2>
