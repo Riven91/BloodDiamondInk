@@ -16,7 +16,6 @@
 /build
 
 # sitemap
-public/sitemap-*.xml
 
 # icons
 public/icons/
