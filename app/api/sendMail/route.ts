@@ -1,3 +1,16 @@
+// Cloudflare Pages Build Fix:
+// Diese API wird aktuell nicht benötigt (Kontakt läuft extern).
+// Markieren als Edge-Runtime und hart deaktivieren, damit der Build nicht blockiert.
+export const runtime = 'edge';
+
+export async function POST() {
+  return new Response(
+    JSON.stringify({ ok: false, error: 'sendMail API is disabled on Cloudflare Pages' }),
+    { status: 410, headers: { 'content-type': 'application/json; charset=utf-8' } }
+  );
+}
+
+/* ORIGINAL-IMPLEMENTIERUNG BLEIBT UNTEN AUSKOMMENTIERT ODER WIRD SPÄTER DURCH EDGE-KOMPATIBLES MAILING ERSETZT.
 const RESEND_ENDPOINT = "https://api.resend.com/emails";
 
 type ContactPayload = {
@@ -94,3 +107,5 @@ export async function POST(request: Request) {
     });
   }
 }
+*/
+// ... ggf. vorhandener Code hier entfernen/auskommentieren ...
