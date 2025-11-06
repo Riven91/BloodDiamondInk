@@ -99,23 +99,7 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.webmanifest" />
       </head>
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
-        {/* SW-NUKE-INJECT: temporär, löscht Service Worker & Caches beim Laden */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-      (function(){
-        try{
-          if('serviceWorker' in navigator){
-            navigator.serviceWorker.getRegistrations().then(rs=>rs.forEach(r=>r.unregister().catch(()=>{}))).catch(()=>{});
-          }
-          if(window.caches && caches.keys){
-            caches.keys().then(keys=>Promise.all(keys.map(k=>caches.delete(k)))).catch(()=>{});
-          }
-        }catch(e){}
-      })();
-    `,
-          }}
-        />
+        {/* Hinweis: Debug-Nuker entfernt, damit Browser-Caching & SW wieder normal funktionieren */}
         {/* Dev-Overlay entfernt – Desktop-Hero liegt nun via CSS-Hintergrund an. */}
         <Header />
         <LayoutWrapper>
