@@ -1,12 +1,8 @@
-"use client";
-
 /**
  * Blood Diamond Ink. – Lokales Business-Schema (TattooParlor)
  * Reale Standortdaten + Öffnungszeiten 10–18 Uhr (Mo–Sa)
  * Brandname mit Punkt: "Blood Diamond Ink."
  */
-
-import Script from "next/script";
 
 export default function SeoSchemas() {
   const baseUrl = "https://blooddiamond-tattoo.de";
@@ -110,10 +106,11 @@ export default function SeoSchemas() {
   return (
     <>
       {studios.map((schema, index) => (
-        <Script
+        <script
           key={index}
           id={`schema-${index}`}
           type="application/ld+json"
+          suppressHydrationWarning
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema, null, 2) }}
         />
       ))}

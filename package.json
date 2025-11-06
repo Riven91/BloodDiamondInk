@@ -9,7 +9,7 @@
     "build": "next build",
     "cf:build": "node scripts/gen-icons.mjs && npx @cloudflare/next-on-pages@1 build",
     "cf:preview": "wrangler pages dev .vercel/output/static --compatibility-date=2024-11-11 --local true",
-    "postbuild": "next-sitemap",
+    "postbuild": "node scripts/gen-icons.mjs && next-sitemap",
     "export": "next export",
     "fix-asset-urls": "node scripts/fix-asset-urls.cjs || true",
     "fix-unsafe-filenames": "node scripts/fix-unsafe-filenames.cjs",
