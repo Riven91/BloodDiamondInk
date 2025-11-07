@@ -1,11 +1,11 @@
-// Cloudflare Pages Build Fix:
+// Static build fix:
 // Diese API wird aktuell nicht benötigt (Kontakt läuft extern).
 // Markieren als Edge-Runtime und hart deaktivieren, damit der Build nicht blockiert.
 export const runtime = 'edge';
 
 export async function POST() {
   return new Response(
-    JSON.stringify({ ok: false, error: 'sendMail API is disabled on Cloudflare Pages' }),
+    JSON.stringify({ ok: false, error: 'sendMail API is currently disabled' }),
     { status: 410, headers: { 'content-type': 'application/json; charset=utf-8' } }
   );
 }

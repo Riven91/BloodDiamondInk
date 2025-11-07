@@ -364,15 +364,6 @@ window.klaroConfig = {
       }
     },
     {
-      name: 'cloudflare',
-      title: 'Cloudflare (technisch notwendig)',
-      purposes: ['essential'],
-      required: true,
-      default: true,
-      optOut: false,
-      cookies: [/^__cf_bm/, /^__cfruid$/, /^cf_clearance$/]
-    },
-    {
       name: 'google-tag-manager',
       title: 'Google Tag Manager',
       purposes: ['analytics'],
@@ -474,22 +465,7 @@ window.klaroConfig = {
           __klaroAutoMaps.onConsent(!!consent);
         } catch {}
       }
-    },
-    // {
-    //   name: 'cloudflare-web-analytics',
-    //   title: 'Cloudflare Web Analytics',
-    //   purposes: ['analytics'],
-    //   required: false,
-    //   default: false,
-    //   cookies: [],
-    //   callback: (consent) => {
-    //     if (consent) {
-    //       __klaroToggleNodeAttribute('script[data-klaro-cfwa="1"]', 'src', 'data-src', true);
-    //     } else {
-    //       __klaroToggleNodeAttribute('script[data-klaro-cfwa="1"]', 'src', 'data-src', false);
-    //     }
-    //   }
-    // }
+    }
   ]
 };
 
