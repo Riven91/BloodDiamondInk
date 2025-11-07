@@ -1,9 +1,3 @@
-# *
 User-agent: *
 Allow: /
-
-# Host
-Host: https://blooddiamond-tattoo.de
-
-# Sitemaps
 Sitemap: https://blooddiamond-tattoo.de/sitemap.xml
