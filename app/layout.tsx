@@ -103,6 +103,22 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
+        {/* SINGLE SOURCE OG image: DO NOT CHANGE */}
+        <meta
+          property="og:image"
+          content="https://blooddiamond-tattoo.de/social_media_pre_cropped.png"
+        />
+        <meta
+          property="og:image:secure_url"
+          content="https://blooddiamond-tattoo.de/social_media_pre_cropped.png"
+        />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta
+          property="og:image:alt"
+          content="Blood Diamond Tattoo Ink – Social Preview"
+        />
         <meta property="fb:app_id" content={FB_APP_ID} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         {/* Open Graph required */}
@@ -113,12 +129,6 @@ export default function RootLayout({
         <meta property="og:url" content={canonicalUrl} />
 
         {/* Open Graph image (explicit) */}
-        <meta property="og:image" content={socialPreviewImage} />
-        <meta property="og:image:secure_url" content={socialPreviewImage} />
-        <meta property="og:image:type" content={openGraphImageType} />
-        <meta property="og:image:width" content={openGraphImageWidth.toString()} />
-        <meta property="og:image:height" content={openGraphImageHeight.toString()} />
-        <meta property="og:image:alt" content={openGraphImageAlt} />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
