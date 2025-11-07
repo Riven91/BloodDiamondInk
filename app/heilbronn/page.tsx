@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
+import JsonLd from "@/components/JsonLd";
 import { studioImages } from "@/app/_content/studioImages";
 import { ORIGIN } from "../config/site";
 
@@ -85,6 +86,21 @@ const localBusinessJsonLd = {
   ],
 };
 
+const openingHoursSpecification = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "10:00",
+    closes: "18:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: "Sunday",
+    opens: "00:00",
+    closes: "00:00",
+  },
+];
+
 const studioCaptions = [
   "Einblick in eines unserer Studios in Heilbronn, Pforzheim und Böblingen – moderne Ausstattung, sterile Umgebung und konzentrierte Arbeitsatmosphäre.",
   "Tattoo-Session mit kreativer Energie – klare Linien, präzise Technik und volle Konzentration auf das Werk.",
@@ -146,6 +162,27 @@ export default function HeilbronnPage() {
         type="application/ld+json"
         strategy="afterInteractive"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TattooParlor",
+          "@id": "https://blooddiamond-tattoo.de/heilbronn#store",
+          name: "Blood Diamond Tattoo Ink – Heilbronn",
+          image: "https://blooddiamond-tattoo.de/social_media_pre_cropped.jpg",
+          url: "https://blooddiamond-tattoo.de/heilbronn",
+          telephone: "+49 176 30573128",
+          email: "heilbronn@blooddiamond-tattoo.de",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Lautenbacher Str. 6",
+            addressLocality: "Neckarsulm (Heilbronn)",
+            postalCode: "74172",
+            addressCountry: "DE",
+          },
+          openingHoursSpecification,
+          parentOrganization: { "@id": "https://blooddiamond-tattoo.de/#org" },
+        }}
       />
 
       <Hero

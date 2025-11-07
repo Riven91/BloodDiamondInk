@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
+import JsonLd from "@/components/JsonLd";
 import { studioImages } from "@/app/_content/studioImages";
 import { ORIGIN } from "../config/site";
 
@@ -17,6 +18,21 @@ const studioCaptions = [
   "Tattoo-Arbeit mit klarer Struktur – präzise Ausführung, aufgeräumte Arbeitsfläche und Fokus auf jedes Detail.",
   "Willkommen bei Blood Diamond Tattoo Ink. – stilvoller Empfangsbereich mit markantem Neon-Logo und entspannter Atmosphäre.",
 ] as const;
+
+const openingHoursSpecification = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "10:00",
+    closes: "18:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: "Sunday",
+    opens: "00:00",
+    closes: "00:00",
+  },
+];
 
 if (process.env.NODE_ENV !== "production" && studioCaptions.length !== studioImages.length) {
   console.warn("BoeblingenPage: studio captions length does not match studio images count.");
@@ -57,6 +73,27 @@ function ContactNotice() {
 export default function BoeblingenPage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TattooParlor",
+          "@id": "https://blooddiamond-tattoo.de/boeblingen#store",
+          name: "Blood Diamond Tattoo Ink – Böblingen",
+          image: "https://blooddiamond-tattoo.de/social_media_pre_cropped.jpg",
+          url: "https://blooddiamond-tattoo.de/boeblingen",
+          telephone: "+49 162 4204789",
+          email: "boeblingen@blooddiamond-tattoo.de",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Stuttgarter Str. 21",
+            addressLocality: "Herrenberg (Böblingen)",
+            postalCode: "71083",
+            addressCountry: "DE",
+          },
+          openingHoursSpecification,
+          parentOrganization: { "@id": "https://blooddiamond-tattoo.de/#org" },
+        }}
+      />
       <Hero
         title="Tattoo-Studio Böblingen — Präzision, Design und Atmosphäre"
         description={`Von Böblingen inspiriert, in der Welt vernetzt: Unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet und bringen diese Erfahrung mit zu Blood Diamond Tattoo Ink. Böblingen.`}
