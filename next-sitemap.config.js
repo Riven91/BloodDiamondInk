@@ -3,5 +3,5 @@ module.exports = {
   siteUrl: 'https://blooddiamond-tattoo.de',
   generateRobotsTxt: true,
   sitemapSize: 7000,
-  exclude: [],
+  exclude: ['/manifest.webmanifest', '/error-preview'],
 };
