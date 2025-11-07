@@ -3,10 +3,10 @@ export const ORIGIN = "https://blooddiamond-tattoo.de";
 export const metadataBase = new URL(ORIGIN);
 // Harte Cache-Busting-Version, damit Crawler garantiert neu ziehen
 export const socialPreviewImage: string = new URL(
-  "/social_media_pre_cropped.png?v=20251101d",
+  "/social_media_pre_cropped.png?v=20240607a",
   metadataBase
 ).toString();
-export const FB_APP_ID = "743928489653716";
+export const FB_APP_ID = "1383482153142754";
 export const fbAppId = FB_APP_ID;
 export const SITE_NAME = "Blood Diamond Tattoo Ink.";
 export const siteName = SITE_NAME;

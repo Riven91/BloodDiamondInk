@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/standorte`,
   },
-  // images entfernt – zentrales Bild via app/head.tsx
+  // images entfernt – zentrales Bild via app/layout.tsx
 };
 
 export default function StandortePage() {

@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/boeblingen`,
   },
-  // images entfernt – zentrales Bild via app/head.tsx
+  // images entfernt – zentrales Bild via app/layout.tsx
   robots: { index: true, follow: true },
 };
 

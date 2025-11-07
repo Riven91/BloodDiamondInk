@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/impressum`,
   },
-  // images entfernt – zentrales Bild via app/head.tsx
+  // images entfernt – zentrales Bild via app/layout.tsx
 };
 
 export default function ImpressumPage() {

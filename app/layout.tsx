@@ -12,12 +12,16 @@ import {
   SITE_NAME,
   defaultTitle,
   defaultDescription,
-  ORIGIN,
   metadataBase as siteMetadataBase,
+  FB_APP_ID,
 } from "./config/site";
 
 const metadataBase = siteMetadataBase;
-const canonicalUrl = siteMetadataBase.toString();
+const canonicalUrl = new URL("/", metadataBase).toString();
+const openGraphImageAlt = "Blood Diamond Tattoo Ink – Social Preview";
+const openGraphImageType = "image/png";
+const openGraphImageWidth = 1200;
+const openGraphImageHeight = 630;
 
 export const metadata: Metadata = {
   metadataBase,
@@ -29,7 +33,17 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: defaultTitle,
     description: defaultDescription,
-    images: [{ url: socialPreviewImage }],
+    url: canonicalUrl,
+    images: [
+      {
+        url: socialPreviewImage,
+        secureUrl: socialPreviewImage,
+        type: openGraphImageType,
+        width: openGraphImageWidth,
+        height: openGraphImageHeight,
+        alt: openGraphImageAlt,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -47,7 +61,6 @@ export const metadata: Metadata = {
     shortcut: ["/favicon.ico"],
   },
   manifest: "/manifest.webmanifest",
-  // Keine per-Layout Bilddefinition → Open Graph/Twitter kommt zentral aus Layout + <app/head.tsx>.
 };
 
 const isGtmEnabled = process.env.NEXT_PUBLIC_ENABLE_GTM === "true";
@@ -90,8 +103,31 @@ export default function RootLayout({
   return (
     <html lang="de">
       <head>
+        <meta property="fb:app_id" content={FB_APP_ID} />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta property="fb:app_id" content="1383482153142754" />
+        {/* Open Graph required */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={defaultTitle} />
+        <meta property="og:description" content={defaultDescription} />
+        <meta property="og:site_name" content={SITE_NAME} />
+        <meta property="og:url" content={canonicalUrl} />
+
+        {/* Open Graph image (explicit) */}
+        <meta property="og:image" content={socialPreviewImage} />
+        <meta property="og:image:secure_url" content={socialPreviewImage} />
+        <meta property="og:image:type" content={openGraphImageType} />
+        <meta property="og:image:width" content={openGraphImageWidth.toString()} />
+        <meta property="og:image:height" content={openGraphImageHeight.toString()} />
+        <meta property="og:image:alt" content={openGraphImageAlt} />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={defaultTitle} />
+        <meta
+          name="twitter:description"
+          content={defaultDescription}
+        />
+        <meta name="twitter:image" content={socialPreviewImage} />
         {/* Hard Fallbacks – stellen Favicons unabhängig von Metadata sicher */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
