@@ -66,26 +66,32 @@ export default function StudioGallery({ captions }: Props) {
   return (
     <>
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {studioImages.map((img, i) => (
-          <figure key={img.src} className="w-full">
-            <div
-              onClick={() => openLightbox(i)}
-              className="relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-xl"
-            >
-              <Image
-                src={img.src}
-                alt={img.alt}
-                fill
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover object-center"
-              />
-            </div>
+        {studioImages.map((img, i) => {
+          const caption = captions[i];
+          const altText = caption?.trim() || "Tattoo Galerie";
 
-            <figcaption className="mt-3 rounded-xl border border-neutral-700 bg-black/30 p-4 text-sm leading-relaxed text-neutral-300">
-              {captions[i]}
-            </figcaption>
-          </figure>
-        ))}
+          return (
+            <figure key={img.src} className="w-full">
+              <div
+                onClick={() => openLightbox(i)}
+                className="relative aspect-[4/3] w-full cursor-pointer overflow-hidden rounded-xl"
+              >
+                <Image
+                  src={img.src}
+                  alt={altText}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center"
+                  loading="lazy"
+                />
+              </div>
+
+              <figcaption className="mt-3 rounded-xl border border-neutral-700 bg-black/30 p-4 text-sm leading-relaxed text-neutral-300">
+                {captions[i]}
+              </figcaption>
+            </figure>
+          );
+        })}
       </div>
 
       {isOpen && (
@@ -123,12 +129,13 @@ export default function StudioGallery({ captions }: Props) {
           >
             <Image
               src={studioImages[activeIndex].src}
-              alt={studioImages[activeIndex].alt}
+              alt={captions[activeIndex]?.trim() || "Tattoo Galerie"}
               width={800}
               height={600}
               className="h-auto w-auto max-h-[90vh] max-w-full rounded-xl object-contain"
               loading="lazy"
               fetchPriority="low"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
 

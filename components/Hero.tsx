@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import ReviewsStrip from "@/components/ReviewsStrip";
 import { StickyMobileCta } from "@/components/StickyMobileCta";
-import { heroDesktop, heroMobile } from "@/lib/heroImages";
+import { heroDesktop } from "@/lib/heroImages";
 
 interface HeroProps {
   title?: ReactNode;
@@ -82,44 +82,27 @@ export function Hero({
   );
 
   // TODO: optionally reduce diamond glow intensity by ~15% later if required.
+  const heroBlurDataURL =
+    "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMScgaGVpZ2h0PScxJyBmaWxsPScjMDAwJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnPjxyZWN0IHdpZHRoPScxJyBoZWlnaHQ9JzEnIGZpbGw9JyMwMDAwMDAnLz48L3N2Zz4=";
+
   return (
     <section
-      className="hero-section relative isolation-isolate flex items-center justify-center overflow-hidden text-white md:bg-none"
+      className="hero-section relative isolation-isolate flex min-h-[70vh] items-center justify-center overflow-hidden text-white md:min-h-[85vh] md:bg-none"
     >
-      {/* Desktop Hero (ab 768px): hochaufgelöstes WebP via Next/Image */}
-      <div className="pointer-events-none absolute inset-0 hidden md:block">
-        <div className="relative h-full w-full">
-          <Image
-            src={heroDesktop}
-            alt="Blood Diamond Tattoo Ink – Hero"
-            priority
-            width={1920}
-            height={1080}
-            sizes="100vw"
-            fetchPriority="high"
-            decoding="async"
-            className="object-cover object-[50%_30%]"
-            style={{ width: "100%", height: "100%" }}
-          />
-        </div>
-      </div>
-
-      {/* Mobile Hero (unter 768px): einziges Bild */}
-      <div className="pointer-events-none absolute inset-0 md:hidden">
-        <div className="relative h-[100svh] w-full">
-          <Image
-            src={heroMobile}
-            alt="Blood Diamond Tattoo Ink – Hero (mobil)"
-            priority
-            width={1080}
-            height={1920}
-            sizes="100vw"
-            fetchPriority="high"
-            decoding="async"
-            className="object-cover object-[50%_35%]"
-            style={{ width: "100%", height: "100%" }}
-          />
-        </div>
+      <div className="pointer-events-none absolute inset-0">
+        <Image
+          src={heroDesktop}
+          alt="Blood Diamond Tattoo Ink – Hero"
+          fill
+          priority
+          fetchPriority="high"
+          placeholder="blur"
+          blurDataURL={heroBlurDataURL}
+          quality={62}
+          sizes="100vw"
+          className="object-[50%_30%]"
+          style={{ objectFit: "cover" }}
+        />
       </div>
 
       {/* Content */}

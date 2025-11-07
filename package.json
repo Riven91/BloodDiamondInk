@@ -2,7 +2,10 @@
   "name": "blood-diamond-ink",
   "version": "1.0.0",
   "private": true,
-  "browserslist": ["defaults", "not IE 11", "not op_mini all"],
+  "browserslist": {
+    "production": ["Chrome >= 120", "last 1 Safari version", "last 1 Firefox version"],
+    "development": ["last 1 Chrome version"]
+  },
   "scripts": {
     "predev": "node scripts/gen-icons.mjs || true",
     "dev": "next dev",
