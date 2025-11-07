@@ -128,7 +128,6 @@ export default function RootLayout({
           content={defaultDescription}
         />
         <meta name="twitter:image" content={socialPreviewImage} />
-        <link rel="canonical" href={canonicalUrl} />
         {/* Hard Fallbacks – stellen Favicons unabhängig von Metadata sicher */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
