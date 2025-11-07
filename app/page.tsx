@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: ORIGIN,
   },
-  // openGraph/twitter ohne images; Bild wird zentral über app/head.tsx geliefert.
+  // openGraph/twitter ohne images; Bild wird zentral über app/layout.tsx geliefert.
 };
 
 const faqItems = [

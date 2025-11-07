@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/agb`,
   },
-  // images entfernt – zentrales Bild via app/head.tsx
+  // images entfernt – zentrales Bild via app/layout.tsx
 };
 
 export default function AgbPage() {

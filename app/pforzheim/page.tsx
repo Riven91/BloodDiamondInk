@@ -60,7 +60,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${ORIGIN}/pforzheim`,
   },
-  // Keine images-Felder – Bild kommt aus app/head.tsx
+  // Keine images-Felder – Bild kommt aus app/layout.tsx
 };
 
 function ContactForm() {
