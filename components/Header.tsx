@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { tryPersistStorage } from "@/lib/storagePersistence";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -44,6 +45,27 @@ export function Header() {
       resizeObserver.disconnect();
       window.removeEventListener("resize", updateOffset);
       document.documentElement.style.setProperty("--hero-header-offset", "0px");
+    };
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const persistOnLoad = () => {
+      void tryPersistStorage();
+    };
+
+    if (document.readyState === "complete") {
+      persistOnLoad();
+      return;
+    }
+
+    window.addEventListener("load", persistOnLoad, { once: true });
+
+    return () => {
+      window.removeEventListener("load", persistOnLoad);
     };
   }, []);
 

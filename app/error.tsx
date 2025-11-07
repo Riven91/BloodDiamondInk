@@ -45,9 +45,9 @@ export default function ErrorPage({ error }: ErrorPageProps) {
           width={200}
           height={200}
           unoptimized
-          priority
           onError={(e) => console.error("[500] bdi-logo-transparent.webp onError", e)}
           className="opacity-30 brightness-110 [filter:drop-shadow(0_0_10px_rgba(16,185,129,0.75))_drop-shadow(0_0_16px_rgba(16,185,129,0.45))]"
+          sizes="200px"
         />
       </div>
     </main>

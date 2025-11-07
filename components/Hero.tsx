@@ -92,12 +92,14 @@ export function Hero({
           <Image
             src={heroDesktop}
             alt="Blood Diamond Tattoo Ink – Hero"
-            fill
-            sizes="100vw"
             priority
+            width={1920}
+            height={1080}
+            sizes="100vw"
             fetchPriority="high"
             decoding="async"
             className="object-cover object-[50%_30%]"
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
       </div>
@@ -108,12 +110,14 @@ export function Hero({
           <Image
             src={heroMobile}
             alt="Blood Diamond Tattoo Ink – Hero (mobil)"
-            fill
-            sizes="100vw"
             priority
+            width={1080}
+            height={1920}
+            sizes="100vw"
             fetchPriority="high"
             decoding="async"
             className="object-cover object-[50%_35%]"
+            style={{ width: "100%", height: "100%" }}
           />
         </div>
       </div>
@@ -191,14 +195,15 @@ export function Hero({
 
               {/* Logo + Stars Row */}
               <div className="flex items-center justify-center" style={{ gap: '8px' }}>
-                <Image
-                  src="/Google__G__logo.png"
-                  alt="Google-Logo"
-                  width={32}
-                  height={32}
-                  className="w-7 h-7 md:w-8 md:h-8"
-                  fetchPriority="low"
-                />
+              <Image
+                src="/Google__G__logo.png"
+                alt="Google-Logo"
+                width={32}
+                height={32}
+                className="w-7 h-7 md:w-8 md:h-8"
+                fetchPriority="low"
+                sizes="32px"
+              />
                 <div style={{ color: '#FFD700', fontSize: '18px', letterSpacing: '3px' }} aria-label="5 von 5 Sternen">
                   ★★★★★
                 </div>
