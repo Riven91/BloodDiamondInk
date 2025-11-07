@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ReviewsStrip from "@/components/ReviewsStrip";
@@ -17,6 +17,20 @@ interface HeroProps {
   city?: "home" | "pforzheim" | "heilbronn" | "boeblingen";
 }
 
+function useIsDesktop() {
+  const [d, setD] = useState(false);
+
+  useEffect(() => {
+    const m = window.matchMedia("(min-width: 768px)");
+    const on = () => setD(m.matches);
+    on();
+    m.addEventListener("change", on);
+    return () => m.removeEventListener("change", on);
+  }, []);
+
+  return d;
+}
+
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description = "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey). Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
@@ -31,6 +45,8 @@ export function Hero({
     console.warn("Hero city prop missing – rendering disabled");
     return null;
   }
+
+  const isDesktop = useIsDesktop();
 
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
@@ -101,7 +117,7 @@ export function Hero({
           quality={62}
           sizes="100vw"
           className="object-[50%_30%]"
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", objectPosition: isDesktop ? "50% 30%" : "50% 20%" }}
         />
       </div>
 
