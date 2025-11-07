@@ -2,6 +2,7 @@
   "name": "blood-diamond-ink",
   "version": "1.0.0",
   "private": true,
+  "browserslist": ["defaults", "not IE 11", "not op_mini all"],
   "scripts": {
     "predev": "node scripts/gen-icons.mjs || true",
     "dev": "next dev",
