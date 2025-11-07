@@ -91,6 +91,7 @@ export default function RootLayout({
     <html lang="de">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta property="fb:app_id" content="1383482153142754" />
         {/* Hard Fallbacks – stellen Favicons unabhängig von Metadata sicher */}
         <link rel="icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
