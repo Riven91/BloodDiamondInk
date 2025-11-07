@@ -1,12 +1,15 @@
-
 /*
 ═══════════════════════════════════════════════════════
 🜂  Made by Sebastian Mazza  |  Crafted in 10 days in 2025
 For my good friend — crafted with precision & soul.
 ═══════════════════════════════════════════════════════
 */
-/** @type {import('next').NextConfig} */
+
 const nextConfig = {
+  experimental: { esmExternals: true },
+  swcMinify: true,
+  output: 'standalone',
+  transpilePackages: [],
   async redirects() {
     return [
       {
@@ -28,4 +31,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+export default nextConfig;

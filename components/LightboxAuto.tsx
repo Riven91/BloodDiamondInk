@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useRef, useState } from "react";
 
 function decodeNextImageUrl(src: string): string {
@@ -238,12 +239,13 @@ export default function LightboxAuto({ containerSelector, gallerySelector }: Lig
             className="max-h-[90vh] max-w-[90vw]"
             onClick={(event) => event.stopPropagation()}
           >
-            <img
+            <Image
               src={currentItem.src}
               alt={currentItem.alt}
+              width={800}
+              height={600}
               className="max-h-[90vh] max-w-full rounded-xl object-contain"
               loading="lazy"
-              decoding="async"
               fetchPriority="low"
             />
           </div>

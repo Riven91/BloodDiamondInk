@@ -53,7 +53,7 @@ const stylesData: StyleItem[] = [
   },
   {
     title: "Mandala",
-    src: "/mandala1 (1).jpeg",
+    src: "/mandala1.jpeg",
     alt: "Mandala Tattoo – ornamentale Dotwork-Komposition – Blood Diamond Tattoo Ink.",
     desc:
       "Geometrische Präzision und Dotwork-Details: symmetrische Mandalas mit klaren Linien, perfekter Ausrichtung und ruhiger Balance auf der Haut.",
