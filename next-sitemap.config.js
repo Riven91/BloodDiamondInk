@@ -1,10 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
-const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://blooddiamondink-79184164-7f1b7.web.app'
-).replace(/\/+$/, '');
-
 module.exports = {
-  siteUrl,
+  siteUrl: 'https://blooddiamond-tattoo.de',
   generateRobotsTxt: true,
   sitemapSize: 7000,
   exclude: ['/404', '/500', '/_error'],
