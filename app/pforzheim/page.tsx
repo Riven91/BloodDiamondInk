@@ -4,6 +4,7 @@ import { Hero } from "@/components/Hero";
 import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
+import JsonLd from "@/components/JsonLd";
 import { studioImages } from "@/app/_content/studioImages";
 import { ORIGIN } from "../config/site";
 
@@ -42,6 +43,21 @@ const faqJsonLd = {
     },
   })),
 };
+
+const openingHoursSpecification = [
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "10:00",
+    closes: "18:00",
+  },
+  {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: "Sunday",
+    opens: "00:00",
+    closes: "00:00",
+  },
+];
 
 const studioCaptions = [
   "Einblick in eines unserer Studios in Pforzheim, Heilbronn und Böblingen – präzise Handwerkskunst, moderne Ausstattung und sterile Arbeitsbedingungen.",
@@ -90,6 +106,27 @@ export default function PforzheimPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "TattooParlor",
+          "@id": "https://blooddiamond-tattoo.de/pforzheim#store",
+          name: "Blood Diamond Tattoo Ink – Pforzheim",
+          image: "https://blooddiamond-tattoo.de/social_media_pre_cropped.jpg",
+          url: "https://blooddiamond-tattoo.de/pforzheim",
+          telephone: "+49 1512 3426609",
+          email: "pforzheim@blooddiamond-tattoo.de",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Maulbronner Str. 38",
+            addressLocality: "Ötisheim (Pforzheim)",
+            postalCode: "75443",
+            addressCountry: "DE",
+          },
+          openingHoursSpecification,
+          parentOrganization: { "@id": "https://blooddiamond-tattoo.de/#org" },
+        }}
+      />
 
       <Hero
         title="Tattoo Studio Pforzheim – Kunst, Stil & Präzision"

@@ -4,6 +4,7 @@ import { FAQAccordion } from "@/components/FAQAccordion";
 import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
 import LightboxAuto from "@/components/LightboxAuto";
+import JsonLd from "@/components/JsonLd";
 import { Metadata } from "next";
 import { ORIGIN, defaultTitle, defaultDescription } from "./config/site";
 import { LocationsTeaser } from "./components/LocationsTeaser";
@@ -67,6 +68,39 @@ const faqItems = [
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "@id": "https://blooddiamond-tattoo.de/#org",
+          name: "Blood Diamond Tattoo Ink.",
+          url: "https://blooddiamond-tattoo.de",
+          logo: "https://blooddiamond-tattoo.de/favicon-512.png",
+          image: "https://blooddiamond-tattoo.de/social_media_pre_cropped.jpg",
+          department: [
+            { "@id": "https://blooddiamond-tattoo.de/pforzheim#store" },
+            { "@id": "https://blooddiamond-tattoo.de/heilbronn#store" },
+            { "@id": "https://blooddiamond-tattoo.de/boeblingen#store" },
+          ],
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          url: "https://blooddiamond-tattoo.de",
+          name: "Blood Diamond Tattoo Ink.",
+          inLanguage: "de",
+        }}
+      />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          url: "https://blooddiamond-tattoo.de/",
+          name: "Tattoo Studios in Baden-Württemberg",
+        }}
+      />
       <Hero
         city="home"
         title="Tattoo Studios in Baden-Württemberg – Exklusive Tattoo-Kunst auf Weltklasse-Niveau"
