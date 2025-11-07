@@ -42,12 +42,12 @@ export function Hero({
   city,
 }: HeroProps) {
 
+  const isDesktop = useIsDesktop();
+
   if (!city) {
     console.warn("Hero city prop missing – rendering disabled");
     return null;
   }
-
-  const isDesktop = useIsDesktop();
 
   const isWhatsAppCta =
     typeof secondaryCtaLabel === "string" && secondaryCtaLabel.toLowerCase().includes("whatsapp");
