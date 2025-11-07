@@ -10,10 +10,12 @@ export default function GoogleRating({ city }: { city: string }) {
         <Image
           src="/Google__G__logo.png"
           alt="Google-Logo"
-          width={28}
-          height={28}
+          width={32}
+          height={32}
           className="object-contain w-7 h-7 md:w-8 md:h-8"
           fetchPriority="low"
+          loading="lazy"
+          sizes="(max-width: 767px) 28px, 32px"
         />
         <div className="flex text-yellow-400">
           {[...Array(5)].map((_, i) => (
