@@ -19,7 +19,7 @@ import {
 const metadataBase = siteMetadataBase;
 const canonicalUrl = new URL("/", metadataBase).toString();
 const openGraphImageAlt = "Blood Diamond Tattoo Ink – Social Preview";
-const openGraphImageType = "image/png";
+const openGraphImageType = "image/jpeg";
 const openGraphImageWidth = 1200;
 const openGraphImageHeight = 630;
 
@@ -106,13 +106,13 @@ export default function RootLayout({
         {/* SINGLE SOURCE OG image: DO NOT CHANGE */}
         <meta
           property="og:image"
-          content="https://blooddiamond-tattoo.de/social_media_pre_cropped.png"
+          content="https://blooddiamond-tattoo.de/social_media_pre_cropped.jpg"
         />
         <meta
           property="og:image:secure_url"
-          content="https://blooddiamond-tattoo.de/social_media_pre_cropped.png"
+          content="https://blooddiamond-tattoo.de/social_media_pre_cropped.jpg"
         />
-        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:type" content="image/jpeg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta
