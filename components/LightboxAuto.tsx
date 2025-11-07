@@ -241,12 +241,13 @@ export default function LightboxAuto({ containerSelector, gallerySelector }: Lig
           >
             <Image
               src={currentItem.src}
-              alt={currentItem.alt}
+              alt={currentItem.alt?.trim() || "Tattoo Galerie"}
               width={800}
               height={600}
               className="max-h-[90vh] max-w-full rounded-xl object-contain"
               loading="lazy"
               fetchPriority="low"
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           </div>
 

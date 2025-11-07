@@ -10,6 +10,7 @@ const nextConfig = {
   swcMinify: true,
   output: 'standalone',
   transpilePackages: [],
+  images: { formats: ['image/avif', 'image/webp'] },
   async redirects() {
     return [
       {
