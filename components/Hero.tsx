@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import ReviewsStrip from "@/components/ReviewsStrip";
@@ -17,6 +17,21 @@ interface HeroProps {
   city?: "home" | "pforzheim" | "heilbronn" | "boeblingen";
 }
 
+function useIsDesktop() {
+  const [d, setD] = useState(false);
+
+  useEffect(() => {
+    // match media after mount to avoid SSR hydration warnings
+    const m = window.matchMedia("(min-width: 768px)");
+    const on = () => setD(m.matches);
+    on();
+    m.addEventListener("change", on);
+    return () => m.removeEventListener("change", on);
+  }, []);
+
+  return d;
+}
+
 export function Hero({
   title = "Tattoo Studios in Baden-Württemberg – Blood Diamond Tattoo Ink.",
   description = "Top-Künstler aus aller Welt – mehrfach mit der \"Goldenen Nadel\" ausgezeichnet. Realistic, Fineline, Cover-Up & Black & Grey (Black and Grey). Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) & Böblingen (Herrenberg).",
@@ -26,6 +41,8 @@ export function Hero({
   secondaryCtaHref,
   city,
 }: HeroProps) {
+
+  const isDesktop = useIsDesktop();
 
   if (!city) {
     console.warn("Hero city prop missing – rendering disabled");
@@ -40,9 +57,9 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   const kickerDesktopStyle = {
-    backgroundColor: 'rgba(0,0,0,0.55)',
-    padding: '0.5rem 0.75rem',
-    borderRadius: '6px',
+    backgroundColor: "rgba(0,0,0,0.55)",
+    padding: "0.5rem 0.75rem",
+    borderRadius: "6px",
   };
 
   const hasPrimaryCta = Boolean(ctaLabel && ctaHref);
@@ -87,7 +104,7 @@ export function Hero({
 
   return (
     <section
-      className="hero-section relative isolation-isolate flex min-h-[70vh] items-center justify-center overflow-hidden text-white md:min-h-[85vh] md:bg-none"
+      className="hero-section relative isolation-isolate flex h-[100svh] md:min-h-[85vh] items-center justify-center overflow-hidden text-white md:bg-none"
     >
       <div className="pointer-events-none absolute inset-0">
         <Image
@@ -100,8 +117,8 @@ export function Hero({
           blurDataURL={heroBlurDataURL}
           quality={62}
           sizes="100vw"
-          className="object-[50%_30%]"
-          style={{ objectFit: "cover" }}
+          className="object-cover"
+          style={{ objectFit: "cover", objectPosition: isDesktop ? "50% 30%" : "50% 18%" }}
         />
       </div>
 
