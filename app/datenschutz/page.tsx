@@ -48,7 +48,7 @@ export default function Datenschutz() {
             <p>
               <strong className="text-green-600">4. Empfänger und Auftragsverarbeitung</strong><br />
               Wir setzen Auftragsverarbeiter mit AVV ein:<br />
-              • Cloudflare Inc., 101 Townsend St, San Francisco CA 94107, USA (Hosting/CDN)<br />
+              • Vercel Inc., 440 N Barranca Ave #4133, Covina CA 91723, USA (Hosting/CDN)<br />
               • Perspective Software GmbH, Köpenicker Str. 126, 10179 Berlin (Formularsystem)
             </p>
           </li>
@@ -92,9 +92,16 @@ export default function Datenschutz() {
 
           <li>
             <p>
-              <strong className="text-green-600">10. Server-Logfiles / Cloudflare</strong><br />
+              <strong className="text-green-600">10. Server-Logfiles / Hosting</strong><br />
               Automatische Erfassung technischer Zugriffsdaten zur Stabilität/Sicherheit (Art.&nbsp;6 Abs.&nbsp;1 lit.&nbsp;f DSGVO). Infos:{" "}
-              <a href="https://www.cloudflare.com/de-de/privacypolicy/" target="_blank" rel="noreferrer" className="underline focus-visible:underline">https://www.cloudflare.com/de-de/privacypolicy/</a>
+              <a
+                href="https://vercel.com/legal/privacy-policy"
+                target="_blank"
+                rel="noreferrer"
+                className="underline focus-visible:underline"
+              >
+                https://vercel.com/legal/privacy-policy
+              </a>
             </p>
           </li>
 
