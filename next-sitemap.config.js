@@ -1,8 +1,9 @@
+/** @type {import('next-sitemap').IConfig} */
 module.exports = {
   siteUrl: 'https://blooddiamond-tattoo.de',
-  generateRobotsTxt: true,
-  outDir: './public',
-  sitemapSize: 5000,
+  generateRobotsTxt: false,
   changefreq: 'weekly',
-  priority: 0.8,
+  priority: 0.7,
+  sitemapSize: 7000,
+  exclude: ['/404', '/500'],
 };
