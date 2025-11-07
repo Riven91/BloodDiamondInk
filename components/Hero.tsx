@@ -87,7 +87,7 @@ export function Hero({
 
   return (
     <section
-      className="hero-section relative isolation-isolate flex min-h-[70vh] items-center justify-center overflow-hidden text-white md:min-h-[85vh] md:bg-none"
+      className="hero-section relative isolation-isolate flex h-[100svh] md:min-h-[85vh] items-center justify-center overflow-hidden text-white md:bg-none"
     >
       <div className="pointer-events-none absolute inset-0">
         <Image
