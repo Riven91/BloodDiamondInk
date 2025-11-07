@@ -115,10 +115,11 @@ export function Hero({
           fetchPriority="high"
           placeholder="blur"
           blurDataURL={heroBlurDataURL}
-          quality={62}
-          sizes="100vw"
+          quality={48}
+          // Mobile zeigt volle Breite an, Desktop ebenfalls (Hero = Hintergrund)
+          sizes="(max-width: 767px) 100vw, 100vw"
           className="object-cover"
-          style={{ objectFit: "cover", objectPosition: isDesktop ? "50% 30%" : "50% 18%" }}
+          style={{ objectFit: "cover", objectPosition: isDesktop ? "50% 30%" : "50% 20%" }}
         />
       </div>
 

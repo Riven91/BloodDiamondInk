@@ -6,11 +6,24 @@ For my good friend — crafted with precision & soul.
 */
 
 const nextConfig = {
-  experimental: { esmExternals: true },
+  reactStrictMode: true,
   swcMinify: true,
   output: 'standalone',
   transpilePackages: [],
-  images: { formats: ['image/avif', 'image/webp'] },
+  images: {
+    // schlanke Stufen, damit Mobile nicht unnötig große Renditions bekommt
+    deviceSizes: [320, 420, 640, 750, 828, 1080],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    formats: ['image/avif', 'image/webp'],
+    // sichert absolute Pfade ab (du lieferst lokal aus)
+    remotePatterns: [],
+    dangerouslyAllowSVG: false,
+  },
+  experimental: {
+    esmExternals: true,
+    // reduziert Transform/Polyfill-Last in modernen Browsern
+    forceSwcTransforms: true,
+  },
   async redirects() {
     return [
       {
