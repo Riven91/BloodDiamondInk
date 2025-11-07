@@ -33,8 +33,17 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value:
-              "default-src 'self'; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' 'unsafe-eval' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' data: https:;",
+            value: [
+              "default-src 'self'",
+              "img-src 'self' data: https: https://maps.gstatic.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https: https://maps.googleapis.com https://maps.gstatic.com https://www.google.com",
+              "style-src 'self' 'unsafe-inline' https: https://fonts.googleapis.com",
+              "font-src 'self' data: https: https://fonts.gstatic.com",
+              "frame-src 'self' https://www.google.com https://www.google.com/maps",
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join('; '),
           },
           {
             key: 'Referrer-Policy',
