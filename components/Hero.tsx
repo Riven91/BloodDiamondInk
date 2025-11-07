@@ -21,6 +21,7 @@ function useIsDesktop() {
   const [d, setD] = useState(false);
 
   useEffect(() => {
+    // match media after mount to avoid SSR hydration warnings
     const m = window.matchMedia("(min-width: 768px)");
     const on = () => setD(m.matches);
     on();
@@ -56,9 +57,9 @@ export function Hero({
     : "rounded-2xl border px-5 py-3 hover:bg-gray-50";
 
   const kickerDesktopStyle = {
-    backgroundColor: 'rgba(0,0,0,0.55)',
-    padding: '0.5rem 0.75rem',
-    borderRadius: '6px',
+    backgroundColor: "rgba(0,0,0,0.55)",
+    padding: "0.5rem 0.75rem",
+    borderRadius: "6px",
   };
 
   const hasPrimaryCta = Boolean(ctaLabel && ctaHref);
@@ -116,8 +117,8 @@ export function Hero({
           blurDataURL={heroBlurDataURL}
           quality={62}
           sizes="100vw"
-          className="object-[50%_30%]"
-          style={{ objectFit: "cover", objectPosition: isDesktop ? "50% 30%" : "50% 20%" }}
+          className="object-cover"
+          style={{ objectFit: "cover", objectPosition: isDesktop ? "50% 30%" : "50% 18%" }}
         />
       </div>
 
