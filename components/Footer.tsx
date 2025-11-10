@@ -7,7 +7,11 @@ export function Footer() {
   const pathname = usePathname();
   const isHeilbronn = pathname?.toLowerCase().includes('/heilbronn');
   const isBoeblingen = pathname?.toLowerCase().includes('/boeblingen');
-  const impressumHref = isBoeblingen ? '/impressum/boeblingen' : '/impressum';
+  const impressumHref = isBoeblingen
+    ? '/impressum/boeblingen'
+    : isHeilbronn
+      ? '/heilbronn/impressum'
+      : '/impressum';
   const datenschutzHref = isBoeblingen ? '/datenschutz/boeblingen' : '/datenschutz';
   const agbHref = isBoeblingen ? '/agb/boeblingen' : '/agb';
   const contactHref = isBoeblingen
