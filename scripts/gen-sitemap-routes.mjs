@@ -14,7 +14,7 @@ const files = await globby(patterns, { dot: false })
 const routes = new Set(['/'])
 
 for (const file of files) {
-  const rel = file.replace(appDir + path.sep, '')
+  const rel = path.relative(appDir, path.resolve(file))
   const segs = rel.split(path.sep)
   segs.pop()
   const clean = segs.filter(
