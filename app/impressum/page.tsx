@@ -42,7 +42,7 @@ export default function ImpressumPage() {
           </h2>
           <div className="text-neutral-300">
             <p>Telefon: 0176 84776114</p>
-            <p>E-Mail: info@blooddiamond-tattoo.de</p>
+            <p>E-Mail: pforzheim@blooddiamond-tattoo.de</p>
           </div>
         </section>
 
