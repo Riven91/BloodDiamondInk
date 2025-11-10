@@ -1,17 +1,16 @@
-
 import { Metadata } from "next";
-import { ORIGIN } from "../config/site";
+import { ORIGIN } from "../../config/site";
 
 export const metadata: Metadata = {
-  title: "Impressum – Blood Diamond Tattoo",
-  description: "Impressum und Anbieterkennzeichnung für Blood Diamond Tattoo.",
+  title: "Impressum – Blood Diamond Tattoo Heilbronn",
+  description: "Impressum und Anbieterkennzeichnung für den Standort Heilbronn von Blood Diamond Tattoo.",
   alternates: {
-    canonical: `${ORIGIN}/impressum`,
+    canonical: `${ORIGIN}/heilbronn/impressum`,
   },
   // images entfernt – zentrales Bild via app/layout.tsx
 };
 
-export default function ImpressumPage() {
+export default function ImpressumHeilbronnPage() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-8 text-neutral-300">
       <h1 className="text-4xl text-blooddiamond-accent uppercase tracking-widest mb-4 text-center">
@@ -38,7 +37,7 @@ export default function ImpressumPage() {
           </h2>
           <div className="text-neutral-300">
             <p>Telefon: 0176 84776114</p>
-            <p>E-Mail: pforzheim@blooddiamond-tattoo.de</p>
+            <p>E-Mail: heilbronn@blooddiamond-tattoo.de</p>
           </div>
         </section>
 
