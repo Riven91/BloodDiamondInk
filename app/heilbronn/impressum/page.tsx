@@ -36,7 +36,7 @@ export default function ImpressumHeilbronnPage() {
             Kontakt
           </h2>
           <div className="text-neutral-300">
-            <p>Telefon: 0176 84776114</p>
+            <p>Telefon: 0176 30573128</p>
             <p>E-Mail: heilbronn@blooddiamond-tattoo.de</p>
           </div>
         </section>
