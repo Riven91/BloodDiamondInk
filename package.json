@@ -5,7 +5,7 @@
   "scripts": {
     "predev": "node scripts/gen-icons.mjs || true",
     "dev": "next dev",
-    "prebuild": "node scripts/gen-icons.mjs || true",
+    "prebuild": "node scripts/gen-sitemap-routes.mjs && (node scripts/gen-icons.mjs || true)",
     "build": "next build",
     "postbuild": "next-sitemap",
     "export": "next export",
@@ -37,7 +37,8 @@
     "postcss": "^8",
     "sharp": "^0.33.4",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "globby": "^14.0.0"
   },
   "engines": {
     "node": "20"
