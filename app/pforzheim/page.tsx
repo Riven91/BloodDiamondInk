@@ -171,7 +171,7 @@ export default function PforzheimPage() {
                   <strong>Blood Diamond Tattoo Ink.</strong> steht für moderne Tattoo-Kunst in der Region <strong>Pforzheim (Ötisheim)</strong>, <strong>Enzkreis</strong>. Unser Studio verbindet ästhetisches Design, präzises Handwerk und ruhige <strong>Private Rooms</strong>, in denen du und dein Motiv im Mittelpunkt stehen.
                 </p>
                 <p>
-                  Unsere erfahrenen Tätowierer in <strong>Pforzheim</strong> nehmen sich für jede Beratung die Zeit, die dein Motiv
+                  Unsere erfahrenen Tätowierer in <strong>Pforzheim (Ötisheim)</strong> nehmen sich für jede Beratung die Zeit, die dein Motiv
                   verdient. Ob kleines Symbol, feines Lettering oder großflächiges Kunstwerk – bei <strong>Blood Diamond Tattoo
                   Ink.</strong> erhältst du persönliche Betreuung von der ersten Idee bis zur professionellen Nachsorge.
                 </p>
