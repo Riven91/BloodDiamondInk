@@ -168,7 +168,7 @@ export default function PforzheimPage() {
             <div className="mt-4 text-sm text-blooddiamond-text/80">
               <section className="space-y-5">
                 <p>
-                  <strong>Blood Diamond Tattoo Ink.</strong> steht für moderne Tattoo-Kunst im Raum <strong>Pforzheim</strong> Mühlacker und im, <strong>Enzkreis</strong>. Unser Studio verbindet ästhetisches Design, präzises Handwerk und ruhige <strong>Private Rooms</strong>, in denen du und dein Motiv im Mittelpunkt stehen.
+                  <strong>Blood Diamond Tattoo Ink.</strong> steht für moderne Tattoo-Kunst im Raum <strong>Pforzheim, Mühlacker</strong> und im <strong>Enzkreis</strong>. Unser Studio verbindet ästhetisches Design, präzises Handwerk und ruhige <strong>Private Rooms</strong>, in denen du und dein Motiv im Mittelpunkt stehen.
                 </p>
                 <p>
                   Unsere erfahrenen Tätowierer in <strong>Pforzheim (Ötisheim)</strong> nehmen sich für jede Beratung die Zeit, die dein Motiv
