@@ -388,25 +388,11 @@ window.klaroConfig = {
       purposes: ['analytics'],
       required: false,
       cookies: [/^_ga/, /^_gid/, /^_gat/],
-      callback: function (consent, app) {
+      callback: function (consent) {
         if (typeof window !== 'undefined') {
-          window.dataLayer = window.dataLayer || [];
-          window.gtag =
-            window.gtag ||
-            function () {
-              window.dataLayer.push(arguments);
-            };
-
-          window.gtag('consent', 'default', {
-            analytics_storage: 'denied',
-            ad_storage: 'denied',
-            ad_user_data: 'denied',
-            ad_personalization: 'denied'
-          });
-
-          window.gtag('consent', 'update', {
-            analytics_storage: consent ? 'granted' : 'denied'
-          });
+          if (typeof window.updateGaConsent === 'function') {
+            window.updateGaConsent(consent === true);
+          }
 
           window.dispatchEvent(new CustomEvent('consent:ga', { detail: !!consent }));
           __klaroDispatchConsentEvent('klaro-consent-changed', {
