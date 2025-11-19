@@ -6,7 +6,6 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
-import { loadGA4, whenIdle } from "../src/lib/ga4";
 import {
   socialPreviewImage,
   SITE_NAME,
@@ -66,36 +65,6 @@ export const metadata: Metadata = {
 };
 
 const isGtmEnabled = process.env.NEXT_PUBLIC_ENABLE_GTM === "true";
-const isGa4Enabled = process.env.NEXT_PUBLIC_ENABLE_GA4 === "true";
-const ga4Id = process.env.NEXT_PUBLIC_GA4_ID;
-
-const ga4InitScript =
-  isGa4Enabled && ga4Id
-    ? `${loadGA4.toString()}
-${whenIdle.toString()}
-(function () {
-  var ga4Id = ${JSON.stringify(ga4Id)};
-
-  try {
-    if (window.localStorage && window.localStorage.getItem('consent') === 'granted') {
-      whenIdle(function () { loadGA4(ga4Id); });
-    }
-  } catch (error) {
-    // Access to localStorage can fail in some environments
-  }
-
-  window.addEventListener('consent:granted', function () {
-    whenIdle(function () { loadGA4(ga4Id); });
-  }, { once: true });
-
-  window.addEventListener('consent:ga', function (event) {
-    if (event && event.detail) {
-      window.dispatchEvent(new Event('consent:granted'));
-    }
-  });
-})();
-`
-    : null;
 
 export default function RootLayout({
   children,
@@ -151,30 +120,41 @@ export default function RootLayout({
         {/* Hinweis: Debug-Nuker entfernt, damit Browser-Caching & SW wieder normal funktionieren */}
         {/* Dev-Overlay entfernt – Desktop-Hero liegt nun via CSS-Hintergrund an. */}
         <Header />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-M9M67M5KNB"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('consent', 'default', {
+             ad_storage: 'denied',
+             analytics_storage: 'denied'
+           });
+           gtag('config', 'G-M9M67M5KNB', {
+             anonymize_ip: true
+           });
+           window.updateGaConsent = function(allowed) {
+             if (allowed) {
+               gtag('consent', 'update', {
+                 ad_storage: 'granted',
+                 analytics_storage: 'granted'
+               });
+             } else {
+               gtag('consent', 'update', {
+                 ad_storage: 'denied',
+                 analytics_storage: 'denied'
+               });
+             }
+           };
+         `}
+        </Script>
         <LayoutWrapper>
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
         <Footer />
-
-        {/* Consent-Defaults: keine optionalen Dienste ohne Opt-in */}
-        <Script id="consent-defaults" strategy="beforeInteractive">
-          {`window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        // Wir nutzen keine Analytics/Ads – Defaults auf denied.
-        gtag('consent','default', {
-          ad_user_data: 'denied',
-          ad_personalization: 'denied',
-          ad_storage: 'denied',
-          analytics_storage: 'denied'
-        });`}
-        </Script>
-
-        {/* Google Analytics 4 - lazy & consent-gated */}
-        {ga4InitScript && (
-          <Script id="ga4-consent-loader" strategy="afterInteractive">
-            {ga4InitScript}
-          </Script>
-        )}
 
         {/* GTM lädt nur nach Consent + Idle. Für schnelle Tests kann via NEXT_PUBLIC_ENABLE_GTM=false global deaktiviert werden. */}
         {isGtmEnabled && <GtmConsentLoader />}
