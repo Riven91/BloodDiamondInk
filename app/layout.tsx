@@ -151,6 +151,20 @@ export default function RootLayout({
         {/* Hinweis: Debug-Nuker entfernt, damit Browser-Caching & SW wieder normal funktionieren */}
         {/* Dev-Overlay entfernt – Desktop-Hero liegt nun via CSS-Hintergrund an. */}
         <Header />
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-M9M67M5KNB"
+          strategy="afterInteractive"
+        />
+        <Script id="ga4" strategy="afterInteractive">
+          {`
+           window.dataLayer = window.dataLayer || [];
+           function gtag(){dataLayer.push(arguments);}
+           gtag('js', new Date());
+           gtag('config', 'G-M9M67M5KNB', {
+             anonymize_ip: true
+           });
+         `}
+        </Script>
         <LayoutWrapper>
           <main className="bg-transparent">{children}</main>
         </LayoutWrapper>
