@@ -162,7 +162,7 @@ export default function PforzheimPage() {
         </a>
       </div>
 
-      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
+      <XmasVoucherBanner />
 
       <section className="bg-blooddiamond-muted/30 pt-4 md:pt-6 pb-4 md:pb-6">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
@@ -351,7 +351,7 @@ export default function PforzheimPage() {
       </section>
 
       <ContactForm />
-      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
+      <XmasVoucherBanner />
     </>
   );
 }

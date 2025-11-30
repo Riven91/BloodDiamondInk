@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function XmasVoucherBanner({ href }: { href: string }) {
+export default function XmasVoucherBanner() {
   return (
     <section className="mt-10 mb-16">
       <div className="mx-auto max-w-5xl rounded-3xl border border-white/10 bg-black/70 p-[2px] shadow-xl">
