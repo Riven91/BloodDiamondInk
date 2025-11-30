@@ -28,10 +28,10 @@ export default function XmasVoucherBanner({ href }: { href: string }) {
 
       <p className="mt-4 text-sm text-white/90 text-center max-w-2xl mx-auto">
         Wenn du auf <strong>„Jetzt Gutschein sichern“</strong> klickst, wirst du direkt zu unserer Kontaktseite
-        weitergeleitet. Dort wählst du im ersten Schritt <strong>„Ich möchte ein Tattoo“</strong> aus und
-        beantwortest ein paar kurze Fragen zu deinem Motiv. Danach erhältst du automatisch Zugang zu deinem
-        Gutschein. Du kannst uns alternativ jederzeit auch über Instagram, Facebook oder per WhatsApp
-        kontaktieren.
+        weitergeleitet. Dort wählst du im ersten Schritt <strong>„Ich möchte ein Tattoo“</strong> aus und beantwortest
+        ein paar kurze Fragen zu deinem Motiv. Anschließend setzt sich ein Mitarbeiter persönlich mit dir in
+        Verbindung, klärt offene Fragen und stellt dir den Gutschein aus. Du kannst uns alternativ auch jederzeit
+        über Instagram, Facebook oder per WhatsApp kontaktieren.
       </p>
     </section>
   );
