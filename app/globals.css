@@ -216,3 +216,9 @@ main {
     transform-origin: center center !important;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-snow-fall {
+    animation: none !important;
+  }
+}

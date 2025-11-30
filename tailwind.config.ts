@@ -25,6 +25,15 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-bebas-neue)"],
         body: ["var(--font-inter)"]
+      },
+      keyframes: {
+        "snow-fall": {
+          "0%": { transform: "translate3d(0, -120%, 0)" },
+          "100%": { transform: "translate3d(0, 120vh, 0)" }
+        }
+      },
+      animation: {
+        "snow-fall": "snow-fall linear infinite"
       }
     }
   },

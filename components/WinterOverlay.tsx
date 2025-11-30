@@ -14,7 +14,7 @@ type Flake = {
 };
 
 const FLAKE_COUNT = 16;
-const SOURCES = ["/dsnow1.png", "/dsnow2.png"];
+const SOURCES = ["/dsnow1.png"];
 
 export default function WinterOverlay() {
   const [flakes, setFlakes] = useState<Flake[]>([]);

@@ -97,8 +97,23 @@ export function Header() {
             width={80}
             height={80}
           />
-          <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent">
-            Blood Diamond Tattoo Ink.
+          <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent flex flex-wrap items-center">
+            <span>Blood Diamond</span>
+            <span className="ml-2 flex items-center">
+              TATTO
+              <span className="relative inline-block">
+                O
+                <Image
+                  src="/xmas/hat.png"
+                  alt=""
+                  width={34}
+                  height={34}
+                  aria-hidden="true"
+                  className="absolute -top-5 -right-2 rotate-[-12deg]"
+                />
+              </span>
+              &nbsp;INK.
+            </span>
           </span>
         </Link>
         <nav aria-label="Hauptnavigation" className="hidden md:block">
