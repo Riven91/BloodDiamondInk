@@ -351,6 +351,7 @@ export default function PforzheimPage() {
       </section>
 
       <ContactForm />
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
     </>
   );
 }

@@ -408,6 +408,7 @@ export default function HeilbronnPage() {
       </section>
 
       <ContactSection />
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/heilbronn/" />
     </>
   );
 }
