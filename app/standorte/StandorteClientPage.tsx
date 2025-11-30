@@ -1,10 +1,11 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ReactNode } from 'react';
 import Image from 'next/image';
+import XmasVoucherBanner from '@/components/XmasVoucherBanner';
 
-export default function StandorteClientPage() {
+export default function StandorteClientPage({ afterMapContent }: { afterMapContent?: ReactNode }) {
   const [consent, setConsent] = useState(false);
 
   useEffect(() => {
@@ -13,6 +14,8 @@ export default function StandorteClientPage() {
       setConsent(true);
     }
   }, []);
+
+  const banner = afterMapContent ?? <XmasVoucherBanner />;
 
   const handleConsent = () => {
     localStorage.setItem('mapConsent', 'true');
@@ -81,6 +84,8 @@ export default function StandorteClientPage() {
           </div>
         </div>
       )}
+
+      <div className="flex justify-center">{banner}</div>
 
       <div className="mt-12 flex justify-center">
         <Image

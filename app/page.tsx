@@ -8,6 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { Metadata } from "next";
 import { ORIGIN, defaultTitle, defaultDescription } from "./config/site";
 import { LocationsTeaser } from "./components/LocationsTeaser";
+import XmasVoucherBanner from "@/components/XmasVoucherBanner";
 
 export const metadata: Metadata = {
   title: defaultTitle,
@@ -133,6 +134,7 @@ export default function HomePage() {
           <span>Gutschein sichern</span>
         </a>
       </div>
+      <XmasVoucherBanner />
       <LocationsTeaser />
       <section id="signature-styles-gallery">
         <StylesGrid />
