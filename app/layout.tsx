@@ -6,6 +6,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { LayoutWrapper } from "@/components/LayoutWrapper";
 import { GtmConsentLoader } from "@/components/GtmConsentLoader";
+import WinterOverlay from "@/components/WinterOverlay";
 import {
   socialPreviewImage,
   SITE_NAME,
@@ -119,6 +120,7 @@ export default function RootLayout({
       <body className="bg-blooddiamond-background text-blooddiamond-text antialiased font-body font-sans">
         {/* Hinweis: Debug-Nuker entfernt, damit Browser-Caching & SW wieder normal funktionieren */}
         {/* Dev-Overlay entfernt – Desktop-Hero liegt nun via CSS-Hintergrund an. */}
+        <WinterOverlay />
         <Header />
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-M9M67M5KNB"

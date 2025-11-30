@@ -96,10 +96,15 @@ export function Header() {
             alt="Blood Diamond Ink. Logo"
             width={80}
             height={80}
-          />
-          <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent">
-            Blood Diamond Tattoo Ink.
-          </span>
+            />
+            <span className="font-display text-4xl uppercase tracking-[0.2em] text-blooddiamond-accent">
+              Blood Diamond{" "}
+              <span className="inline-flex items-center">
+                TATT
+                <span className="relative inline-block xmas-hat-o">O</span>
+                O&nbsp;Ink.
+              </span>
+            </span>
         </Link>
         <nav aria-label="Hauptnavigation" className="hidden md:block">
           <ul className="hidden items-center gap-4 text-sm uppercase tracking-widest md:flex">
