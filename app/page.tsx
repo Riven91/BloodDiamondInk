@@ -134,7 +134,7 @@ export default function HomePage() {
           <span>Gutschein sichern</span>
         </a>
       </div>
-      <XmasVoucherBanner />
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
       <LocationsTeaser />
       <section id="signature-styles-gallery">
         <StylesGrid />

@@ -31,7 +31,7 @@ export default function StandortePage() {
         }}
       />
       <StandorteClientPage />
-      <XmasVoucherBanner />
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
     </>
   );
 }

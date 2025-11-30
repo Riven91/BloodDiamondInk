@@ -364,7 +364,7 @@ export default function BoeblingenPage() {
           ],
         })}
       </Script>
-      <XmasVoucherBanner />
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/boeblingen/" />
     </>
   );
 }
