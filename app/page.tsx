@@ -5,6 +5,7 @@ import { AwardsSection } from "@/components/AwardsSection";
 import { Gallery } from "@/components/Gallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import JsonLd from "@/components/JsonLd";
+import XmasVoucherBanner from "@/components/XmasVoucherBanner";
 import { Metadata } from "next";
 import { ORIGIN, defaultTitle, defaultDescription } from "./config/site";
 import { LocationsTeaser } from "./components/LocationsTeaser";
@@ -133,6 +134,7 @@ export default function HomePage() {
           <span>Gutschein sichern</span>
         </a>
       </div>
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
       <LocationsTeaser />
       <section id="signature-styles-gallery">
         <StylesGrid />
