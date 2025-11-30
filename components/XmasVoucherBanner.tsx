@@ -8,7 +8,7 @@ export default function XmasVoucherBanner({ href }: { href: string }) {
         <div className="relative overflow-hidden rounded-[22px]">
           <Image
             src="/gut3.jpeg"
-            alt="Gutschein Aktion bei Blood Diamond Tattoo Ink"
+            alt="Tattoo-Gutschein Aktion von Blood Diamond Tattoo Ink im Weihnachtsdesign – Geschenke, rote Schleifen und Hinweis auf die Gutschein-Promotion"
             width={1600}
             height={1067}
             className="h-auto w-full"
@@ -25,6 +25,14 @@ export default function XmasVoucherBanner({ href }: { href: string }) {
           </div>
         </div>
       </div>
+
+      <p className="mt-4 text-sm text-white/90 text-center max-w-2xl mx-auto">
+        Wenn du auf <strong>„Jetzt Gutschein sichern“</strong> klickst, wirst du direkt zu unserer Kontaktseite
+        weitergeleitet. Dort wählst du im ersten Schritt <strong>„Ich möchte ein Tattoo“</strong> aus und
+        beantwortest ein paar kurze Fragen zu deinem Motiv. Danach erhältst du automatisch Zugang zu deinem
+        Gutschein. Du kannst uns alternativ jederzeit auch über Instagram, Facebook oder per WhatsApp
+        kontaktieren.
+      </p>
     </section>
   );
 }
