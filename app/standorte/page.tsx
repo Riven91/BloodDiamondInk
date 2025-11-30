@@ -1,4 +1,5 @@
 import JsonLd from "@/components/JsonLd";
+import XmasVoucherBanner from "@/components/XmasVoucherBanner";
 import type { Metadata } from "next";
 import StandorteClientPage from "./StandorteClientPage";
 import { ORIGIN } from "../config/site";
@@ -30,6 +31,7 @@ export default function StandortePage() {
         }}
       />
       <StandorteClientPage />
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/pforzheim/" />
     </>
   );
 }
