@@ -5,6 +5,7 @@ import OtherLocations from "@/components/OtherLocations";
 import StudioGallery from "@/components/StudioGallery";
 import LightboxAuto from "@/components/LightboxAuto";
 import JsonLd from "@/components/JsonLd";
+import XmasVoucherBanner from "@/components/XmasVoucherBanner";
 import { studioImages } from "@/app/_content/studioImages";
 import { ORIGIN } from "../config/site";
 
@@ -348,6 +349,7 @@ export default function PforzheimPage() {
       </section>
 
       <ContactForm />
+      <XmasVoucherBanner />
     </>
   );
 }
