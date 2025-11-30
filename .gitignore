@@ -20,6 +20,8 @@ public/sitemap*.xml
 
 # icons
 public/icons/
+public/dsnow2.png
+
 
 # Static exports
 .next/static/
