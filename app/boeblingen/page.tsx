@@ -128,7 +128,7 @@ export default function BoeblingenPage() {
         </a>
       </div>
 
-      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/boeblingen/" />
+      <XmasVoucherBanner />
 
       <section className="bg-blooddiamond-muted/30 pt-8 md:pt-10 pb-8 md:pb-10">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
@@ -366,7 +366,7 @@ export default function BoeblingenPage() {
           ],
         })}
       </Script>
-      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/boeblingen/" />
+      <XmasVoucherBanner />
     </>
   );
 }
