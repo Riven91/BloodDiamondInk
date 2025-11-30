@@ -220,6 +220,8 @@ export default function HeilbronnPage() {
         </a>
       </div>
 
+      <XmasVoucherBanner href="https://kontakt.blooddiamond-tattoo.de/heilbronn/" />
+
       <section className="bg-blooddiamond-muted/30 pt-8 md:pt-10 pb-8 md:pb-10">
         <div className="mx-auto grid max-w-5xl gap-10 px-6 md:grid-cols-2">
           <div>
