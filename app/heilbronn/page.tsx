@@ -189,7 +189,7 @@ export default function HeilbronnPage() {
         title="Tattoo-Studio Heilbronn — Handwerk, Ruhe und Präzision"
         description="Internationale Tattoo-Kunst trifft auf präzises Handwerk – Blood Diamond Tattoo Ink. Heilbronn steht für Realistic, Fineline und Cover-Up auf Weltklasse-Niveau. Unsere Artists sind mehrfach mit der „Goldenen Nadel“ ausgezeichnet und arbeiten in einer sterilen, ruhigen Umgebung für dein perfektes Tattoo."
         ctaLabel="Termin buchen"
-        ctaHref="#kontaktformular"
+        ctaHref="https://kontakt.blooddiamond-tattoo.de/heilbronn/page_lx69yc/"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/4917630573128"
         city="heilbronn"

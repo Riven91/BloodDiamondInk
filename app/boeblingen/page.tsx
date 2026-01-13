@@ -98,7 +98,7 @@ export default function BoeblingenPage() {
         title="Tattoo-Studio Böblingen — Präzision, Design und Atmosphäre"
         description={`Von Böblingen inspiriert, in der Welt vernetzt: Unsere Tattoo-Artists aus Europa, Asien und Amerika stehen für individuelle Designs, Präzision und Sicherheit. Viele unserer Künstler wurden bereits mit der „Goldenen Nadel“ ausgezeichnet und bringen diese Erfahrung mit zu Blood Diamond Tattoo Ink. Böblingen.`}
         ctaLabel="Termin buchen"
-        ctaHref="#kontaktformular"
+        ctaHref="https://kontakt.blooddiamond-tattoo.de/boeblingen/page_lx69yc/"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/491624204789"
         city="boeblingen"
