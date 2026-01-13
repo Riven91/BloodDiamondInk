@@ -132,7 +132,7 @@ export default function PforzheimPage() {
         title="Tattoo Studio Pforzheim – Kunst, Stil & Präzision"
         description="Internationale Tattoo-Artists, preisgekrönte Designs und höchste Präzision – Blood Diamond Tattoo Ink. Pforzheim vereint Kunst, Stil und Handwerk auf Weltklasse-Niveau. Artisten ausgezeichnet mit der „Goldenen Nadel“ und bekannt für kompromisslose Hygiene."
         ctaLabel="Termin buchen"
-        ctaHref="#kontaktformular"
+        ctaHref="https://kontakt.blooddiamond-tattoo.de/pforzheim/page_lx69yc/"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/4915123426609"
         city="pforzheim"

@@ -106,7 +106,7 @@ export default function HomePage() {
         title="Tattoo Studios in Baden-Württemberg – Exklusive Tattoo-Kunst auf Weltklasse-Niveau"
         description="Internationale Tattoo-Artists, ausgezeichnet mit der „Goldenen Nadel“ – spezialisiert auf Realistic, Fineline, Cover-Up, Black & Grey, Mandala und New School. Studios in Pforzheim (Ötisheim), Heilbronn (Neckarsulm) und Böblingen (Herrenberg)."
         ctaLabel="Termin buchen"
-        ctaHref="https://kontakt.blooddiamond-tattoo.de/pforzheim/"
+        ctaHref="https://kontakt.blooddiamond-tattoo.de/pforzheim/page_lx69yc/"
         secondaryCtaLabel="WhatsApp"
         secondaryCtaHref="https://wa.me/4915123426609"
       />
